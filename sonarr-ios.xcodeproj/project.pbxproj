@@ -1,0 +1,889 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4A3498CD1E635D0400453E63 /* SNRAuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A3498CC1E635D0400453E63 /* SNRAuthViewController.m */; };
+		4A3498D21E635E5300453E63 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A3498D01E635E5300453E63 /* Assets.xcassets */; };
+		4A3498D81E635E6C00453E63 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4A3498D41E635E6C00453E63 /* LaunchScreen.storyboard */; };
+		4A3498D91E635E6C00453E63 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4A3498D61E635E6C00453E63 /* Main.storyboard */; };
+		4A3498DE1E635E7900453E63 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A3498DB1E635E7900453E63 /* AppDelegate.m */; };
+		4A3498E01E635E7900453E63 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A3498DD1E635E7900453E63 /* main.m */; };
+		4A34990A1E63C59400453E63 /* SNRStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A3499091E63C59400453E63 /* SNRStatus.m */; };
+		4A34990D1E63CF2B00453E63 /* SNRSeries.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A34990C1E63CF2B00453E63 /* SNRSeries.m */; };
+		4A3499101E63D7F600453E63 /* SNRTitle.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A34990F1E63D7F600453E63 /* SNRTitle.m */; };
+		4A3499131E63D8ED00453E63 /* SNRImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A3499121E63D8ED00453E63 /* SNRImage.m */; };
+		4A3499171E63D94A00453E63 /* SNRSeason.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A3499161E63D94A00453E63 /* SNRSeason.m */; };
+		4A34991A1E63D9A600453E63 /* SNRStatistics.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A3499191E63D9A600453E63 /* SNRStatistics.m */; };
+		4A3499231E63DD1000453E63 /* SNRRatings.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A3499221E63DD1000453E63 /* SNRRatings.m */; };
+		4A777C331E63EBC9006B1987 /* SNRCalandar.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A777C321E63EBC9006B1987 /* SNRCalandar.m */; };
+		4A777C391E63ECED006B1987 /* SNREpisode.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A777C381E63ECED006B1987 /* SNREpisode.m */; };
+		4A777C3C1E63EDAE006B1987 /* SNRQuality.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A777C3B1E63EDAE006B1987 /* SNRQuality.m */; };
+		4A777C3F1E63EDF4006B1987 /* SNRRevision.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A777C3E1E63EDF4006B1987 /* SNRRevision.m */; };
+		4A777C421E63F242006B1987 /* SNRCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A777C411E63F242006B1987 /* SNRCommand.m */; };
+		4A777C461E63F7AF006B1987 /* SNRDiskSpace.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A777C451E63F7AF006B1987 /* SNRDiskSpace.m */; };
+		4A777C491E63FB2F006B1987 /* SNREpisodeFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A777C481E63FB2F006B1987 /* SNREpisodeFile.m */; };
+		4A777C4C1E63FE9C006B1987 /* SNRHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A777C4B1E63FE9C006B1987 /* SNRHistory.m */; };
+		4A777C4F1E640407006B1987 /* SNRRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A777C4E1E640407006B1987 /* SNRRecord.m */; };
+		4A777C521E64078B006B1987 /* SNRData.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A777C511E64078B006B1987 /* SNRData.m */; };
+		4A777C621E65325F006B1987 /* SNRQualityProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A777C611E65325F006B1987 /* SNRQualityProfile.m */; };
+		4A777C651E653283006B1987 /* SNRValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A777C641E653283006B1987 /* SNRValue.m */; };
+		4A777C6B1E653357006B1987 /* SNRCutoff.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A777C6A1E653357006B1987 /* SNRCutoff.m */; };
+		4A777C6E1E65340A006B1987 /* SNRItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A777C6D1E65340A006B1987 /* SNRItem.m */; };
+		4A777C711E653561006B1987 /* SNRQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A777C701E653561006B1987 /* SNRQueue.m */; };
+		4A777C741E653615006B1987 /* SNRProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A777C731E653615006B1987 /* SNRProfile.m */; };
+		4A777C771E653683006B1987 /* SNRRelease.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A777C761E653683006B1987 /* SNRRelease.m */; };
+		4A777C7A1E653B49006B1987 /* SNRRootFolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A777C791E653B49006B1987 /* SNRRootFolder.m */; };
+		4A9E6C511E760507008AB91A /* SNRBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A9E6C501E760507008AB91A /* SNRBaseViewController.m */; };
+		4A9E6C561E760662008AB91A /* SNRNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A9E6C551E760662008AB91A /* SNRNavigationViewController.m */; };
+		4A9E6C591E760C9B008AB91A /* UIColor+App.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A9E6C581E760C9B008AB91A /* UIColor+App.m */; };
+		4A9E6C611E765B67008AB91A /* SNRBaseSheetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A9E6C601E765B67008AB91A /* SNRBaseSheetViewController.m */; };
+		4A9E6C651E777ACC008AB91A /* SNRServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A9E6C641E777ACC008AB91A /* SNRServer.m */; };
+		4A9E6C681E777DCB008AB91A /* SNRServerConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A9E6C671E777DCB008AB91A /* SNRServerConfig.m */; };
+		4A9E6C6B1E7785FE008AB91A /* SNRAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A9E6C6A1E7785FE008AB91A /* SNRAPIClient.m */; };
+		4AA5D5EF1E668F8300C044C7 /* SNRAddServerPopUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AA5D5EE1E668F8300C044C7 /* SNRAddServerPopUpViewController.m */; };
+		6F52D82016799076E68DDF32 /* libPods-sonarr-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FD31FBD03D949BB5680777EB /* libPods-sonarr-ios.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		4A3498AD1E63587200453E63 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4A34988B1E63587200453E63 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4A3498921E63587200453E63;
+			remoteInfo = "sonarr-ios";
+		};
+		4A3498B81E63587200453E63 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4A34988B1E63587200453E63 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4A3498921E63587200453E63;
+			remoteInfo = "sonarr-ios";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		4A3498931E63587200453E63 /* sonarr-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "sonarr-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4A3498AC1E63587200453E63 /* sonarr-iosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "sonarr-iosTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4A3498B71E63587200453E63 /* sonarr-iosUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "sonarr-iosUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4A3498CB1E635D0400453E63 /* SNRAuthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRAuthViewController.h; path = Auth/Controllers/SNRAuthViewController.h; sourceTree = "<group>"; };
+		4A3498CC1E635D0400453E63 /* SNRAuthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRAuthViewController.m; path = Auth/Controllers/SNRAuthViewController.m; sourceTree = "<group>"; };
+		4A3498D01E635E5300453E63 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Resources/Assets.xcassets; sourceTree = "<group>"; };
+		4A3498D51E635E6C00453E63 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Resources/Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		4A3498D71E635E6C00453E63 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Resources/Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		4A3498DA1E635E7900453E63 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = "Supporting Files/AppDelegate.h"; sourceTree = "<group>"; };
+		4A3498DB1E635E7900453E63 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = "Supporting Files/AppDelegate.m"; sourceTree = "<group>"; };
+		4A3498DD1E635E7900453E63 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = "Supporting Files/main.m"; sourceTree = "<group>"; };
+		4A3499081E63C59400453E63 /* SNRStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRStatus.h; path = API/Models/SNRStatus.h; sourceTree = "<group>"; };
+		4A3499091E63C59400453E63 /* SNRStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRStatus.m; path = API/Models/SNRStatus.m; sourceTree = "<group>"; };
+		4A34990B1E63CF2B00453E63 /* SNRSeries.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRSeries.h; path = API/Models/SNRSeries.h; sourceTree = "<group>"; };
+		4A34990C1E63CF2B00453E63 /* SNRSeries.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRSeries.m; path = API/Models/SNRSeries.m; sourceTree = "<group>"; };
+		4A34990E1E63D7F600453E63 /* SNRTitle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRTitle.h; path = API/Models/SNRTitle.h; sourceTree = "<group>"; };
+		4A34990F1E63D7F600453E63 /* SNRTitle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRTitle.m; path = API/Models/SNRTitle.m; sourceTree = "<group>"; };
+		4A3499111E63D8ED00453E63 /* SNRImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRImage.h; path = API/Models/SNRImage.h; sourceTree = "<group>"; };
+		4A3499121E63D8ED00453E63 /* SNRImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRImage.m; path = API/Models/SNRImage.m; sourceTree = "<group>"; };
+		4A3499151E63D94A00453E63 /* SNRSeason.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRSeason.h; path = API/Models/SNRSeason.h; sourceTree = "<group>"; };
+		4A3499161E63D94A00453E63 /* SNRSeason.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRSeason.m; path = API/Models/SNRSeason.m; sourceTree = "<group>"; };
+		4A3499181E63D9A600453E63 /* SNRStatistics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRStatistics.h; path = API/Models/SNRStatistics.h; sourceTree = "<group>"; };
+		4A3499191E63D9A600453E63 /* SNRStatistics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRStatistics.m; path = API/Models/SNRStatistics.m; sourceTree = "<group>"; };
+		4A3499211E63DD1000453E63 /* SNRRatings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRRatings.h; path = API/Models/SNRRatings.h; sourceTree = "<group>"; };
+		4A3499221E63DD1000453E63 /* SNRRatings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRRatings.m; path = API/Models/SNRRatings.m; sourceTree = "<group>"; };
+		4A777C311E63EBC9006B1987 /* SNRCalandar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRCalandar.h; path = API/Models/SNRCalandar.h; sourceTree = "<group>"; };
+		4A777C321E63EBC9006B1987 /* SNRCalandar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRCalandar.m; path = API/Models/SNRCalandar.m; sourceTree = "<group>"; };
+		4A777C371E63ECED006B1987 /* SNREpisode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNREpisode.h; path = API/Models/SNREpisode.h; sourceTree = "<group>"; };
+		4A777C381E63ECED006B1987 /* SNREpisode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNREpisode.m; path = API/Models/SNREpisode.m; sourceTree = "<group>"; };
+		4A777C3A1E63EDAE006B1987 /* SNRQuality.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRQuality.h; path = API/Models/SNRQuality.h; sourceTree = "<group>"; };
+		4A777C3B1E63EDAE006B1987 /* SNRQuality.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRQuality.m; path = API/Models/SNRQuality.m; sourceTree = "<group>"; };
+		4A777C3D1E63EDF4006B1987 /* SNRRevision.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRRevision.h; path = API/Models/SNRRevision.h; sourceTree = "<group>"; };
+		4A777C3E1E63EDF4006B1987 /* SNRRevision.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRRevision.m; path = API/Models/SNRRevision.m; sourceTree = "<group>"; };
+		4A777C401E63F242006B1987 /* SNRCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRCommand.h; path = API/Models/SNRCommand.h; sourceTree = "<group>"; };
+		4A777C411E63F242006B1987 /* SNRCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRCommand.m; path = API/Models/SNRCommand.m; sourceTree = "<group>"; };
+		4A777C441E63F7AF006B1987 /* SNRDiskSpace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRDiskSpace.h; path = API/Models/SNRDiskSpace.h; sourceTree = "<group>"; };
+		4A777C451E63F7AF006B1987 /* SNRDiskSpace.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRDiskSpace.m; path = API/Models/SNRDiskSpace.m; sourceTree = "<group>"; };
+		4A777C471E63FB2F006B1987 /* SNREpisodeFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNREpisodeFile.h; path = API/Models/SNREpisodeFile.h; sourceTree = "<group>"; };
+		4A777C481E63FB2F006B1987 /* SNREpisodeFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNREpisodeFile.m; path = API/Models/SNREpisodeFile.m; sourceTree = "<group>"; };
+		4A777C4A1E63FE9C006B1987 /* SNRHistory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRHistory.h; path = API/Models/SNRHistory.h; sourceTree = "<group>"; };
+		4A777C4B1E63FE9C006B1987 /* SNRHistory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRHistory.m; path = API/Models/SNRHistory.m; sourceTree = "<group>"; };
+		4A777C4D1E640407006B1987 /* SNRRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRRecord.h; path = API/Models/SNRRecord.h; sourceTree = "<group>"; };
+		4A777C4E1E640407006B1987 /* SNRRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRRecord.m; path = API/Models/SNRRecord.m; sourceTree = "<group>"; };
+		4A777C501E64078B006B1987 /* SNRData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRData.h; path = API/Models/SNRData.h; sourceTree = "<group>"; };
+		4A777C511E64078B006B1987 /* SNRData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRData.m; path = API/Models/SNRData.m; sourceTree = "<group>"; };
+		4A777C601E65325F006B1987 /* SNRQualityProfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRQualityProfile.h; path = API/Models/SNRQualityProfile.h; sourceTree = "<group>"; };
+		4A777C611E65325F006B1987 /* SNRQualityProfile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRQualityProfile.m; path = API/Models/SNRQualityProfile.m; sourceTree = "<group>"; };
+		4A777C631E653283006B1987 /* SNRValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRValue.h; path = API/Models/SNRValue.h; sourceTree = "<group>"; };
+		4A777C641E653283006B1987 /* SNRValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRValue.m; path = API/Models/SNRValue.m; sourceTree = "<group>"; };
+		4A777C691E653357006B1987 /* SNRCutoff.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRCutoff.h; path = API/Models/SNRCutoff.h; sourceTree = "<group>"; };
+		4A777C6A1E653357006B1987 /* SNRCutoff.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRCutoff.m; path = API/Models/SNRCutoff.m; sourceTree = "<group>"; };
+		4A777C6C1E65340A006B1987 /* SNRItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRItem.h; path = API/Models/SNRItem.h; sourceTree = "<group>"; };
+		4A777C6D1E65340A006B1987 /* SNRItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRItem.m; path = API/Models/SNRItem.m; sourceTree = "<group>"; };
+		4A777C6F1E653561006B1987 /* SNRQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRQueue.h; path = API/Models/SNRQueue.h; sourceTree = "<group>"; };
+		4A777C701E653561006B1987 /* SNRQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRQueue.m; path = API/Models/SNRQueue.m; sourceTree = "<group>"; };
+		4A777C721E653615006B1987 /* SNRProfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRProfile.h; path = API/Models/SNRProfile.h; sourceTree = "<group>"; };
+		4A777C731E653615006B1987 /* SNRProfile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRProfile.m; path = API/Models/SNRProfile.m; sourceTree = "<group>"; };
+		4A777C751E653683006B1987 /* SNRRelease.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRRelease.h; path = API/Models/SNRRelease.h; sourceTree = "<group>"; };
+		4A777C761E653683006B1987 /* SNRRelease.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRRelease.m; path = API/Models/SNRRelease.m; sourceTree = "<group>"; };
+		4A777C781E653B49006B1987 /* SNRRootFolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRRootFolder.h; path = API/Models/SNRRootFolder.h; sourceTree = "<group>"; };
+		4A777C791E653B49006B1987 /* SNRRootFolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRRootFolder.m; path = API/Models/SNRRootFolder.m; sourceTree = "<group>"; };
+		4A9E6C4F1E760507008AB91A /* SNRBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRBaseViewController.h; path = Common/Controllers/SNRBaseViewController.h; sourceTree = "<group>"; };
+		4A9E6C501E760507008AB91A /* SNRBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRBaseViewController.m; path = Common/Controllers/SNRBaseViewController.m; sourceTree = "<group>"; };
+		4A9E6C541E760662008AB91A /* SNRNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRNavigationViewController.h; path = Navigation/Controllers/SNRNavigationViewController.h; sourceTree = "<group>"; };
+		4A9E6C551E760662008AB91A /* SNRNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRNavigationViewController.m; path = Navigation/Controllers/SNRNavigationViewController.m; sourceTree = "<group>"; };
+		4A9E6C571E760C9B008AB91A /* UIColor+App.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIColor+App.h"; path = "Common/Models/UIColor+App.h"; sourceTree = "<group>"; };
+		4A9E6C581E760C9B008AB91A /* UIColor+App.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIColor+App.m"; path = "Common/Models/UIColor+App.m"; sourceTree = "<group>"; };
+		4A9E6C5D1E761366008AB91A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = "Supporting Files/Info.plist"; sourceTree = "<group>"; };
+		4A9E6C5F1E765B67008AB91A /* SNRBaseSheetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRBaseSheetViewController.h; path = Common/Controllers/SNRBaseSheetViewController.h; sourceTree = "<group>"; };
+		4A9E6C601E765B67008AB91A /* SNRBaseSheetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRBaseSheetViewController.m; path = Common/Controllers/SNRBaseSheetViewController.m; sourceTree = "<group>"; };
+		4A9E6C621E77772E008AB91A /* SNRNetworkProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRNetworkProtocol.h; path = API/Client/SNRNetworkProtocol.h; sourceTree = "<group>"; };
+		4A9E6C631E777ACC008AB91A /* SNRServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRServer.h; path = API/Client/SNRServer.h; sourceTree = "<group>"; };
+		4A9E6C641E777ACC008AB91A /* SNRServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRServer.m; path = API/Client/SNRServer.m; sourceTree = "<group>"; };
+		4A9E6C661E777DCB008AB91A /* SNRServerConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRServerConfig.h; path = API/Client/SNRServerConfig.h; sourceTree = "<group>"; };
+		4A9E6C671E777DCB008AB91A /* SNRServerConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRServerConfig.m; path = API/Client/SNRServerConfig.m; sourceTree = "<group>"; };
+		4A9E6C691E7785FE008AB91A /* SNRAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRAPIClient.h; path = API/Client/SNRAPIClient.h; sourceTree = "<group>"; };
+		4A9E6C6A1E7785FE008AB91A /* SNRAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRAPIClient.m; path = API/Client/SNRAPIClient.m; sourceTree = "<group>"; };
+		4AA5D5ED1E668F8300C044C7 /* SNRAddServerPopUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRAddServerPopUpViewController.h; path = Auth/Controllers/SNRAddServerPopUpViewController.h; sourceTree = "<group>"; };
+		4AA5D5EE1E668F8300C044C7 /* SNRAddServerPopUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRAddServerPopUpViewController.m; path = Auth/Controllers/SNRAddServerPopUpViewController.m; sourceTree = "<group>"; };
+		90C3F8C36C856C91C0FCE823 /* Pods-sonarr-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sonarr-ios.release.xcconfig"; path = "Pods/Target Support Files/Pods-sonarr-ios/Pods-sonarr-ios.release.xcconfig"; sourceTree = "<group>"; };
+		F8E59AC9DE2CC954BEA5058D /* Pods-sonarr-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sonarr-ios.debug.xcconfig"; path = "Pods/Target Support Files/Pods-sonarr-ios/Pods-sonarr-ios.debug.xcconfig"; sourceTree = "<group>"; };
+		FD31FBD03D949BB5680777EB /* libPods-sonarr-ios.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-sonarr-ios.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4A3498901E63587200453E63 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6F52D82016799076E68DDF32 /* libPods-sonarr-ios.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4A3498A91E63587200453E63 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4A3498B41E63587200453E63 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4A34988A1E63587200453E63 = {
+			isa = PBXGroup;
+			children = (
+				4A3498951E63587200453E63 /* sonarr-ios */,
+				4A3498941E63587200453E63 /* Products */,
+				C0A8B1E663D8FE7C868FDCDE /* Pods */,
+				B8FB5143EB65B483C8D32A07 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		4A3498941E63587200453E63 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4A3498931E63587200453E63 /* sonarr-ios.app */,
+				4A3498AC1E63587200453E63 /* sonarr-iosTests.xctest */,
+				4A3498B71E63587200453E63 /* sonarr-iosUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4A3498951E63587200453E63 /* sonarr-ios */ = {
+			isa = PBXGroup;
+			children = (
+				4A3499061E63C3E900453E63 /* API */,
+				4A3499041E63A39800453E63 /* Common */,
+				4A9E6C521E760633008AB91A /* Navigation */,
+				4A3498CE1E635DC100453E63 /* Analytics */,
+				4A3498C91E635CA400453E63 /* Auth */,
+				4A3498CF1E635DDF00453E63 /* Resources */,
+				4A3498961E63587200453E63 /* Supporting Files */,
+			);
+			path = "sonarr-ios";
+			sourceTree = "<group>";
+		};
+		4A3498961E63587200453E63 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				4A9E6C5D1E761366008AB91A /* Info.plist */,
+				4A3498DA1E635E7900453E63 /* AppDelegate.h */,
+				4A3498DB1E635E7900453E63 /* AppDelegate.m */,
+				4A3498DD1E635E7900453E63 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4A3498C91E635CA400453E63 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				4A3498CA1E635CAA00453E63 /* Controllers */,
+			);
+			name = Auth;
+			sourceTree = "<group>";
+		};
+		4A3498CA1E635CAA00453E63 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				4A3498CB1E635D0400453E63 /* SNRAuthViewController.h */,
+				4A3498CC1E635D0400453E63 /* SNRAuthViewController.m */,
+				4AA5D5ED1E668F8300C044C7 /* SNRAddServerPopUpViewController.h */,
+				4AA5D5EE1E668F8300C044C7 /* SNRAddServerPopUpViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		4A3498CE1E635DC100453E63 /* Analytics */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Analytics;
+			sourceTree = "<group>";
+		};
+		4A3498CF1E635DDF00453E63 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				4A3498D41E635E6C00453E63 /* LaunchScreen.storyboard */,
+				4A3498D61E635E6C00453E63 /* Main.storyboard */,
+				4A3498D01E635E5300453E63 /* Assets.xcassets */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		4A3499041E63A39800453E63 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				4A9E6C4E1E7604B2008AB91A /* Controllers */,
+				4A3499051E63A39E00453E63 /* Models */,
+			);
+			name = Common;
+			sourceTree = "<group>";
+		};
+		4A3499051E63A39E00453E63 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				4A9E6C571E760C9B008AB91A /* UIColor+App.h */,
+				4A9E6C581E760C9B008AB91A /* UIColor+App.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		4A3499061E63C3E900453E63 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				4A777C7B1E654999006B1987 /* Client */,
+				4A3499071E63C3EE00453E63 /* Models */,
+			);
+			name = API;
+			sourceTree = "<group>";
+		};
+		4A3499071E63C3EE00453E63 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				4A3499081E63C59400453E63 /* SNRStatus.h */,
+				4A3499091E63C59400453E63 /* SNRStatus.m */,
+				4A34990B1E63CF2B00453E63 /* SNRSeries.h */,
+				4A34990C1E63CF2B00453E63 /* SNRSeries.m */,
+				4A34990E1E63D7F600453E63 /* SNRTitle.h */,
+				4A34990F1E63D7F600453E63 /* SNRTitle.m */,
+				4A3499111E63D8ED00453E63 /* SNRImage.h */,
+				4A3499121E63D8ED00453E63 /* SNRImage.m */,
+				4A3499151E63D94A00453E63 /* SNRSeason.h */,
+				4A3499161E63D94A00453E63 /* SNRSeason.m */,
+				4A3499181E63D9A600453E63 /* SNRStatistics.h */,
+				4A3499191E63D9A600453E63 /* SNRStatistics.m */,
+				4A3499211E63DD1000453E63 /* SNRRatings.h */,
+				4A3499221E63DD1000453E63 /* SNRRatings.m */,
+				4A777C311E63EBC9006B1987 /* SNRCalandar.h */,
+				4A777C321E63EBC9006B1987 /* SNRCalandar.m */,
+				4A777C371E63ECED006B1987 /* SNREpisode.h */,
+				4A777C381E63ECED006B1987 /* SNREpisode.m */,
+				4A777C3A1E63EDAE006B1987 /* SNRQuality.h */,
+				4A777C3B1E63EDAE006B1987 /* SNRQuality.m */,
+				4A777C3D1E63EDF4006B1987 /* SNRRevision.h */,
+				4A777C3E1E63EDF4006B1987 /* SNRRevision.m */,
+				4A777C401E63F242006B1987 /* SNRCommand.h */,
+				4A777C411E63F242006B1987 /* SNRCommand.m */,
+				4A777C441E63F7AF006B1987 /* SNRDiskSpace.h */,
+				4A777C451E63F7AF006B1987 /* SNRDiskSpace.m */,
+				4A777C471E63FB2F006B1987 /* SNREpisodeFile.h */,
+				4A777C481E63FB2F006B1987 /* SNREpisodeFile.m */,
+				4A777C4A1E63FE9C006B1987 /* SNRHistory.h */,
+				4A777C4B1E63FE9C006B1987 /* SNRHistory.m */,
+				4A777C4D1E640407006B1987 /* SNRRecord.h */,
+				4A777C4E1E640407006B1987 /* SNRRecord.m */,
+				4A777C501E64078B006B1987 /* SNRData.h */,
+				4A777C511E64078B006B1987 /* SNRData.m */,
+				4A777C601E65325F006B1987 /* SNRQualityProfile.h */,
+				4A777C611E65325F006B1987 /* SNRQualityProfile.m */,
+				4A777C631E653283006B1987 /* SNRValue.h */,
+				4A777C641E653283006B1987 /* SNRValue.m */,
+				4A777C691E653357006B1987 /* SNRCutoff.h */,
+				4A777C6A1E653357006B1987 /* SNRCutoff.m */,
+				4A777C6C1E65340A006B1987 /* SNRItem.h */,
+				4A777C6D1E65340A006B1987 /* SNRItem.m */,
+				4A777C6F1E653561006B1987 /* SNRQueue.h */,
+				4A777C701E653561006B1987 /* SNRQueue.m */,
+				4A777C721E653615006B1987 /* SNRProfile.h */,
+				4A777C731E653615006B1987 /* SNRProfile.m */,
+				4A777C751E653683006B1987 /* SNRRelease.h */,
+				4A777C761E653683006B1987 /* SNRRelease.m */,
+				4A777C781E653B49006B1987 /* SNRRootFolder.h */,
+				4A777C791E653B49006B1987 /* SNRRootFolder.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		4A777C7B1E654999006B1987 /* Client */ = {
+			isa = PBXGroup;
+			children = (
+				4A9E6C621E77772E008AB91A /* SNRNetworkProtocol.h */,
+				4A9E6C631E777ACC008AB91A /* SNRServer.h */,
+				4A9E6C641E777ACC008AB91A /* SNRServer.m */,
+				4A9E6C661E777DCB008AB91A /* SNRServerConfig.h */,
+				4A9E6C671E777DCB008AB91A /* SNRServerConfig.m */,
+				4A9E6C691E7785FE008AB91A /* SNRAPIClient.h */,
+				4A9E6C6A1E7785FE008AB91A /* SNRAPIClient.m */,
+			);
+			name = Client;
+			sourceTree = "<group>";
+		};
+		4A9E6C4E1E7604B2008AB91A /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				4A9E6C4F1E760507008AB91A /* SNRBaseViewController.h */,
+				4A9E6C501E760507008AB91A /* SNRBaseViewController.m */,
+				4A9E6C5F1E765B67008AB91A /* SNRBaseSheetViewController.h */,
+				4A9E6C601E765B67008AB91A /* SNRBaseSheetViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		4A9E6C521E760633008AB91A /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				4A9E6C531E760641008AB91A /* Controllers */,
+			);
+			name = Navigation;
+			sourceTree = "<group>";
+		};
+		4A9E6C531E760641008AB91A /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				4A9E6C541E760662008AB91A /* SNRNavigationViewController.h */,
+				4A9E6C551E760662008AB91A /* SNRNavigationViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		B8FB5143EB65B483C8D32A07 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FD31FBD03D949BB5680777EB /* libPods-sonarr-ios.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C0A8B1E663D8FE7C868FDCDE /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F8E59AC9DE2CC954BEA5058D /* Pods-sonarr-ios.debug.xcconfig */,
+				90C3F8C36C856C91C0FCE823 /* Pods-sonarr-ios.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		4A3498921E63587200453E63 /* sonarr-ios */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4A3498C01E63587200453E63 /* Build configuration list for PBXNativeTarget "sonarr-ios" */;
+			buildPhases = (
+				4C861A2E9E61FF661CEFD93F /* [CP] Check Pods Manifest.lock */,
+				4A34988F1E63587200453E63 /* Sources */,
+				4A3498901E63587200453E63 /* Frameworks */,
+				4A3498911E63587200453E63 /* Resources */,
+				CFB1C906F80701C5631C578A /* [CP] Embed Pods Frameworks */,
+				B98DF410A8E0EC1D18F7B173 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "sonarr-ios";
+			productName = "sonarr-ios";
+			productReference = 4A3498931E63587200453E63 /* sonarr-ios.app */;
+			productType = "com.apple.product-type.application";
+		};
+		4A3498AB1E63587200453E63 /* sonarr-iosTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4A3498C31E63587200453E63 /* Build configuration list for PBXNativeTarget "sonarr-iosTests" */;
+			buildPhases = (
+				4A3498A81E63587200453E63 /* Sources */,
+				4A3498A91E63587200453E63 /* Frameworks */,
+				4A3498AA1E63587200453E63 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4A3498AE1E63587200453E63 /* PBXTargetDependency */,
+			);
+			name = "sonarr-iosTests";
+			productName = "sonarr-iosTests";
+			productReference = 4A3498AC1E63587200453E63 /* sonarr-iosTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		4A3498B61E63587200453E63 /* sonarr-iosUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4A3498C61E63587200453E63 /* Build configuration list for PBXNativeTarget "sonarr-iosUITests" */;
+			buildPhases = (
+				4A3498B31E63587200453E63 /* Sources */,
+				4A3498B41E63587200453E63 /* Frameworks */,
+				4A3498B51E63587200453E63 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4A3498B91E63587200453E63 /* PBXTargetDependency */,
+			);
+			name = "sonarr-iosUITests";
+			productName = "sonarr-iosUITests";
+			productReference = 4A3498B71E63587200453E63 /* sonarr-iosUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		4A34988B1E63587200453E63 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = "Harry Singh";
+				TargetAttributes = {
+					4A3498921E63587200453E63 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = JCPQYCKCFL;
+						ProvisioningStyle = Automatic;
+					};
+					4A3498AB1E63587200453E63 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = M8JNK9C5DA;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 4A3498921E63587200453E63;
+					};
+					4A3498B61E63587200453E63 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = M8JNK9C5DA;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 4A3498921E63587200453E63;
+					};
+				};
+			};
+			buildConfigurationList = 4A34988E1E63587200453E63 /* Build configuration list for PBXProject "sonarr-ios" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 4A34988A1E63587200453E63;
+			productRefGroup = 4A3498941E63587200453E63 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4A3498921E63587200453E63 /* sonarr-ios */,
+				4A3498AB1E63587200453E63 /* sonarr-iosTests */,
+				4A3498B61E63587200453E63 /* sonarr-iosUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		4A3498911E63587200453E63 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4A3498D91E635E6C00453E63 /* Main.storyboard in Resources */,
+				4A3498D21E635E5300453E63 /* Assets.xcassets in Resources */,
+				4A3498D81E635E6C00453E63 /* LaunchScreen.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4A3498AA1E63587200453E63 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4A3498B51E63587200453E63 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4C861A2E9E61FF661CEFD93F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		B98DF410A8E0EC1D18F7B173 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-sonarr-ios/Pods-sonarr-ios-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CFB1C906F80701C5631C578A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-sonarr-ios/Pods-sonarr-ios-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4A34988F1E63587200453E63 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4A777C711E653561006B1987 /* SNRQueue.m in Sources */,
+				4A777C741E653615006B1987 /* SNRProfile.m in Sources */,
+				4A9E6C651E777ACC008AB91A /* SNRServer.m in Sources */,
+				4A777C331E63EBC9006B1987 /* SNRCalandar.m in Sources */,
+				4A3499101E63D7F600453E63 /* SNRTitle.m in Sources */,
+				4A777C3F1E63EDF4006B1987 /* SNRRevision.m in Sources */,
+				4A9E6C561E760662008AB91A /* SNRNavigationViewController.m in Sources */,
+				4A777C461E63F7AF006B1987 /* SNRDiskSpace.m in Sources */,
+				4A777C3C1E63EDAE006B1987 /* SNRQuality.m in Sources */,
+				4A9E6C681E777DCB008AB91A /* SNRServerConfig.m in Sources */,
+				4A777C771E653683006B1987 /* SNRRelease.m in Sources */,
+				4A777C421E63F242006B1987 /* SNRCommand.m in Sources */,
+				4A3498E01E635E7900453E63 /* main.m in Sources */,
+				4A777C4F1E640407006B1987 /* SNRRecord.m in Sources */,
+				4A777C391E63ECED006B1987 /* SNREpisode.m in Sources */,
+				4A777C621E65325F006B1987 /* SNRQualityProfile.m in Sources */,
+				4A3499231E63DD1000453E63 /* SNRRatings.m in Sources */,
+				4A3499171E63D94A00453E63 /* SNRSeason.m in Sources */,
+				4A9E6C511E760507008AB91A /* SNRBaseViewController.m in Sources */,
+				4A9E6C591E760C9B008AB91A /* UIColor+App.m in Sources */,
+				4A777C4C1E63FE9C006B1987 /* SNRHistory.m in Sources */,
+				4A34991A1E63D9A600453E63 /* SNRStatistics.m in Sources */,
+				4A777C651E653283006B1987 /* SNRValue.m in Sources */,
+				4AA5D5EF1E668F8300C044C7 /* SNRAddServerPopUpViewController.m in Sources */,
+				4A34990A1E63C59400453E63 /* SNRStatus.m in Sources */,
+				4A777C6B1E653357006B1987 /* SNRCutoff.m in Sources */,
+				4A3498DE1E635E7900453E63 /* AppDelegate.m in Sources */,
+				4A777C7A1E653B49006B1987 /* SNRRootFolder.m in Sources */,
+				4A777C6E1E65340A006B1987 /* SNRItem.m in Sources */,
+				4A9E6C6B1E7785FE008AB91A /* SNRAPIClient.m in Sources */,
+				4A3499131E63D8ED00453E63 /* SNRImage.m in Sources */,
+				4A3498CD1E635D0400453E63 /* SNRAuthViewController.m in Sources */,
+				4A9E6C611E765B67008AB91A /* SNRBaseSheetViewController.m in Sources */,
+				4A777C521E64078B006B1987 /* SNRData.m in Sources */,
+				4A777C491E63FB2F006B1987 /* SNREpisodeFile.m in Sources */,
+				4A34990D1E63CF2B00453E63 /* SNRSeries.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4A3498A81E63587200453E63 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4A3498B31E63587200453E63 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		4A3498AE1E63587200453E63 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4A3498921E63587200453E63 /* sonarr-ios */;
+			targetProxy = 4A3498AD1E63587200453E63 /* PBXContainerItemProxy */;
+		};
+		4A3498B91E63587200453E63 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4A3498921E63587200453E63 /* sonarr-ios */;
+			targetProxy = 4A3498B81E63587200453E63 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		4A3498D41E635E6C00453E63 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4A3498D51E635E6C00453E63 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		4A3498D61E635E6C00453E63 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4A3498D71E635E6C00453E63 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		4A3498BE1E63587200453E63 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		4A3498BF1E63587200453E63 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		4A3498C11E63587200453E63 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F8E59AC9DE2CC954BEA5058D /* Pods-sonarr-ios.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = JCPQYCKCFL;
+				INFOPLIST_FILE = "$(SRCROOT)/sonarr-ios/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.harrysingh.sonarr-ios";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		4A3498C21E63587200453E63 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 90C3F8C36C856C91C0FCE823 /* Pods-sonarr-ios.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = JCPQYCKCFL;
+				INFOPLIST_FILE = "$(SRCROOT)/sonarr-ios/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.harrysingh.sonarr-ios";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		4A3498C41E63587200453E63 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = M8JNK9C5DA;
+				INFOPLIST_FILE = "sonarr-iosTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.harrysingh.sonarr-iosTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/sonarr-ios.app/sonarr-ios";
+			};
+			name = Debug;
+		};
+		4A3498C51E63587200453E63 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = M8JNK9C5DA;
+				INFOPLIST_FILE = "sonarr-iosTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.harrysingh.sonarr-iosTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/sonarr-ios.app/sonarr-ios";
+			};
+			name = Release;
+		};
+		4A3498C71E63587200453E63 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = M8JNK9C5DA;
+				INFOPLIST_FILE = "sonarr-iosUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.harrysingh.sonarr-iosUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "sonarr-ios";
+			};
+			name = Debug;
+		};
+		4A3498C81E63587200453E63 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = M8JNK9C5DA;
+				INFOPLIST_FILE = "sonarr-iosUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.harrysingh.sonarr-iosUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "sonarr-ios";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4A34988E1E63587200453E63 /* Build configuration list for PBXProject "sonarr-ios" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4A3498BE1E63587200453E63 /* Debug */,
+				4A3498BF1E63587200453E63 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4A3498C01E63587200453E63 /* Build configuration list for PBXNativeTarget "sonarr-ios" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4A3498C11E63587200453E63 /* Debug */,
+				4A3498C21E63587200453E63 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4A3498C31E63587200453E63 /* Build configuration list for PBXNativeTarget "sonarr-iosTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4A3498C41E63587200453E63 /* Debug */,
+				4A3498C51E63587200453E63 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4A3498C61E63587200453E63 /* Build configuration list for PBXNativeTarget "sonarr-iosUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4A3498C71E63587200453E63 /* Debug */,
+				4A3498C81E63587200453E63 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 4A34988B1E63587200453E63 /* Project object */;
+}
