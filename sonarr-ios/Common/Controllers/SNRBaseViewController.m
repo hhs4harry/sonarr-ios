@@ -7,12 +7,20 @@
 //
 
 #import "SNRBaseViewController.h"
+#import "UIAlertController+Show.h"
 
 @interface SNRBaseViewController ()
-
+@property (strong, nonatomic) UIView *spinnerView;
 @end
 
 @implementation SNRBaseViewController
+
+-(void)viewDidDisappear:(BOOL)animated{
+    [super viewDidDisappear:animated];
+    
+    //Hide spinner
+    [self showSpinner:NO];
+}
 
 +(UIStoryboard *)vcStoryboard{
     return [UIStoryboard storyboardWithName:@"Main" bundle:nil];
@@ -20,6 +28,89 @@
 
 +(NSString *)storyboardIdentifier{
     return [NSStringFromClass([self class]) stringByAppendingString:@"SBID"];
+}
+
+-(void)showSpinner:(BOOL)show{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.spinnerView.hidden = !show;
+    });
+}
+
+-(void)showMessage:(NSString *)message withTitle:(NSString *)title{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [[UIAlertController alertWithTitle:@""
+                                  message:message
+                               andActions:nil] show];
+    });
+}
+
+#pragma mark - Getters
+
+-(UIView *)spinnerView{
+    if(!_spinnerView){
+        UIView *newSpinner = [[UIView alloc] init];
+        UIActivityIndicatorView *activityView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+
+        newSpinner.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.5];
+        [activityView startAnimating];
+        
+        newSpinner.translatesAutoresizingMaskIntoConstraints = NO;
+        activityView.translatesAutoresizingMaskIntoConstraints = NO;
+
+        [newSpinner addSubview:activityView];
+        [self.view insertSubview:newSpinner atIndex:0];
+        
+        [[NSLayoutConstraint constraintWithItem:newSpinner
+                                      attribute:NSLayoutAttributeTop
+                                      relatedBy:NSLayoutRelationEqual
+                                         toItem:self.view
+                                      attribute:NSLayoutAttributeTop
+                                     multiplier:1.0f
+                                       constant:0.0f] setActive:YES];
+        
+        [[NSLayoutConstraint constraintWithItem:newSpinner
+                                      attribute:NSLayoutAttributeBottom
+                                      relatedBy:NSLayoutRelationEqual
+                                         toItem:self.view
+                                      attribute:NSLayoutAttributeBottom
+                                     multiplier:1.0f
+                                       constant:0.0f] setActive:YES];
+        
+        [[NSLayoutConstraint constraintWithItem:newSpinner
+                                      attribute:NSLayoutAttributeRight
+                                      relatedBy:NSLayoutRelationEqual
+                                         toItem:self.view
+                                      attribute:NSLayoutAttributeRight
+                                     multiplier:1.0f
+                                       constant:0.0f] setActive:YES];
+        
+        [[NSLayoutConstraint constraintWithItem:newSpinner
+                                      attribute:NSLayoutAttributeLeft
+                                      relatedBy:NSLayoutRelationEqual
+                                         toItem:self.view
+                                      attribute:NSLayoutAttributeLeft
+                                     multiplier:1.0f
+                                       constant:0.0f] setActive:YES];
+
+        [[NSLayoutConstraint constraintWithItem:activityView
+                                      attribute:NSLayoutAttributeCenterX
+                                      relatedBy:NSLayoutRelationEqual
+                                         toItem:newSpinner
+                                      attribute:NSLayoutAttributeCenterX
+                                     multiplier:1.0f
+                                       constant:0.0f] setActive:YES];
+        
+        [[NSLayoutConstraint constraintWithItem:activityView
+                                      attribute:NSLayoutAttributeCenterY
+                                      relatedBy:NSLayoutRelationEqual
+                                         toItem:newSpinner
+                                      attribute:NSLayoutAttributeCenterY
+                                     multiplier:1.0f
+                                       constant:0.0f] setActive:YES];
+        
+        _spinnerView = newSpinner;
+    }
+    return _spinnerView;
 }
 
 @end

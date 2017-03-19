@@ -11,6 +11,7 @@
 #import "SNRAPIClient.h"
 #import "SNRStatus.h"
 
+NSString * const SNR_SERVER_CONFIG  = @"snr_server_config";
 static NSString * BASEURL;
 
 @interface SNRServer()
@@ -19,6 +20,22 @@ static NSString * BASEURL;
 @end
 
 @implementation SNRServer
+
+-(instancetype)initWithCoder:(NSCoder *)aDecoder{
+    if(!aDecoder){
+        return nil;
+    }
+    
+    return [self initWithConfig:[aDecoder decodeObjectForKey:SNR_SERVER_CONFIG]];
+}
+
+-(void)encodeWithCoder:(NSCoder *)aCoder{
+    if(!aCoder){
+        return;
+    }
+    
+    [aCoder encodeObject:_config forKey:SNR_SERVER_CONFIG];
+}
 
 -(instancetype)initWithConfig:(SNRServerConfig *)config{
     config.username = @"eksplex";
@@ -36,26 +53,43 @@ static NSString * BASEURL;
     
     self = [super init];
     if (self) {
+        if(!config.port){
+            config.port = @8989;
+        }
         self.client = [SNRAPIClient client];
         self.config = config;
-        [self getStatus];
     }
     return self;
 }
 
 -(NSString *)generateURLWith:(NSString *)endpoint{
-    return [NSString stringWithFormat:@"%@://%@:%@/api/%@?apikey=%@", self.config.SSL ? @"https" : @"http", self.config.hostname, self.config.port.stringValue, endpoint, self.config.apiKey];
+    return [NSString stringWithFormat:@"%@://%@:%@/api/%@?apikey=%@",
+            self.config.SSL ? @"https" : @"http",
+            self.config.hostname,
+            self.config.port.stringValue,
+            endpoint,
+            self.config.apiKey];
+}
+
+-(void)validateServerWithCompletion:(void(^)(SNRStatus *status, NSError *error))completion{
+    [self.client performGETCallToEndpoint:[self generateURLWith:[SNRStatus endpoint]] withParameters:nil andSuccess:^(id responseObject) {
+        NSError *error;
+        SNRStatus *status;
+        if(!(status = [[SNRStatus alloc] initWithDictionary:responseObject error:&error])){
+            NSLog(@"Error at SNRClient - ValidateServerWithCompletion");
+            NSLog(@"Error parsing to JSON model: %@", error.userInfo);
+            NSLog(@"Response: %@", responseObject);
+        }
+        completion(status, error);
+    } andFailure:^(NSError *error) {
+        completion(nil, error);
+    }];
 }
 
 -(void)getStatus{
-    [self.client setTaskDidReceiveAuthenticationChallengeBlock:^NSURLSessionAuthChallengeDisposition(NSURLSession * _Nonnull session, NSURLSessionTask * _Nonnull task, NSURLAuthenticationChallenge * _Nonnull challenge, NSURLCredential *__autoreleasing  _Nullable * _Nullable credential) {
-        return NSURLSessionAuthChallengeUseCredential;
-    }];
-    
-    [self.client setDataTaskDidReceiveResponseBlock:^NSURLSessionResponseDisposition(NSURLSession * _Nonnull session, NSURLSessionDataTask * _Nonnull dataTask, NSURLResponse * _Nonnull response) {
-        return NSURLSessionResponseAllow;
-    }];
-//    self.client.securityPolicy.SSLPinningMode = AFSSLPinningModeNone;
+    if(self.config.SSL){
+
+    }
 
     [self.client performGETCallToEndpoint:[self generateURLWith:[SNRStatus endpoint]]
                            withParameters:nil

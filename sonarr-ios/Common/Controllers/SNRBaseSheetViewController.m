@@ -25,7 +25,7 @@
 }
 
 +(CGSize)contentViewSize{
-    return CGSizeMake(CGRectGetWidth([UIScreen mainScreen].bounds) * 0.9, 250);
+    return CGSizeMake(CGRectGetWidth([UIScreen mainScreen].bounds) * 0.9, CGRectGetHeight([UIScreen mainScreen].bounds) * 0.4);
 }
 
 @end

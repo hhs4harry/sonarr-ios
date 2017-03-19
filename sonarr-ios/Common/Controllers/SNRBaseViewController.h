@@ -16,5 +16,7 @@
 @end
 
 @interface SNRBaseViewController : UIViewController <SNRBaseViewControllerProtocol>
+-(void)showSpinner:(BOOL)show;
+-(void)showMessage:(NSString * __nonnull)message withTitle:(NSString * __nonnull)title;
 
 @end

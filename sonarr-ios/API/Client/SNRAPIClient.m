@@ -23,6 +23,11 @@
         sharedClient.securityPolicy.allowInvalidCertificates = YES;
         sharedClient.securityPolicy.validatesDomainName = NO;
         
+        //Set challenge block to allow invalid certs
+        [sharedClient setDataTaskDidReceiveResponseBlock:^NSURLSessionResponseDisposition(NSURLSession * _Nonnull session, NSURLSessionDataTask * _Nonnull dataTask, NSURLResponse * _Nonnull response) {
+            return NSURLSessionResponseAllow;
+        }];
+        
         [[sharedClient reachabilityManager] startMonitoring];
         [[sharedClient reachabilityManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
             sharedClient.status = status;

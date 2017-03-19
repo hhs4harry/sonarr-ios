@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4A14754C1E7B32C1006B6888 /* UIAlertController+Show.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A14754B1E7B32C1006B6888 /* UIAlertController+Show.m */; };
 		4A3498CD1E635D0400453E63 /* SNRAuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A3498CC1E635D0400453E63 /* SNRAuthViewController.m */; };
 		4A3498D21E635E5300453E63 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A3498D01E635E5300453E63 /* Assets.xcassets */; };
 		4A3498D81E635E6C00453E63 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4A3498D41E635E6C00453E63 /* LaunchScreen.storyboard */; };
@@ -38,14 +39,15 @@
 		4A777C741E653615006B1987 /* SNRProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A777C731E653615006B1987 /* SNRProfile.m */; };
 		4A777C771E653683006B1987 /* SNRRelease.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A777C761E653683006B1987 /* SNRRelease.m */; };
 		4A777C7A1E653B49006B1987 /* SNRRootFolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A777C791E653B49006B1987 /* SNRRootFolder.m */; };
+		4A7A235A1E7DE29500141FCE /* SNRServerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7A23591E7DE29500141FCE /* SNRServerManager.m */; };
 		4A9E6C511E760507008AB91A /* SNRBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A9E6C501E760507008AB91A /* SNRBaseViewController.m */; };
 		4A9E6C561E760662008AB91A /* SNRNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A9E6C551E760662008AB91A /* SNRNavigationViewController.m */; };
 		4A9E6C591E760C9B008AB91A /* UIColor+App.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A9E6C581E760C9B008AB91A /* UIColor+App.m */; };
 		4A9E6C611E765B67008AB91A /* SNRBaseSheetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A9E6C601E765B67008AB91A /* SNRBaseSheetViewController.m */; };
-		4A9E6C651E777ACC008AB91A /* SNRServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A9E6C641E777ACC008AB91A /* SNRServer.m */; };
 		4A9E6C681E777DCB008AB91A /* SNRServerConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A9E6C671E777DCB008AB91A /* SNRServerConfig.m */; };
 		4A9E6C6B1E7785FE008AB91A /* SNRAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A9E6C6A1E7785FE008AB91A /* SNRAPIClient.m */; };
 		4AA5D5EF1E668F8300C044C7 /* SNRAddServerPopUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AA5D5EE1E668F8300C044C7 /* SNRAddServerPopUpViewController.m */; };
+		4AFA7BB11E7B9C8100932038 /* SNRServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AFA7BB01E7B9C8100932038 /* SNRServer.m */; };
 		6F52D82016799076E68DDF32 /* libPods-sonarr-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FD31FBD03D949BB5680777EB /* libPods-sonarr-ios.a */; };
 /* End PBXBuildFile section */
 
@@ -67,6 +69,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4A14754A1E7B32C1006B6888 /* UIAlertController+Show.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIAlertController+Show.h"; path = "Common/Controllers/UIAlertController+Show.h"; sourceTree = "<group>"; };
+		4A14754B1E7B32C1006B6888 /* UIAlertController+Show.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIAlertController+Show.m"; path = "Common/Controllers/UIAlertController+Show.m"; sourceTree = "<group>"; };
 		4A3498931E63587200453E63 /* sonarr-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "sonarr-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A3498AC1E63587200453E63 /* sonarr-iosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "sonarr-iosTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A3498B71E63587200453E63 /* sonarr-iosUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "sonarr-iosUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -128,6 +132,8 @@
 		4A777C761E653683006B1987 /* SNRRelease.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRRelease.m; path = API/Models/SNRRelease.m; sourceTree = "<group>"; };
 		4A777C781E653B49006B1987 /* SNRRootFolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRRootFolder.h; path = API/Models/SNRRootFolder.h; sourceTree = "<group>"; };
 		4A777C791E653B49006B1987 /* SNRRootFolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRRootFolder.m; path = API/Models/SNRRootFolder.m; sourceTree = "<group>"; };
+		4A7A23581E7DE29500141FCE /* SNRServerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRServerManager.h; path = Common/Models/SNRServerManager.h; sourceTree = "<group>"; };
+		4A7A23591E7DE29500141FCE /* SNRServerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRServerManager.m; path = Common/Models/SNRServerManager.m; sourceTree = "<group>"; };
 		4A9E6C4F1E760507008AB91A /* SNRBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRBaseViewController.h; path = Common/Controllers/SNRBaseViewController.h; sourceTree = "<group>"; };
 		4A9E6C501E760507008AB91A /* SNRBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRBaseViewController.m; path = Common/Controllers/SNRBaseViewController.m; sourceTree = "<group>"; };
 		4A9E6C541E760662008AB91A /* SNRNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRNavigationViewController.h; path = Navigation/Controllers/SNRNavigationViewController.h; sourceTree = "<group>"; };
@@ -138,14 +144,14 @@
 		4A9E6C5F1E765B67008AB91A /* SNRBaseSheetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRBaseSheetViewController.h; path = Common/Controllers/SNRBaseSheetViewController.h; sourceTree = "<group>"; };
 		4A9E6C601E765B67008AB91A /* SNRBaseSheetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRBaseSheetViewController.m; path = Common/Controllers/SNRBaseSheetViewController.m; sourceTree = "<group>"; };
 		4A9E6C621E77772E008AB91A /* SNRNetworkProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRNetworkProtocol.h; path = API/Client/SNRNetworkProtocol.h; sourceTree = "<group>"; };
-		4A9E6C631E777ACC008AB91A /* SNRServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRServer.h; path = API/Client/SNRServer.h; sourceTree = "<group>"; };
-		4A9E6C641E777ACC008AB91A /* SNRServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRServer.m; path = API/Client/SNRServer.m; sourceTree = "<group>"; };
 		4A9E6C661E777DCB008AB91A /* SNRServerConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRServerConfig.h; path = API/Client/SNRServerConfig.h; sourceTree = "<group>"; };
 		4A9E6C671E777DCB008AB91A /* SNRServerConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRServerConfig.m; path = API/Client/SNRServerConfig.m; sourceTree = "<group>"; };
 		4A9E6C691E7785FE008AB91A /* SNRAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRAPIClient.h; path = API/Client/SNRAPIClient.h; sourceTree = "<group>"; };
 		4A9E6C6A1E7785FE008AB91A /* SNRAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRAPIClient.m; path = API/Client/SNRAPIClient.m; sourceTree = "<group>"; };
 		4AA5D5ED1E668F8300C044C7 /* SNRAddServerPopUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRAddServerPopUpViewController.h; path = Auth/Controllers/SNRAddServerPopUpViewController.h; sourceTree = "<group>"; };
 		4AA5D5EE1E668F8300C044C7 /* SNRAddServerPopUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRAddServerPopUpViewController.m; path = Auth/Controllers/SNRAddServerPopUpViewController.m; sourceTree = "<group>"; };
+		4AFA7BAF1E7B9C8100932038 /* SNRServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRServer.h; path = Common/Models/SNRServer.h; sourceTree = "<group>"; };
+		4AFA7BB01E7B9C8100932038 /* SNRServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRServer.m; path = Common/Models/SNRServer.m; sourceTree = "<group>"; };
 		90C3F8C36C856C91C0FCE823 /* Pods-sonarr-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sonarr-ios.release.xcconfig"; path = "Pods/Target Support Files/Pods-sonarr-ios/Pods-sonarr-ios.release.xcconfig"; sourceTree = "<group>"; };
 		F8E59AC9DE2CC954BEA5058D /* Pods-sonarr-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sonarr-ios.debug.xcconfig"; path = "Pods/Target Support Files/Pods-sonarr-ios/Pods-sonarr-ios.debug.xcconfig"; sourceTree = "<group>"; };
 		FD31FBD03D949BB5680777EB /* libPods-sonarr-ios.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-sonarr-ios.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -270,8 +276,12 @@
 		4A3499051E63A39E00453E63 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				4AFA7BAF1E7B9C8100932038 /* SNRServer.h */,
+				4AFA7BB01E7B9C8100932038 /* SNRServer.m */,
 				4A9E6C571E760C9B008AB91A /* UIColor+App.h */,
 				4A9E6C581E760C9B008AB91A /* UIColor+App.m */,
+				4A7A23581E7DE29500141FCE /* SNRServerManager.h */,
+				4A7A23591E7DE29500141FCE /* SNRServerManager.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -346,8 +356,6 @@
 			isa = PBXGroup;
 			children = (
 				4A9E6C621E77772E008AB91A /* SNRNetworkProtocol.h */,
-				4A9E6C631E777ACC008AB91A /* SNRServer.h */,
-				4A9E6C641E777ACC008AB91A /* SNRServer.m */,
 				4A9E6C661E777DCB008AB91A /* SNRServerConfig.h */,
 				4A9E6C671E777DCB008AB91A /* SNRServerConfig.m */,
 				4A9E6C691E7785FE008AB91A /* SNRAPIClient.h */,
@@ -359,6 +367,8 @@
 		4A9E6C4E1E7604B2008AB91A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				4A14754A1E7B32C1006B6888 /* UIAlertController+Show.h */,
+				4A14754B1E7B32C1006B6888 /* UIAlertController+Show.m */,
 				4A9E6C4F1E760507008AB91A /* SNRBaseViewController.h */,
 				4A9E6C501E760507008AB91A /* SNRBaseViewController.m */,
 				4A9E6C5F1E765B67008AB91A /* SNRBaseSheetViewController.h */,
@@ -590,8 +600,9 @@
 			files = (
 				4A777C711E653561006B1987 /* SNRQueue.m in Sources */,
 				4A777C741E653615006B1987 /* SNRProfile.m in Sources */,
-				4A9E6C651E777ACC008AB91A /* SNRServer.m in Sources */,
+				4A7A235A1E7DE29500141FCE /* SNRServerManager.m in Sources */,
 				4A777C331E63EBC9006B1987 /* SNRCalandar.m in Sources */,
+				4AFA7BB11E7B9C8100932038 /* SNRServer.m in Sources */,
 				4A3499101E63D7F600453E63 /* SNRTitle.m in Sources */,
 				4A777C3F1E63EDF4006B1987 /* SNRRevision.m in Sources */,
 				4A9E6C561E760662008AB91A /* SNRNavigationViewController.m in Sources */,
@@ -614,6 +625,7 @@
 				4AA5D5EF1E668F8300C044C7 /* SNRAddServerPopUpViewController.m in Sources */,
 				4A34990A1E63C59400453E63 /* SNRStatus.m in Sources */,
 				4A777C6B1E653357006B1987 /* SNRCutoff.m in Sources */,
+				4A14754C1E7B32C1006B6888 /* UIAlertController+Show.m in Sources */,
 				4A3498DE1E635E7900453E63 /* AppDelegate.m in Sources */,
 				4A777C7A1E653B49006B1987 /* SNRRootFolder.m in Sources */,
 				4A777C6E1E65340A006B1987 /* SNRItem.m in Sources */,

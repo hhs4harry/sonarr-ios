@@ -40,7 +40,19 @@
     config.SSL              = self.sslSwitch.on;
     
     SNRServer *server = [[SNRServer alloc] initWithConfig:config];
-    NSLog(@"");
+    
+    [self showSpinner:YES];
+    
+    __weak typeof(self) wself = self;
+    [server validateServerWithCompletion:^(SNRStatus *status, NSError *error) {
+        [wself showSpinner:NO];
+
+        if(status){
+            return;
+        }
+        [wself showMessage:error.localizedFailureReason ? : error.localizedDescription
+                 withTitle:@"Error"];
+    }];
 }
 
 @end

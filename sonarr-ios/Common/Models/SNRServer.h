@@ -8,9 +8,10 @@
 
 #import <Foundation/Foundation.h>
 @class SNRServerConfig;
+@class SNRStatus;
 
-@interface SNRServer : NSObject
+@interface SNRServer : NSObject <NSCoding>
 
 -(instancetype)initWithConfig:(SNRServerConfig *)config;
-
+-(void)validateServerWithCompletion:(void(^)(SNRStatus *status, NSError *error))completion;
 @end
