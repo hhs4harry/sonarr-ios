@@ -24,10 +24,53 @@
             </objects>
             <point key="canvasLocation" x="20" y="141"/>
         </scene>
-        <!--Auth-->
+        <!--Series View Controller-->
+        <scene sceneID="vgp-rQ-q1T">
+            <objects>
+                <viewController storyboardIdentifier="SNRSeriesViewControllerSBID" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ada-1f-YQq" customClass="SNRSeriesViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Vr4-61-iMe"/>
+                        <viewControllerLayoutGuide type="bottom" id="AW2-09-Oy2"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="xCQ-2v-Y1k">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zzb-F6-MdQ" customClass="SNRBaseTableView">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="tay-cu-my4">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tay-cu-my4" id="LGO-R9-ckE">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="pullToRefresh" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="zzb-F6-MdQ" secondAttribute="trailing" id="Zsa-Tj-b7W"/>
+                            <constraint firstItem="zzb-F6-MdQ" firstAttribute="leading" secondItem="xCQ-2v-Y1k" secondAttribute="leading" id="oJH-iV-q69"/>
+                            <constraint firstItem="AW2-09-Oy2" firstAttribute="top" secondItem="zzb-F6-MdQ" secondAttribute="bottom" id="xxb-Re-DgM"/>
+                            <constraint firstItem="zzb-F6-MdQ" firstAttribute="top" secondItem="Vr4-61-iMe" secondAttribute="bottom" id="zJT-Vu-D54"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WFC-ED-bc1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="658" y="139"/>
+        </scene>
+        <!--Servers-->
         <scene sceneID="TOn-8k-PAw">
             <objects>
-                <viewController storyboardIdentifier="SNRAuthViewControllerSBID" title="Auth" useStoryboardIdentifierAsRestorationIdentifier="YES" id="I9N-d5-Bpf" customClass="SNRAuthViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SNRServerManagerViewControllerSBID" useStoryboardIdentifierAsRestorationIdentifier="YES" id="I9N-d5-Bpf" customClass="SNRServerManagerViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="dic-3z-VOo"/>
                         <viewControllerLayoutGuide type="bottom" id="Co4-rj-rfU"/>
@@ -36,7 +79,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Sgd-u4-ppj">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" indicatorStyle="black" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Sgd-u4-ppj" customClass="SNRBaseTableView">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -62,21 +105,21 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="sonarrCell" id="NVf-Sq-Yxd">
-                                        <rect key="frame" x="0.0" y="72" width="375" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="sonarrCell" rowHeight="60" id="NVf-Sq-Yxd" customClass="SNRServerTableViewCell">
+                                        <rect key="frame" x="0.0" y="72" width="375" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NVf-Sq-Yxd" id="Mhn-hj-XPl">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6gE-GX-Beb">
-                                                    <rect key="frame" x="10" y="10" width="24" height="24"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sonarr_icon" translatesAutoresizingMaskIntoConstraints="NO" id="6gE-GX-Beb">
+                                                    <rect key="frame" x="20" y="10" width="40" height="40"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="6gE-GX-Beb" secondAttribute="height" multiplier="1:1" id="373-hH-hm3"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="IP" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mMk-ih-sTg">
-                                                    <rect key="frame" x="44" y="0.0" width="331" height="44"/>
+                                                    <rect key="frame" x="70" y="0.0" width="272" height="60"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -84,7 +127,7 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="mMk-ih-sTg" firstAttribute="leading" secondItem="6gE-GX-Beb" secondAttribute="trailing" constant="10" id="1Hj-sm-Llh"/>
-                                                <constraint firstItem="6gE-GX-Beb" firstAttribute="leading" secondItem="Mhn-hj-XPl" secondAttribute="leading" constant="10" id="Eft-h0-C7E"/>
+                                                <constraint firstItem="6gE-GX-Beb" firstAttribute="leading" secondItem="Mhn-hj-XPl" secondAttribute="leading" constant="20" id="Eft-h0-C7E"/>
                                                 <constraint firstAttribute="bottom" secondItem="6gE-GX-Beb" secondAttribute="bottom" constant="10" id="Gga-us-zBk"/>
                                                 <constraint firstItem="6gE-GX-Beb" firstAttribute="top" secondItem="Mhn-hj-XPl" secondAttribute="top" constant="10" id="HOm-l1-OVA"/>
                                                 <constraint firstAttribute="trailing" secondItem="mMk-ih-sTg" secondAttribute="trailing" id="cci-uv-s66"/>
@@ -92,8 +135,15 @@
                                                 <constraint firstItem="mMk-ih-sTg" firstAttribute="top" secondItem="Mhn-hj-XPl" secondAttribute="top" id="lsf-RF-9ux"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="ipLabel" destination="mMk-ih-sTg" id="h7t-RU-bIc"/>
+                                            <outlet property="serverImageView" destination="6gE-GX-Beb" id="HPy-g2-3tl"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="pullToRefresh" value="YES"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <outlet property="dataSource" destination="I9N-d5-Bpf" id="asW-Oi-J3E"/>
                                     <outlet property="delegate" destination="I9N-d5-Bpf" id="2ux-nj-sqD"/>
@@ -109,6 +159,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Servers" id="zXZ-yU-Ddm"/>
+                    <connections>
+                        <outlet property="tableView" destination="Sgd-u4-ppj" id="ziZ-Uh-8gI"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iaZ-0g-4fd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -279,4 +332,7 @@
             <point key="canvasLocation" x="650" y="-685"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="sonarr_icon" width="164" height="164"/>
+    </resources>
 </document>

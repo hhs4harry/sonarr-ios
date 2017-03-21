@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface SNRServerConfig : NSObject
+@interface SNRServerConfig : NSObject <NSCopying>
 @property (strong, nonatomic) NSString *username;
 @property (strong, nonatomic) NSString *password;
 @property (strong, nonatomic) NSString *hostname;

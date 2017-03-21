@@ -14,7 +14,7 @@
 NSString * const SNR_SERVER_CONFIG  = @"snr_server_config";
 static NSString * BASEURL;
 
-@interface SNRServer()
+@interface SNRServer() <NSCoding>
 @property (strong, nonatomic) SNRAPIClient *client;
 @property (strong, nonatomic) SNRServerConfig *config;
 @end
@@ -62,6 +62,15 @@ static NSString * BASEURL;
     return self;
 }
 
+- (id)copyWithZone:(nullable NSZone *)zone{
+    SNRServer *copy = [[[self class] allocWithZone:zone] init];
+    if(copy){
+        copy.client = [_client copy];
+        copy.config = [_config copy];
+    }
+    return copy;
+}
+
 -(NSString *)generateURLWith:(NSString *)endpoint{
     return [NSString stringWithFormat:@"%@://%@:%@/api/%@?apikey=%@",
             self.config.SSL ? @"https" : @"http",
@@ -83,20 +92,6 @@ static NSString * BASEURL;
         completion(status, error);
     } andFailure:^(NSError *error) {
         completion(nil, error);
-    }];
-}
-
--(void)getStatus{
-    if(self.config.SSL){
-
-    }
-
-    [self.client performGETCallToEndpoint:[self generateURLWith:[SNRStatus endpoint]]
-                           withParameters:nil
-                               andSuccess:^(id responseObject) {
-                                   NSLog(@"Response");
-    }                          andFailure:^(NSError *error) {
-        NSLog(@"Error");
     }];
 }
 

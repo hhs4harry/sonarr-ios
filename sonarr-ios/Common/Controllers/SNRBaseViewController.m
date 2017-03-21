@@ -8,6 +8,7 @@
 
 #import "SNRBaseViewController.h"
 #import "UIAlertController+Show.h"
+#import "SNRServerManager.h"
 
 @interface SNRBaseViewController ()
 @property (strong, nonatomic) UIView *spinnerView;
@@ -15,11 +16,24 @@
 
 @implementation SNRBaseViewController
 
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    
+    if([self conformsToProtocol:@protocol(SNRServerManagerProtocol)]){
+        [[SNRServerManager manager] addObserver:(id)self];
+    }
+}
+
 -(void)viewDidDisappear:(BOOL)animated{
     [super viewDidDisappear:animated];
     
-    //Hide spinner
     [self showSpinner:NO];
+}
+
+-(void)dealloc{
+    if([self conformsToProtocol:@protocol(SNRServerManagerProtocol)]){
+        [[SNRServerManager manager] removeObserver:(id)self];
+    }
 }
 
 +(UIStoryboard *)vcStoryboard{

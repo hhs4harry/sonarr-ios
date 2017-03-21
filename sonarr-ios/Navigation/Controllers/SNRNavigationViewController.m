@@ -7,6 +7,9 @@
 //
 
 #import "SNRNavigationViewController.h"
+#import "SNRServerManagerViewController.h"
+#import "SNRServerManager.h"
+#import "SNRSeriesViewController.h"
 
 @interface SNRNavigationViewController ()
 
@@ -17,8 +20,15 @@
 -(void)awakeFromNib{
     [super awakeFromNib];
     
+    UIStoryboard *mainSB = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UIViewController *controller = [mainSB instantiateViewControllerWithIdentifier:[SNRServerManagerViewController storyboardIdentifier]];
+    
+    if([SNRServerManager manager].servers.count){
+        controller = [mainSB instantiateViewControllerWithIdentifier:[SNRSeriesViewController storyboardIdentifier]];
+    }
+    
     //set root view controller
-    [self pushViewController:[[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"SNRAuthViewControllerSBID"] animated:NO];
+    [self pushViewController:controller animated:NO];
 }
 
 -(void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated{

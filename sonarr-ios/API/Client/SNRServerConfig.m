@@ -15,7 +15,7 @@ NSString * const SERVER_CONFIG_PORT      = @"snr_config_port";
 NSString * const SERVER_CONFIG_APIKEY    = @"snr_config_apikey";
 NSString * const SERVER_CONFIG_SSL       = @"snr_config_ssl";
 
-@interface SNRServerConfig() <NSCopying, NSCoding>
+@interface SNRServerConfig() <NSCoding>
 
 @end
 

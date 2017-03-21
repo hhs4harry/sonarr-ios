@@ -10,7 +10,9 @@
 @class SNRServerConfig;
 @class SNRStatus;
 
-@interface SNRServer : NSObject <NSCoding>
+@interface SNRServer : NSObject <NSCopying>
+@property (assign, nonatomic) BOOL active;
+@property (readonly) SNRServerConfig *config;
 
 -(instancetype)initWithConfig:(SNRServerConfig *)config;
 -(void)validateServerWithCompletion:(void(^)(SNRStatus *status, NSError *error))completion;

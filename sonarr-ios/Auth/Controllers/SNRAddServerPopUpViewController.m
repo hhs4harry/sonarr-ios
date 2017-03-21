@@ -11,6 +11,7 @@
 #import <MZFormSheetPresentationController/MZFormSheetPresentationViewController.h>
 #import "SNRServer.h"
 #import "SNRServerConfig.h"
+#import "SNRServerManager.h"
 
 @interface SNRAddServerPopUpViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *ipTextField;
@@ -48,6 +49,8 @@
         [wself showSpinner:NO];
 
         if(status){
+            [[SNRServerManager manager] addServer:server];
+            [wself dismissViewControllerAnimated:YES completion:nil];
             return;
         }
         [wself showMessage:error.localizedFailureReason ? : error.localizedDescription
