@@ -1,5 +1,5 @@
 //
-//  SNRCalandar.h
+//  SNRCalendar.h
 //  sonarr-ios
 //
 //  Created by Harry Singh on 26/02/17.
@@ -10,7 +10,7 @@
 @class SNREpisodeFile;
 @class SNRSeries;
 
-@interface SNRCalandar : JSONModel
+@interface SNRCalendar : JSONModel
 @property (strong, nonatomic) NSNumber<Optional> *id;
 @property (strong, nonatomic) NSNumber *seriesId;
 @property (strong, nonatomic) NSNumber *episodeFileId;

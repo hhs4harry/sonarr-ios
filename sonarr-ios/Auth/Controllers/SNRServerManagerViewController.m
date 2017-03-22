@@ -57,11 +57,15 @@
 #pragma mark - Navigation Protocol
 
 -(void)addServerButtonTouchUpInside{
-    [self presentViewController:[SNRAddServerPopUpViewController formViewController] animated:YES completion:nil];
+    [self presentViewController:[SNRAddServerPopUpViewController formViewController]
+                       animated:YES
+                     completion:nil];
 }
 
 -(UIBarButtonItem *)rightBarButton{
-    return [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addServerButtonTouchUpInside)];
+    return [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
+                                                         target:self
+                                                         action:@selector(addServerButtonTouchUpInside)];
 }
 
 #pragma mark - Server Manager Protocol

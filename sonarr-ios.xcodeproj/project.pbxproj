@@ -24,7 +24,10 @@
 		4A5F0A241E803C3B008463F6 /* SNRServerTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A5F0A231E803C3B008463F6 /* SNRServerTableViewCell.m */; };
 		4A5F0A291E805829008463F6 /* SNRSeriesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A5F0A281E805829008463F6 /* SNRSeriesViewController.m */; };
 		4A5F0A2D1E80593D008463F6 /* SNRBaseTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A5F0A2C1E80593D008463F6 /* SNRBaseTableView.m */; };
-		4A777C331E63EBC9006B1987 /* SNRCalandar.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A777C321E63EBC9006B1987 /* SNRCalandar.m */; };
+		4A5F0A301E81A6BC008463F6 /* UIImage+Remote.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A5F0A2F1E81A6BC008463F6 /* UIImage+Remote.m */; };
+		4A5F0A331E81A70B008463F6 /* SNRImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A5F0A321E81A70B008463F6 /* SNRImageView.m */; };
+		4A5F0A381E81A8E6008463F6 /* SNRSeriesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A5F0A371E81A8E6008463F6 /* SNRSeriesTableViewCell.m */; };
+		4A777C331E63EBC9006B1987 /* SNRCalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A777C321E63EBC9006B1987 /* SNRCalendar.m */; };
 		4A777C391E63ECED006B1987 /* SNREpisode.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A777C381E63ECED006B1987 /* SNREpisode.m */; };
 		4A777C3C1E63EDAE006B1987 /* SNRQuality.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A777C3B1E63EDAE006B1987 /* SNRQuality.m */; };
 		4A777C3F1E63EDF4006B1987 /* SNRRevision.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A777C3E1E63EDF4006B1987 /* SNRRevision.m */; };
@@ -74,7 +77,7 @@
 /* Begin PBXFileReference section */
 		4A14754A1E7B32C1006B6888 /* UIAlertController+Show.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIAlertController+Show.h"; path = "Common/Controllers/UIAlertController+Show.h"; sourceTree = "<group>"; };
 		4A14754B1E7B32C1006B6888 /* UIAlertController+Show.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIAlertController+Show.m"; path = "Common/Controllers/UIAlertController+Show.m"; sourceTree = "<group>"; };
-		4A3498931E63587200453E63 /* sonarr-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "sonarr-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4A3498931E63587200453E63 /* Sonarr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sonarr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A3498AC1E63587200453E63 /* sonarr-iosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "sonarr-iosTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A3498B71E63587200453E63 /* sonarr-iosUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "sonarr-iosUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A3498D01E635E5300453E63 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Resources/Assets.xcassets; sourceTree = "<group>"; };
@@ -105,8 +108,14 @@
 		4A5F0A281E805829008463F6 /* SNRSeriesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRSeriesViewController.m; path = Series/Controllers/SNRSeriesViewController.m; sourceTree = "<group>"; };
 		4A5F0A2B1E80593D008463F6 /* SNRBaseTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRBaseTableView.h; path = Common/Views/SNRBaseTableView.h; sourceTree = "<group>"; };
 		4A5F0A2C1E80593D008463F6 /* SNRBaseTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRBaseTableView.m; path = Common/Views/SNRBaseTableView.m; sourceTree = "<group>"; };
-		4A777C311E63EBC9006B1987 /* SNRCalandar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRCalandar.h; path = API/Models/SNRCalandar.h; sourceTree = "<group>"; };
-		4A777C321E63EBC9006B1987 /* SNRCalandar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRCalandar.m; path = API/Models/SNRCalandar.m; sourceTree = "<group>"; };
+		4A5F0A2E1E81A6BC008463F6 /* UIImage+Remote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+Remote.h"; path = "Common/Views/UIImage+Remote.h"; sourceTree = "<group>"; };
+		4A5F0A2F1E81A6BC008463F6 /* UIImage+Remote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Remote.m"; path = "Common/Views/UIImage+Remote.m"; sourceTree = "<group>"; };
+		4A5F0A311E81A70B008463F6 /* SNRImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRImageView.h; path = Common/Views/SNRImageView.h; sourceTree = "<group>"; };
+		4A5F0A321E81A70B008463F6 /* SNRImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRImageView.m; path = Common/Views/SNRImageView.m; sourceTree = "<group>"; };
+		4A5F0A361E81A8E6008463F6 /* SNRSeriesTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRSeriesTableViewCell.h; path = Series/Views/SNRSeriesTableViewCell.h; sourceTree = "<group>"; };
+		4A5F0A371E81A8E6008463F6 /* SNRSeriesTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRSeriesTableViewCell.m; path = Series/Views/SNRSeriesTableViewCell.m; sourceTree = "<group>"; };
+		4A777C311E63EBC9006B1987 /* SNRCalendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRCalendar.h; path = API/Models/SNRCalendar.h; sourceTree = "<group>"; };
+		4A777C321E63EBC9006B1987 /* SNRCalendar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRCalendar.m; path = API/Models/SNRCalendar.m; sourceTree = "<group>"; };
 		4A777C371E63ECED006B1987 /* SNREpisode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNREpisode.h; path = API/Models/SNREpisode.h; sourceTree = "<group>"; };
 		4A777C381E63ECED006B1987 /* SNREpisode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNREpisode.m; path = API/Models/SNREpisode.m; sourceTree = "<group>"; };
 		4A777C3A1E63EDAE006B1987 /* SNRQuality.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRQuality.h; path = API/Models/SNRQuality.h; sourceTree = "<group>"; };
@@ -205,7 +214,7 @@
 		4A3498941E63587200453E63 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				4A3498931E63587200453E63 /* sonarr-ios.app */,
+				4A3498931E63587200453E63 /* Sonarr.app */,
 				4A3498AC1E63587200453E63 /* sonarr-iosTests.xctest */,
 				4A3498B71E63587200453E63 /* sonarr-iosUITests.xctest */,
 			);
@@ -324,8 +333,8 @@
 				4A3499191E63D9A600453E63 /* SNRStatistics.m */,
 				4A3499211E63DD1000453E63 /* SNRRatings.h */,
 				4A3499221E63DD1000453E63 /* SNRRatings.m */,
-				4A777C311E63EBC9006B1987 /* SNRCalandar.h */,
-				4A777C321E63EBC9006B1987 /* SNRCalandar.m */,
+				4A777C311E63EBC9006B1987 /* SNRCalendar.h */,
+				4A777C321E63EBC9006B1987 /* SNRCalendar.m */,
 				4A777C371E63ECED006B1987 /* SNREpisode.h */,
 				4A777C381E63ECED006B1987 /* SNREpisode.m */,
 				4A777C3A1E63EDAE006B1987 /* SNRQuality.h */,
@@ -376,6 +385,7 @@
 		4A5F0A251E805806008463F6 /* Series */ = {
 			isa = PBXGroup;
 			children = (
+				4A5F0A351E81A8C1008463F6 /* Views */,
 				4A5F0A261E80580E008463F6 /* Controllers */,
 			);
 			name = Series;
@@ -395,6 +405,19 @@
 			children = (
 				4A5F0A2B1E80593D008463F6 /* SNRBaseTableView.h */,
 				4A5F0A2C1E80593D008463F6 /* SNRBaseTableView.m */,
+				4A5F0A2E1E81A6BC008463F6 /* UIImage+Remote.h */,
+				4A5F0A2F1E81A6BC008463F6 /* UIImage+Remote.m */,
+				4A5F0A311E81A70B008463F6 /* SNRImageView.h */,
+				4A5F0A321E81A70B008463F6 /* SNRImageView.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		4A5F0A351E81A8C1008463F6 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				4A5F0A361E81A8E6008463F6 /* SNRSeriesTableViewCell.h */,
+				4A5F0A371E81A8E6008463F6 /* SNRSeriesTableViewCell.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -461,9 +484,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		4A3498921E63587200453E63 /* sonarr-ios */ = {
+		4A3498921E63587200453E63 /* Sonarr */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4A3498C01E63587200453E63 /* Build configuration list for PBXNativeTarget "sonarr-ios" */;
+			buildConfigurationList = 4A3498C01E63587200453E63 /* Build configuration list for PBXNativeTarget "Sonarr" */;
 			buildPhases = (
 				4C861A2E9E61FF661CEFD93F /* [CP] Check Pods Manifest.lock */,
 				4A34988F1E63587200453E63 /* Sources */,
@@ -476,9 +499,9 @@
 			);
 			dependencies = (
 			);
-			name = "sonarr-ios";
+			name = Sonarr;
 			productName = "sonarr-ios";
-			productReference = 4A3498931E63587200453E63 /* sonarr-ios.app */;
+			productReference = 4A3498931E63587200453E63 /* Sonarr.app */;
 			productType = "com.apple.product-type.application";
 		};
 		4A3498AB1E63587200453E63 /* sonarr-iosTests */ = {
@@ -558,7 +581,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				4A3498921E63587200453E63 /* sonarr-ios */,
+				4A3498921E63587200453E63 /* Sonarr */,
 				4A3498AB1E63587200453E63 /* sonarr-iosTests */,
 				4A3498B61E63587200453E63 /* sonarr-iosUITests */,
 			);
@@ -645,11 +668,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4A5F0A381E81A8E6008463F6 /* SNRSeriesTableViewCell.m in Sources */,
 				4A777C711E653561006B1987 /* SNRQueue.m in Sources */,
 				4A777C741E653615006B1987 /* SNRProfile.m in Sources */,
 				4A5F0A241E803C3B008463F6 /* SNRServerTableViewCell.m in Sources */,
 				4A7A235A1E7DE29500141FCE /* SNRServerManager.m in Sources */,
-				4A777C331E63EBC9006B1987 /* SNRCalandar.m in Sources */,
+				4A777C331E63EBC9006B1987 /* SNRCalendar.m in Sources */,
 				4AFA7BB11E7B9C8100932038 /* SNRServer.m in Sources */,
 				4A3499101E63D7F600453E63 /* SNRTitle.m in Sources */,
 				4A5F0A2D1E80593D008463F6 /* SNRBaseTableView.m in Sources */,
@@ -680,12 +704,14 @@
 				4A3498DE1E635E7900453E63 /* AppDelegate.m in Sources */,
 				4A777C7A1E653B49006B1987 /* SNRRootFolder.m in Sources */,
 				4A777C6E1E65340A006B1987 /* SNRItem.m in Sources */,
+				4A5F0A301E81A6BC008463F6 /* UIImage+Remote.m in Sources */,
 				4A9E6C6B1E7785FE008AB91A /* SNRAPIClient.m in Sources */,
 				4A3499131E63D8ED00453E63 /* SNRImage.m in Sources */,
 				4A9E6C611E765B67008AB91A /* SNRBaseSheetViewController.m in Sources */,
 				4A777C521E64078B006B1987 /* SNRData.m in Sources */,
 				4A777C491E63FB2F006B1987 /* SNREpisodeFile.m in Sources */,
 				4A34990D1E63CF2B00453E63 /* SNRSeries.m in Sources */,
+				4A5F0A331E81A70B008463F6 /* SNRImageView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -708,12 +734,12 @@
 /* Begin PBXTargetDependency section */
 		4A3498AE1E63587200453E63 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 4A3498921E63587200453E63 /* sonarr-ios */;
+			target = 4A3498921E63587200453E63 /* Sonarr */;
 			targetProxy = 4A3498AD1E63587200453E63 /* PBXContainerItemProxy */;
 		};
 		4A3498B91E63587200453E63 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 4A3498921E63587200453E63 /* sonarr-ios */;
+			target = 4A3498921E63587200453E63 /* Sonarr */;
 			targetProxy = 4A3498B81E63587200453E63 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -918,7 +944,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4A3498C01E63587200453E63 /* Build configuration list for PBXNativeTarget "sonarr-ios" */ = {
+		4A3498C01E63587200453E63 /* Build configuration list for PBXNativeTarget "Sonarr" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4A3498C11E63587200453E63 /* Debug */,

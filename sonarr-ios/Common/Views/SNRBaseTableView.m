@@ -27,7 +27,7 @@
     _pullToRefresh = pullToRefresh;
     
     if(_pullToRefresh){
-        self.refreshControl = [[UIRefreshControl alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, 30)];
+        self.refreshControl = [[UIRefreshControl alloc] init];
         self.refreshControl.tintColor = [UIColor secondary];
     }
 }
