@@ -27,13 +27,6 @@ static NSString * BASEURL;
 #pragma mark - Life cycle
 
 -(instancetype)initWithConfig:(SNRServerConfig *)config{
-    config.username = @"eksplex";
-    config.password = @"";
-    config.hostname = @"eksplex.asuscomm.com";
-    config.port = @8990;
-    config.apiKey = @"ef96fe34c1294c66b93d42519d61f43e";
-    config.SSL = YES;
-    
     if(!config ||
        !config.apiKey ||
        !config.hostname){
@@ -89,12 +82,23 @@ static NSString * BASEURL;
 #pragma mark - API
 
 -(NSString *)generateURLWithEndpoint:(NSString *)endpoint{
-    return [NSString stringWithFormat:@"%@://%@:%@/api/%@?apikey=%@",
+    NSArray *components = [endpoint componentsSeparatedByString:@"?"];
+    endpoint = components.firstObject;
+    NSString *url = [NSString stringWithFormat:@"%@://%@:%@/api/%@?apikey=%@",
             self.config.SSL ? @"https" : @"http",
             self.config.hostname,
             self.config.port.stringValue,
             endpoint,
             self.config.apiKey];
+    
+    for (NSString *comp in components) {
+        if([comp isEqualToString:endpoint]){
+            continue;
+        }
+        [[url stringByAppendingString:@"&"] stringByAppendingString:@"comp"];
+    }
+    
+    return url;
 }
 
 -(void)validateServerWithCompletion:(void(^)(SNRStatus *status, NSError *error))completion{
@@ -119,7 +123,11 @@ static NSString * BASEURL;
     
     [self.client performGETCallToEndpoint:[self generateURLWithEndpoint:[SNRSeries endpoint]] withParameters:nil andSuccess:^(id responseObject) {
         NSError *error;
-        self.series = [SNRSeries arrayOfModelsFromDictionaries:responseObject error:&error];
+        NSMutableArray *series = [SNRSeries arrayOfModelsFromDictionaries:responseObject error:&error];
+        NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"sortTitle" ascending:YES];
+        [series sortUsingDescriptors:[NSArray arrayWithObject:sortDescriptor]];
+        
+        self.series = series;
         
         if(completion){
             completion(self.series, error);
@@ -131,14 +139,4 @@ static NSString * BASEURL;
     }];
 }
 
-
-//#pragma mark - Image URL
-//
-//-(NSURL *)generateImageURLWithEndpoint:(NSString *)endpoint{
-//    return [NSURL URLWithString:[NSString stringWithFormat:@"%@://%@:%@/api/%@",
-//                                 self.config.SSL ? @"https" : @"http",
-//                                 self.config.hostname,
-//                                 self.config.port.stringValue,
-//                                 endpoint]];
-//}
 @end

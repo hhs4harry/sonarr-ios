@@ -8,6 +8,7 @@
 
 #import "SNRImageView.h"
 #import "UIImage+Remote.h"
+#import "SNRActivityIndicatorView.h"
 
 @interface SNRImageView()
 @property (strong, nonatomic) UIActivityIndicatorView *activityIndicator;
@@ -15,27 +16,30 @@
 
 @implementation SNRImageView
 
+-(void)setImage:(UIImage *)image{
+    [super setImage:image];
+    
+    [SNRActivityIndicatorView show:NO onView:self];
+}
+
 -(void)setImageWithURL:(NSURL *)url{
-    self.activityIndicator.hidden = NO;
+    NSInteger tag = self.tag + 1;
+    self.tag = tag;
+    
+    NSLog(@"%lu", tag);
+    
+    [SNRActivityIndicatorView show:YES onView:self];
     
     __weak typeof(self) wself = self;
     [UIImage imageWithURL:url andCompletion:^(UIImage *image) {
-        wself.activityIndicator.hidden = YES;
-        wself.image = image;
+        if(tag == self.tag){
+            if(image){
+                __strong typeof(wself) sself = wself;
+                [SNRActivityIndicatorView show:NO onView:self];
+                sself.image = image;
+            }
+        }
     }];
-}
-
--(UIActivityIndicatorView *)activityIndicator{
-    if(!!_activityIndicator){
-        _activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
-        [_activityIndicator startAnimating];
-        [self addSubview:_activityIndicator];
-        
-        [[NSLayoutConstraint constraintWithItem:_activityIndicator attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterY multiplier:0.0f constant:1.0f] setActive:YES];
-        [[NSLayoutConstraint constraintWithItem:_activityIndicator attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterX multiplier:0.0f constant:1.0f] setActive:YES];
-    }
-    
-    return _activityIndicator;
 }
 
 @end

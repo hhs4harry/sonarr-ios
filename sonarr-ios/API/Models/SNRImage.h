@@ -7,8 +7,11 @@
 //
 
 #import <JSONModel/JSONModel.h>
+@class UIImage;
 
 @interface SNRImage : JSONModel
 @property (copy, nonatomic) NSString *coverType;
 @property (copy, nonatomic) NSString *url;
+
+@property (strong, nonatomic) UIImage<Optional> *image;
 @end

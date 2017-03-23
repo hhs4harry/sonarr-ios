@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		259F2E248A9B5D0391C7AB70 /* libPods-Sonarr.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 33A1E1334CB8B3457ED5F1B3 /* libPods-Sonarr.a */; };
+		4A0969651E843F7800A8C35E /* SNRActivityIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0969641E843F7800A8C35E /* SNRActivityIndicatorView.m */; };
 		4A14754C1E7B32C1006B6888 /* UIAlertController+Show.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A14754B1E7B32C1006B6888 /* UIAlertController+Show.m */; };
 		4A3498D21E635E5300453E63 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A3498D01E635E5300453E63 /* Assets.xcassets */; };
 		4A3498D81E635E6C00453E63 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4A3498D41E635E6C00453E63 /* LaunchScreen.storyboard */; };
@@ -75,6 +77,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0FDDA95A3279C944A0D329B3 /* Pods-Sonarr.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sonarr.release.xcconfig"; path = "Pods/Target Support Files/Pods-Sonarr/Pods-Sonarr.release.xcconfig"; sourceTree = "<group>"; };
+		33A1E1334CB8B3457ED5F1B3 /* libPods-Sonarr.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Sonarr.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4A0969631E843F7800A8C35E /* SNRActivityIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRActivityIndicatorView.h; path = Common/Views/SNRActivityIndicatorView.h; sourceTree = "<group>"; };
+		4A0969641E843F7800A8C35E /* SNRActivityIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRActivityIndicatorView.m; path = Common/Views/SNRActivityIndicatorView.m; sourceTree = "<group>"; };
 		4A14754A1E7B32C1006B6888 /* UIAlertController+Show.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIAlertController+Show.h"; path = "Common/Controllers/UIAlertController+Show.h"; sourceTree = "<group>"; };
 		4A14754B1E7B32C1006B6888 /* UIAlertController+Show.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIAlertController+Show.m"; path = "Common/Controllers/UIAlertController+Show.m"; sourceTree = "<group>"; };
 		4A3498931E63587200453E63 /* Sonarr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sonarr.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -171,6 +177,7 @@
 		4AFA7BAF1E7B9C8100932038 /* SNRServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRServer.h; path = Common/Models/SNRServer.h; sourceTree = "<group>"; };
 		4AFA7BB01E7B9C8100932038 /* SNRServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRServer.m; path = Common/Models/SNRServer.m; sourceTree = "<group>"; };
 		90C3F8C36C856C91C0FCE823 /* Pods-sonarr-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sonarr-ios.release.xcconfig"; path = "Pods/Target Support Files/Pods-sonarr-ios/Pods-sonarr-ios.release.xcconfig"; sourceTree = "<group>"; };
+		BB5C7CE7C2B72066F6F7B282 /* Pods-Sonarr.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sonarr.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Sonarr/Pods-Sonarr.debug.xcconfig"; sourceTree = "<group>"; };
 		F8E59AC9DE2CC954BEA5058D /* Pods-sonarr-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sonarr-ios.debug.xcconfig"; path = "Pods/Target Support Files/Pods-sonarr-ios/Pods-sonarr-ios.debug.xcconfig"; sourceTree = "<group>"; };
 		FD31FBD03D949BB5680777EB /* libPods-sonarr-ios.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-sonarr-ios.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -181,6 +188,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6F52D82016799076E68DDF32 /* libPods-sonarr-ios.a in Frameworks */,
+				259F2E248A9B5D0391C7AB70 /* libPods-Sonarr.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -409,6 +417,8 @@
 				4A5F0A2F1E81A6BC008463F6 /* UIImage+Remote.m */,
 				4A5F0A311E81A70B008463F6 /* SNRImageView.h */,
 				4A5F0A321E81A70B008463F6 /* SNRImageView.m */,
+				4A0969631E843F7800A8C35E /* SNRActivityIndicatorView.h */,
+				4A0969641E843F7800A8C35E /* SNRActivityIndicatorView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -468,6 +478,7 @@
 			isa = PBXGroup;
 			children = (
 				FD31FBD03D949BB5680777EB /* libPods-sonarr-ios.a */,
+				33A1E1334CB8B3457ED5F1B3 /* libPods-Sonarr.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -477,6 +488,8 @@
 			children = (
 				F8E59AC9DE2CC954BEA5058D /* Pods-sonarr-ios.debug.xcconfig */,
 				90C3F8C36C856C91C0FCE823 /* Pods-sonarr-ios.release.xcconfig */,
+				BB5C7CE7C2B72066F6F7B282 /* Pods-Sonarr.debug.xcconfig */,
+				0FDDA95A3279C944A0D329B3 /* Pods-Sonarr.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -643,7 +656,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-sonarr-ios/Pods-sonarr-ios-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Sonarr/Pods-Sonarr-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		CFB1C906F80701C5631C578A /* [CP] Embed Pods Frameworks */ = {
@@ -658,7 +671,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-sonarr-ios/Pods-sonarr-ios-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Sonarr/Pods-Sonarr-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -697,6 +710,7 @@
 				4A777C4C1E63FE9C006B1987 /* SNRHistory.m in Sources */,
 				4A34991A1E63D9A600453E63 /* SNRStatistics.m in Sources */,
 				4A777C651E653283006B1987 /* SNRValue.m in Sources */,
+				4A0969651E843F7800A8C35E /* SNRActivityIndicatorView.m in Sources */,
 				4AA5D5EF1E668F8300C044C7 /* SNRAddServerPopUpViewController.m in Sources */,
 				4A34990A1E63C59400453E63 /* SNRStatus.m in Sources */,
 				4A777C6B1E653357006B1987 /* SNRCutoff.m in Sources */,
@@ -856,7 +870,7 @@
 		};
 		4A3498C11E63587200453E63 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F8E59AC9DE2CC954BEA5058D /* Pods-sonarr-ios.debug.xcconfig */;
+			baseConfigurationReference = BB5C7CE7C2B72066F6F7B282 /* Pods-Sonarr.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = JCPQYCKCFL;
@@ -870,7 +884,7 @@
 		};
 		4A3498C21E63587200453E63 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 90C3F8C36C856C91C0FCE823 /* Pods-sonarr-ios.release.xcconfig */;
+			baseConfigurationReference = 0FDDA95A3279C944A0D329B3 /* Pods-Sonarr.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = JCPQYCKCFL;

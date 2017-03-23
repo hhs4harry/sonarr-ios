@@ -10,11 +10,11 @@
 
 @implementation SNRImage
 
--(NSString *)url{
-    if([_url containsString:@"?"]){
-        return [[_url componentsSeparatedByString:@"?"] firstObject];
-    }
-    return _url;
-}
+//-(NSString *)url{
+//    if([_url containsString:@"?"]){
+//        return [[_url componentsSeparatedByString:@"?"] firstObject];
+//    }
+//    return _url;
+//}
 
 @end

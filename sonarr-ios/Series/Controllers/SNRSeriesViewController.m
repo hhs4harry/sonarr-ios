@@ -63,8 +63,16 @@
     }
     
     SNRSeriesTableViewCell *seriesCell = [tableView dequeueReusableCellWithIdentifier:@"seriesCell" forIndexPath:indexPath];
+    seriesCell.tag = indexPath.row;
     [seriesCell setSeries:[self.server.series objectAtIndex:indexPath.row] forServer:self.server];
     return seriesCell;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath{
+    SNRSeriesTableViewCell *seriesCell = [tableView cellForRowAtIndexPath:indexPath];
+    [seriesCell setSelected:YES];
+    return;
+
 }
 
 #pragma mark - Navigation Protocol

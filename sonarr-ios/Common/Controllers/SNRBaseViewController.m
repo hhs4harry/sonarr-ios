@@ -9,6 +9,7 @@
 #import "SNRBaseViewController.h"
 #import "UIAlertController+Show.h"
 #import "SNRServerManager.h"
+#import "SNRActivityIndicatorView.h"
 
 @interface SNRBaseViewController ()
 @property (strong, nonatomic) UIView *spinnerView;
@@ -52,7 +53,7 @@
 
 -(void)showMessage:(NSString *)message withTitle:(NSString *)title{
     dispatch_async(dispatch_get_main_queue(), ^{
-        [[UIAlertController alertWithTitle:@""
+        [[UIAlertController alertWithTitle:title
                                   message:message
                                andActions:nil] show];
     });
@@ -63,17 +64,13 @@
 -(UIView *)spinnerView{
     if(!_spinnerView){
         UIView *newSpinner = [[UIView alloc] init];
-        UIActivityIndicatorView *activityView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
-
         newSpinner.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.5];
-        [activityView startAnimating];
-        
         newSpinner.translatesAutoresizingMaskIntoConstraints = NO;
-        activityView.translatesAutoresizingMaskIntoConstraints = NO;
-
-        [newSpinner addSubview:activityView];
         [self.view insertSubview:newSpinner atIndex:0];
         
+        SNRActivityIndicatorView *indicatorView = [SNRActivityIndicatorView show:YES onView:newSpinner];
+        indicatorView.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhite;
+        
         [[NSLayoutConstraint constraintWithItem:newSpinner
                                       attribute:NSLayoutAttributeTop
                                       relatedBy:NSLayoutRelationEqual
@@ -103,22 +100,6 @@
                                       relatedBy:NSLayoutRelationEqual
                                          toItem:self.view
                                       attribute:NSLayoutAttributeLeft
-                                     multiplier:1.0f
-                                       constant:0.0f] setActive:YES];
-
-        [[NSLayoutConstraint constraintWithItem:activityView
-                                      attribute:NSLayoutAttributeCenterX
-                                      relatedBy:NSLayoutRelationEqual
-                                         toItem:newSpinner
-                                      attribute:NSLayoutAttributeCenterX
-                                     multiplier:1.0f
-                                       constant:0.0f] setActive:YES];
-        
-        [[NSLayoutConstraint constraintWithItem:activityView
-                                      attribute:NSLayoutAttributeCenterY
-                                      relatedBy:NSLayoutRelationEqual
-                                         toItem:newSpinner
-                                      attribute:NSLayoutAttributeCenterY
                                      multiplier:1.0f
                                        constant:0.0f] setActive:YES];
         

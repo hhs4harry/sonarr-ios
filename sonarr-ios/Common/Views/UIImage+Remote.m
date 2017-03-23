@@ -21,7 +21,7 @@
         AFHTTPResponseSerializer *currResponse = client.responseSerializer;
         client.responseSerializer = [AFImageResponseSerializer serializer];
         
-        [[SNRAPIClient client] performGETCallToEndpoint:url.absoluteString withParameters:nil andSuccess:^(id responseObject) {
+        [client performGETCallToEndpoint:url.absoluteString withParameters:nil andSuccess:^(id responseObject) {
             client.responseSerializer = currResponse;
             completion(responseObject);
         } andFailure:^(NSError *error) {

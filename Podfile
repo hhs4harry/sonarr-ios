@@ -1,7 +1,7 @@
 # Uncomment the next line to define a global platform for your project
 # platform :ios, '9.0'
 
-target 'sonarr-ios' do
+target 'Sonarr' do
   pod 'AFNetworking', '~> 3.0'
   pod 'JSONModel', '~> 1.7'
   pod 'MZFormSheetPresentationController', '~> 2.4'

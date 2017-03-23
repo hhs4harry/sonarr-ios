@@ -11,6 +11,7 @@
 #import "SNRNavigationViewController.h"
 #import "SNRServerManager.h"
 #import "SNRServerTableViewCell.h"
+#import "SNRSeriesViewController.h"
 
 @interface SNRServerManagerViewController () <UITextFieldDelegate, NSURLSessionDelegate, UITableViewDelegate, UITableViewDataSource, SNRNavigationBarButtonProtocol, SNRServerManagerProtocol>
 @property (strong, nonatomic) SNRServerManager *serverManager;
@@ -52,6 +53,11 @@
     SNRServerTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"sonarrCell" forIndexPath:indexPath];
     [cell setServer:[self.serverManager.servers objectAtIndex:indexPath.row]];
     return cell;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [self.serverManager setActiveServer:[self.serverManager.servers objectAtIndex:indexPath.row]];
+    [self.navigationController pushViewController:[self.storyboard instantiateViewControllerWithIdentifier:[SNRSeriesViewController storyboardIdentifier]] animated:YES];
 }
 
 #pragma mark - Navigation Protocol
