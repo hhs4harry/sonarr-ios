@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+@class SNRSeries;
+@class SNRServer;
 
 @interface SNRSeriesTableViewCell : UITableViewCell
+-(void)setSeries:(SNRSeries *)series forServer:(SNRServer *)server;
 
 @end

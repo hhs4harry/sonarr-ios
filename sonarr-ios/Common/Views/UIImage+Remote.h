@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface UIImage (Remote)
++(void)imageWithURL:(NSURL *)url andCompletion:(void(^)(UIImage *image))completion;
 
 @end

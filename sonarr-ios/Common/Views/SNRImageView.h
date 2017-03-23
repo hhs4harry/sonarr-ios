@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface SNRImageView : UIImageView
+-(void)setImageWithURL:(NSURL *)url;
 
 @end

@@ -15,6 +15,8 @@
 @class SNRRatings;
 
 @interface SNRSeries : JSONModel
++(NSString *)endpoint;
+
 @property (copy, nonatomic) NSString<Optional> *title;
 @property (copy, nonatomic) NSArray<SNRTitle, Optional> *alternativeTitles;
 @property (copy, nonatomic) NSString<Optional> *sortTitle;

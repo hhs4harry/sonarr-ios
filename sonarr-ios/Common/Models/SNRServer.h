@@ -9,11 +9,18 @@
 #import <Foundation/Foundation.h>
 @class SNRServerConfig;
 @class SNRStatus;
+@class SNRSeries;
+@class UIImage;
 
 @interface SNRServer : NSObject <NSCopying>
 @property (assign, nonatomic) BOOL active;
-@property (readonly) SNRServerConfig *config;
+@property (strong, readonly) SNRServerConfig *config;
+@property (strong, nonatomic) NSArray<SNRSeries *> *series;
 
 -(instancetype)initWithConfig:(SNRServerConfig *)config;
 -(void)validateServerWithCompletion:(void(^)(SNRStatus *status, NSError *error))completion;
+-(void)seriesWithRefresh:(BOOL)refresh andCompletion:(void(^)(NSArray<SNRSeries *> *series, NSError *error))completion;
+
+-(void)imageForSeries:(SNRSeries *)series ofQuality:(NSInteger)quality withCompletion:(void(^)(UIImage *image))completion;
+-(NSString *)generateURLWithEndpoint:(NSString *)endpoint;
 @end

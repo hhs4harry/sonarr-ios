@@ -9,6 +9,7 @@
 #import "SNRStatus.h"
 
 @implementation SNRStatus
+
 +(NSString *)endpoint{
     return @"system/status";
 }

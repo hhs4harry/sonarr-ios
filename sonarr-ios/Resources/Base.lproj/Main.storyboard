@@ -44,13 +44,13 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tay-cu-my4" id="LGO-R9-ckE">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="99.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="99"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bz2-pz-Ude" customClass="SNRImageView">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bz2-pz-Ude" customClass="SNRImageView">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="99.5"/>
                                                 </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8ch-Qn-xtC" customClass="SNRImageView">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8ch-Qn-xtC" customClass="SNRImageView">
                                                     <rect key="frame" x="10" y="10" width="79.5" height="79.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="8ch-Qn-xtC" secondAttribute="height" multiplier="1:1" id="vyW-X3-nwY"/>
@@ -98,6 +98,10 @@ Add one now!</string>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="pullToRefresh" value="YES"/>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="dataSource" destination="ada-1f-YQq" id="Pzj-1W-Q0I"/>
+                                    <outlet property="delegate" destination="ada-1f-YQq" id="RUq-r4-Pzw"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

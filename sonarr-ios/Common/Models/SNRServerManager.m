@@ -7,6 +7,7 @@
 //
 
 #import "SNRServerManager.h"
+#import "SNRServer.h"
 
 NSString * const SNR_SERVER_MANAGER_DIR = @"sonarr/manager/server";
 
@@ -68,6 +69,14 @@ NSString * const SNR_SERVER_MANAGER_DIR = @"sonarr/manager/server";
 -(void)unarchiveServers{
     NSData *notesData = [[NSUserDefaults standardUserDefaults] objectForKey:SNR_SERVER_MANAGER_DIR];
     self.servers = [NSKeyedUnarchiver unarchiveObjectWithData:notesData];
+    
+    
+    [self.servers enumerateObjectsUsingBlock:^(SNRServer * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if(obj.active){
+            self.activeServer = obj;
+            *stop = YES;
+        }
+    }];
 }
 
 -(void)archiveServers{
@@ -153,7 +162,11 @@ NSString * const SNR_SERVER_MANAGER_DIR = @"sonarr/manager/server";
     [self fireDidSetActiveServer:server atIndex:serverIndex];
     [self fireDidUnsetActiveServer:_activeServer atIndex:currServerIndex];
     
+    _activeServer.active = NO;
     _activeServer = server;
+    _activeServer.active = YES;
+    
+    [self archiveServers];
 }
 
 @end

@@ -10,6 +10,10 @@
 
 @implementation SNRSeries
 
++(NSString *)endpoint{
+    return @"/series";
+}
+
 +(BOOL)propertyIsOptional:(NSString *)propertyName{
     if([propertyName isEqualToString:@"seasonFolder"] ||
        [propertyName isEqualToString:@"monitored"] ||

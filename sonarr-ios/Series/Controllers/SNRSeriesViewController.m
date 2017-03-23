@@ -11,6 +11,7 @@
 #import "SNRSeriesTableViewCell.h"
 #import "SNRBaseTableView.h"
 #import "SNRServerManager.h"
+#import "SNRServer.h"
 
 @interface SNRSeriesViewController () <SNRNavigationBarButtonProtocol>
 @property (weak, nonatomic) IBOutlet SNRBaseTableView *tableView;
@@ -23,6 +24,13 @@
     [super awakeFromNib];
     
     self.server = [SNRServerManager manager].activeServer;
+    
+    if(!self.server.series){
+        __weak typeof(self) wself = self;
+        [self.server seriesWithRefresh:NO andCompletion:^(NSArray<SNRSeries *> *series, NSError *error) {
+            [wself.tableView reloadData];
+        }];
+    }
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -37,20 +45,26 @@
     return CGFLOAT_MIN;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    if(!self.server.series.count){
+        return 100;
+    }
+    return 150;
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 1;
-    //    return self.serverManager.servers.count ? : 1;
+    return self.server.series.count ? : 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-//    if(!self.serverManager.servers.count){
+    if(!self.server.series.count){
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"noSeriesCell" forIndexPath:indexPath];
         return cell;
-//    }
+    }
     
-//    SNRSeriesTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"seriesCell" forIndexPath:indexPath];
-//    [cell setServer:[self.serverManager.servers objectAtIndex:indexPath.row]];
-//    return cell;
+    SNRSeriesTableViewCell *seriesCell = [tableView dequeueReusableCellWithIdentifier:@"seriesCell" forIndexPath:indexPath];
+    [seriesCell setSeries:[self.server.series objectAtIndex:indexPath.row] forServer:self.server];
+    return seriesCell;
 }
 
 #pragma mark - Navigation Protocol
@@ -70,9 +84,14 @@
 #pragma mark - Pull to refresh
 
 -(void)didRequestPullToRefresh:(id)sender{
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self.tableView.refreshControl endRefreshing];
-    });
+    __weak typeof(self) wself = self;
+    [self.server seriesWithRefresh:YES andCompletion:^(NSArray<SNRSeries *> *series, NSError *error) {
+        if(series){
+            [wself.tableView reloadData];
+        }
+        //handle error
+        [wself.tableView.refreshControl endRefreshing];
+    }];
 }
 
 @end
