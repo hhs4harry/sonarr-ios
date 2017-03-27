@@ -13,7 +13,7 @@
 #import "SNRServerManager.h"
 #import "SNRServer.h"
 
-@interface SNRSeriesViewController () <SNRNavigationBarButtonProtocol>
+@interface SNRSeriesViewController () <SNRNavigationBarButtonProtocol, UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet SNRBaseTableView *tableView;
 @property (strong, nonatomic) SNRServer *server;
 @end
@@ -65,6 +65,7 @@
     SNRSeriesTableViewCell *seriesCell = [tableView dequeueReusableCellWithIdentifier:@"seriesCell" forIndexPath:indexPath];
     seriesCell.tag = indexPath.row;
     [seriesCell setSeries:[self.server.series objectAtIndex:indexPath.row] forServer:self.server];
+    [seriesCell scrollViewDidScroll:self.tableView];
     return seriesCell;
 }
 
@@ -72,7 +73,14 @@
     SNRSeriesTableViewCell *seriesCell = [tableView cellForRowAtIndexPath:indexPath];
     [seriesCell setSelected:YES];
     return;
+}
 
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    if(self.server.series.count){
+        for (SNRSeriesTableViewCell *seriesCell in self.tableView.visibleCells) {
+            [seriesCell scrollViewDidScroll:scrollView];
+        }
+    }
 }
 
 #pragma mark - Navigation Protocol

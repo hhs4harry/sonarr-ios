@@ -23,10 +23,12 @@
 }
 
 -(void)setImageWithURL:(NSURL *)url{
+    [self setImageWithURL:url andCompletion:nil];
+}
+
+-(void)setImageWithURL:(NSURL *)url andCompletion:(void(^)(UIImage *image))completion{
     NSInteger tag = self.tag + 1;
     self.tag = tag;
-    
-    NSLog(@"%lu", tag);
     
     [SNRActivityIndicatorView show:YES onView:self];
     
@@ -38,6 +40,10 @@
                 [SNRActivityIndicatorView show:NO onView:self];
                 sself.image = image;
             }
+        }
+        
+        if(completion){
+            completion(image);
         }
     }];
 }

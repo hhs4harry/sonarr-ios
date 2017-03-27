@@ -20,21 +20,18 @@
 @property (weak, nonatomic) IBOutlet UILabel *seasonCountLabel;
 @property (weak, nonatomic) IBOutlet UILabel *seriesAiredLabel;
 @property (strong, nonatomic) SNRSeries *series;
-@property (strong, nonatomic) NSOperationQueue *loadingQueue;
 @end
+
+const CGFloat PARALLAXRATIO = 0.25;
 
 @implementation SNRSeriesTableViewCell
 
 -(void)awakeFromNib{
     [super awakeFromNib];
-    
-    self.loadingQueue = [[NSOperationQueue alloc] init];    
-    self.loadingQueue.underlyingQueue = dispatch_get_main_queue();
+    self.clipsToBounds = YES;
 }
 
 -(void)prepareForReuse{
-    [self.loadingQueue cancelAllOperations];
-    
     SNRImage *parallax = self.series.images.firstObject;
     SNRImage *seriesImage = self.series.images.lastObject;
     
@@ -71,8 +68,8 @@
     self.seriesAiredLabel.text = series.scheduleInfo;
     self.seasonCountLabel.text = series.seriesInfo;
     
-    SNRImage *parallax = series.images.firstObject;
-    SNRImage *seriesImage = series.images.lastObject;
+    __block SNRImage *parallax = series.images.firstObject;
+    __block SNRImage *seriesImage = series.images.lastObject;
     
     if(parallax.image && seriesImage.image){
         self.parallaxImageView.image = parallax.image;
@@ -83,20 +80,32 @@
     if(parallax.image){
         self.parallaxImageView.image = parallax.image;
     }else{
-        [self.loadingQueue addOperationWithBlock:^{
-            NSURL *paralaxImageURL = [NSURL URLWithString:[server generateURLWithEndpoint:parallax.url]];
-            [self.parallaxImageView setImageWithURL:paralaxImageURL];
+        NSURL *paralaxImageURL = [NSURL URLWithString:[server generateURLWithEndpoint:parallax.url]];
+        [self.parallaxImageView setImageWithURL:paralaxImageURL andCompletion:^(UIImage * _Nullable image) {
+            parallax.image = image;
         }];
     }
     
     if(seriesImage.image){
         self.seriesImageView.image = seriesImage.image;
     }else{
-        [self.loadingQueue addOperationWithBlock:^{
-            NSURL *imageURL =  [NSURL URLWithString:[server generateURLWithEndpoint:seriesImage.url]];
-            [self.seriesImageView setImageWithURL:imageURL];
+        NSURL *imageURL =  [NSURL URLWithString:[server generateURLWithEndpoint:seriesImage.url]];
+        [self.seriesImageView setImageWithURL:imageURL andCompletion:^(UIImage * _Nullable image) {
+            seriesImage.image = image;
         }];
     }
+}
+
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    CGFloat contentOffSet, cellOffSet, percent, extraHeight;
+    contentOffSet = scrollView.contentOffset.y;
+    cellOffSet = CGRectGetMinY(self.frame) - contentOffSet;
+    percent = (cellOffSet + CGRectGetHeight(self.frame)) / (CGRectGetHeight(scrollView.frame) + CGRectGetHeight(self.frame));
+    extraHeight = CGRectGetHeight(self.frame) * (PARALLAXRATIO);
+    
+    CGRect parallaxRect = self.parallaxImageView.frame;
+    parallaxRect.origin.y = -extraHeight * percent;
+    self.parallaxImageView.frame = parallaxRect;
 }
 
 -(void)setSelected:(BOOL)selected{

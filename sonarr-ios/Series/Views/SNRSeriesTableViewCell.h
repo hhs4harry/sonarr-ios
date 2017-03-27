@@ -12,5 +12,5 @@
 
 @interface SNRSeriesTableViewCell : UITableViewCell
 -(void)setSeries:(SNRSeries *)series forServer:(SNRServer *)server;
-
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView;
 @end
