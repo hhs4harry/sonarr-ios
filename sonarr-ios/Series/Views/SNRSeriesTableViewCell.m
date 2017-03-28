@@ -12,6 +12,7 @@
 #import "SNRServer.h"
 #import "SNRImage.h"
 #import "UIImage+Remote.h"
+#import "UIColor+App.h"
 
 @interface SNRSeriesTableViewCell()
 @property (weak, nonatomic) IBOutlet SNRImageView *parallaxImageView;
@@ -81,7 +82,7 @@ const CGFloat PARALLAXRATIO = 0.25;
         self.parallaxImageView.image = parallax.image;
     }else{
         NSURL *paralaxImageURL = [NSURL URLWithString:[server generateURLWithEndpoint:parallax.url]];
-        [self.parallaxImageView setImageWithURL:paralaxImageURL andCompletion:^(UIImage * _Nullable image) {
+        [self.parallaxImageView setImageWithURL:paralaxImageURL forClient:server.client andCompletion:^(UIImage * _Nullable image) {
             parallax.image = image;
         }];
     }
@@ -90,7 +91,7 @@ const CGFloat PARALLAXRATIO = 0.25;
         self.seriesImageView.image = seriesImage.image;
     }else{
         NSURL *imageURL =  [NSURL URLWithString:[server generateURLWithEndpoint:seriesImage.url]];
-        [self.seriesImageView setImageWithURL:imageURL andCompletion:^(UIImage * _Nullable image) {
+        [self.seriesImageView setImageWithURL:imageURL forClient:server.client andCompletion:^(UIImage * _Nullable image) {
             seriesImage.image = image;
         }];
     }

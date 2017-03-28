@@ -8,24 +8,40 @@
 
 #import "UIImage+Remote.h"
 #import "SNRAPIClient.h"
+#import "SNRServerManager.h"
+#import "SNRServer.h"
+#import <AFNetworking/AFNetworking.h>
 
 @implementation UIImage (Remote)
 
-+(void)imageWithURL:(NSURL *)url andCompletion:(void(^)(UIImage *image))completion{
++(void)imageWithURL:(NSURL *)url andCompletion:(void (^)(UIImage *))completion{
     if([url isMemberOfClass:[NSString class]]){
         url = [NSURL URLWithString:((NSString *)url)];
     }
     
     if(url){
-        SNRAPIClient *client = [SNRAPIClient client];
-        AFHTTPResponseSerializer *currResponse = client.responseSerializer;
-        client.responseSerializer = [AFImageResponseSerializer serializer];
-        
+        [[[NSURLSession sharedSession] dataTaskWithURL:url completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+            if(!error && data){
+                UIImage *image = [UIImage imageWithData:data];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    completion(image);
+                });
+            }
+        }] resume];
+    }else{
+        completion(nil);
+    }
+}
+
++(void)imageWithURL:(NSURL *)url forClient:(SNRAPIClient *)client andCompletion:(void(^)(UIImage *image))completion{
+    if([url isMemberOfClass:[NSString class]]){
+        url = [NSURL URLWithString:((NSString *)url)];
+    }
+    
+    if(url){
         [client performGETCallToEndpoint:url.absoluteString withParameters:nil andSuccess:^(id responseObject) {
-            client.responseSerializer = currResponse;
             completion(responseObject);
         } andFailure:^(NSError *error) {
-            client.responseSerializer = currResponse;
             completion(nil);
         }];
     }

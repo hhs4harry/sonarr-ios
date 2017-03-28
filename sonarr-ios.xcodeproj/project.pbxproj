@@ -10,6 +10,9 @@
 		259F2E248A9B5D0391C7AB70 /* libPods-Sonarr.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 33A1E1334CB8B3457ED5F1B3 /* libPods-Sonarr.a */; };
 		4A0969651E843F7800A8C35E /* SNRActivityIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0969641E843F7800A8C35E /* SNRActivityIndicatorView.m */; };
 		4A14754C1E7B32C1006B6888 /* UIAlertController+Show.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A14754B1E7B32C1006B6888 /* UIAlertController+Show.m */; };
+		4A147BAD1E89D4F2000807AD /* NSString+check.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A147BAC1E89D4F2000807AD /* NSString+check.m */; };
+		4A147BB41E89F4DA000807AD /* SNRAddSeriesSheetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A147BB31E89F4DA000807AD /* SNRAddSeriesSheetViewController.m */; };
+		4A147BB71E89F50E000807AD /* SNRSeriesAddTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A147BB61E89F50E000807AD /* SNRSeriesAddTableViewCell.m */; };
 		4A3498D21E635E5300453E63 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A3498D01E635E5300453E63 /* Assets.xcassets */; };
 		4A3498D81E635E6C00453E63 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4A3498D41E635E6C00453E63 /* LaunchScreen.storyboard */; };
 		4A3498D91E635E6C00453E63 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4A3498D61E635E6C00453E63 /* Main.storyboard */; };
@@ -83,6 +86,12 @@
 		4A0969641E843F7800A8C35E /* SNRActivityIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRActivityIndicatorView.m; path = Common/Views/SNRActivityIndicatorView.m; sourceTree = "<group>"; };
 		4A14754A1E7B32C1006B6888 /* UIAlertController+Show.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIAlertController+Show.h"; path = "Common/Controllers/UIAlertController+Show.h"; sourceTree = "<group>"; };
 		4A14754B1E7B32C1006B6888 /* UIAlertController+Show.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIAlertController+Show.m"; path = "Common/Controllers/UIAlertController+Show.m"; sourceTree = "<group>"; };
+		4A147BAB1E89D4F2000807AD /* NSString+check.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+check.h"; path = "Common/Models/NSString+check.h"; sourceTree = "<group>"; };
+		4A147BAC1E89D4F2000807AD /* NSString+check.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+check.m"; path = "Common/Models/NSString+check.m"; sourceTree = "<group>"; };
+		4A147BB21E89F4DA000807AD /* SNRAddSeriesSheetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRAddSeriesSheetViewController.h; path = Series/Add/Controllers/SNRAddSeriesSheetViewController.h; sourceTree = "<group>"; };
+		4A147BB31E89F4DA000807AD /* SNRAddSeriesSheetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRAddSeriesSheetViewController.m; path = Series/Add/Controllers/SNRAddSeriesSheetViewController.m; sourceTree = "<group>"; };
+		4A147BB51E89F50E000807AD /* SNRSeriesAddTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRSeriesAddTableViewCell.h; path = Series/Add/Views/SNRSeriesAddTableViewCell.h; sourceTree = "<group>"; };
+		4A147BB61E89F50E000807AD /* SNRSeriesAddTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRSeriesAddTableViewCell.m; path = Series/Add/Views/SNRSeriesAddTableViewCell.m; sourceTree = "<group>"; };
 		4A3498931E63587200453E63 /* Sonarr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sonarr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A3498AC1E63587200453E63 /* sonarr-iosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "sonarr-iosTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A3498B71E63587200453E63 /* sonarr-iosUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "sonarr-iosUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -209,6 +218,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4A147BAE1E89F46B000807AD /* Add */ = {
+			isa = PBXGroup;
+			children = (
+				4A147BB01E89F477000807AD /* Views */,
+				4A147BAF1E89F471000807AD /* Controllers */,
+			);
+			name = Add;
+			sourceTree = "<group>";
+		};
+		4A147BAF1E89F471000807AD /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				4A147BB21E89F4DA000807AD /* SNRAddSeriesSheetViewController.h */,
+				4A147BB31E89F4DA000807AD /* SNRAddSeriesSheetViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		4A147BB01E89F477000807AD /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				4A147BB51E89F50E000807AD /* SNRSeriesAddTableViewCell.h */,
+				4A147BB61E89F50E000807AD /* SNRSeriesAddTableViewCell.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
 		4A34988A1E63587200453E63 = {
 			isa = PBXGroup;
 			children = (
@@ -311,6 +347,8 @@
 				4A9E6C581E760C9B008AB91A /* UIColor+App.m */,
 				4A7A23581E7DE29500141FCE /* SNRServerManager.h */,
 				4A7A23591E7DE29500141FCE /* SNRServerManager.m */,
+				4A147BAB1E89D4F2000807AD /* NSString+check.h */,
+				4A147BAC1E89D4F2000807AD /* NSString+check.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -393,6 +431,7 @@
 		4A5F0A251E805806008463F6 /* Series */ = {
 			isa = PBXGroup;
 			children = (
+				4A147BAE1E89F46B000807AD /* Add */,
 				4A5F0A351E81A8C1008463F6 /* Views */,
 				4A5F0A261E80580E008463F6 /* Controllers */,
 			);
@@ -681,12 +720,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4A147BB71E89F50E000807AD /* SNRSeriesAddTableViewCell.m in Sources */,
 				4A5F0A381E81A8E6008463F6 /* SNRSeriesTableViewCell.m in Sources */,
 				4A777C711E653561006B1987 /* SNRQueue.m in Sources */,
 				4A777C741E653615006B1987 /* SNRProfile.m in Sources */,
 				4A5F0A241E803C3B008463F6 /* SNRServerTableViewCell.m in Sources */,
 				4A7A235A1E7DE29500141FCE /* SNRServerManager.m in Sources */,
 				4A777C331E63EBC9006B1987 /* SNRCalendar.m in Sources */,
+				4A147BB41E89F4DA000807AD /* SNRAddSeriesSheetViewController.m in Sources */,
 				4AFA7BB11E7B9C8100932038 /* SNRServer.m in Sources */,
 				4A3499101E63D7F600453E63 /* SNRTitle.m in Sources */,
 				4A5F0A2D1E80593D008463F6 /* SNRBaseTableView.m in Sources */,
@@ -715,6 +756,7 @@
 				4A34990A1E63C59400453E63 /* SNRStatus.m in Sources */,
 				4A777C6B1E653357006B1987 /* SNRCutoff.m in Sources */,
 				4A14754C1E7B32C1006B6888 /* UIAlertController+Show.m in Sources */,
+				4A147BAD1E89D4F2000807AD /* NSString+check.m in Sources */,
 				4A3498DE1E635E7900453E63 /* AppDelegate.m in Sources */,
 				4A777C7A1E653B49006B1987 /* SNRRootFolder.m in Sources */,
 				4A777C6E1E65340A006B1987 /* SNRItem.m in Sources */,

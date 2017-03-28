@@ -20,14 +20,21 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    [UINavigationBar appearance].barTintColor = [UIColor primary];
+    application.statusBarHidden = YES;
+    
+    [UINavigationBar appearance].barTintColor = [UIColor secondary];
+    [UINavigationBar appearance].translucent = NO;
     [UINavigationBar appearance].tintColor = [UIColor whiteColor];
+    [[UINavigationBar appearance] setTitleTextAttributes:@{
+                                                           NSForegroundColorAttributeName: [UIColor whiteColor]
+                                                           }];
+    
     [UIFloatLabelTextField appearance].floatLabelActiveColor = [UIColor primary];
     [UIFloatLabelTextField appearance].floatLabelFont = [UIFont systemFontOfSize:[UIFont systemFontSize] - 5];
     
     [MZFormSheetPresentationController appearance].shouldCenterVertically = YES;
     [MZFormSheetPresentationController appearance].shouldCenterHorizontally = YES;
-//    [MZFormSheetPresentationController appearance].shouldApplyBackgroundBlurEffect = YES;
+    [MZFormSheetPresentationController appearance].shouldApplyBackgroundBlurEffect = YES;
     [MZFormSheetPresentationController appearance].shouldDismissOnBackgroundViewTap = YES;
     [MZFormSheetPresentationController appearance].blurEffectStyle = UIBlurEffectStyleDark;
     [MZFormSheetPresentationController appearance].movementActionWhenKeyboardAppears = MZFormSheetActionWhenKeyboardAppearsAboveKeyboard;

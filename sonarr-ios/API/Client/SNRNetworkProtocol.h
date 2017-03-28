@@ -17,9 +17,10 @@ typedef enum {
 
 @required
 
-@property (nonatomic) NetworkStatus status;
+@property (readonly) NetworkStatus networkStatus;
 
 +(instancetype)client;
+-(instancetype)initWithBaseURL:(NSURL *)url;
 
 -(void)performGETCallToEndpoint:(NSString *)endpoint
                   withParameters:(NSDictionary *)params

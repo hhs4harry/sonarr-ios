@@ -16,8 +16,8 @@
 @implementation SNRBaseSheetViewController
 
 +(UIViewController *)formViewController{
-    MZFormSheetPresentationViewController *formVC = [[MZFormSheetPresentationViewController alloc] initWithContentViewController:[[SNRBaseViewController vcStoryboard] instantiateViewControllerWithIdentifier:[self storyboardIdentifier]]];
-    formVC.presentationController.contentViewSize = [SNRBaseSheetViewController contentViewSize];
+    MZFormSheetPresentationViewController *formVC = [[MZFormSheetPresentationViewController alloc] initWithContentViewController:[[self vcStoryboard] instantiateViewControllerWithIdentifier:[self storyboardIdentifier]]];
+    formVC.presentationController.contentViewSize = [self contentViewSize];
     formVC.allowDismissByPanningPresentedView = YES;
     formVC.interactivePanGestureDismissalDirection = MZFormSheetPanGestureDismissDirectionAll;
     

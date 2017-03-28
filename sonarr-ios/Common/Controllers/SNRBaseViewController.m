@@ -29,6 +29,7 @@
     [super viewDidDisappear:animated];
     
     [self showSpinner:NO];
+    [self.view endEditing:YES];
 }
 
 -(void)dealloc{

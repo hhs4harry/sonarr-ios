@@ -38,7 +38,7 @@ static NSString * BASEURL;
         if(!config.port){
             config.port = @8989;
         }
-        self.client = [SNRAPIClient client];
+        self.client = [[SNRAPIClient alloc] initWithBaseURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@://%@:%@", config.SSL ? @"https" : @"http", config.hostname, config.port.stringValue]]];
         self.config = config;
     }
     return self;
@@ -82,12 +82,11 @@ static NSString * BASEURL;
 #pragma mark - API
 
 -(NSString *)generateURLWithEndpoint:(NSString *)endpoint{
+    endpoint = [endpoint stringByAddingPercentEncodingWithAllowedCharacters:[[NSCharacterSet whitespaceCharacterSet] invertedSet]];
+    
     NSArray *components = [endpoint componentsSeparatedByString:@"?"];
     endpoint = components.firstObject;
-    NSString *url = [NSString stringWithFormat:@"%@://%@:%@/api/%@?apikey=%@",
-            self.config.SSL ? @"https" : @"http",
-            self.config.hostname,
-            self.config.port.stringValue,
+    NSString *url = [NSString stringWithFormat:@"/api/%@?apikey=%@",
             endpoint,
             self.config.apiKey];
     
@@ -136,6 +135,23 @@ static NSString * BASEURL;
         if(completion){
             completion(nil, error);
         }
+    }];
+}
+
+-(void)searchForSeries:(NSString *)series withCompletion:(void(^)(NSArray<SNRSeries *> *series, NSError *error))completion{
+    NSString *endpoint = [self generateURLWithEndpoint:[SNRSeries searchEndpoint]];
+    endpoint = [NSString stringWithFormat:@"%@&term=%@", endpoint, [series stringByAddingPercentEncodingWithAllowedCharacters:[[NSCharacterSet whitespaceCharacterSet] invertedSet]]];
+    
+    [self.client performGETCallToEndpoint:endpoint withParameters:nil andSuccess:^(id responseObject) {
+        NSError *error;
+        NSMutableArray *series = [SNRSeries arrayOfModelsFromDictionaries:responseObject error:&error];
+        
+        NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"sortTitle" ascending:YES];
+        [series sortUsingDescriptors:[NSArray arrayWithObject:sortDescriptor]];
+        
+        completion(series, error);
+    } andFailure:^(NSError *error) {
+        completion(nil, error);
     }];
 }
 

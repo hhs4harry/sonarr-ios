@@ -7,6 +7,13 @@
 //
 
 #import "SNRSeries.h"
+#import "SNRRatings.h"
+
+@protocol SNRTitle;
+@protocol SNRImage;
+@protocol SNRSeason;
+@protocol SNRGenre;
+@protocol SNRQualityProfile;
 
 @interface SNRSeries()
 
@@ -51,13 +58,17 @@
 @property (strong, nonatomic) SNRRatings<Optional> *ratings;
 @property (strong, nonatomic) NSNumber<Optional> *qualityProfileId;
 @property (strong, nonatomic) NSArray<SNRQualityProfile, Optional> *qualityProfile;
-@property (strong, nonatomic) NSNumber *id;
+@property (strong, nonatomic) NSNumber<Optional> *id;
 @end
 
 @implementation SNRSeries
 
 +(NSString *)endpoint{
-    return @"/series";
+    return @"series";
+}
+
++(NSString *)searchEndpoint{
+    return [[self endpoint] stringByAppendingString:@"/lookup"];
 }
 
 +(BOOL)propertyIsOptional:(NSString *)propertyName{

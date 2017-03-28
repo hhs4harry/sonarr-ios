@@ -7,15 +7,11 @@
 //
 
 #import <JSONModel/JSONModel.h>
-@protocol SNRTitle;
 @protocol SNRImage;
-@protocol SNRSeason;
-@protocol SNRGenre;
-@protocol SNRQualityProfile;
-@class SNRRatings;
 
 @interface SNRSeries : JSONModel
 +(NSString *)endpoint;
++(NSString *)searchEndpoint;
 
 @property (strong, readonly) NSNumber *id;
 @property (strong, readonly) NSString<Optional> *title;

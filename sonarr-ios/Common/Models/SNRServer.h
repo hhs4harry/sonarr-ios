@@ -11,16 +11,18 @@
 @class SNRStatus;
 @class SNRSeries;
 @class UIImage;
+@class SNRAPIClient;
 
 @interface SNRServer : NSObject <NSCopying>
-@property (assign, nonatomic) BOOL active;
-@property (strong, readonly) SNRServerConfig *config;
 @property (strong, nonatomic) NSArray<SNRSeries *> *series;
- 
+@property (strong, readonly) SNRServerConfig *config;
+@property (readonly, nonatomic) SNRAPIClient *client;
+@property (assign, nonatomic) BOOL active;
+
+-(NSString *)generateURLWithEndpoint:(NSString *)endpoint;
+
 -(instancetype)initWithConfig:(SNRServerConfig *)config;
 -(void)validateServerWithCompletion:(void(^)(SNRStatus *status, NSError *error))completion;
 -(void)seriesWithRefresh:(BOOL)refresh andCompletion:(void(^)(NSArray<SNRSeries *> *series, NSError *error))completion;
-
--(void)imageForSeries:(SNRSeries *)series ofQuality:(NSInteger)quality withCompletion:(void(^)(UIImage *image))completion;
--(NSString *)generateURLWithEndpoint:(NSString *)endpoint;
+-(void)searchForSeries:(NSString *)series withCompletion:(void(^)(NSArray<SNRSeries *> *series, NSError *error))completion;
 @end

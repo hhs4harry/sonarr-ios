@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+@class SNRAPIClient;
 
 @interface UIImage (Remote)
++(void)imageWithURL:(NSURL *)url forClient:(SNRAPIClient *)client andCompletion:(void(^)(UIImage *image))completion;
 +(void)imageWithURL:(NSURL *)url andCompletion:(void(^)(UIImage *image))completion;
 
 @end

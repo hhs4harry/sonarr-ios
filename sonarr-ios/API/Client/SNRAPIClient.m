@@ -8,32 +8,47 @@
 
 #import "SNRAPIClient.h"
 
+@interface SNRAPIClient()
+@property (assign, nonatomic) NetworkStatus networkStatus;
+@end
+
 //#if AF3
 @implementation SNRAPIClient
-
-@synthesize status;
 
 +(instancetype)client{
     static SNRAPIClient *sharedClient = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         sharedClient = [self manager];
-        
-        //Assuming most people will have self signed certs.
-        sharedClient.securityPolicy.allowInvalidCertificates = YES;
-        sharedClient.securityPolicy.validatesDomainName = NO;
-        
-        //Set challenge block to allow invalid certs
-        [sharedClient setDataTaskDidReceiveResponseBlock:^NSURLSessionResponseDisposition(NSURLSession * _Nonnull session, NSURLSessionDataTask * _Nonnull dataTask, NSURLResponse * _Nonnull response) {
-            return NSURLSessionResponseAllow;
-        }];
-        
-        [[sharedClient reachabilityManager] startMonitoring];
-        [[sharedClient reachabilityManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
-            sharedClient.status = status;
-        }];
+        [sharedClient setupClient];
     });
     return sharedClient;
+}
+
+-(instancetype)initWithBaseURL:(NSURL *)url{
+    self = [super initWithBaseURL:url];
+    if(self){
+        [self setupClient];
+    }
+    return self;
+}
+
+-(void)setupClient{
+    //Assuming most people will have self signed certs.
+    self.securityPolicy.allowInvalidCertificates = YES;
+    self.securityPolicy.validatesDomainName = NO;
+    
+    self.responseSerializer = [AFCompoundResponseSerializer compoundSerializerWithResponseSerializers:@[[AFImageResponseSerializer serializer], [AFJSONResponseSerializer serializer]]];
+    
+    //Set challenge block to allow invalid certs
+    [self setDataTaskDidReceiveResponseBlock:^NSURLSessionResponseDisposition(NSURLSession * _Nonnull session, NSURLSessionDataTask * _Nonnull dataTask, NSURLResponse * _Nonnull response) {
+        return NSURLSessionResponseAllow;
+    }];
+    
+    [[self reachabilityManager] startMonitoring];
+    [[self reachabilityManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
+        self.networkStatus = status;
+    }];
 }
 
 -(void)performPOSTCallToEndpoint:(NSString *)endpoint

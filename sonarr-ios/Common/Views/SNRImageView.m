@@ -23,29 +23,45 @@
 }
 
 -(void)setImageWithURL:(NSURL *)url{
-    [self setImageWithURL:url andCompletion:nil];
+    [self setImageWithURL:url forClient:nil andCompletion:nil];
 }
 
--(void)setImageWithURL:(NSURL *)url andCompletion:(void(^)(UIImage *image))completion{
+-(void)setImageWithURL:(NSURL *)url forClient:(SNRAPIClient *)client andCompletion:(void(^)(UIImage *image))completion{
     NSInteger tag = self.tag + 1;
     self.tag = tag;
     
     [SNRActivityIndicatorView show:YES onView:self];
     
     __weak typeof(self) wself = self;
-    [UIImage imageWithURL:url andCompletion:^(UIImage *image) {
-        if(tag == self.tag){
-            if(image){
-                __strong typeof(wself) sself = wself;
-                [SNRActivityIndicatorView show:NO onView:self];
-                sself.image = image;
+    if(client){
+        [UIImage imageWithURL:url forClient:client andCompletion:^(UIImage *image) {
+            if(tag == self.tag){
+                if(image){
+                    __strong typeof(wself) sself = wself;
+                    [SNRActivityIndicatorView show:NO onView:self];
+                    sself.image = image;
+                }
             }
-        }
-        
-        if(completion){
-            completion(image);
-        }
-    }];
+            
+            if(completion){
+                completion(image);
+            }
+        }];
+    }else{
+        [UIImage imageWithURL:url andCompletion:^(UIImage *image) {
+            if(tag == self.tag){
+                if(image){
+                    __strong typeof(wself) sself = wself;
+                    [SNRActivityIndicatorView show:NO onView:self];
+                    sself.image = image;
+                }
+            }
+            
+            if(completion){
+                completion(image);
+            }
+        }];
+    }
 }
 
 @end

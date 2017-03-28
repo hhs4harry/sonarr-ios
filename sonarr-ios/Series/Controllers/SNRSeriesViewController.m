@@ -12,6 +12,7 @@
 #import "SNRBaseTableView.h"
 #import "SNRServerManager.h"
 #import "SNRServer.h"
+#import "SNRAddSeriesSheetViewController.h"
 
 @interface SNRSeriesViewController () <SNRNavigationBarButtonProtocol, UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet SNRBaseTableView *tableView;
@@ -28,6 +29,7 @@
     if(!self.server.series){
         __weak typeof(self) wself = self;
         [self.server seriesWithRefresh:NO andCompletion:^(NSArray<SNRSeries *> *series, NSError *error) {
+            [wself.tableView.refreshControl endRefreshing];
             [wself.tableView reloadData];
         }];
     }
@@ -36,6 +38,9 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     
+    if(!self.server.series.count){
+        [self.tableView.refreshControl beginRefreshing];
+    }
     [self.tableView.refreshControl addTarget:self action:@selector(didRequestPullToRefresh:) forControlEvents:UIControlEventValueChanged];
 }
 
@@ -47,7 +52,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if(!self.server.series.count){
-        return 100;
+        return 50;
     }
     return 150;
 }
@@ -78,7 +83,9 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
     if(self.server.series.count){
         for (SNRSeriesTableViewCell *seriesCell in self.tableView.visibleCells) {
-            [seriesCell scrollViewDidScroll:scrollView];
+            if([seriesCell isKindOfClass:[SNRSeriesTableViewCell class]]){
+                [seriesCell scrollViewDidScroll:scrollView];
+            }
         }
     }
 }
@@ -86,9 +93,9 @@
 #pragma mark - Navigation Protocol
 
 -(void)addSeriesButtonTouchUpInside{
-    [self.tableView.refreshControl endRefreshing];
-    
-//    [self presentViewController:[SNRAddServerPopUpViewController formViewController] animated:YES completion:nil];
+    [self presentViewController:[SNRAddSeriesSheetViewController formViewController]
+                       animated:YES
+                     completion:nil];
 }
 
 -(UIBarButtonItem *)rightBarButton{
