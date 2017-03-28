@@ -11,7 +11,6 @@
 @protocol SNRBaseSheetViewControllerProtocol <NSObject>
 @required
 +(UIViewController *)formViewController;
-+(CGSize)contentViewSize;
 @end
 
 @interface SNRBaseSheetViewController : SNRBaseViewController <SNRBaseSheetViewControllerProtocol>

@@ -189,19 +189,7 @@ Add one now!</string>
                                                 </imageView>
                                                 <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W1Q-SV-Dad">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
-                                                    <subviews>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UVY-Zq-Gv9">
-                                                            <rect key="frame" x="345" y="39" width="22" height="22"/>
-                                                            <color key="tintColor" red="0.37647058820000001" green="0.77647058820000003" blue="0.94509803920000002" alpha="1" colorSpace="calibratedRGB"/>
-                                                            <connections>
-                                                                <action selector="addSeriesTouchUpInside:" destination="xnY-L3-sAB" eventType="touchUpInside" id="6SV-WC-ZP8"/>
-                                                            </connections>
-                                                        </button>
-                                                    </subviews>
                                                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <constraints>
-                                                        <constraint firstItem="UVY-Zq-Gv9" firstAttribute="centerY" secondItem="W1Q-SV-Dad" secondAttribute="centerY" id="8LE-J7-Low"/>
-                                                    </constraints>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="aired" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aVd-fH-Ujl">
                                                     <rect key="frame" x="340.5" y="78.5" width="26.5" height="13.5"/>
@@ -248,7 +236,6 @@ Add one now!</string>
                                                 <constraint firstAttribute="trailing" secondItem="W1Q-SV-Dad" secondAttribute="trailing" id="XOP-cq-dcQ"/>
                                                 <constraint firstAttribute="bottom" secondItem="XFN-WK-pxz" secondAttribute="bottom" constant="8" id="YFR-Pt-w0c"/>
                                                 <constraint firstItem="XFN-WK-pxz" firstAttribute="top" secondItem="ThK-Bt-GUJ" secondAttribute="top" constant="8" id="aDP-14-o5V"/>
-                                                <constraint firstItem="UVY-Zq-Gv9" firstAttribute="trailing" secondItem="aVd-fH-Ujl" secondAttribute="trailing" id="cYb-56-g7s"/>
                                                 <constraint firstAttribute="trailing" secondItem="yUR-zu-NV8" secondAttribute="trailing" id="sbz-2B-6gg"/>
                                                 <constraint firstAttribute="bottom" secondItem="W1Q-SV-Dad" secondAttribute="bottom" id="xIB-gF-ZRR"/>
                                                 <constraint firstItem="yUR-zu-NV8" firstAttribute="leading" secondItem="ThK-Bt-GUJ" secondAttribute="leading" id="zKE-Mf-klt"/>

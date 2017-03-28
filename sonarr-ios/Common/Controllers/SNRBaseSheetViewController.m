@@ -9,7 +9,7 @@
 #import "SNRBaseSheetViewController.h"
 #import <MZFormSheetPresentationController/MZFormSheetPresentationViewController.h>
 
-@interface SNRBaseSheetViewController ()
+@interface SNRBaseSheetViewController () <MZFormSheetPresentationContentSizing>
 
 @end
 
@@ -17,15 +17,21 @@
 
 +(UIViewController *)formViewController{
     MZFormSheetPresentationViewController *formVC = [[MZFormSheetPresentationViewController alloc] initWithContentViewController:[[self vcStoryboard] instantiateViewControllerWithIdentifier:[self storyboardIdentifier]]];
-    formVC.presentationController.contentViewSize = [self contentViewSize];
     formVC.allowDismissByPanningPresentedView = YES;
     formVC.interactivePanGestureDismissalDirection = MZFormSheetPanGestureDismissDirectionAll;
     
     return formVC;
 }
 
-+(CGSize)contentViewSize{
-    return CGSizeMake(CGRectGetWidth([UIScreen mainScreen].bounds) * 0.9, CGRectGetHeight([UIScreen mainScreen].bounds) * 0.4);
+- (BOOL)shouldUseContentViewFrameForPresentationController:(MZFormSheetPresentationController *)presentationController {
+    return YES;
+}
+
+- (CGRect)contentViewFrameForPresentationController:(MZFormSheetPresentationController *)presentationController currentFrame:(CGRect)currentFrame {
+    CGFloat viewW = CGRectGetWidth([UIScreen mainScreen].bounds);
+    CGFloat viewH = CGRectGetHeight([UIScreen mainScreen].bounds);
+    
+    return CGRectMake(viewW * 0.05, viewH * 0.3, viewW * 0.9, viewH * 0.4);
 }
 
 @end

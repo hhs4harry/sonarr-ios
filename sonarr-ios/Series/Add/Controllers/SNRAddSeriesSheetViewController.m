@@ -38,12 +38,19 @@
     [super viewWillAppear:animated];
     
     [self.tableView.refreshControl addTarget:self action:@selector(didRequestPullToRefresh:) forControlEvents:UIControlEventValueChanged];
+    [self.searchBar becomeFirstResponder];
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
     
-    [self.searchBar endEditing:YES];
+    [self.searchBar resignFirstResponder];
+}
+
+-(void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator{
+    [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
+    
+    [self.searchBar resignFirstResponder];
 }
 
 #pragma mark - TableView
@@ -56,7 +63,7 @@
     if(!self.series.count){
         return 50;
     }
-    return 150;
+    return CGRectGetWidth(self.view.frame)/2.5;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -129,20 +136,20 @@
     });
 }
 
-- (BOOL)searchBarShouldEndEditing:(UISearchBar *)searchBar{
-    if([searchBar.text nonEmpty]){
-        [self.searchBar resignFirstResponder];
-        [self runSearch];
-    }
-    return [searchBar.text nonEmpty];
-}
-
 -(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
-    [self searchBarShouldEndEditing:searchBar];
+    if(![searchBar.text nonEmpty]){
+        return;
+    }
+    
+    [self.searchBar resignFirstResponder];
+    [self runSearch];
 }
 
 +(CGSize)contentViewSize{
     return CGSizeMake(CGRectGetWidth([UIScreen mainScreen].bounds) * 0.9, CGRectGetHeight([UIScreen mainScreen].bounds) * 0.6);
 }
 
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
+    [self.view endEditing:[self.searchBar resignFirstResponder]];
+}
 @end

@@ -19,9 +19,6 @@ PODS:
   - MZAppearance (1.1.6)
   - MZFormSheetPresentationController (2.4.2):
     - MZAppearance
-  - SDWebImage (4.0.0):
-    - SDWebImage/Core (= 4.0.0)
-  - SDWebImage/Core (4.0.0)
   - UIFloatLabelTextField (1.2.7)
 
 DEPENDENCIES:
@@ -29,7 +26,6 @@ DEPENDENCIES:
   - IQKeyboardManager (~> 4.0)
   - JSONModel (~> 1.7)
   - MZFormSheetPresentationController (~> 2.4)
-  - SDWebImage (~> 4.0)
   - UIFloatLabelTextField (~> 1.2)
 
 SPEC CHECKSUMS:
@@ -38,9 +34,8 @@ SPEC CHECKSUMS:
   JSONModel: 840bc0fcffb24b8454d2c026bf26fea454b8e98d
   MZAppearance: 0c06d3fa9cc55142f1da14bc8631fbe8fd6e19d5
   MZFormSheetPresentationController: c1dc3bce639d2393b3cc416fcb6e050eb5bca062
-  SDWebImage: 76a6348bdc74eb5a55dd08a091ef298e56b55e41
   UIFloatLabelTextField: ec6e82ae7cc06185bda955a9dce17e81cf34327c
 
-PODFILE CHECKSUM: 25bb1e303ad62503bd6e0d2aedf36b7bcd00e274
+PODFILE CHECKSUM: c963baf26213fd5e5a8406bf14fe9ca1f863a742
 
 COCOAPODS: 1.2.0
