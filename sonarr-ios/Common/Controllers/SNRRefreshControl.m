@@ -17,10 +17,13 @@
     [super beginRefreshing];
     
     if (((UITableView *)self.superview).contentOffset.y == 0) {
-        [UIView animateWithDuration:0.25 delay:0 options:UIViewAnimationOptionBeginFromCurrentState animations:^(void){
-            ((UITableView *)self.superview).contentOffset = CGPointMake(0,
-                                                                        -self.frame.size.height);
-        } completion:nil];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [UIView animateWithDuration:0.25 delay:0 options:UIViewAnimationOptionBeginFromCurrentState animations:^(void){
+                ((UITableView *)self.superview).contentOffset = CGPointMake(0,
+                                                                            -self.frame.size.height);
+                [self.superview bringSubviewToFront:self];
+            } completion:nil];
+        });
     }
 }
 
@@ -29,10 +32,11 @@
     
     if(self.refreshing){
         if (((UITableView *)self.superview).contentOffset.y != 0) {
-            [UIView animateWithDuration:0.25 delay:0 options:UIViewAnimationOptionBeginFromCurrentState animations:^(void){
-                ((UITableView *)self.superview).contentOffset = CGPointZero;
-            } completion:nil];
-            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [UIView animateWithDuration:0.25 delay:0 options:UIViewAnimationOptionBeginFromCurrentState animations:^(void){
+                    ((UITableView *)self.superview).contentOffset = CGPointZero;
+                } completion:nil];
+            });
         }
     }
 }

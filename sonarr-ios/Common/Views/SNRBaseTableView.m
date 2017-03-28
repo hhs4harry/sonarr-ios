@@ -21,9 +21,18 @@
 -(instancetype)initWithCoder:(NSCoder *)aDecoder{
     self = [super initWithCoder:aDecoder];
     if(self){
-
+        
     }
     return self;
+}
+
+-(void)reloadData{
+    [UIView transitionWithView:self
+                      duration:0.5f
+                       options:UIViewAnimationOptionTransitionCurlUp
+                    animations:^(void) {
+                        [super reloadData];
+                    } completion:nil];
 }
 
 -(void)setPullToRefresh:(BOOL)pullToRefresh{

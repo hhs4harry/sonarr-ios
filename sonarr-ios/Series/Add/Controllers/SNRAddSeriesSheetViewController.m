@@ -16,6 +16,7 @@
 
 @interface SNRAddSeriesSheetViewController () <UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, SNRSeriesAddProtocol>
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
+@property (strong, nonatomic) NSString *currSearch;
 @property (weak, nonatomic) IBOutlet SNRBaseTableView *tableView;
 @property (strong, nonatomic) SNRServer *server;
 @property (strong, nonatomic) NSArray *series;
@@ -72,15 +73,10 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-//    if(self.searchBar.text.length){
-//        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"noSeriesCell" forIndexPath:indexPath];
-//        return cell;
-//    }else if(!self.searchBar.text.length){
     if(!self.series.count){
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"instructionsCell" forIndexPath:indexPath];
         return cell;
     }
-//    }
     
     SNRSeriesAddTableViewCell *seriesCell = [tableView dequeueReusableCellWithIdentifier:@"seriesAddCell" forIndexPath:indexPath];
     seriesCell.tag = indexPath.row;
@@ -128,6 +124,8 @@
 #pragma mark - Search Bar delegate
 
 -(void)runSearch{
+    self.currSearch = self.searchBar.text;
+    
     [self.tableView.refreshControl beginRefreshing];
 
     __weak typeof(self) wself = self;
@@ -144,8 +142,19 @@
         return;
     }
     
+    if([searchBar.text isEqualToString:self.currSearch]){
+        return;
+    }
+    
     [self.searchBar resignFirstResponder];
     [self runSearch];
+}
+
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{
+    if(![searchText isEqualToString:self.currSearch]){
+        self.series = nil;
+        [self.tableView reloadData];
+    }
 }
 
 +(CGSize)contentViewSize{
