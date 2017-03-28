@@ -12,6 +12,7 @@
 #import "NSString+check.h"
 #import "SNRServer.h"
 #import "SNRServerManager.h"
+#import "SNRRefreshControl.h"
 
 @interface SNRAddSeriesSheetViewController () <UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, SNRSeriesAddProtocol>
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
@@ -108,6 +109,10 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
     if(self.series.count){
         for (SNRSeriesAddTableViewCell *seriesCell in self.tableView.visibleCells) {
+            if(![seriesCell isKindOfClass:[SNRSeriesAddTableViewCell class]]){
+                continue;
+            }
+            
             [seriesCell scrollViewDidScroll:scrollView];
         }
     }
@@ -123,17 +128,15 @@
 #pragma mark - Search Bar delegate
 
 -(void)runSearch{
-    [self.tableView setContentOffset:CGPointMake(0, -CGRectGetHeight(self.tableView.refreshControl.frame)) animated:YES];
     [self.tableView.refreshControl beginRefreshing];
 
-    dispatch_async(dispatch_get_main_queue(), ^{
-        __weak typeof(self) wself = self;
-        [self.server searchForSeries:self.searchBar.text withCompletion:^(NSArray<SNRSeries *> *series, NSError *error) {
-            wself.series = series;
-            [wself.tableView reloadData];
-            [wself.tableView.refreshControl endRefreshing];
-        }];
-    });
+    __weak typeof(self) wself = self;
+    [self.server searchForSeries:self.searchBar.text withCompletion:^(NSArray<SNRSeries *> *series, NSError *error) {
+        wself.series = series;
+        
+        [wself.tableView.refreshControl endRefreshing];
+        [wself.tableView reloadData];
+    }];
 }
 
 -(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{

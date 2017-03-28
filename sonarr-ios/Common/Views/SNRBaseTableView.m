@@ -8,17 +8,20 @@
 
 #import "SNRBaseTableView.h"
 #import "UIColor+App.h"
+#import "SNRRefreshControl.h"
 
 @interface SNRBaseTableView()
 @property (assign, nonatomic) IBInspectable BOOL pullToRefresh;
+@property (strong, nonatomic) SNRRefreshControl *refreshControl;
 @end
 
 @implementation SNRBaseTableView
+@synthesize refreshControl;
 
 -(instancetype)initWithCoder:(NSCoder *)aDecoder{
     self = [super initWithCoder:aDecoder];
     if(self){
-        
+
     }
     return self;
 }
@@ -27,8 +30,10 @@
     _pullToRefresh = pullToRefresh;
     
     if(_pullToRefresh){
-        self.refreshControl = [[UIRefreshControl alloc] init];
+        self.refreshControl = [[SNRRefreshControl alloc] init];
+        [self insertSubview:self.refreshControl atIndex:0];
         self.refreshControl.tintColor = [UIColor secondary];
+        self.refreshControl.backgroundColor = [UIColor primary];
     }
 }
 

@@ -13,6 +13,7 @@
 		4A147BAD1E89D4F2000807AD /* NSString+check.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A147BAC1E89D4F2000807AD /* NSString+check.m */; };
 		4A147BB41E89F4DA000807AD /* SNRAddSeriesSheetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A147BB31E89F4DA000807AD /* SNRAddSeriesSheetViewController.m */; };
 		4A147BB71E89F50E000807AD /* SNRSeriesAddTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A147BB61E89F50E000807AD /* SNRSeriesAddTableViewCell.m */; };
+		4A147BBA1E8AD2C5000807AD /* SNRRefreshControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A147BB91E8AD2C5000807AD /* SNRRefreshControl.m */; };
 		4A3498D21E635E5300453E63 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A3498D01E635E5300453E63 /* Assets.xcassets */; };
 		4A3498D81E635E6C00453E63 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4A3498D41E635E6C00453E63 /* LaunchScreen.storyboard */; };
 		4A3498D91E635E6C00453E63 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4A3498D61E635E6C00453E63 /* Main.storyboard */; };
@@ -92,6 +93,8 @@
 		4A147BB31E89F4DA000807AD /* SNRAddSeriesSheetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRAddSeriesSheetViewController.m; path = Series/Add/Controllers/SNRAddSeriesSheetViewController.m; sourceTree = "<group>"; };
 		4A147BB51E89F50E000807AD /* SNRSeriesAddTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRSeriesAddTableViewCell.h; path = Series/Add/Views/SNRSeriesAddTableViewCell.h; sourceTree = "<group>"; };
 		4A147BB61E89F50E000807AD /* SNRSeriesAddTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRSeriesAddTableViewCell.m; path = Series/Add/Views/SNRSeriesAddTableViewCell.m; sourceTree = "<group>"; };
+		4A147BB81E8AD2C5000807AD /* SNRRefreshControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRRefreshControl.h; path = Common/Controllers/SNRRefreshControl.h; sourceTree = "<group>"; };
+		4A147BB91E8AD2C5000807AD /* SNRRefreshControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRRefreshControl.m; path = Common/Controllers/SNRRefreshControl.m; sourceTree = "<group>"; };
 		4A3498931E63587200453E63 /* Sonarr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sonarr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A3498AC1E63587200453E63 /* sonarr-iosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "sonarr-iosTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A3498B71E63587200453E63 /* sonarr-iosUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "sonarr-iosUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -492,6 +495,8 @@
 				4A9E6C501E760507008AB91A /* SNRBaseViewController.m */,
 				4A9E6C5F1E765B67008AB91A /* SNRBaseSheetViewController.h */,
 				4A9E6C601E765B67008AB91A /* SNRBaseSheetViewController.m */,
+				4A147BB81E8AD2C5000807AD /* SNRRefreshControl.h */,
+				4A147BB91E8AD2C5000807AD /* SNRRefreshControl.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -751,6 +756,7 @@
 				4A777C4C1E63FE9C006B1987 /* SNRHistory.m in Sources */,
 				4A34991A1E63D9A600453E63 /* SNRStatistics.m in Sources */,
 				4A777C651E653283006B1987 /* SNRValue.m in Sources */,
+				4A147BBA1E8AD2C5000807AD /* SNRRefreshControl.m in Sources */,
 				4A0969651E843F7800A8C35E /* SNRActivityIndicatorView.m in Sources */,
 				4AA5D5EF1E668F8300C044C7 /* SNRAddServerPopUpViewController.m in Sources */,
 				4A34990A1E63C59400453E63 /* SNRStatus.m in Sources */,
