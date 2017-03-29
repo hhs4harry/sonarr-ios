@@ -9,35 +9,53 @@
 #import "SNRRefreshControl.h"
 
 @interface SNRRefreshControl()
+@property (strong, nonatomic) NSOperationQueue *refreshQueue;
+@property (assign, nonatomic) CGRect actualRect;
 @end
 
 @implementation SNRRefreshControl
 
+-(instancetype)init{
+    self = [super init];
+    if(self){
+        self.refreshQueue = [[NSOperationQueue alloc] init];
+        self.refreshQueue.maxConcurrentOperationCount = 1;
+        self.refreshQueue.underlyingQueue = dispatch_get_main_queue();
+        
+        self.actualRect = self.bounds;
+    }
+    return self;
+}
+
 -(void)beginRefreshing{
     [super beginRefreshing];
-    
-    if (((UITableView *)self.superview).contentOffset.y == 0) {
-        dispatch_async(dispatch_get_main_queue(), ^{
+
+    if (((UITableView *)self.superview).contentOffset.y != -CGRectGetHeight(self.actualRect)) {
+        [self.refreshQueue addOperationWithBlock:^{
+            self.refreshQueue.suspended = YES;
+
             [UIView animateWithDuration:0.25 delay:0 options:UIViewAnimationOptionBeginFromCurrentState animations:^(void){
+                [self setFrame:CGRectMake(0, -CGRectGetHeight(self.actualRect), CGRectGetWidth(self.frame), CGRectGetHeight(self.actualRect))];
                 ((UITableView *)self.superview).contentOffset = CGPointMake(0,
-                                                                            -self.frame.size.height);
-                [self.superview bringSubviewToFront:self];
-            } completion:nil];
-        });
+                                                                            -CGRectGetHeight(self.actualRect));
+            } completion:^(BOOL finished) {
+                self.refreshQueue.suspended = NO;
+            }];
+        }];
     }
 }
 
 -(void)endRefreshing{
-    [super endRefreshing];
-    
-    if(self.refreshing){
-        if (((UITableView *)self.superview).contentOffset.y != 0) {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [UIView animateWithDuration:0.25 delay:0 options:UIViewAnimationOptionBeginFromCurrentState animations:^(void){
-                    ((UITableView *)self.superview).contentOffset = CGPointZero;
-                } completion:nil];
-            });
-        }
+    if (((UITableView *)self.superview).contentOffset.y != 0) {
+        [self.refreshQueue addOperationWithBlock:^{
+            self.refreshQueue.suspended = YES;
+            [UIView animateWithDuration:0.25 delay:0 options:UIViewAnimationOptionBeginFromCurrentState animations:^(void){
+                ((UITableView *)self.superview).contentOffset = CGPointZero;
+            } completion:^(BOOL finished) {
+                [super endRefreshing];
+                self.refreshQueue.suspended = NO;
+            }];
+        }];
     }
 }
 @end
