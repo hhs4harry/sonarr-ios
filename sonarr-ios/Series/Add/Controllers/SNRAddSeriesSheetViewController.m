@@ -24,6 +24,8 @@
 
 @implementation SNRAddSeriesSheetViewController
 
+#pragma mark - Life cycle
+
 -(void)awakeFromNib{
     [super awakeFromNib];
     
@@ -65,7 +67,8 @@
     if(!self.series.count){
         return 50;
     }
-    return CGRectGetWidth(self.view.frame)/2.5;
+    
+    return CGRectGetWidth(self.view.frame) / 2.5;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -125,15 +128,15 @@
 
 -(void)runSearch{
     self.currSearch = self.searchBar.text;
-    
     [self.tableView.refreshControl beginRefreshing];
 
     __weak typeof(self) wself = self;
     [self.server searchForSeries:self.searchBar.text withCompletion:^(NSArray<SNRSeries *> *series, NSError *error) {
-        wself.series = series;
-        
+        if(series){
+            wself.series = series;
+            [wself.tableView reloadData];
+        }
         [wself.tableView.refreshControl endRefreshing];
-        [wself.tableView reloadData];
     }];
 }
 
@@ -151,17 +154,17 @@
 }
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{
+    if(![searchText nonEmpty] ||
+       ![self.currSearch nonEmpty] ||
+       !self.series.count){
+        return;
+    }
+    
     if(![searchText isEqualToString:self.currSearch]){
         self.series = nil;
+        self.currSearch = nil;
         [self.tableView reloadData];
     }
 }
 
-+(CGSize)contentViewSize{
-    return CGSizeMake(CGRectGetWidth([UIScreen mainScreen].bounds) * 0.9, CGRectGetHeight([UIScreen mainScreen].bounds) * 0.6);
-}
-
-- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
-    [self.view endEditing:[self.searchBar resignFirstResponder]];
-}
 @end

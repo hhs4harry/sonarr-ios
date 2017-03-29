@@ -60,7 +60,6 @@
 		4A9E6C6B1E7785FE008AB91A /* SNRAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A9E6C6A1E7785FE008AB91A /* SNRAPIClient.m */; };
 		4AA5D5EF1E668F8300C044C7 /* SNRAddServerPopUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AA5D5EE1E668F8300C044C7 /* SNRAddServerPopUpViewController.m */; };
 		4AFA7BB11E7B9C8100932038 /* SNRServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AFA7BB01E7B9C8100932038 /* SNRServer.m */; };
-		6F52D82016799076E68DDF32 /* libPods-sonarr-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FD31FBD03D949BB5680777EB /* libPods-sonarr-ios.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -199,7 +198,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6F52D82016799076E68DDF32 /* libPods-sonarr-ios.a in Frameworks */,
 				259F2E248A9B5D0391C7AB70 /* libPods-Sonarr.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -921,6 +919,7 @@
 			baseConfigurationReference = BB5C7CE7C2B72066F6F7B282 /* Pods-Sonarr.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				DEVELOPMENT_TEAM = JCPQYCKCFL;
 				INFOPLIST_FILE = "$(SRCROOT)/sonarr-ios/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -935,6 +934,7 @@
 			baseConfigurationReference = 0FDDA95A3279C944A0D329B3 /* Pods-Sonarr.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				DEVELOPMENT_TEAM = JCPQYCKCFL;
 				INFOPLIST_FILE = "$(SRCROOT)/sonarr-ios/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
