@@ -7,8 +7,7 @@
 //
 
 #import "SNRAddServerPopUpViewController.h"
-#import <MZFormSheetPresentationController/MZFormSheetPresentationController.h>
-#import <MZFormSheetPresentationController/MZFormSheetPresentationViewController.h>
+#import <MZFormSheetController/MZFormSheetController.h>
 #import "SNRServer.h"
 #import "SNRServerConfig.h"
 #import "SNRServerManager.h"

@@ -7,6 +7,7 @@
 //
 
 #import "SNRRefreshControl.h"
+#import "UIColor+App.h"
 
 @interface SNRRefreshControl()
 @property (strong, nonatomic) NSOperationQueue *refreshQueue;
@@ -21,6 +22,9 @@
         self.refreshQueue = [[NSOperationQueue alloc] init];
         self.refreshQueue.maxConcurrentOperationCount = 1;
         self.refreshQueue.underlyingQueue = dispatch_get_main_queue();
+        
+        self.tintColor = [UIColor secondary];
+        self.backgroundColor = [UIColor primary];
         
         self.actualRect = self.bounds;
     }

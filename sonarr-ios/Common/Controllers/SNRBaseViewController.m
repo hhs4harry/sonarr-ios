@@ -10,12 +10,15 @@
 #import "UIAlertController+Show.h"
 #import "SNRServerManager.h"
 #import "SNRActivityIndicatorView.h"
+#import <MZFormSheetController/MZFormSheetController.h>
 
 @interface SNRBaseViewController ()
 @property (strong, nonatomic) UIView *spinnerView;
 @end
 
 @implementation SNRBaseViewController
+
+#pragma mark - Life cycle
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
@@ -38,6 +41,8 @@
     }
 }
 
+#pragma mark - Protocol
+
 +(UIStoryboard *)vcStoryboard{
     return [UIStoryboard storyboardWithName:@"Main" bundle:nil];
 }
@@ -51,6 +56,8 @@
         self.spinnerView.hidden = !show;
     });
 }
+
+#pragma mark - Notification
 
 -(void)showMessage:(NSString *)message withTitle:(NSString *)title{
     dispatch_async(dispatch_get_main_queue(), ^{
@@ -107,6 +114,20 @@
         _spinnerView = newSpinner;
     }
     return _spinnerView;
+}
+
+#pragma mark - Presenting
+
+-(void)presentViewController:(UIViewController *)viewControllerToPresent animated:(BOOL)flag completion:(void (^)(void))completion{
+    if(![viewControllerToPresent isMemberOfClass:[MZFormSheetController class]]){
+        return [super presentViewController:viewControllerToPresent animated:flag completion:completion];
+    }
+    
+    [self mz_presentFormSheetController:(id)viewControllerToPresent animated:flag completionHandler:^(MZFormSheetController * _Nonnull formSheetController) {
+        if(completion){
+            completion();
+        }
+    }];
 }
 
 @end

@@ -41,8 +41,6 @@
     if(_pullToRefresh){
         self.refreshControl = [[SNRRefreshControl alloc] init];
         [self insertSubview:self.refreshControl atIndex:0];
-        self.refreshControl.tintColor = [UIColor secondary];
-        self.refreshControl.backgroundColor = [UIColor primary];
     }
 }
 
