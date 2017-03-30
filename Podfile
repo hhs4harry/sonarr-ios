@@ -4,7 +4,7 @@
 target 'Sonarr' do
   pod 'AFNetworking', '~> 3.0'
   pod 'JSONModel', '~> 1.7'
-  pod 'MZFormSheetController', '~> 3.1'
+  pod 'MZFormSheetPresentationController', '~> 2.4'
   pod 'UIFloatLabelTextField', '~> 1.2'
   pod 'IQKeyboardManager', '~> 4.0'
 end

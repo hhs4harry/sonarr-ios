@@ -33,6 +33,7 @@
 		4A5F0A301E81A6BC008463F6 /* UIImage+Remote.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A5F0A2F1E81A6BC008463F6 /* UIImage+Remote.m */; };
 		4A5F0A331E81A70B008463F6 /* SNRImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A5F0A321E81A70B008463F6 /* SNRImageView.m */; };
 		4A5F0A381E81A8E6008463F6 /* SNRSeriesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A5F0A371E81A8E6008463F6 /* SNRSeriesTableViewCell.m */; };
+		4A6D2A8D1E8DAA6F00BE876F /* SNRSheetNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A6D2A8C1E8DAA6F00BE876F /* SNRSheetNavigationViewController.m */; };
 		4A777C331E63EBC9006B1987 /* SNRCalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A777C321E63EBC9006B1987 /* SNRCalendar.m */; };
 		4A777C391E63ECED006B1987 /* SNREpisode.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A777C381E63ECED006B1987 /* SNREpisode.m */; };
 		4A777C3C1E63EDAE006B1987 /* SNRQuality.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A777C3B1E63EDAE006B1987 /* SNRQuality.m */; };
@@ -131,6 +132,8 @@
 		4A5F0A321E81A70B008463F6 /* SNRImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRImageView.m; path = Common/Views/SNRImageView.m; sourceTree = "<group>"; };
 		4A5F0A361E81A8E6008463F6 /* SNRSeriesTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRSeriesTableViewCell.h; path = Series/Views/SNRSeriesTableViewCell.h; sourceTree = "<group>"; };
 		4A5F0A371E81A8E6008463F6 /* SNRSeriesTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRSeriesTableViewCell.m; path = Series/Views/SNRSeriesTableViewCell.m; sourceTree = "<group>"; };
+		4A6D2A8B1E8DAA6F00BE876F /* SNRSheetNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRSheetNavigationViewController.h; path = Navigation/Controllers/SNRSheetNavigationViewController.h; sourceTree = "<group>"; };
+		4A6D2A8C1E8DAA6F00BE876F /* SNRSheetNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRSheetNavigationViewController.m; path = Navigation/Controllers/SNRSheetNavigationViewController.m; sourceTree = "<group>"; };
 		4A777C311E63EBC9006B1987 /* SNRCalendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRCalendar.h; path = API/Models/SNRCalendar.h; sourceTree = "<group>"; };
 		4A777C321E63EBC9006B1987 /* SNRCalendar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRCalendar.m; path = API/Models/SNRCalendar.m; sourceTree = "<group>"; };
 		4A777C371E63ECED006B1987 /* SNREpisode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNREpisode.h; path = API/Models/SNREpisode.h; sourceTree = "<group>"; };
@@ -512,6 +515,8 @@
 			children = (
 				4A9E6C541E760662008AB91A /* SNRNavigationViewController.h */,
 				4A9E6C551E760662008AB91A /* SNRNavigationViewController.m */,
+				4A6D2A8B1E8DAA6F00BE876F /* SNRSheetNavigationViewController.h */,
+				4A6D2A8C1E8DAA6F00BE876F /* SNRSheetNavigationViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -749,6 +754,7 @@
 				4A777C621E65325F006B1987 /* SNRQualityProfile.m in Sources */,
 				4A3499231E63DD1000453E63 /* SNRRatings.m in Sources */,
 				4A3499171E63D94A00453E63 /* SNRSeason.m in Sources */,
+				4A6D2A8D1E8DAA6F00BE876F /* SNRSheetNavigationViewController.m in Sources */,
 				4A9E6C511E760507008AB91A /* SNRBaseViewController.m in Sources */,
 				4A9E6C591E760C9B008AB91A /* UIColor+App.m in Sources */,
 				4A777C4C1E63FE9C006B1987 /* SNRHistory.m in Sources */,

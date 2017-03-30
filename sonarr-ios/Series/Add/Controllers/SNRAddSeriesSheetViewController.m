@@ -6,6 +6,7 @@
 //  Copyright © 2017 Harry Singh. All rights reserved.
 //
 
+#import <MZFormSheetPresentationController/MZFormSheetPresentationViewController.h>
 #import "SNRAddSeriesSheetViewController.h"
 #import "SNRBaseTableView.h"
 #import "SNRSeriesAddTableViewCell.h"
@@ -13,6 +14,7 @@
 #import "SNRServer.h"
 #import "SNRServerManager.h"
 #import "SNRRefreshControl.h"
+#import "SNRSeriesViewController.h"
 
 @interface SNRAddSeriesSheetViewController () <UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, SNRSeriesAddProtocol>
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
@@ -40,6 +42,8 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    
+    self.title = @"Search";
     
     [self.tableView.refreshControl addTarget:self action:@selector(didRequestPullToRefresh:) forControlEvents:UIControlEventValueChanged];
     [self.searchBar becomeFirstResponder];
@@ -91,8 +95,8 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath{
     SNRSeriesTableViewCell *seriesCell = [tableView cellForRowAtIndexPath:indexPath];
-    [seriesCell setSelected:YES];
-    return;
+    
+    [self.navigationController pushViewController:[SNRSeriesViewController viewController] animated:YES];
 }
 
 -(void)didRequestPullToRefresh:(id)sender{
@@ -103,7 +107,6 @@
     
     [self runSearch];
 }
-
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
     if(self.series.count){

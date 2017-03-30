@@ -173,10 +173,10 @@ Add one now!</string>
             </objects>
             <point key="canvasLocation" x="656.79999999999995" y="138.98050974512745"/>
         </scene>
-        <!--Add Series Sheet View Controller-->
+        <!--Search-->
         <scene sceneID="V7w-58-l8c">
             <objects>
-                <viewController storyboardIdentifier="SNRAddSeriesSheetViewControllerSBID" useStoryboardIdentifierAsRestorationIdentifier="YES" id="g1N-hN-kcn" customClass="SNRAddSeriesSheetViewController" sceneMemberID="viewController">
+                <viewController title="Search" id="g1N-hN-kcn" customClass="SNRAddSeriesSheetViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="TLH-Fh-czM"/>
                         <viewControllerLayoutGuide type="bottom" id="XkL-rC-Wov"/>
@@ -186,7 +186,7 @@ Add one now!</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="18n-nv-KLw" customClass="SNRBaseTableView">
-                                <rect key="frame" x="0.0" y="44" width="375" height="226"/>
+                                <rect key="frame" x="0.0" y="108" width="375" height="162"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="seriesAddCell" rowHeight="100" id="xnY-L3-sAB" customClass="SNRSeriesAddTableViewCell">
@@ -272,6 +272,7 @@ Add one now!</string>
                                             <outlet property="seriesAiredLabel" destination="aVd-fH-Ujl" id="Sjp-k1-HZt"/>
                                             <outlet property="seriesImageView" destination="XFN-WK-pxz" id="nFq-7m-rdo"/>
                                             <outlet property="seriesTitleLabel" destination="Rou-kw-3Dd" id="lC4-3w-hfM"/>
+                                            <segue destination="LLh-gB-bfG" kind="show" id="2xS-Gy-VYJ"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="noSeriesCell" rowHeight="95" id="nNa-6t-iMH">
@@ -326,7 +327,7 @@ Add one now!</string>
                                 </connections>
                             </tableView>
                             <searchBar contentMode="redraw" searchBarStyle="prominent" placeholder="e.g. Archer or tvdb:75897" translatesAutoresizingMaskIntoConstraints="NO" id="HC3-bv-Rvp">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="44"/>
                                 <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
@@ -336,7 +337,7 @@ Add one now!</string>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="HC3-bv-Rvp" firstAttribute="top" secondItem="Y62-Ch-0TO" secondAttribute="top" id="72H-ls-Chn"/>
+                            <constraint firstItem="HC3-bv-Rvp" firstAttribute="top" secondItem="TLH-Fh-czM" secondAttribute="bottom" id="EF5-6z-I9v"/>
                             <constraint firstItem="HC3-bv-Rvp" firstAttribute="leading" secondItem="Y62-Ch-0TO" secondAttribute="leading" id="Fjg-06-PGF"/>
                             <constraint firstItem="18n-nv-KLw" firstAttribute="top" secondItem="HC3-bv-Rvp" secondAttribute="bottom" id="I8N-G6-PRP"/>
                             <constraint firstItem="18n-nv-KLw" firstAttribute="leading" secondItem="Y62-Ch-0TO" secondAttribute="leading" id="MKs-61-seZ"/>
@@ -345,6 +346,7 @@ Add one now!</string>
                             <constraint firstAttribute="bottom" secondItem="18n-nv-KLw" secondAttribute="bottom" id="r5n-C4-Y6e"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="2cr-JS-7eI"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="270"/>
                     <connections>
@@ -362,7 +364,43 @@ Add one now!</string>
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="1285.5999999999999" y="-38.680659670164921"/>
+            <point key="canvasLocation" x="1968.8" y="-40.479760119940032"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="MNd-Mb-jQi">
+            <objects>
+                <viewController id="LLh-gB-bfG" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="cS4-gO-V0e"/>
+                        <viewControllerLayoutGuide type="bottom" id="nbV-Iw-tnC"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="bbH-re-kla">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="270"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="k1h-7p-vUs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2625" y="-40"/>
+        </scene>
+        <!--Sheet Navigation View Controller-->
+        <scene sceneID="POn-y5-tNA">
+            <objects>
+                <navigationController storyboardIdentifier="SNRAddSeriesSheetViewControllerSBID" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Mxf-zV-Q5d" customClass="SNRSheetNavigationViewController" sceneMemberID="viewController">
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="375" height="270"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Vjf-ma-qNp">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="g1N-hN-kcn" kind="relationship" relationship="rootViewController" id="hVg-zB-8pz"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ctK-an-g6L" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1300" y="-40"/>
         </scene>
         <!--Servers-->
         <scene sceneID="TOn-8k-PAw">

@@ -63,7 +63,7 @@
 #pragma mark - Navigation Protocol
 
 -(void)addServerButtonTouchUpInside{
-    [self presentViewController:[SNRAddServerPopUpViewController formViewController]
+    [self presentViewController:[SNRAddServerPopUpViewController viewController]
                        animated:YES
                      completion:nil];
 }

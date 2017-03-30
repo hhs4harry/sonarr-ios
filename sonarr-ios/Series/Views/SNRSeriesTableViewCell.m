@@ -28,11 +28,6 @@ const CGFloat PARALLAXRATIO = 0.25;
 
 @implementation SNRSeriesTableViewCell
 
--(void)awakeFromNib{
-    [super awakeFromNib];
-    self.clipsToBounds = YES;
-}
-
 -(void)prepareForReuse{
     SNRImage *parallax = self.series.images.firstObject;
     SNRImage *seriesImage = self.series.images.lastObject;
@@ -60,9 +55,9 @@ const CGFloat PARALLAXRATIO = 0.25;
 }
 
 -(void)setSeries:(SNRSeries *)series forServer:(SNRServer *)server{
-    self.parallaxImageView.tag = self.tag + 1;
-    self.seriesImageView.tag = self.tag + 1;
-    self.tag = self.parallaxImageView.tag;
+    self.tag++;
+    self.parallaxImageView.tag = self.tag;
+    self.seriesImageView.tag = self.tag;
     
     self.series = series;
     
@@ -86,7 +81,6 @@ const CGFloat PARALLAXRATIO = 0.25;
         NSURL *paralaxImageURL = [NSURL URLWithString:[server generateURLWithEndpoint:parallax.url]];
         [self.parallaxImageView setImageWithURL:paralaxImageURL forClient:server.client andCompletion:^(UIImage * _Nullable image) {
             [wself scrollViewDidScroll:wself.scrollView];
-
             parallax.image = image;
         }];
     }

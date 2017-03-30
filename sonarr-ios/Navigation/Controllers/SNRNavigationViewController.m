@@ -19,12 +19,13 @@
 
 -(void)awakeFromNib{
     [super awakeFromNib];
-    
-    UIStoryboard *mainSB = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    UIViewController *controller = [mainSB instantiateViewControllerWithIdentifier:[SNRServerManagerViewController storyboardIdentifier]];
+
+    UIViewController *controller;
     
     if([SNRServerManager manager].servers.count){
-        controller = [mainSB instantiateViewControllerWithIdentifier:[SNRSeriesViewController storyboardIdentifier]];
+        controller = [SNRSeriesViewController viewController];
+    }else{
+        controller = [SNRServerManagerViewController viewController];
     }
     
     //set root view controller

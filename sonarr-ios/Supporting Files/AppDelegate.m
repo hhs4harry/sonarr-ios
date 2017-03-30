@@ -9,8 +9,8 @@
 #import "AppDelegate.h"
 #import "UIColor+App.h"
 #import <UIFloatLabelTextField/UIFloatLabelTextField.h>
-#import <MZFormSheetController/MZFormSheetController.h>
-#import <MZFormSheetController/MZFormSheetBackgroundWindow.h>
+#import <MZFormSheetPresentationController/MZFormSheetPresentationViewController.h>
+#import <MZFormSheetPresentationController/MZFormSheetPresentationController.h>
 
 @interface AppDelegate ()
 
@@ -32,16 +32,17 @@
     [UIFloatLabelTextField appearance].floatLabelActiveColor = [UIColor primary];
     [UIFloatLabelTextField appearance].floatLabelFont = [UIFont systemFontOfSize:[UIFont systemFontSize] - 5];
     
-    [MZFormSheetController appearance].shouldCenterVertically = YES;
-    [MZFormSheetController appearance].shouldDismissOnBackgroundViewTap = YES;
-    [MZFormSheetController appearance].movementWhenKeyboardAppears = MZFormSheetWhenKeyboardAppearsMoveAboveKeyboard;
+    [MZFormSheetPresentationController appearance].shouldCenterVertically = YES;
+    [MZFormSheetPresentationController appearance].shouldCenterHorizontally = YES;
+    [MZFormSheetPresentationController appearance].shouldApplyBackgroundBlurEffect = YES;
+    [MZFormSheetPresentationController appearance].shouldDismissOnBackgroundViewTap = YES;
+    [MZFormSheetPresentationController appearance].blurEffectStyle = UIBlurEffectStyleLight;
+    [MZFormSheetPresentationController appearance].movementActionWhenKeyboardAppears = MZFormSheetActionWhenKeyboardAppearsAlwaysAboveKeyboard;
+    [MZFormSheetPresentationController appearance].shouldUseMotionEffect = YES;
     
-    [MZFormSheetController appearance].transitionStyle = MZFormSheetTransitionStyleSlideFromBottom;
-    [MZFormSheetController appearance].shadowRadius = 8.0f;
-    
-    [MZFormSheetBackgroundWindow appearance].backgroundBlurEffect = YES;
-    [MZFormSheetBackgroundWindow appearance].blurEffectStyle = UIBlurEffectStyleLight;
-    [MZFormSheetBackgroundWindow appearance].dynamicBlur = YES;
+    [MZFormSheetPresentationViewController appearance].contentViewControllerTransitionStyle = MZFormSheetPresentationTransitionStyleSlideAndBounceFromBottom;
+    [MZFormSheetPresentationViewController appearance].shadowRadius = 8.0f;
+
     return YES;
 }
 

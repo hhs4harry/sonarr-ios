@@ -8,11 +8,5 @@
 
 #import "SNRBaseViewController.h"
 
-@protocol SNRBaseSheetViewControllerProtocol <NSObject>
-@required
-+(UIViewController *)formViewController;
-@end
-
-@interface SNRBaseSheetViewController : SNRBaseViewController <SNRBaseSheetViewControllerProtocol>
-
+@interface SNRBaseSheetViewController : SNRBaseViewController
 @end

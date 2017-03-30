@@ -7,42 +7,35 @@
 //
 
 #import "SNRBaseSheetViewController.h"
-#import <MZFormSheetController/MZFormSheetController.h>
-#import <MZFormSheetController/MZFormSheetTransition.h>
+#import <MZFormSheetPresentationController/MZFormSheetPresentationViewController.h>
 
-@interface SNRBaseSheetViewController ()
+@interface SNRBaseSheetViewController () <MZFormSheetPresentationContentSizing>
 
 @end
 
 @implementation SNRBaseSheetViewController
 
-+(UIViewController *)formViewController{
-    MZFormSheetController *formVC = [[MZFormSheetController alloc] initWithViewController:[[self vcStoryboard] instantiateViewControllerWithIdentifier:[self storyboardIdentifier]]];
-    formVC.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    formVC.presentedFormSheetSize = CGSizeMake(CGRectGetWidth([UIScreen mainScreen].bounds) * 0.9, CGRectGetHeight([UIScreen mainScreen].bounds) * 0.5);
++(UIViewController *)viewController{
+    MZFormSheetPresentationViewController *formVC = [[MZFormSheetPresentationViewController alloc] initWithContentViewController:[[self vcStoryboard] instantiateViewControllerWithIdentifier:[self storyboardIdentifier]]];
+    formVC.allowDismissByPanningPresentedView = YES;
+    formVC.interactivePanGestureDismissalDirection = MZFormSheetPanGestureDismissDirectionAll;
+
     return formVC;
 }
 
-#pragma mark - Presenting / Dismissing
-
--(void)presentViewController:(UIViewController *)viewControllerToPresent animated:(BOOL)flag completion:(void (^)(void))completion{
-    if(![viewControllerToPresent isMemberOfClass:[MZFormSheetController class]]){
-        return [super presentViewController:viewControllerToPresent animated:flag completion:completion];
-    }
-    
-    [self mz_presentFormSheetController:(id)viewControllerToPresent animated:flag completionHandler:^(MZFormSheetController * _Nonnull formSheetController) {
-        if(completion){
-            completion();
-        }
-    }];
+- (BOOL)shouldUseContentViewFrameForPresentationController:(MZFormSheetPresentationController *)presentationController {
+    return YES;
 }
 
--(void)dismissViewControllerAnimated:(BOOL)flag completion:(void (^)(void))completion{
-    [self mz_dismissFormSheetControllerAnimated:flag completionHandler:^(MZFormSheetController * _Nonnull formSheetController) {
-        if(completion){
-            completion();
-        }
-    }];
+- (CGRect)contentViewFrameForPresentationController:(MZFormSheetPresentationController *)presentationController currentFrame:(CGRect)currentFrame {
+    CGFloat viewW = CGRectGetWidth([UIScreen mainScreen].bounds);
+    CGFloat viewH = CGRectGetHeight([UIScreen mainScreen].bounds);
+    
+    if(viewW > viewH){
+        return CGRectMake(viewW * 0.2, viewH * 0.2, viewW * 0.6, viewH * 0.6);
+    }
+    
+    return CGRectMake(viewW * 0.05, viewH * 0.3, viewW * 0.9, viewH * 0.4);
 }
 
 @end

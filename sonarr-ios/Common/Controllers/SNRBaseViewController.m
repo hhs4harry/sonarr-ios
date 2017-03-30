@@ -6,11 +6,11 @@
 //  Copyright © 2017 Harry Singh. All rights reserved.
 //
 
+#import <MZFormSheetPresentationController/MZFormSheetPresentationViewController.h>
 #import "SNRBaseViewController.h"
 #import "UIAlertController+Show.h"
 #import "SNRServerManager.h"
 #import "SNRActivityIndicatorView.h"
-#import <MZFormSheetController/MZFormSheetController.h>
 
 @interface SNRBaseViewController ()
 @property (strong, nonatomic) UIView *spinnerView;
@@ -49,6 +49,10 @@
 
 +(NSString *)storyboardIdentifier{
     return [NSStringFromClass([self class]) stringByAppendingString:@"SBID"];
+}
+
++(UIViewController *)viewController{
+    return [[self vcStoryboard] instantiateViewControllerWithIdentifier:[self storyboardIdentifier]];
 }
 
 -(void)showSpinner:(BOOL)show{
@@ -114,20 +118,6 @@
         _spinnerView = newSpinner;
     }
     return _spinnerView;
-}
-
-#pragma mark - Presenting
-
--(void)presentViewController:(UIViewController *)viewControllerToPresent animated:(BOOL)flag completion:(void (^)(void))completion{
-    if(![viewControllerToPresent isMemberOfClass:[MZFormSheetController class]]){
-        return [super presentViewController:viewControllerToPresent animated:flag completion:completion];
-    }
-    
-    [self mz_presentFormSheetController:(id)viewControllerToPresent animated:flag completionHandler:^(MZFormSheetController * _Nonnull formSheetController) {
-        if(completion){
-            completion();
-        }
-    }];
 }
 
 @end

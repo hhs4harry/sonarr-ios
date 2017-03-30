@@ -13,6 +13,7 @@
 #import "SNRServerManager.h"
 #import "SNRServer.h"
 #import "SNRAddSeriesSheetViewController.h"
+#import <MZFormSheetPresentationController/MZFormSheetPresentationViewController.h>
 
 @interface SNRSeriesViewController () <SNRNavigationBarButtonProtocol, UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet SNRBaseTableView *tableView;
@@ -102,9 +103,7 @@
 #pragma mark - Navigation Protocol
 
 -(void)addSeriesButtonTouchUpInside{
-    [self presentViewController:[SNRAddSeriesSheetViewController formViewController]
-                       animated:YES
-                     completion:nil];
+    [self presentViewController:[SNRAddSeriesSheetViewController viewController] animated:YES completion:nil];
 }
 
 -(UIBarButtonItem *)rightBarButton{

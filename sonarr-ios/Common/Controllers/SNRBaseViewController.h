@@ -12,6 +12,7 @@
 @required
 +(NSString * __nonnull)storyboardIdentifier;
 +(UIStoryboard * __nonnull)vcStoryboard;
++(UIViewController * __nonnull)viewController;
 @end
 
 @interface SNRBaseViewController : UIViewController <SNRBaseViewControllerProtocol>
