@@ -21,6 +21,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *seasonCountLabel;
 @property (weak, nonatomic) IBOutlet UILabel *seriesAiredLabel;
 @property (strong, nonatomic) SNRSeries *series;
+@property (strong, nonatomic) UIScrollView *scrollView;
 @end
 
 const CGFloat PARALLAXRATIO = 0.25;
@@ -81,8 +82,11 @@ const CGFloat PARALLAXRATIO = 0.25;
     if(parallax.image){
         self.parallaxImageView.image = parallax.image;
     }else{
+        __weak typeof(self) wself = self;
         NSURL *paralaxImageURL = [NSURL URLWithString:[server generateURLWithEndpoint:parallax.url]];
         [self.parallaxImageView setImageWithURL:paralaxImageURL forClient:server.client andCompletion:^(UIImage * _Nullable image) {
+            [wself scrollViewDidScroll:wself.scrollView];
+
             parallax.image = image;
         }];
     }
@@ -98,6 +102,14 @@ const CGFloat PARALLAXRATIO = 0.25;
 }
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    if(!self.parallaxImageView.image){
+        return;
+    }
+    
+    if(!self.scrollView){
+        self.scrollView = scrollView;
+    }
+    
     CGFloat contentOffSet, cellOffSet, percent, extraHeight;
     contentOffSet = scrollView.contentOffset.y;
     cellOffSet = CGRectGetMinY(self.frame) - contentOffSet;

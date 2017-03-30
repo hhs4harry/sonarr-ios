@@ -45,12 +45,10 @@
     [super viewDidLoad];
     
     if(!self.server.series.count){
-        [self.tableView.refreshControl beginRefreshing];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.tableView.refreshControl beginRefreshing];
+        });
     }
-}
-
--(void)viewDidAppear:(BOOL)animated{
-    [super viewDidAppear:animated];
 }
 
 #pragma mark - TableView
@@ -92,9 +90,11 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
     if(self.server.series.count){
         for (SNRSeriesTableViewCell *seriesCell in self.tableView.visibleCells) {
-            if([seriesCell isKindOfClass:[SNRSeriesTableViewCell class]]){
-                [seriesCell scrollViewDidScroll:scrollView];
+            if(![seriesCell respondsToSelector:@selector(scrollViewDidScroll:)]){
+                continue;
             }
+            
+            [seriesCell scrollViewDidScroll:scrollView];
         }
     }
 }

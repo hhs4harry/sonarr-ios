@@ -108,7 +108,7 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
     if(self.series.count){
         for (SNRSeriesAddTableViewCell *seriesCell in self.tableView.visibleCells) {
-            if(![seriesCell isKindOfClass:[SNRSeriesAddTableViewCell class]]){
+            if(![seriesCell respondsToSelector:@selector(scrollViewDidScroll:)]){
                 continue;
             }
             

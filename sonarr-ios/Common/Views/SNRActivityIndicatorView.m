@@ -23,6 +23,10 @@
         instance = [[self alloc] init];
         
         dispatch_async(dispatch_get_main_queue(), ^{
+            if(!instance.isAnimating){
+                [instance startAnimating];
+            }
+            
             instance.hidden = !show;
             [instance setTag:NSIntegerMax - 1];
             instance.translatesAutoresizingMaskIntoConstraints = NO;

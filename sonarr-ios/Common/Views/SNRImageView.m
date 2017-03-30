@@ -33,33 +33,27 @@
     [SNRActivityIndicatorView show:YES onView:self];
     
     __weak typeof(self) wself = self;
+    
+    __block void(^finishUp)(UIImage *image) = ^(UIImage *image){
+        if(tag == self.tag){
+            if(image){
+                __strong typeof(wself) sself = wself;
+                sself.image = image;
+            }
+        }
+        
+        if(completion){
+            completion(image);
+        }
+    };
+    
     if(client){
         [UIImage imageWithURL:url forClient:client andCompletion:^(UIImage *image) {
-            if(tag == self.tag){
-                if(image){
-                    __strong typeof(wself) sself = wself;
-                    [SNRActivityIndicatorView show:NO onView:self];
-                    sself.image = image;
-                }
-            }
-            
-            if(completion){
-                completion(image);
-            }
+            finishUp(image);
         }];
     }else{
         [UIImage imageWithURL:url andCompletion:^(UIImage *image) {
-            if(tag == self.tag){
-                if(image){
-                    __strong typeof(wself) sself = wself;
-                    [SNRActivityIndicatorView show:NO onView:self];
-                    sself.image = image;
-                }
-            }
-            
-            if(completion){
-                completion(image);
-            }
+            finishUp(image);
         }];
     }
 }

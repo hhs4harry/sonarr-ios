@@ -62,10 +62,4 @@
     }
 }
 
-//- (IBAction)addSeriesTouchUpInside:(id)sender {
-//    if(self.delegate){
-//        [self.delegate didTapAddSeries:self.series];
-//    }
-//}
-
 @end

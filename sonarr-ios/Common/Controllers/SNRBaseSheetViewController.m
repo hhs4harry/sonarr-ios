@@ -23,4 +23,26 @@
     return formVC;
 }
 
+#pragma mark - Presenting / Dismissing
+
+-(void)presentViewController:(UIViewController *)viewControllerToPresent animated:(BOOL)flag completion:(void (^)(void))completion{
+    if(![viewControllerToPresent isMemberOfClass:[MZFormSheetController class]]){
+        return [super presentViewController:viewControllerToPresent animated:flag completion:completion];
+    }
+    
+    [self mz_presentFormSheetController:(id)viewControllerToPresent animated:flag completionHandler:^(MZFormSheetController * _Nonnull formSheetController) {
+        if(completion){
+            completion();
+        }
+    }];
+}
+
+-(void)dismissViewControllerAnimated:(BOOL)flag completion:(void (^)(void))completion{
+    [self mz_dismissFormSheetControllerAnimated:flag completionHandler:^(MZFormSheetController * _Nonnull formSheetController) {
+        if(completion){
+            completion();
+        }
+    }];
+}
+
 @end

@@ -13,6 +13,7 @@
 @interface SNRBaseTableView()
 @property (assign, nonatomic) IBInspectable BOOL pullToRefresh;
 @property (strong, nonatomic) SNRRefreshControl *refreshControl;
+
 @end
 
 @implementation SNRBaseTableView
