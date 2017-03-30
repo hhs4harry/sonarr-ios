@@ -68,7 +68,7 @@
         return 50;
     }
     
-    return CGRectGetWidth(self.view.frame) / 2.5;
+    return floorf(CGRectGetWidth(self.view.frame) / 2.5);
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{

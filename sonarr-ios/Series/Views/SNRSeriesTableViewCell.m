@@ -102,10 +102,6 @@ const CGFloat PARALLAXRATIO = 0.25;
 }
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    if(!self.parallaxImageView.image){
-        return;
-    }
-    
     if(!self.scrollView){
         self.scrollView = scrollView;
     }
