@@ -1,5 +1,5 @@
 //
-//  SNRAddSeriesSheetViewController.h
+//  SNRSearchSeriesSheetViewController.h
 //  sonarr-ios
 //
 //  Created by Harry Singh on 27/03/17.
@@ -8,6 +8,6 @@
 
 #import "SNRBaseSheetViewController.h"
 
-@interface SNRAddSeriesSheetViewController : SNRBaseSheetViewController
+@interface SNRSearchSeriesSheetViewController : SNRBaseSheetViewController
 
 @end

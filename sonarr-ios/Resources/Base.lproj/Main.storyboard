@@ -171,12 +171,12 @@ Add one now!</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WFC-ED-bc1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="656.79999999999995" y="138.98050974512745"/>
+            <point key="canvasLocation" x="425" y="141"/>
         </scene>
         <!--Search-->
         <scene sceneID="V7w-58-l8c">
             <objects>
-                <viewController title="Search" id="g1N-hN-kcn" customClass="SNRAddSeriesSheetViewController" sceneMemberID="viewController">
+                <viewController title="Search" id="g1N-hN-kcn" customClass="SNRSearchSeriesSheetViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="TLH-Fh-czM"/>
                         <viewControllerLayoutGuide type="bottom" id="XkL-rC-Wov"/>
@@ -326,7 +326,7 @@ Add one now!</string>
                                     <outlet property="delegate" destination="g1N-hN-kcn" id="eQm-4Y-sgZ"/>
                                 </connections>
                             </tableView>
-                            <searchBar contentMode="redraw" searchBarStyle="prominent" placeholder="e.g. Archer or tvdb:75897" translatesAutoresizingMaskIntoConstraints="NO" id="HC3-bv-Rvp">
+                            <searchBar contentMode="redraw" searchBarStyle="prominent" placeholder="e.g. Archer or tvdb:75897" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HC3-bv-Rvp">
                                 <rect key="frame" x="0.0" y="64" width="375" height="44"/>
                                 <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -364,12 +364,12 @@ Add one now!</string>
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="1968.8" y="-40.479760119940032"/>
+            <point key="canvasLocation" x="1244" y="-58"/>
         </scene>
-        <!--View Controller-->
+        <!--Add Series Sheet View Controller-->
         <scene sceneID="MNd-Mb-jQi">
             <objects>
-                <viewController id="LLh-gB-bfG" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SNRAddSeriesSheetViewControllerSBID" useStoryboardIdentifierAsRestorationIdentifier="YES" id="LLh-gB-bfG" customClass="SNRAddSeriesSheetViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="cS4-gO-V0e"/>
                         <viewControllerLayoutGuide type="bottom" id="nbV-Iw-tnC"/>
@@ -382,12 +382,12 @@ Add one now!</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k1h-7p-vUs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2625" y="-40"/>
+            <point key="canvasLocation" x="1659" y="-58"/>
         </scene>
         <!--Sheet Navigation View Controller-->
         <scene sceneID="POn-y5-tNA">
             <objects>
-                <navigationController storyboardIdentifier="SNRAddSeriesSheetViewControllerSBID" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Mxf-zV-Q5d" customClass="SNRSheetNavigationViewController" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="SNRSearchSeriesSheetViewControllerSBID" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Mxf-zV-Q5d" customClass="SNRSheetNavigationViewController" sceneMemberID="viewController">
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="270"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Vjf-ma-qNp">
@@ -400,7 +400,7 @@ Add one now!</string>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ctK-an-g6L" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1300" y="-40"/>
+            <point key="canvasLocation" x="828" y="-58"/>
         </scene>
         <!--Servers-->
         <scene sceneID="TOn-8k-PAw">
@@ -500,7 +500,7 @@ Add one now!</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iaZ-0g-4fd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="20" y="-506"/>
+            <point key="canvasLocation" x="20" y="-622"/>
         </scene>
         <!--Add Server Pop Up View Controller-->
         <scene sceneID="cFp-fr-bjW">
@@ -664,7 +664,7 @@ Add one now!</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ufx-a1-P38" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="650" y="-685"/>
+            <point key="canvasLocation" x="416" y="-821"/>
         </scene>
     </scenes>
     <resources>

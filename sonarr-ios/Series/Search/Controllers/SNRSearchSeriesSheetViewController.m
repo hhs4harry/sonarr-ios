@@ -1,5 +1,5 @@
 //
-//  SNRAddSeriesSheetViewController.m
+//  SNRSearchSeriesSheetViewController.m
 //  sonarr-ios
 //
 //  Created by Harry Singh on 27/03/17.
@@ -7,7 +7,7 @@
 //
 
 #import <MZFormSheetPresentationController/MZFormSheetPresentationViewController.h>
-#import "SNRAddSeriesSheetViewController.h"
+#import "SNRSearchSeriesSheetViewController.h"
 #import "SNRBaseTableView.h"
 #import "SNRSeriesAddTableViewCell.h"
 #import "NSString+check.h"
@@ -16,7 +16,7 @@
 #import "SNRRefreshControl.h"
 #import "SNRSeriesViewController.h"
 
-@interface SNRAddSeriesSheetViewController () <UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, SNRSeriesAddProtocol>
+@interface SNRSearchSeriesSheetViewController () <UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, SNRSeriesAddProtocol>
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (strong, nonatomic) NSString *currSearch;
 @property (weak, nonatomic) IBOutlet SNRBaseTableView *tableView;
@@ -24,7 +24,7 @@
 @property (strong, nonatomic) NSArray *series;
 @end
 
-@implementation SNRAddSeriesSheetViewController
+@implementation SNRSearchSeriesSheetViewController
 
 #pragma mark - Life cycle
 
@@ -46,7 +46,6 @@
     self.title = @"Search";
     
     [self.tableView.refreshControl addTarget:self action:@selector(didRequestPullToRefresh:) forControlEvents:UIControlEventValueChanged];
-    [self.searchBar becomeFirstResponder];
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
@@ -91,12 +90,6 @@
     [seriesCell setSeries:[self.series objectAtIndex:indexPath.row] forServer:self.server];
     [seriesCell scrollViewDidScroll:self.tableView];
     return seriesCell;
-}
-
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath{
-    SNRSeriesTableViewCell *seriesCell = [tableView cellForRowAtIndexPath:indexPath];
-    
-    [self.navigationController pushViewController:[SNRSeriesViewController viewController] animated:YES];
 }
 
 -(void)didRequestPullToRefresh:(id)sender{
@@ -168,6 +161,12 @@
         self.currSearch = nil;
         [self.tableView reloadData];
     }
+}
+
+#pragma mark - Navigation
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    [super prepareForSegue:segue sender:sender];
 }
 
 @end
