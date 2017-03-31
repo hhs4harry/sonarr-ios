@@ -9,7 +9,7 @@
 #import <MZFormSheetPresentationController/MZFormSheetPresentationViewController.h>
 #import "SNRSearchSeriesSheetViewController.h"
 #import "SNRBaseTableView.h"
-#import "SNRSeriesAddTableViewCell.h"
+#import "SNRSearchSeriesTableViewCell.h"
 #import "NSString+check.h"
 #import "SNRServer.h"
 #import "SNRServerManager.h"
@@ -84,7 +84,7 @@
         return cell;
     }
     
-    SNRSeriesAddTableViewCell *seriesCell = [tableView dequeueReusableCellWithIdentifier:@"seriesAddCell" forIndexPath:indexPath];
+    SNRSearchSeriesTableViewCell *seriesCell = [tableView dequeueReusableCellWithIdentifier:@"seriesAddCell" forIndexPath:indexPath];
     seriesCell.tag = indexPath.row;
     seriesCell.delegate = self;
     [seriesCell setSeries:[self.series objectAtIndex:indexPath.row] forServer:self.server];
@@ -103,7 +103,7 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
     if(self.series.count){
-        for (SNRSeriesAddTableViewCell *seriesCell in self.tableView.visibleCells) {
+        for (SNRSearchSeriesTableViewCell *seriesCell in self.tableView.visibleCells) {
             if(![seriesCell respondsToSelector:@selector(scrollViewDidScroll:)]){
                 continue;
             }

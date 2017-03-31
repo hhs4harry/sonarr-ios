@@ -189,7 +189,7 @@ Add one now!</string>
                                 <rect key="frame" x="0.0" y="108" width="375" height="162"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="seriesAddCell" rowHeight="100" id="xnY-L3-sAB" customClass="SNRSeriesAddTableViewCell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="seriesAddCell" rowHeight="100" id="xnY-L3-sAB" customClass="SNRSearchSeriesTableViewCell">
                                         <rect key="frame" x="0.0" y="28" width="375" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xnY-L3-sAB" id="ThK-Bt-GUJ">

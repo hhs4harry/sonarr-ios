@@ -1,17 +1,17 @@
 //
-//  SNRSeriesAddTableViewCell.m
+//  SNRSearchSeriesTableViewCell.m
 //  sonarr-ios
 //
 //  Created by Harry Singh on 27/03/17.
 //  Copyright © 2017 Harry Singh. All rights reserved.
 //
 
-#import "SNRSeriesAddTableViewCell.h"
+#import "SNRSearchSeriesTableViewCell.h"
 #import "SNRImageView.h"
 #import "SNRSeries.h"
 #import "SNRImage.h"
 
-@interface SNRSeriesAddTableViewCell()
+@interface SNRSearchSeriesTableViewCell()
 @property (weak, nonatomic) IBOutlet SNRImageView *parallaxImageView;
 @property (weak, nonatomic) IBOutlet SNRImageView *seriesImageView;
 @property (weak, nonatomic) IBOutlet UILabel *seriesTitleLabel;
@@ -21,7 +21,7 @@
 
 @end
 
-@implementation SNRSeriesAddTableViewCell
+@implementation SNRSearchSeriesTableViewCell
 
 -(void)setSeries:(SNRSeries *)series forServer:(SNRServer *)server{
     self.parallaxImageView.tag = self.tag + 1;

@@ -1,5 +1,5 @@
 //
-//  SNRSeriesAddTableViewCell.h
+//  SNRSearchSeriesTableViewCell.h
 //  sonarr-ios
 //
 //  Created by Harry Singh on 27/03/17.
@@ -15,7 +15,7 @@
 
 @end
 
-@interface SNRSeriesAddTableViewCell : SNRSeriesTableViewCell
+@interface SNRSearchSeriesTableViewCell : SNRSeriesTableViewCell
 @property (weak, nonatomic) id<SNRSeriesAddProtocol> delegate;
 
 @end
