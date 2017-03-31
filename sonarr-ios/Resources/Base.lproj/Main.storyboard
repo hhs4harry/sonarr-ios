@@ -171,7 +171,7 @@ Add one now!</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WFC-ED-bc1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="425" y="141"/>
+            <point key="canvasLocation" x="668" y="141"/>
         </scene>
         <!--Search-->
         <scene sceneID="V7w-58-l8c">
@@ -364,7 +364,7 @@ Add one now!</string>
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="1244" y="-58"/>
+            <point key="canvasLocation" x="2042" y="-39"/>
         </scene>
         <!--Add Series Sheet View Controller-->
         <scene sceneID="MNd-Mb-jQi">
@@ -377,12 +377,56 @@ Add one now!</string>
                     <view key="view" contentMode="scaleToFill" id="bbH-re-kla">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="270"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cJB-fV-B4u">
+                                <rect key="frame" x="0.0" y="64" width="375" height="375"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dQu-WY-oJw">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="187.5"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DYe-VJ-Dc5">
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="187.5"/>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstItem="DYe-VJ-Dc5" firstAttribute="leading" secondItem="dQu-WY-oJw" secondAttribute="leading" id="G0n-bW-psE"/>
+                                            <constraint firstAttribute="bottom" secondItem="DYe-VJ-Dc5" secondAttribute="bottom" id="HQ8-SY-Ffd"/>
+                                            <constraint firstAttribute="width" secondItem="dQu-WY-oJw" secondAttribute="height" multiplier="1:0.5" id="Rtf-iC-gb1"/>
+                                            <constraint firstItem="DYe-VJ-Dc5" firstAttribute="top" secondItem="dQu-WY-oJw" secondAttribute="top" id="VQg-1z-evm"/>
+                                            <constraint firstAttribute="trailing" secondItem="DYe-VJ-Dc5" secondAttribute="trailing" id="diN-oR-A3z"/>
+                                        </constraints>
+                                    </view>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PSo-Z9-ic0">
+                                        <rect key="frame" x="25" y="116" width="100" height="143"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="PSo-Z9-ic0" secondAttribute="height" multiplier="0.7:1" id="xNR-k1-cTY"/>
+                                            <constraint firstAttribute="width" constant="100" id="yE5-fb-JXR"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="dQu-WY-oJw" secondAttribute="trailing" id="Ape-0h-FMo"/>
+                                    <constraint firstItem="dQu-WY-oJw" firstAttribute="leading" secondItem="cJB-fV-B4u" secondAttribute="leading" id="BaX-bP-KSZ"/>
+                                    <constraint firstItem="PSo-Z9-ic0" firstAttribute="centerY" secondItem="cJB-fV-B4u" secondAttribute="centerY" id="McM-Vd-cCn"/>
+                                    <constraint firstAttribute="width" secondItem="cJB-fV-B4u" secondAttribute="height" multiplier="1:1" id="gqC-EH-G41"/>
+                                    <constraint firstItem="PSo-Z9-ic0" firstAttribute="leading" secondItem="cJB-fV-B4u" secondAttribute="leading" constant="25" id="kO1-el-nLw"/>
+                                    <constraint firstItem="dQu-WY-oJw" firstAttribute="top" secondItem="cJB-fV-B4u" secondAttribute="top" id="kR1-VU-FyE"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="cJB-fV-B4u" firstAttribute="top" secondItem="cS4-gO-V0e" secondAttribute="bottom" id="Dh0-dd-ULA"/>
+                            <constraint firstAttribute="trailing" secondItem="cJB-fV-B4u" secondAttribute="trailing" id="YLQ-Jt-V8A"/>
+                            <constraint firstItem="cJB-fV-B4u" firstAttribute="leading" secondItem="bbH-re-kla" secondAttribute="leading" id="xQG-ZP-nv7"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k1h-7p-vUs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1659" y="-58"/>
+            <point key="canvasLocation" x="2772" y="-40"/>
         </scene>
         <!--Sheet Navigation View Controller-->
         <scene sceneID="POn-y5-tNA">
@@ -400,7 +444,7 @@ Add one now!</string>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ctK-an-g6L" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="828" y="-58"/>
+            <point key="canvasLocation" x="1324" y="-38"/>
         </scene>
         <!--Servers-->
         <scene sceneID="TOn-8k-PAw">
@@ -664,7 +708,7 @@ Add one now!</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ufx-a1-P38" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="416" y="-821"/>
+            <point key="canvasLocation" x="668" y="-801"/>
         </scene>
     </scenes>
     <resources>
