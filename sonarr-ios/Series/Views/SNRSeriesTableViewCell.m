@@ -55,6 +55,9 @@ const CGFloat PARALLAXRATIO = 0.25;
 }
 
 -(void)setSeries:(SNRSeries *)series forServer:(SNRServer *)server{
+    self.parallaxImageView.image = nil;
+    self.seriesImageView.image = nil;
+    
     self.tag++;
     self.parallaxImageView.tag = self.tag;
     self.seriesImageView.tag = self.tag;

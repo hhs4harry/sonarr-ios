@@ -7,7 +7,9 @@
 //
 
 #import "SNRBaseSheetViewController.h"
+@class SNRSeries;
 
 @interface SNRAddSeriesSheetViewController : SNRBaseSheetViewController
+-(void)setSeries:(SNRSeries *)series;
 
 @end

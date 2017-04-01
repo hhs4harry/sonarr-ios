@@ -57,7 +57,7 @@
 
 -(void)showSpinner:(BOOL)show{
     dispatch_async(dispatch_get_main_queue(), ^{
-        self.spinnerView.hidden = !show;
+        [SNRActivityIndicatorView show:show onView:self.view];
     });
 }
 
@@ -69,55 +69,6 @@
                                   message:message
                                andActions:nil] show];
     });
-}
-
-#pragma mark - Getters
-
--(UIView *)spinnerView{
-    if(!_spinnerView){
-        UIView *newSpinner = [[UIView alloc] init];
-        newSpinner.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.5];
-        newSpinner.translatesAutoresizingMaskIntoConstraints = NO;
-        [self.view insertSubview:newSpinner atIndex:0];
-        
-        SNRActivityIndicatorView *indicatorView = [SNRActivityIndicatorView show:YES onView:newSpinner];
-        indicatorView.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhite;
-        
-        [[NSLayoutConstraint constraintWithItem:newSpinner
-                                      attribute:NSLayoutAttributeTop
-                                      relatedBy:NSLayoutRelationEqual
-                                         toItem:self.view
-                                      attribute:NSLayoutAttributeTop
-                                     multiplier:1.0f
-                                       constant:0.0f] setActive:YES];
-        
-        [[NSLayoutConstraint constraintWithItem:newSpinner
-                                      attribute:NSLayoutAttributeBottom
-                                      relatedBy:NSLayoutRelationEqual
-                                         toItem:self.view
-                                      attribute:NSLayoutAttributeBottom
-                                     multiplier:1.0f
-                                       constant:0.0f] setActive:YES];
-        
-        [[NSLayoutConstraint constraintWithItem:newSpinner
-                                      attribute:NSLayoutAttributeRight
-                                      relatedBy:NSLayoutRelationEqual
-                                         toItem:self.view
-                                      attribute:NSLayoutAttributeRight
-                                     multiplier:1.0f
-                                       constant:0.0f] setActive:YES];
-        
-        [[NSLayoutConstraint constraintWithItem:newSpinner
-                                      attribute:NSLayoutAttributeLeft
-                                      relatedBy:NSLayoutRelationEqual
-                                         toItem:self.view
-                                      attribute:NSLayoutAttributeLeft
-                                     multiplier:1.0f
-                                       constant:0.0f] setActive:YES];
-        
-        _spinnerView = newSpinner;
-    }
-    return _spinnerView;
 }
 
 @end

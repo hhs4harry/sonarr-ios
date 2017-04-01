@@ -15,6 +15,7 @@
 #import "SNRServerManager.h"
 #import "SNRRefreshControl.h"
 #import "SNRSeriesViewController.h"
+#import "SNRAddSeriesSheetViewController.h"
 
 @interface SNRSearchSeriesSheetViewController () <UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, SNRSeriesAddProtocol>
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
@@ -166,6 +167,7 @@
 #pragma mark - Navigation
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    [((SNRAddSeriesSheetViewController *)segue.destinationViewController) setSeries:[self.series objectAtIndex:self.tableView.indexPathForSelectedRow.row]];
     [super prepareForSegue:segue sender:sender];
 }
 

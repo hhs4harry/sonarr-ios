@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface SNRActivityIndicatorView : UIActivityIndicatorView
-+(instancetype)show:(BOOL)show onView:(id)view;
++(instancetype __nullable)show:(BOOL)show onView:(id __nonnull)view;
 
 @end
