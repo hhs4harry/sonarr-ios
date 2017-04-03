@@ -16,6 +16,7 @@ PODS:
     - AFNetworking/NSURLSession
   - IQKeyboardManager (4.0.8)
   - JSONModel (1.7.0)
+  - MXParallaxHeader (0.6.1)
   - MZAppearance (1.1.6)
   - MZFormSheetPresentationController (2.4.2):
     - MZAppearance
@@ -25,6 +26,7 @@ DEPENDENCIES:
   - AFNetworking (~> 3.0)
   - IQKeyboardManager (~> 4.0)
   - JSONModel (~> 1.7)
+  - MXParallaxHeader (~> 0.6)
   - MZFormSheetPresentationController (~> 2.4)
   - UIFloatLabelTextField (~> 1.2)
 
@@ -32,10 +34,11 @@ SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   IQKeyboardManager: 1a8189fa153bf09044355ee0ad36826f6767e7f7
   JSONModel: 840bc0fcffb24b8454d2c026bf26fea454b8e98d
+  MXParallaxHeader: 858c403532ed933b381556a81ce333d7065ad182
   MZAppearance: 0c06d3fa9cc55142f1da14bc8631fbe8fd6e19d5
   MZFormSheetPresentationController: c1dc3bce639d2393b3cc416fcb6e050eb5bca062
   UIFloatLabelTextField: ec6e82ae7cc06185bda955a9dce17e81cf34327c
 
-PODFILE CHECKSUM: c963baf26213fd5e5a8406bf14fe9ca1f863a742
+PODFILE CHECKSUM: 82ea59e82d89fa0e5036eb22ffb2b798ee19dfe3
 
 COCOAPODS: 1.2.0

@@ -7,6 +7,12 @@
 //
 
 #import "SNRAddSeriesTableViewCell.h"
+#import "SNRImageView.h"
+
+@interface SNRAddSeriesTableViewCell ()
+@property (weak, nonatomic) IBOutlet SNRImageView *seriesImageView;
+@property (weak, nonatomic) IBOutlet SNRImageView *parallaxImageView;
+@end
 
 @implementation SNRAddSeriesTableViewCell
 

@@ -13,7 +13,6 @@
 #import "SNRActivityIndicatorView.h"
 
 @interface SNRBaseViewController ()
-@property (strong, nonatomic) UIView *spinnerView;
 @end
 
 @implementation SNRBaseViewController
@@ -57,7 +56,7 @@
 
 -(void)showSpinner:(BOOL)show{
     dispatch_async(dispatch_get_main_queue(), ^{
-        [SNRActivityIndicatorView show:show onView:self.view];
+        [SNRActivityIndicatorView showOnTint:show onView:self.view];
     });
 }
 

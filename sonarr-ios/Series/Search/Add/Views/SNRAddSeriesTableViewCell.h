@@ -7,7 +7,7 @@
 //
 
 #import "SNRSeriesTableViewCell.h"
+#import <MXParallaxHeader/MXParallaxHeader.h>
 
 @interface SNRAddSeriesTableViewCell : SNRSeriesTableViewCell
-
 @end

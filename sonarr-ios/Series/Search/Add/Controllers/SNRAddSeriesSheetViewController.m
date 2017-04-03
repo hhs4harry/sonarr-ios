@@ -13,8 +13,10 @@
 #import "SNRServerManager.h"
 #import "SNRServer.h"
 #import <MZFormSheetPresentationController.h>
+#import <MXParallaxHeader/MXParallaxHeader.h>
+#import <MXParallaxHeader/MXScrollView.h>
 
-@interface SNRAddSeriesSheetViewController () <UIScrollViewDelegate>
+@interface SNRAddSeriesSheetViewController ()
 @property (weak, nonatomic) IBOutlet SNRBaseTableView *tableView;
 @property (strong, nonatomic) SNRServer *server;
 @property (strong, nonatomic) SNRSeries *series;
@@ -39,21 +41,38 @@
     
     self.title = self.series.title;
     
-    self.tableView.tableHeaderView = [self tableView:self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:NSIntegerMax - 1 inSection:0]];
+    [self updateParallaxHeaderViewWithOrientation:[UIDevice currentDevice].orientation];
+}
+
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
 }
 
 #pragma mark - TableView
 
+-(void)updateParallaxHeaderViewWithOrientation:(UIDeviceOrientation)orientation{
+    CGFloat minimunHeight = 130;
+    CGFloat height = MAX(CGRectGetWidth(self.view.frame) * 0.5, minimunHeight);
+    
+    if(orientation != UIDeviceOrientationLandscapeLeft ||
+       orientation != UIDeviceOrientationLandscapeRight){
+        height = MAX(CGRectGetHeight(self.view.frame) * 0.4, minimunHeight);
+    }
+    
+    MXParallaxHeader *header = [[MXParallaxHeader alloc] init];
+    header.view = (id)[self tableView:self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:NSIntegerMax - 1 inSection:0]].contentView;
+    self.tableView.parallaxHeader = header;
+    self.tableView.parallaxHeader.height = height;
+    self.tableView.parallaxHeader.mode = MXParallaxHeaderModeFill;
+    self.tableView.parallaxHeader.minimumHeight = minimunHeight;
+}
+
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    return CGFLOAT_MIN; //floorf((CGRectGetWidth(self.view.frame) * 0.4) + (100 * 0.7) + 8);
+    return CGFLOAT_MIN;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return floorf(50);
-}
-
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
-    return nil;//(id)[self tableView:tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:NSIntegerMax - 1 inSection:0]];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -65,17 +84,9 @@
         SNRAddSeriesTableViewCell *seriesCell = (id)[tableView dequeueReusableCellWithIdentifier:@"seriesHeaderCell"];
         seriesCell.tag = indexPath.row;
         [seriesCell setSeries:self.series forServer:self.server];
-        [seriesCell scrollViewDidScroll:self.tableView];
-        return seriesCell;
+        return (id)seriesCell;
     }
     return [[UITableViewCell alloc] init];
-}
-
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    SNRAddSeriesTableViewCell *cell = (id)self.tableView.tableHeaderView;
-    if ([cell respondsToSelector:@selector(scrollViewDidScroll:)]) {
-        [cell scrollViewDidScroll:scrollView];
-    }
 }
 
 #pragma mark - Base View Controller
@@ -89,10 +100,17 @@
     CGFloat viewH = CGRectGetHeight([UIScreen mainScreen].bounds);
     
     if(viewW > viewH){
-        return CGRectMake(viewW * 0.1, viewH * 0.15, viewW * 0.8, viewH * 0.7);
+        return CGRectMake(viewW * 0.1, viewH * 0.05, viewW * 0.8, viewH * 0.9);
     }
     
     return CGRectMake(viewW * 0.05, viewH * 0.15, viewW * 0.9, viewH * 0.7);
 }
 
+#pragma mark - Orientation Transition
+
+-(void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator{
+    [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
+    
+    [self updateParallaxHeaderViewWithOrientation:[UIDevice currentDevice].orientation];
+}
 @end

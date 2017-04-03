@@ -7,4 +7,5 @@ target 'Sonarr' do
   pod 'MZFormSheetPresentationController', '~> 2.4'
   pod 'UIFloatLabelTextField', '~> 1.2'
   pod 'IQKeyboardManager', '~> 4.0'
+  pod 'MXParallaxHeader', '~> 0.6'
 end
