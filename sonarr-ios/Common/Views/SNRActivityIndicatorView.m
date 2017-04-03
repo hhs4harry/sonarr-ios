@@ -9,7 +9,7 @@
 #import "SNRActivityIndicatorView.h"
 
 @interface SNRActivityIndicatorView()
-@property (strong, nonatomic) UIActivityIndicatorView * __nullable indicator;
+@property (strong, nonatomic) UIActivityIndicatorView *indicator;
 @end
 
 @implementation SNRActivityIndicatorView
