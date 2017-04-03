@@ -20,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet SNRBaseTableView *tableView;
 @property (strong, nonatomic) SNRServer *server;
 @property (strong, nonatomic) SNRSeries *series;
+@property (strong, nonatomic) MXParallaxHeader *parallaxHeader;
 @end
 
 @implementation SNRAddSeriesSheetViewController
@@ -34,34 +35,40 @@
 
 -(void)viewDidLoad{
     [super viewDidLoad];
+    
 }
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     
     self.title = self.series.title;
-    
-    [self updateParallaxHeaderViewWithOrientation:[UIDevice currentDevice].orientation];
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
 }
 
+-(void)viewDidLayoutSubviews{
+    [super viewDidLayoutSubviews];
+    
+    if(!self.parallaxHeader){
+        self.parallaxHeader = [[MXParallaxHeader alloc] init];
+        self.parallaxHeader.view = (id)[self tableView:self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:NSIntegerMax - 1 inSection:0]].contentView;
+        self.tableView.parallaxHeader = self.parallaxHeader;
+    }
+
+    [self updateParallaxHeaderView];
+}
+
 #pragma mark - TableView
 
--(void)updateParallaxHeaderViewWithOrientation:(UIDeviceOrientation)orientation{
+-(void)updateParallaxHeaderView{
+    CGRect frame =  [self contentViewFrameForPresentationController:nil currentFrame:[UIScreen mainScreen].bounds];
+    CGFloat frameH = CGRectGetHeight(frame);
+    
     CGFloat minimunHeight = 130;
-    CGFloat height = MAX(CGRectGetWidth(self.view.frame) * 0.5, minimunHeight);
+    CGFloat height = MAX(frameH * 0.5, minimunHeight);
     
-    if(orientation != UIDeviceOrientationLandscapeLeft ||
-       orientation != UIDeviceOrientationLandscapeRight){
-        height = MAX(CGRectGetHeight(self.view.frame) * 0.4, minimunHeight);
-    }
-    
-    MXParallaxHeader *header = [[MXParallaxHeader alloc] init];
-    header.view = (id)[self tableView:self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:NSIntegerMax - 1 inSection:0]].contentView;
-    self.tableView.parallaxHeader = header;
     self.tableView.parallaxHeader.height = height;
     self.tableView.parallaxHeader.mode = MXParallaxHeaderModeFill;
     self.tableView.parallaxHeader.minimumHeight = minimunHeight;
@@ -109,8 +116,7 @@
 #pragma mark - Orientation Transition
 
 -(void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator{
+    [self updateParallaxHeaderView];
     [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
-    
-    [self updateParallaxHeaderViewWithOrientation:[UIDevice currentDevice].orientation];
 }
 @end
