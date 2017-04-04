@@ -7,8 +7,9 @@
 //
 
 #import "SNRAddSeriesSheetViewController.h"
-#import "SNRSeries.h"
 #import "SNRAddSeriesTableViewCell.h"
+#import "SNRAddSeriesDetailsTableViewCell.h"
+#import "SNRSeries.h"
 #import "SNRBaseTableView.h"
 #import "SNRServerManager.h"
 #import "SNRServer.h"
@@ -79,11 +80,11 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return floorf(50);
+    return floorf(45);
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 1;
+    return SeriesDetailCount;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -93,7 +94,10 @@
         [seriesCell setSeries:self.series forServer:self.server];
         return (id)seriesCell;
     }
-    return [[UITableViewCell alloc] init];
+    
+    SNRAddSeriesDetailsTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"seriesDetailCell" forIndexPath:indexPath];
+    [cell setSeries:self.series seriesDetailType:indexPath.row];
+    return cell;
 }
 
 #pragma mark - Base View Controller

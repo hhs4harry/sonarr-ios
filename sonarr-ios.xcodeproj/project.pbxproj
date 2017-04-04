@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		259F2E248A9B5D0391C7AB70 /* libPods-Sonarr.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 33A1E1334CB8B3457ED5F1B3 /* libPods-Sonarr.a */; };
 		4A0969651E843F7800A8C35E /* SNRActivityIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0969641E843F7800A8C35E /* SNRActivityIndicatorView.m */; };
+		4A12575D1E93168F0060746F /* SNRAddSeriesDetailsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A12575C1E93168F0060746F /* SNRAddSeriesDetailsTableViewCell.m */; };
 		4A14754C1E7B32C1006B6888 /* UIAlertController+Show.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A14754B1E7B32C1006B6888 /* UIAlertController+Show.m */; };
 		4A147BAD1E89D4F2000807AD /* NSString+check.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A147BAC1E89D4F2000807AD /* NSString+check.m */; };
 		4A147BBA1E8AD2C5000807AD /* SNRRefreshControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A147BB91E8AD2C5000807AD /* SNRRefreshControl.m */; };
@@ -88,6 +89,8 @@
 		33A1E1334CB8B3457ED5F1B3 /* libPods-Sonarr.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Sonarr.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A0969631E843F7800A8C35E /* SNRActivityIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRActivityIndicatorView.h; path = Common/Views/SNRActivityIndicatorView.h; sourceTree = "<group>"; };
 		4A0969641E843F7800A8C35E /* SNRActivityIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRActivityIndicatorView.m; path = Common/Views/SNRActivityIndicatorView.m; sourceTree = "<group>"; };
+		4A12575B1E93168F0060746F /* SNRAddSeriesDetailsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRAddSeriesDetailsTableViewCell.h; path = Series/Search/Add/Views/SNRAddSeriesDetailsTableViewCell.h; sourceTree = "<group>"; };
+		4A12575C1E93168F0060746F /* SNRAddSeriesDetailsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRAddSeriesDetailsTableViewCell.m; path = Series/Search/Add/Views/SNRAddSeriesDetailsTableViewCell.m; sourceTree = "<group>"; };
 		4A14754A1E7B32C1006B6888 /* UIAlertController+Show.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIAlertController+Show.h"; path = "Common/Controllers/UIAlertController+Show.h"; sourceTree = "<group>"; };
 		4A14754B1E7B32C1006B6888 /* UIAlertController+Show.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIAlertController+Show.m"; path = "Common/Controllers/UIAlertController+Show.m"; sourceTree = "<group>"; };
 		4A147BAB1E89D4F2000807AD /* NSString+check.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+check.h"; path = "Common/Models/NSString+check.h"; sourceTree = "<group>"; };
@@ -526,6 +529,8 @@
 			children = (
 				4A6D2AA51E8EDBF000BE876F /* SNRAddSeriesTableViewCell.h */,
 				4A6D2AA61E8EDBF000BE876F /* SNRAddSeriesTableViewCell.m */,
+				4A12575B1E93168F0060746F /* SNRAddSeriesDetailsTableViewCell.h */,
+				4A12575C1E93168F0060746F /* SNRAddSeriesDetailsTableViewCell.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -818,6 +823,7 @@
 				4A147BBA1E8AD2C5000807AD /* SNRRefreshControl.m in Sources */,
 				4A0969651E843F7800A8C35E /* SNRActivityIndicatorView.m in Sources */,
 				4A6D2AA31E8DFBE900BE876F /* SNRAddSeriesSheetViewController.m in Sources */,
+				4A12575D1E93168F0060746F /* SNRAddSeriesDetailsTableViewCell.m in Sources */,
 				4AA5D5EF1E668F8300C044C7 /* SNRAddServerPopUpViewController.m in Sources */,
 				4A34990A1E63C59400453E63 /* SNRStatus.m in Sources */,
 				4A777C6B1E653357006B1987 /* SNRCutoff.m in Sources */,
