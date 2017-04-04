@@ -116,12 +116,16 @@
 
 -(void)didRequestPullToRefresh:(id)sender{
     __weak typeof(self) wself = self;
-    [self.server seriesWithRefresh:YES andCompletion:^(NSArray<SNRSeries *> *series, NSError *error) {
-        if(series){
-            [wself.tableView reloadData];
+    [self.server validateServerWithCompletion:^(SNRStatus * _Nullable status, NSError * _Nullable error) {
+        if(status){
+            [self.server seriesWithRefresh:YES andCompletion:^(NSArray<SNRSeries *> *series, NSError *error) {
+                if(series){
+                    [wself.tableView reloadData];
+                }
+                //handle error
+                [wself.tableView.refreshControl endRefreshing];
+            }];
         }
-        //handle error
-        [wself.tableView.refreshControl endRefreshing];
     }];
 }
 

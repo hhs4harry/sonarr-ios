@@ -12,17 +12,24 @@
 @class SNRSeries;
 @class UIImage;
 @class SNRAPIClient;
+@class SNRProfile;
+@class SNRRootFolder;
 
 @interface SNRServer : NSObject <NSCopying>
-@property (strong, nonatomic) NSArray<SNRSeries *> *series;
-@property (strong, readonly) SNRServerConfig *config;
-@property (readonly, nonatomic) SNRAPIClient *client;
+@property (readonly) SNRAPIClient * __nonnull client;
+@property (readonly) SNRServerConfig * __nonnull config;
 @property (assign, nonatomic) BOOL active;
 
--(NSString *)generateURLWithEndpoint:(NSString *)endpoint;
+@property (readonly) NSArray<SNRSeries *> * __nullable series;
+@property (readonly) NSArray<SNRProfile *> * __nullable profiles;
+@property (readonly) NSArray<SNRRootFolder *> * __nullable rootFolder;
 
--(instancetype)initWithConfig:(SNRServerConfig *)config;
--(void)validateServerWithCompletion:(void(^)(SNRStatus *status, NSError *error))completion;
--(void)seriesWithRefresh:(BOOL)refresh andCompletion:(void(^)(NSArray<SNRSeries *> *series, NSError *error))completion;
--(void)searchForSeries:(NSString *)series withCompletion:(void(^)(NSArray<SNRSeries *> *series, NSError *error))completion;
+-(NSString * __nonnull)generateURLWithEndpoint:(NSString * __nonnull)endpoint;
+
+-(instancetype __nullable)initWithConfig:(SNRServerConfig * __nonnull)config;
+-(void)validateServerWithCompletion:(void(^ __nullable)(SNRStatus * __nullable status, NSError * __nullable error))completion;
+-(void)profilesWithCompletion:(void(^ __nullable)(NSArray<SNRProfile *> * __nullable profiles, NSError * __nullable error))completion;
+-(void)rootFolderwithCompletion:(void(^ __nullable)(NSArray<SNRRootFolder *> * __nullable rootFolder, NSError * __nullable error))completion;
+-(void)seriesWithRefresh:(BOOL)refresh andCompletion:(void(^ __nullable)(NSArray<SNRSeries *> * __nullable series, NSError * __nullable error))completion;
+-(void)searchForSeries:(NSString * __nonnull)series withCompletion:(void(^ __nullable)(NSArray<SNRSeries *> * __nullable series, NSError * __nullable error))completion;
 @end

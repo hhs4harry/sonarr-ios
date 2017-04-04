@@ -9,5 +9,8 @@
 #import "SNRProfile.h"
 
 @implementation SNRProfile
++(NSString *)endpoint{
+    return @"profile";
+}
 
 @end

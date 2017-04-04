@@ -11,6 +11,8 @@
 #import "SNRAPIClient.h"
 #import "SNRStatus.h"
 #import "SNRSeries.h"
+#import "SNRProfile.h"
+#import "SNRRootFolder.h"
 
 NSString * const SNR_SERVER_CONFIG  = @"snr_server_config";
 NSString * const SNR_SERVER_ACTIVE  = @"snr_server_active";
@@ -19,7 +21,9 @@ static NSString * BASEURL;
 @interface SNRServer() <NSCoding>
 @property (strong, nonatomic) SNRAPIClient *client;
 @property (strong, nonatomic) SNRServerConfig *config;
-@property (strong, nonatomic) NSMutableArray *observers;
+@property (strong, nonatomic) NSArray<SNRSeries *> *series;
+@property (strong, nonatomic) NSArray<SNRProfile *> *profiles;
+@property (strong, nonatomic) NSArray<SNRRootFolder *> *rootFolder;
 @end
 
 @implementation SNRServer
@@ -109,9 +113,65 @@ static NSString * BASEURL;
             NSLog(@"Error parsing to JSON model: %@", error.userInfo);
             NSLog(@"Response: %@", responseObject);
         }
+        
+        [self profilesWithCompletion:nil];
+        [self rootFolderwithCompletion:nil];
+        
         completion(status, error);
     } andFailure:^(NSError *error) {
         completion(nil, error);
+    }];
+}
+
+-(void)profilesWithCompletion:(void(^)(NSArray<SNRProfile *> *profiles, NSError *error))completion{
+    if(self.profiles){
+        if(completion){
+            completion(self.profiles, nil);
+        }
+        return;
+    }
+    
+    [self.client performGETCallToEndpoint:[self generateURLWithEndpoint:[SNRProfile endpoint]] withParameters:nil andSuccess:^(id responseObject) {
+        NSError *error;
+        NSMutableArray *profiles = [SNRProfile arrayOfModelsFromDictionaries:responseObject error:&error];
+        NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"id" ascending:YES];
+        [profiles sortUsingDescriptors:[NSArray arrayWithObject:sortDescriptor]];
+        
+        self.profiles = profiles;
+        
+        if(completion){
+            completion(self.profiles, error);
+        }
+    } andFailure:^(NSError *error) {
+        if(completion){
+            completion(nil, error);
+        }
+    }];
+}
+
+-(void)rootFolderwithCompletion:(void(^)(NSArray<SNRRootFolder *> *rootFolder, NSError * error))completion{
+    if(self.rootFolder){
+        if(completion){
+            completion(self.rootFolder, nil);
+        }
+        return;
+    }
+    
+    [self.client performGETCallToEndpoint:[self generateURLWithEndpoint:[SNRRootFolder endpoint]] withParameters:nil andSuccess:^(id responseObject) {
+        NSError *error;
+        NSMutableArray *rFolders = [SNRRootFolder arrayOfModelsFromDictionaries:responseObject error:&error];
+        NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"id" ascending:YES];
+        [rFolders sortUsingDescriptors:[NSArray arrayWithObject:sortDescriptor]];
+        
+        self.rootFolder = rFolders;
+        
+        if(completion){
+            completion(self.rootFolder, error);
+        }
+    } andFailure:^(NSError *error) {
+        if(completion){
+            completion(nil, error);
+        }
     }];
 }
 

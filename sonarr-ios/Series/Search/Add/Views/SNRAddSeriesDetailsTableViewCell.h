@@ -19,5 +19,5 @@ typedef enum : NSUInteger {
 
 @interface SNRAddSeriesDetailsTableViewCell : UITableViewCell
 -(void)setSeries:(SNRSeries *)series seriesDetailType:(SeriesDetail)type;
-
+-(void)becomeFirstResponder;
 @end

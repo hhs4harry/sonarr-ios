@@ -11,9 +11,11 @@
 
 @protocol SNRTitle;
 @protocol SNRImage;
-@protocol SNRSeason;
 @protocol SNRGenre;
 @protocol SNRQualityProfile;
+
+const NSString * IGNOREEPISODESWITHFILES = @"ignoreEpisodesWithFiles";
+const NSString * IGNOREEPISODESWITHOUTFILES = @"ignoreEpisodesWithoutFiles";
 
 @interface SNRSeries()
 
@@ -34,12 +36,9 @@
 @property (strong, nonatomic) NSString<Optional> *network;
 @property (strong, nonatomic) NSString<Optional> *airTime;
 @property (strong, nonatomic) NSArray<Optional, SNRImage> *images;
-@property (strong, nonatomic) NSArray<Optional, SNRSeason> *seasons;
 @property (strong, nonatomic) NSNumber<Optional> *year;
-@property (strong, nonatomic) NSString<Optional> *path;
 @property (strong, nonatomic) NSNumber<Optional> *profileId;
 @property (nonatomic) BOOL seasonFolder;
-@property (nonatomic) BOOL monitored;
 @property (nonatomic) BOOL useSceneNumbering;
 @property (strong, nonatomic) NSNumber<Optional> *runtime;
 @property (strong, nonatomic) NSNumber<Optional> *tvdbId;
@@ -47,7 +46,6 @@
 @property (strong, nonatomic) NSNumber<Optional> *tvMazeId;
 @property (strong, nonatomic) NSDate<Optional> *firstAired;
 @property (strong, nonatomic) NSDate<Optional> *lastInfoSync;
-@property (strong, nonatomic) NSString<Optional> *seriesType;
 @property (strong, nonatomic) NSString<Optional> *cleanTitle;
 @property (strong, nonatomic) NSString<Optional> *imdbId;
 @property (strong, nonatomic) NSString<Optional> *titleSlug;
@@ -56,8 +54,6 @@
 @property (strong, nonatomic) NSArray<Optional> *tags;
 @property (strong, nonatomic) NSDate<Optional> *added;
 @property (strong, nonatomic) SNRRatings<Optional> *ratings;
-@property (strong, nonatomic) NSNumber<Optional> *qualityProfileId;
-@property (strong, nonatomic) NSArray<SNRQualityProfile, Optional> *qualityProfile;
 @property (strong, nonatomic) NSNumber<Optional> *id;
 @end
 

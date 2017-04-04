@@ -9,6 +9,8 @@
 #import <JSONModel/JSONModel.h>
 
 @interface SNRRootFolder : JSONModel
++(NSString *)endpoint;
+
 @property (copy, nonatomic) NSString *path;
 @property (strong, nonatomic) NSNumber *freeSpace;
 @property (copy, nonatomic) NSArray *unmappedFolders;

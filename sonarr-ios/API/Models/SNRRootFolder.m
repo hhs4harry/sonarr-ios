@@ -10,4 +10,8 @@
 
 @implementation SNRRootFolder
 
++(NSString *)endpoint{
+    return @"rootfolder";
+}
+
 @end

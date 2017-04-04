@@ -488,6 +488,10 @@ Add one now!</string>
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="66"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eVf-5W-Di9">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="66"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Path" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6G7-st-bSe">
                                                     <rect key="frame" x="8" y="7.9999999999999964" width="34.666666666666664" height="49.666666666666657"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -497,6 +501,9 @@ Add one now!</string>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oeX-9c-UdZ">
                                                     <rect key="frame" x="50.666666666666657" y="7.9999999999999964" width="316.33333333333337" height="49.666666666666657"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <accessibility key="accessibilityConfiguration">
+                                                        <accessibilityTraits key="traits" notEnabled="YES"/>
+                                                    </accessibility>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
@@ -504,13 +511,17 @@ Add one now!</string>
                                             </subviews>
                                             <color key="backgroundColor" red="0.098039215690000001" green="0.098039215690000001" blue="0.098039215690000001" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="eVf-5W-Di9" secondAttribute="trailing" id="1CI-Bf-g0F"/>
                                                 <constraint firstAttribute="bottom" secondItem="oeX-9c-UdZ" secondAttribute="bottom" constant="8" id="886-Pl-R1h"/>
                                                 <constraint firstItem="6G7-st-bSe" firstAttribute="top" secondItem="buw-q7-2D3" secondAttribute="top" constant="8" id="EEC-sX-e4w"/>
                                                 <constraint firstItem="oeX-9c-UdZ" firstAttribute="top" secondItem="buw-q7-2D3" secondAttribute="top" constant="8" id="LFt-3a-96r"/>
+                                                <constraint firstAttribute="bottom" secondItem="eVf-5W-Di9" secondAttribute="bottom" id="Pwt-kS-I82"/>
+                                                <constraint firstItem="eVf-5W-Di9" firstAttribute="top" secondItem="buw-q7-2D3" secondAttribute="top" id="Rqj-2i-HU2"/>
                                                 <constraint firstAttribute="bottom" secondItem="6G7-st-bSe" secondAttribute="bottom" constant="8" id="Ys5-gW-Rjt"/>
                                                 <constraint firstItem="6G7-st-bSe" firstAttribute="leading" secondItem="buw-q7-2D3" secondAttribute="leading" constant="8" id="eGH-4a-FUu"/>
                                                 <constraint firstAttribute="trailing" secondItem="oeX-9c-UdZ" secondAttribute="trailing" constant="8" id="fOM-df-uDJ"/>
                                                 <constraint firstItem="oeX-9c-UdZ" firstAttribute="leading" secondItem="6G7-st-bSe" secondAttribute="trailing" constant="8" id="kfx-b5-Xza"/>
+                                                <constraint firstItem="eVf-5W-Di9" firstAttribute="leading" secondItem="buw-q7-2D3" secondAttribute="leading" id="wgc-8C-wrs"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>

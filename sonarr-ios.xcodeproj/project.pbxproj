@@ -48,8 +48,6 @@
 		4A777C4C1E63FE9C006B1987 /* SNRHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A777C4B1E63FE9C006B1987 /* SNRHistory.m */; };
 		4A777C4F1E640407006B1987 /* SNRRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A777C4E1E640407006B1987 /* SNRRecord.m */; };
 		4A777C521E64078B006B1987 /* SNRData.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A777C511E64078B006B1987 /* SNRData.m */; };
-		4A777C621E65325F006B1987 /* SNRQualityProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A777C611E65325F006B1987 /* SNRQualityProfile.m */; };
-		4A777C651E653283006B1987 /* SNRValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A777C641E653283006B1987 /* SNRValue.m */; };
 		4A777C6B1E653357006B1987 /* SNRCutoff.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A777C6A1E653357006B1987 /* SNRCutoff.m */; };
 		4A777C6E1E65340A006B1987 /* SNRItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A777C6D1E65340A006B1987 /* SNRItem.m */; };
 		4A777C711E653561006B1987 /* SNRQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A777C701E653561006B1987 /* SNRQueue.m */; };
@@ -166,10 +164,6 @@
 		4A777C4E1E640407006B1987 /* SNRRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRRecord.m; path = API/Models/SNRRecord.m; sourceTree = "<group>"; };
 		4A777C501E64078B006B1987 /* SNRData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRData.h; path = API/Models/SNRData.h; sourceTree = "<group>"; };
 		4A777C511E64078B006B1987 /* SNRData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRData.m; path = API/Models/SNRData.m; sourceTree = "<group>"; };
-		4A777C601E65325F006B1987 /* SNRQualityProfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRQualityProfile.h; path = API/Models/SNRQualityProfile.h; sourceTree = "<group>"; };
-		4A777C611E65325F006B1987 /* SNRQualityProfile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRQualityProfile.m; path = API/Models/SNRQualityProfile.m; sourceTree = "<group>"; };
-		4A777C631E653283006B1987 /* SNRValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRValue.h; path = API/Models/SNRValue.h; sourceTree = "<group>"; };
-		4A777C641E653283006B1987 /* SNRValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRValue.m; path = API/Models/SNRValue.m; sourceTree = "<group>"; };
 		4A777C691E653357006B1987 /* SNRCutoff.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRCutoff.h; path = API/Models/SNRCutoff.h; sourceTree = "<group>"; };
 		4A777C6A1E653357006B1987 /* SNRCutoff.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRCutoff.m; path = API/Models/SNRCutoff.m; sourceTree = "<group>"; };
 		4A777C6C1E65340A006B1987 /* SNRItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRItem.h; path = API/Models/SNRItem.h; sourceTree = "<group>"; };
@@ -333,10 +327,10 @@
 			children = (
 				4AFA7BAF1E7B9C8100932038 /* SNRServer.h */,
 				4AFA7BB01E7B9C8100932038 /* SNRServer.m */,
-				4A9E6C571E760C9B008AB91A /* UIColor+App.h */,
-				4A9E6C581E760C9B008AB91A /* UIColor+App.m */,
 				4A7A23581E7DE29500141FCE /* SNRServerManager.h */,
 				4A7A23591E7DE29500141FCE /* SNRServerManager.m */,
+				4A9E6C571E760C9B008AB91A /* UIColor+App.h */,
+				4A9E6C581E760C9B008AB91A /* UIColor+App.m */,
 				4A147BAB1E89D4F2000807AD /* NSString+check.h */,
 				4A147BAC1E89D4F2000807AD /* NSString+check.m */,
 			);
@@ -389,10 +383,6 @@
 				4A777C4E1E640407006B1987 /* SNRRecord.m */,
 				4A777C501E64078B006B1987 /* SNRData.h */,
 				4A777C511E64078B006B1987 /* SNRData.m */,
-				4A777C601E65325F006B1987 /* SNRQualityProfile.h */,
-				4A777C611E65325F006B1987 /* SNRQualityProfile.m */,
-				4A777C631E653283006B1987 /* SNRValue.h */,
-				4A777C641E653283006B1987 /* SNRValue.m */,
 				4A777C691E653357006B1987 /* SNRCutoff.h */,
 				4A777C6A1E653357006B1987 /* SNRCutoff.m */,
 				4A777C6C1E65340A006B1987 /* SNRItem.h */,
@@ -811,7 +801,6 @@
 				4A777C4F1E640407006B1987 /* SNRRecord.m in Sources */,
 				4A5F0A291E805829008463F6 /* SNRSeriesViewController.m in Sources */,
 				4A777C391E63ECED006B1987 /* SNREpisode.m in Sources */,
-				4A777C621E65325F006B1987 /* SNRQualityProfile.m in Sources */,
 				4A3499231E63DD1000453E63 /* SNRRatings.m in Sources */,
 				4A3499171E63D94A00453E63 /* SNRSeason.m in Sources */,
 				4A6D2A8D1E8DAA6F00BE876F /* SNRSheetNavigationViewController.m in Sources */,
@@ -819,7 +808,6 @@
 				4A9E6C591E760C9B008AB91A /* UIColor+App.m in Sources */,
 				4A777C4C1E63FE9C006B1987 /* SNRHistory.m in Sources */,
 				4A34991A1E63D9A600453E63 /* SNRStatistics.m in Sources */,
-				4A777C651E653283006B1987 /* SNRValue.m in Sources */,
 				4A147BBA1E8AD2C5000807AD /* SNRRefreshControl.m in Sources */,
 				4A0969651E843F7800A8C35E /* SNRActivityIndicatorView.m in Sources */,
 				4A6D2AA31E8DFBE900BE876F /* SNRAddSeriesSheetViewController.m in Sources */,

@@ -7,7 +7,6 @@
 //
 
 #import <JSONModel/JSONModel.h>
-@class SNRQuality;
 
 @interface SNREpisode : JSONModel
 @property (strong, nonatomic) NSNumber *seriesId;

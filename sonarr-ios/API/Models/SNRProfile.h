@@ -7,11 +7,14 @@
 //
 
 #import <JSONModel/JSONModel.h>
-@class SNRValue;
+@class SNRCutoff;
 @protocol SNRItem;
 
 @interface SNRProfile : JSONModel
-@property (strong, nonatomic) SNRValue *value;
++(NSString *)endpoint;
+
+@property (copy, nonatomic) NSString *name;
+@property (strong, nonatomic) SNRCutoff *cutoff;
 @property (copy, nonatomic) NSArray<SNRItem> *items;
 @property (strong, nonatomic) NSNumber *id;
 @end
