@@ -23,7 +23,7 @@ static NSString * BASEURL;
 @property (strong, nonatomic) SNRServerConfig *config;
 @property (strong, nonatomic) NSArray<SNRSeries *> *series;
 @property (strong, nonatomic) NSArray<SNRProfile *> *profiles;
-@property (strong, nonatomic) NSArray<SNRRootFolder *> *rootFolder;
+@property (strong, nonatomic) NSArray<SNRRootFolder *> *rootFolders;
 @end
 
 @implementation SNRServer
@@ -115,7 +115,7 @@ static NSString * BASEURL;
         }
         
         [self profilesWithCompletion:nil];
-        [self rootFolderwithCompletion:nil];
+        [self rootFolderswithCompletion:nil];
         
         completion(status, error);
     } andFailure:^(NSError *error) {
@@ -149,10 +149,10 @@ static NSString * BASEURL;
     }];
 }
 
--(void)rootFolderwithCompletion:(void(^)(NSArray<SNRRootFolder *> *rootFolder, NSError * error))completion{
-    if(self.rootFolder){
+-(void)rootFolderswithCompletion:(void(^)(NSArray<SNRRootFolder *> *rootFolders, NSError * error))completion{
+    if(self.rootFolders){
         if(completion){
-            completion(self.rootFolder, nil);
+            completion(self.rootFolders, nil);
         }
         return;
     }
@@ -163,10 +163,10 @@ static NSString * BASEURL;
         NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"id" ascending:YES];
         [rFolders sortUsingDescriptors:[NSArray arrayWithObject:sortDescriptor]];
         
-        self.rootFolder = rFolders;
+        self.rootFolders = rFolders;
         
         if(completion){
-            completion(self.rootFolder, error);
+            completion(self.rootFolders, error);
         }
     } andFailure:^(NSError *error) {
         if(completion){

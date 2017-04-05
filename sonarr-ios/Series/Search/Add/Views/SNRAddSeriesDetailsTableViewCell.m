@@ -25,6 +25,7 @@ typedef enum : NSUInteger {
 } MonitorType;
 
 @interface SNRAddSeriesDetailsTableViewCell() <UIPickerViewDelegate, UIPickerViewDataSource>
+@property (strong, nonatomic) SNRServer *server;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UITextField *valueTextField;
 @property (strong, nonatomic) SNRSeries *series;
@@ -36,21 +37,37 @@ typedef enum : NSUInteger {
 @implementation SNRAddSeriesDetailsTableViewCell
 
 -(void)becomeFirstResponder{    
-    if(!self.valueTextField.isFirstResponder){
+    if(!self.valueTextField.isFirstResponder && self.dataSource){
         [self.valueTextField becomeFirstResponder];
     }
 }
 
 -(void)setSeries:(SNRSeries *)series seriesDetailType:(SeriesDetail)type{
+    self.server = [SNRServerManager manager].activeServer;
     self.series = series;
     self.type = type;
-    
+
     switch (type) {
         case SeriesDetailPath:
             self.nameLabel.text = @"Path";
-            self.dataSource = [SNRServerManager manager].activeServer.rootFolder;
-            self.valueTextField.text = ((SNRRootFolder *)self.dataSource.firstObject).path;
-            self.series.path = self.valueTextField.text;
+            self.dataSource = self.server.rootFolders;
+            
+            if(!self.dataSource){
+                self.valueTextField.text = @"Loading...";
+                
+                __weak typeof(self) wself = self;
+                [self.server rootFolderswithCompletion:^(NSArray<SNRRootFolder *> * _Nullable rootFolders, NSError * _Nullable error) {
+                    if(rootFolders){
+                        wself.dataSource = rootFolders;
+                        wself.valueTextField.text = rootFolders.firstObject.path;
+                    }else{
+                        [wself setSeries:wself.series seriesDetailType:wself.type];
+                    }
+                }];
+            }else{
+                self.valueTextField.text = ((SNRRootFolder *)self.dataSource.firstObject).path;
+                self.series.path = self.valueTextField.text;
+            }
             break;
         case SeriesDetailMonitor:
             self.nameLabel.text = @"Monitor";
@@ -63,9 +80,25 @@ typedef enum : NSUInteger {
             break;
         case SeriesDetailProfile:
             self.nameLabel.text = @"Quality Profile";
-            self.dataSource = [SNRServerManager manager].activeServer.profiles;
-            self.valueTextField.text = ((SNRProfile *)self.dataSource.firstObject).name;
-            self.series.qualityProfileId = ((SNRProfile *)self.dataSource.firstObject).id;
+            self.dataSource = self.server.profiles;
+            
+            if(!self.dataSource){
+                self.valueTextField.text = @"Loading...";
+                
+                __weak typeof(self) wself = self;
+                [self.server profilesWithCompletion:^(NSArray<SNRProfile *> * _Nullable profiles, NSError * _Nullable error) {
+                    if(profiles){
+                        wself.dataSource = profiles;
+                        wself.valueTextField.text = ((SNRProfile *)self.dataSource.firstObject).name;
+                        wself.series.qualityProfileId = ((SNRProfile *)self.dataSource.firstObject).id;
+                    }else{
+                        [wself setSeries:wself.series seriesDetailType:wself.type];
+                    }
+                }];
+            }else{
+                self.valueTextField.text = ((SNRProfile *)self.dataSource.firstObject).name;
+                self.series.qualityProfileId = ((SNRProfile *)self.dataSource.firstObject).id;
+            }
             break;
         case SeriesDetailSeriesType:
             self.nameLabel.text = @"Type";
@@ -85,6 +118,25 @@ typedef enum : NSUInteger {
     self.pickerView = [[UIPickerView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth([UIScreen mainScreen].bounds), 130)];
     self.pickerView.dataSource = self;
     self.pickerView.delegate = self;
+    
+    [self.dataSource enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        NSString *objStr = obj;
+        
+        switch (self.type) {
+            case SeriesDetailPath:
+                objStr = ((SNRRootFolder *)obj).path;
+                break;
+            case SeriesDetailProfile:
+                objStr = ((SNRProfile *)obj).name;
+                break;
+            default:
+                break;
+        }
+        
+        if([objStr isEqualToString:self.valueTextField.text]){
+            [self.pickerView selectRow:idx inComponent:0 animated:NO];
+        }
+    }];
     
     self.valueTextField.inputView = self.pickerView;
 }

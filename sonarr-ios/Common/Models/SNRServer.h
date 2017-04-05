@@ -22,14 +22,14 @@
 
 @property (readonly) NSArray<SNRSeries *> * __nullable series;
 @property (readonly) NSArray<SNRProfile *> * __nullable profiles;
-@property (readonly) NSArray<SNRRootFolder *> * __nullable rootFolder;
+@property (readonly) NSArray<SNRRootFolder *> * __nullable rootFolders;
 
 -(NSString * __nonnull)generateURLWithEndpoint:(NSString * __nonnull)endpoint;
 
 -(instancetype __nullable)initWithConfig:(SNRServerConfig * __nonnull)config;
 -(void)validateServerWithCompletion:(void(^ __nullable)(SNRStatus * __nullable status, NSError * __nullable error))completion;
 -(void)profilesWithCompletion:(void(^ __nullable)(NSArray<SNRProfile *> * __nullable profiles, NSError * __nullable error))completion;
--(void)rootFolderwithCompletion:(void(^ __nullable)(NSArray<SNRRootFolder *> * __nullable rootFolder, NSError * __nullable error))completion;
+-(void)rootFolderswithCompletion:(void(^ __nullable)(NSArray<SNRRootFolder *> * __nullable rootFolders, NSError * __nullable error))completion;
 -(void)seriesWithRefresh:(BOOL)refresh andCompletion:(void(^ __nullable)(NSArray<SNRSeries *> * __nullable series, NSError * __nullable error))completion;
 -(void)searchForSeries:(NSString * __nonnull)series withCompletion:(void(^ __nullable)(NSArray<SNRSeries *> * __nullable series, NSError * __nullable error))completion;
 @end
