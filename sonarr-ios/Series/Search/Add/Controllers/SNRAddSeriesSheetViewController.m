@@ -16,8 +16,9 @@
 #import <MZFormSheetPresentationController.h>
 #import <MXParallaxHeader/MXParallaxHeader.h>
 #import <MXParallaxHeader/MXScrollView.h>
+#import "SNRNavigationViewController.h"
 
-@interface SNRAddSeriesSheetViewController ()
+@interface SNRAddSeriesSheetViewController () <SNRNavigationBarButtonProtocol>
 @property (weak, nonatomic) IBOutlet SNRBaseTableView *tableView;
 @property (strong, nonatomic) SNRServer *server;
 @property (strong, nonatomic) SNRSeries *series;
@@ -34,19 +35,10 @@
     self.server = [SNRServerManager manager].activeServer;
 }
 
--(void)viewDidLoad{
-    [super viewDidLoad];
-    
-}
-
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     
     self.title = self.series.title;
-}
-
--(void)viewWillDisappear:(BOOL)animated{
-    [super viewWillDisappear:animated];
 }
 
 -(void)viewDidLayoutSubviews{
@@ -59,6 +51,23 @@
     }
 
     [self updateParallaxHeaderView];
+}
+
+#pragma mark - Navigation
+
+-(UIBarButtonItem *)rightBarButton{
+    return [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
+                                                         target:self
+                                                         action:@selector(addSeriesButtonTouchUpInside)];
+}
+
+-(void)addSeriesButtonTouchUpInside{
+    __weak typeof(self) wself = self;
+    [self.server addSeries:self.series withCompletion:^(SNRSeries * _Nullable series, NSError * _Nullable error) {
+        if(series){
+            NSLog(@"");
+        }
+    }];
 }
 
 #pragma mark - TableView

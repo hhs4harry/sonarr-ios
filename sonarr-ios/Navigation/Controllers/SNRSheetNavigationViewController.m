@@ -8,6 +8,7 @@
 
 #import "SNRSheetNavigationViewController.h"
 #import <MZFormSheetPresentationController/MZFormSheetPresentationContentSizing.h>
+#import <MZFormSheetPresentationController/MZFormSheetContentSizingNavigationControllerAnimator.h>
 #import "SNRBaseSheetViewController.h"
 @interface SNRSheetNavigationViewController () <MZFormSheetPresentationContentSizing, UINavigationControllerDelegate>
 @property (nonatomic, strong) MZFormSheetContentSizingNavigationControllerAnimator *animator;

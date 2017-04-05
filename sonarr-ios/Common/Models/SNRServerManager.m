@@ -11,7 +11,7 @@
 
 NSString * const SNR_SERVER_MANAGER_DIR = @"sonarr/manager/server";
 
-@interface SNRServerManager()
+@interface SNRServerManager() <SNRServerProtocol>
 @property (strong, nonatomic) NSMutableArray *observers;
 @end
 
@@ -43,6 +43,7 @@ NSString * const SNR_SERVER_MANAGER_DIR = @"sonarr/manager/server";
         self.servers = [[NSMutableArray alloc] init];
     }
     
+    server.delegate = self;
     [self.servers addObject:server];
     
     if(self.servers.count == 1){
@@ -167,6 +168,20 @@ NSString * const SNR_SERVER_MANAGER_DIR = @"sonarr/manager/server";
     _activeServer.active = YES;
     
     [self archiveServers];
+}
+
+#pragma mark - Server Delegate
+
+-(void)didAddSeries:(SNRSeries *)series atIndex:(NSInteger)index{
+    for(id<SNRServerProtocol>observer in self.observers){
+        if([observer respondsToSelector:@selector(didAddSeries:atIndex:forServer:)]){
+            
+        }
+    }
+}
+
+-(void)didRemoveSeries:(SNRSeries *)series atIndex:(NSInteger)index{
+    
 }
 
 @end

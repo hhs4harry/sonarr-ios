@@ -31,13 +31,11 @@ const NSString * IGNOREEPISODESWITHOUTFILES = @"ignoreEpisodesWithoutFiles";
 @property (strong, nonatomic) NSNumber<Optional> *sizeOnDisk;
 @property (strong, nonatomic) NSString<Optional> *status;
 @property (strong, nonatomic) NSString<Optional> *overview;
-@property (strong, nonatomic) NSDate<Optional> *nextAiring;
-@property (strong, nonatomic) NSDate<Optional> *previousAiring;
+
 @property (strong, nonatomic) NSString<Optional> *network;
 @property (strong, nonatomic) NSString<Optional> *airTime;
 @property (strong, nonatomic) NSArray<Optional, SNRImage> *images;
 @property (strong, nonatomic) NSNumber<Optional> *year;
-@property (strong, nonatomic) NSNumber<Optional> *profileId;
 @property (nonatomic) BOOL seasonFolder;
 @property (nonatomic) BOOL useSceneNumbering;
 @property (strong, nonatomic) NSNumber<Optional> *runtime;
@@ -52,9 +50,11 @@ const NSString * IGNOREEPISODESWITHOUTFILES = @"ignoreEpisodesWithoutFiles";
 @property (strong, nonatomic) NSString<Optional> *certification;
 @property (strong, nonatomic) NSArray<Optional> *genres;
 @property (strong, nonatomic) NSArray<Optional> *tags;
-@property (strong, nonatomic) NSDate<Optional> *added;
 @property (strong, nonatomic) SNRRatings<Optional> *ratings;
 @property (strong, nonatomic) NSNumber<Optional> *id;
+@property (strong, nonatomic) NSDate<Optional> *nextAiring;
+@property (strong, nonatomic) NSDate<Optional> *previousAiring;
+@property (strong, nonatomic) NSDate<Optional> *added;
 @end
 
 @implementation SNRSeries
@@ -130,6 +130,19 @@ const NSString * IGNOREEPISODESWITHOUTFILES = @"ignoreEpisodesWithoutFiles";
     
     _scheduleInfo = [NSString stringWithFormat:@"%@ on %@", [formatter stringFromDate:date], self.network];
     return _scheduleInfo;
+}
+
+#pragma mark - JSON
+
+-(NSDictionary*)toDictionary
+{
+    NSMutableDictionary *json = [self toDictionaryWithKeys:nil].mutableCopy;
+    [json removeObjectForKey:@"added"];
+    [json removeObjectForKey:@"nextAiring"];
+    [json removeObjectForKey:@"previousAiring"];
+    [json removeObjectForKey:@"firstAired"];
+    [json removeObjectForKey:@"lastInfoSync"];
+    return json;
 }
 
 @end

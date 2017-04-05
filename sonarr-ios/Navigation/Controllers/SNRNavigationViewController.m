@@ -19,17 +19,18 @@
 
 -(void)awakeFromNib{
     [super awakeFromNib];
-
-    UIViewController *controller;
     
-    if([SNRServerManager manager].servers.count){
-        controller = [SNRSeriesViewController viewController];
-    }else{
-        controller = [SNRServerManagerViewController viewController];
+    if(!self.viewControllers.count){
+        UIViewController *controller;
+        
+        if([SNRServerManager manager].servers.count){
+            controller = [SNRSeriesViewController viewController];
+        }else{
+            controller = [SNRServerManagerViewController viewController];
+        }
+        //set root view controller
+        [self pushViewController:controller animated:NO];
     }
-    
-    //set root view controller
-    [self pushViewController:controller animated:NO];
 }
 
 -(void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated{

@@ -24,6 +24,7 @@ extern const NSString * IGNOREEPISODESWITHOUTFILES;
 @property (strong, readonly) NSArray<Optional, SNRImage> *images;
 @property (strong, nonatomic) NSArray<Optional, SNRSeason> *seasons;
 @property (strong, nonatomic) NSNumber<Optional> *qualityProfileId;
+@property (strong, nonatomic) NSNumber<Optional> *profileId;
 @property (strong, nonatomic) NSString<Optional> *seriesType;
 @property (strong, nonatomic) NSString<Optional> *path;
 @property (nonatomic) BOOL monitored;

@@ -13,5 +13,5 @@
 @property (copy, nonatomic) NSString *coverType;
 @property (copy, nonatomic) NSString *url;
 
-@property (strong, nonatomic) UIImage<Optional> *image;
+@property (strong, nonatomic) UIImage<Ignore> *image;
 @end

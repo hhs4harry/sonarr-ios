@@ -19,6 +19,7 @@ NSString * const SNR_SERVER_ACTIVE  = @"snr_server_active";
 static NSString * BASEURL;
 
 @interface SNRServer() <NSCoding>
+@property (strong, nonatomic) NSMutableArray *observers;
 @property (strong, nonatomic) SNRAPIClient *client;
 @property (strong, nonatomic) SNRServerConfig *config;
 @property (strong, nonatomic) NSArray<SNRSeries *> *series;
@@ -79,6 +80,9 @@ static NSString * BASEURL;
         copy.client = [_client copy];
         copy.config = [_config copy];
         copy.active = _active;
+        copy.series = _series.copy;
+        copy.profiles = _profiles.copy;
+        copy.rootFolders = _rootFolders.copy;
     }
     return copy;
 }
@@ -213,6 +217,34 @@ static NSString * BASEURL;
     } andFailure:^(NSError *error) {
         completion(nil, error);
     }];
+}
+
+-(void)addSeries:(SNRSeries * __nonnull)series withCompletion:(void(^ __nullable)(SNRSeries * __nullable series, NSError * __nullable error))completion{
+    [self.client performPOSTCallToEndpoint:[self generateURLWithEndpoint:[SNRSeries endpoint]] withParameters:[series toDictionary] withSuccess:^(id responseObject) {
+        NSError *error;
+        SNRSeries *addedSeries = [[SNRSeries alloc] initWithDictionary:responseObject error:&error];
+        if(completion){
+            completion(addedSeries, error);
+        }
+    } andFailure:^(NSError *error) {
+        if(completion){
+            completion(nil, error);
+        }
+    }];
+}
+
+#pragma mark - Delegate
+
+-(void)fireDidAddSeries:(SNRSeries *)series{
+    if(self.delegate && [self.delegate respondsToSelector:@selector(didAddSeries:atIndex:)]){
+        [self.delegate didAddSeries:series atIndex:[self.series indexOfObject:series]];
+    }
+}
+
+-(void)fireDidRemoveSeries:(SNRSeries *)series{
+    if(self.delegate && [self.delegate respondsToSelector:@selector(didRemoveSeries:atIndex:)]){
+        [self.delegate didRemoveSeries:series atIndex:[self.series indexOfObject:series]];
+    }
 }
 
 @end

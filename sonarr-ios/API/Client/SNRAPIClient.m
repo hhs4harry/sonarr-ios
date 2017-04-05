@@ -38,6 +38,7 @@
     self.securityPolicy.allowInvalidCertificates = YES;
     self.securityPolicy.validatesDomainName = NO;
     
+    self.requestSerializer = [AFJSONRequestSerializer serializer];
     self.responseSerializer = [AFCompoundResponseSerializer compoundSerializerWithResponseSerializers:@[[AFImageResponseSerializer serializer], [AFJSONResponseSerializer serializer]]];
     
     //Set challenge block to allow invalid certs

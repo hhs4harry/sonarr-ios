@@ -59,6 +59,7 @@ typedef enum : NSUInteger {
                 [self.server rootFolderswithCompletion:^(NSArray<SNRRootFolder *> * _Nullable rootFolders, NSError * _Nullable error) {
                     if(rootFolders){
                         wself.dataSource = rootFolders;
+                        wself.series.path = [rootFolders.firstObject.path stringByAppendingString:self.series.title];
                         wself.valueTextField.text = rootFolders.firstObject.path;
                     }else{
                         [wself setSeries:wself.series seriesDetailType:wself.type];
@@ -66,12 +67,18 @@ typedef enum : NSUInteger {
                 }];
             }else{
                 self.valueTextField.text = ((SNRRootFolder *)self.dataSource.firstObject).path;
-                self.series.path = self.valueTextField.text;
+                self.series.path = [((SNRRootFolder *)self.dataSource.firstObject).path stringByAppendingString:self.series.title];
             }
             break;
         case SeriesDetailMonitor:
             self.nameLabel.text = @"Monitor";
-            self.dataSource = @[@"All", @"Future", @"Missing", @"Existing", @"First Season", @"Last Season", @"None"];
+            self.dataSource = @[@"All",
+                                @"Future",
+                                @"Missing",
+                                @"Existing",
+                                @"First Season",
+                                @"Last Season",
+                                @"None"];
             self.valueTextField.text = self.dataSource.lastObject;
             self.series.addOptions = @{
                                        IGNOREEPISODESWITHFILES : @"false",
@@ -90,19 +97,21 @@ typedef enum : NSUInteger {
                     if(profiles){
                         wself.dataSource = profiles;
                         wself.valueTextField.text = ((SNRProfile *)self.dataSource.firstObject).name;
-                        wself.series.qualityProfileId = ((SNRProfile *)self.dataSource.firstObject).id;
+                        wself.series.profileId = ((SNRProfile *)self.dataSource.firstObject).id;
                     }else{
                         [wself setSeries:wself.series seriesDetailType:wself.type];
                     }
                 }];
             }else{
                 self.valueTextField.text = ((SNRProfile *)self.dataSource.firstObject).name;
-                self.series.qualityProfileId = ((SNRProfile *)self.dataSource.firstObject).id;
+                self.series.profileId = ((SNRProfile *)self.dataSource.firstObject).id;
             }
             break;
         case SeriesDetailSeriesType:
             self.nameLabel.text = @"Type";
-            self.dataSource = @[@"Standard", @"Daily", @"Anime"];
+            self.dataSource = @[@"Standard",
+                                @"Daily",
+                                @"Anime"];
             self.valueTextField.text = self.dataSource.firstObject;
             self.series.seriesType = self.valueTextField.text;
             break;
@@ -114,8 +123,13 @@ typedef enum : NSUInteger {
     [self setupPickerView];
 }
 
+#pragma mark - PickerView
+
 -(void)setupPickerView{
-    self.pickerView = [[UIPickerView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth([UIScreen mainScreen].bounds), 130)];
+    self.pickerView = [[UIPickerView alloc] initWithFrame:CGRectMake(0,
+                                                                     0,
+                                                                     CGRectGetWidth([UIScreen mainScreen].bounds),
+                                                                     130)];
     self.pickerView.dataSource = self;
     self.pickerView.delegate = self;
     
@@ -140,8 +154,6 @@ typedef enum : NSUInteger {
     
     self.valueTextField.inputView = self.pickerView;
 }
-
-#pragma mark - PickerView
 
 -(NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView{
     return 1;
@@ -175,8 +187,8 @@ typedef enum : NSUInteger {
     
     switch (self.type) {
         case SeriesDetailPath:
-            self.series.path = ((SNRRootFolder *)obj).path;
-            self.valueTextField.text = self.series.path;
+            self.series.path = [((SNRRootFolder *)obj).path stringByAppendingString:self.series.title];
+            self.valueTextField.text = ((SNRRootFolder *)obj).path;
             break;
         case SeriesDetailMonitor:{
             NSMutableDictionary *options = @{
@@ -214,7 +226,7 @@ typedef enum : NSUInteger {
             break;
         }
         case SeriesDetailProfile:
-            self.series.qualityProfileId = ((SNRProfile *)obj).id;
+            self.series.profileId = ((SNRProfile *)obj).id;
             self.valueTextField.text = ((SNRProfile *)obj).name;
             break;
         case SeriesDetailSeriesType:
@@ -226,6 +238,8 @@ typedef enum : NSUInteger {
             break;
     }
 }
+
+#pragma mark - Helper methods
 
 -(void)setSeasonPass:(NSInteger)season{
     [self.series.seasons enumerateObjectsUsingBlock:^(SNRSeason * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
