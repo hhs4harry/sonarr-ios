@@ -17,12 +17,16 @@
 #import <MXParallaxHeader/MXParallaxHeader.h>
 #import <MXParallaxHeader/MXScrollView.h>
 #import "SNRNavigationViewController.h"
+#import "SNRActivityIndicatorView.h"
+#import "SNRAddSeriesDetailsSwitchTableViewCell.h"
+#import "SNRAddSeriesDetailsInfoTableViewCell.h"
 
 @interface SNRAddSeriesSheetViewController () <SNRNavigationBarButtonProtocol>
 @property (weak, nonatomic) IBOutlet SNRBaseTableView *tableView;
 @property (strong, nonatomic) SNRServer *server;
 @property (strong, nonatomic) SNRSeries *series;
 @property (strong, nonatomic) MXParallaxHeader *parallaxHeader;
+@property (assign, nonatomic) CGFloat imageToViewRatio;
 @end
 
 @implementation SNRAddSeriesSheetViewController
@@ -45,8 +49,11 @@
     [super viewDidLayoutSubviews];
     
     if(!self.parallaxHeader){
+        SNRAddSeriesTableViewCell *cell = (id)[self tableView:self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:NSIntegerMax - 1 inSection:0]];
+        self.imageToViewRatio = [cell imageToViewRatio];
+        
         self.parallaxHeader = [[MXParallaxHeader alloc] init];
-        self.parallaxHeader.view = (id)[self tableView:self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:NSIntegerMax - 1 inSection:0]].contentView;
+        self.parallaxHeader.view = cell.contentView;
         self.tableView.parallaxHeader = self.parallaxHeader;
     }
 
@@ -56,17 +63,27 @@
 #pragma mark - Navigation
 
 -(UIBarButtonItem *)rightBarButton{
+    for (SNRSeries *series in self.server.series) {
+        if(series.tvdbId.integerValue == self.series.tvdbId.integerValue){
+            return nil;
+        }
+    }
+    
     return [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
                                                          target:self
                                                          action:@selector(addSeriesButtonTouchUpInside)];
 }
 
 -(void)addSeriesButtonTouchUpInside{
+    [SNRActivityIndicatorView showOnTint:YES onView:self.view];
+    
     __weak typeof(self) wself = self;
     [self.server addSeries:self.series withCompletion:^(SNRSeries * _Nullable series, NSError * _Nullable error) {
         if(series){
-            [wself dismissViewControllerAnimated:YES completion:nil];
+            return [wself dismissViewControllerAnimated:YES completion:nil];
         }
+        
+        [SNRActivityIndicatorView showOnTint:NO onView:wself.view];
     }];
 }
 
@@ -74,10 +91,11 @@
 
 -(void)updateParallaxHeaderView{
     CGRect frame =  [self contentViewFrameForPresentationController:nil currentFrame:[UIScreen mainScreen].bounds];
-    CGFloat frameH = CGRectGetHeight(frame);
     
-    CGFloat minimunHeight = 130;
-    CGFloat height = MAX(frameH * 0.5, minimunHeight);
+    CGFloat minimunHeight = 130.0f;
+    CGFloat propHeight = (1080.0f / 1920.0f) * CGRectGetWidth(frame);
+    
+    CGFloat height = MAX(propHeight + propHeight * self.imageToViewRatio, minimunHeight);
     
     self.tableView.parallaxHeader.height = height;
     self.tableView.parallaxHeader.mode = MXParallaxHeaderModeFill;
@@ -89,11 +107,14 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    if(!indexPath.row){
+        return 60;
+    }
     return floorf(45);
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return SeriesDetailCount;
+    return SeriesDetailCount + 2;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -104,9 +125,31 @@
         return (id)seriesCell;
     }
     
+    if(!indexPath.row){
+        SNRAddSeriesDetailsInfoTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"seriesDetailInfoCell" forIndexPath:indexPath];
+        [cell setSeries:self.series];
+        return cell;
+    }
+    
+    NSInteger index = indexPath.row + 1;
+    
+    if(index == SeriesDetailCount){
+        SNRAddSeriesDetailsSwitchTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"seriesDetailSwitchCell" forIndexPath:indexPath];
+        [cell setSeries:self.series];
+        return cell;
+    }
+    
     SNRAddSeriesDetailsTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"seriesDetailCell" forIndexPath:indexPath];
-    [cell setSeries:self.series seriesDetailType:indexPath.row];
+    [cell setSeries:self.series seriesDetailType:index];
     return cell;
+}
+
+-(NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if(indexPath.row == SeriesDetailCount){
+        return nil;
+    }
+    
+    return indexPath;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath{

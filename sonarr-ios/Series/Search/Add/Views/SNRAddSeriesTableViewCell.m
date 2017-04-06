@@ -16,4 +16,8 @@
 
 @implementation SNRAddSeriesTableViewCell
 
+-(CGFloat)imageToViewRatio{
+    return CGRectGetHeight(self.parallaxImageView.frame) / CGRectGetHeight(self.frame);
+}
+
 @end

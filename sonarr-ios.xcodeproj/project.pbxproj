@@ -62,6 +62,8 @@
 		4A9E6C681E777DCB008AB91A /* SNRServerConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A9E6C671E777DCB008AB91A /* SNRServerConfig.m */; };
 		4A9E6C6B1E7785FE008AB91A /* SNRAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A9E6C6A1E7785FE008AB91A /* SNRAPIClient.m */; };
 		4AA5D5EF1E668F8300C044C7 /* SNRAddServerPopUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AA5D5EE1E668F8300C044C7 /* SNRAddServerPopUpViewController.m */; };
+		4AD9FD141E95F5CF001ADBE1 /* SNRAddSeriesDetailsSwitchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AD9FD131E95F5CF001ADBE1 /* SNRAddSeriesDetailsSwitchTableViewCell.m */; };
+		4AD9FD171E960B9A001ADBE1 /* SNRAddSeriesDetailsInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AD9FD161E960B9A001ADBE1 /* SNRAddSeriesDetailsInfoTableViewCell.m */; };
 		4AFA7BB11E7B9C8100932038 /* SNRServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AFA7BB01E7B9C8100932038 /* SNRServer.m */; };
 /* End PBXBuildFile section */
 
@@ -194,6 +196,10 @@
 		4A9E6C6A1E7785FE008AB91A /* SNRAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRAPIClient.m; path = API/Client/SNRAPIClient.m; sourceTree = "<group>"; };
 		4AA5D5ED1E668F8300C044C7 /* SNRAddServerPopUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRAddServerPopUpViewController.h; path = Auth/Controllers/SNRAddServerPopUpViewController.h; sourceTree = "<group>"; };
 		4AA5D5EE1E668F8300C044C7 /* SNRAddServerPopUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRAddServerPopUpViewController.m; path = Auth/Controllers/SNRAddServerPopUpViewController.m; sourceTree = "<group>"; };
+		4AD9FD121E95F5CF001ADBE1 /* SNRAddSeriesDetailsSwitchTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRAddSeriesDetailsSwitchTableViewCell.h; path = Series/Search/Add/Views/SNRAddSeriesDetailsSwitchTableViewCell.h; sourceTree = "<group>"; };
+		4AD9FD131E95F5CF001ADBE1 /* SNRAddSeriesDetailsSwitchTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRAddSeriesDetailsSwitchTableViewCell.m; path = Series/Search/Add/Views/SNRAddSeriesDetailsSwitchTableViewCell.m; sourceTree = "<group>"; };
+		4AD9FD151E960B9A001ADBE1 /* SNRAddSeriesDetailsInfoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRAddSeriesDetailsInfoTableViewCell.h; path = Series/Search/Add/Views/SNRAddSeriesDetailsInfoTableViewCell.h; sourceTree = "<group>"; };
+		4AD9FD161E960B9A001ADBE1 /* SNRAddSeriesDetailsInfoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRAddSeriesDetailsInfoTableViewCell.m; path = Series/Search/Add/Views/SNRAddSeriesDetailsInfoTableViewCell.m; sourceTree = "<group>"; };
 		4AFA7BAF1E7B9C8100932038 /* SNRServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRServer.h; path = Common/Models/SNRServer.h; sourceTree = "<group>"; };
 		4AFA7BB01E7B9C8100932038 /* SNRServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRServer.m; path = Common/Models/SNRServer.m; sourceTree = "<group>"; };
 		90C3F8C36C856C91C0FCE823 /* Pods-sonarr-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sonarr-ios.release.xcconfig"; path = "Pods/Target Support Files/Pods-sonarr-ios/Pods-sonarr-ios.release.xcconfig"; sourceTree = "<group>"; };
@@ -521,6 +527,10 @@
 				4A6D2AA61E8EDBF000BE876F /* SNRAddSeriesTableViewCell.m */,
 				4A12575B1E93168F0060746F /* SNRAddSeriesDetailsTableViewCell.h */,
 				4A12575C1E93168F0060746F /* SNRAddSeriesDetailsTableViewCell.m */,
+				4AD9FD121E95F5CF001ADBE1 /* SNRAddSeriesDetailsSwitchTableViewCell.h */,
+				4AD9FD131E95F5CF001ADBE1 /* SNRAddSeriesDetailsSwitchTableViewCell.m */,
+				4AD9FD151E960B9A001ADBE1 /* SNRAddSeriesDetailsInfoTableViewCell.h */,
+				4AD9FD161E960B9A001ADBE1 /* SNRAddSeriesDetailsInfoTableViewCell.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -784,6 +794,7 @@
 				4A5F0A241E803C3B008463F6 /* SNRServerTableViewCell.m in Sources */,
 				4A7A235A1E7DE29500141FCE /* SNRServerManager.m in Sources */,
 				4A777C331E63EBC9006B1987 /* SNRCalendar.m in Sources */,
+				4AD9FD141E95F5CF001ADBE1 /* SNRAddSeriesDetailsSwitchTableViewCell.m in Sources */,
 				4AFA7BB11E7B9C8100932038 /* SNRServer.m in Sources */,
 				4A3499101E63D7F600453E63 /* SNRTitle.m in Sources */,
 				4A6D2A921E8DF66800BE876F /* MZFormSheetPresentationController+Keyboard.m in Sources */,
@@ -800,6 +811,7 @@
 				4A3498E01E635E7900453E63 /* main.m in Sources */,
 				4A777C4F1E640407006B1987 /* SNRRecord.m in Sources */,
 				4A5F0A291E805829008463F6 /* SNRSeriesViewController.m in Sources */,
+				4AD9FD171E960B9A001ADBE1 /* SNRAddSeriesDetailsInfoTableViewCell.m in Sources */,
 				4A777C391E63ECED006B1987 /* SNREpisode.m in Sources */,
 				4A3499231E63DD1000453E63 /* SNRRatings.m in Sources */,
 				4A3499171E63D94A00453E63 /* SNRSeason.m in Sources */,

@@ -125,7 +125,7 @@
 }
 
 -(UIBarButtonItem *)rightBarButton{
-    return [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
+    return [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch
                                                          target:self
                                                          action:@selector(addSeriesButtonTouchUpInside)];
 }

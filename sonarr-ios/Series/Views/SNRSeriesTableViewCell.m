@@ -111,10 +111,13 @@ const CGFloat PARALLAXRATIO = 0.25;
     
     CGRect parallaxRect = self.parallaxImageView.frame;
     parallaxRect.origin.y = -extraHeight * percent;
+    
+    if(CGRectGetMinY(parallaxRect) > 0 ||
+       (CGRectGetMinY(parallaxRect) + CGRectGetHeight(parallaxRect)) > CGRectGetHeight(self.frame)){
+        return;
+    }
+    
     self.parallaxImageView.frame = parallaxRect;
 }
 
--(void)setSelected:(BOOL)selected{
-    [super setSelected:selected];
-}
 @end

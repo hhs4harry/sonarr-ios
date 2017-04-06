@@ -31,7 +31,6 @@ const NSString * IGNOREEPISODESWITHOUTFILES = @"ignoreEpisodesWithoutFiles";
 @property (strong, nonatomic) NSNumber<Optional> *sizeOnDisk;
 @property (strong, nonatomic) NSString<Optional> *status;
 @property (strong, nonatomic) NSString<Optional> *overview;
-
 @property (strong, nonatomic) NSString<Optional> *network;
 @property (strong, nonatomic) NSString<Optional> *airTime;
 @property (strong, nonatomic) NSArray<Optional, SNRImage> *images;
@@ -39,7 +38,7 @@ const NSString * IGNOREEPISODESWITHOUTFILES = @"ignoreEpisodesWithoutFiles";
 @property (nonatomic) BOOL seasonFolder;
 @property (nonatomic) BOOL useSceneNumbering;
 @property (strong, nonatomic) NSNumber<Optional> *runtime;
-@property (strong, nonatomic) NSNumber<Optional> *tvdbId;
+@property (strong, nonatomic) NSNumber *tvdbId;
 @property (strong, nonatomic) NSNumber<Optional> *tvRageId;
 @property (strong, nonatomic) NSNumber<Optional> *tvMazeId;
 @property (strong, nonatomic) NSDate<Optional> *firstAired;

@@ -221,8 +221,6 @@ static NSString * BASEURL;
 }
 
 -(void)addSeries:(SNRSeries * __nonnull)series withCompletion:(void(^ __nullable)(SNRSeries * __nullable series, NSError * __nullable error))completion{
-    series.monitored = YES;
-    
     NSMutableDictionary *params = [series toDictionary].mutableCopy;
     [params setObject:@1 forKey:@"seasonFolder"];
     

@@ -20,11 +20,13 @@ extern const NSString * IGNOREEPISODESWITHOUTFILES;
 +(NSString *)searchEndpoint;
 -(SNRImage *)imageWithType:(ImageType)type;
 
-@property (strong, readonly) NSNumber *id;
-@property (strong, readonly) NSString<Optional> *title;
-@property (strong, readonly) NSString<Optional> *seriesInfo;
-@property (strong, readonly) NSString<Optional> *scheduleInfo;
-@property (strong, readonly) NSArray<Optional, SNRImage> *images;
+@property (readonly) NSNumber *id;
+@property (readonly) NSNumber *tvdbId;
+@property (readonly) NSString<Optional> *title;
+@property (readonly) NSString<Optional> *seriesInfo;
+@property (readonly) NSString<Optional> *scheduleInfo;
+@property (readonly) NSArray<Optional, SNRImage> *images;
+@property (readonly) NSString<Optional> *overview;
 @property (strong, nonatomic) NSArray<Optional, SNRSeason> *seasons;
 @property (strong, nonatomic) NSNumber<Optional> *qualityProfileId;
 @property (strong, nonatomic) NSNumber<Optional> *profileId;

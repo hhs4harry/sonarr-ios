@@ -43,6 +43,8 @@
     [MZFormSheetPresentationViewController appearance].contentViewControllerTransitionStyle = MZFormSheetPresentationTransitionStyleSlideAndBounceFromBottom;
     [MZFormSheetPresentationViewController appearance].shadowRadius = 8.0f;
 
+    [UISwitch appearance].tintColor = [UIColor primary];
+    [UISwitch appearance].onTintColor = [UIColor primary];
     return YES;
 }
 

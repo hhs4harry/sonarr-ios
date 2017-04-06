@@ -10,4 +10,6 @@
 #import <MXParallaxHeader/MXParallaxHeader.h>
 
 @interface SNRAddSeriesTableViewCell : SNRSeriesTableViewCell
+-(CGFloat)imageToViewRatio;
+
 @end
