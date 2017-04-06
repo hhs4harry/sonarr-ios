@@ -132,6 +132,17 @@ const NSString * IGNOREEPISODESWITHOUTFILES = @"ignoreEpisodesWithoutFiles";
     return _scheduleInfo;
 }
 
+-(SNRImage *)imageWithType:(ImageType)type{
+    for (SNRImage *image in self.images) {
+        if (image.type != type) {
+            continue;
+        }
+        return image;
+    }
+    
+    return nil;
+}
+
 #pragma mark - JSON
 
 -(NSDictionary*)toDictionary

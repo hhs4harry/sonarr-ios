@@ -19,12 +19,18 @@
 
 #pragma mark - Life cycle
 
--(void)viewDidAppear:(BOOL)animated{
-    [super viewDidAppear:animated];
+-(void)viewDidLoad{
+    [super viewDidLoad];
     
     if([self conformsToProtocol:@protocol(SNRServerManagerProtocol)]){
         [[SNRServerManager manager] addObserver:(id)self];
     }
+}
+
+-(void)didReceiveMemoryWarning{
+    [super didReceiveMemoryWarning];
+    
+    NSLog(@"Memory");
 }
 
 -(void)viewDidDisappear:(BOOL)animated{

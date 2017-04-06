@@ -15,7 +15,7 @@
 #import "SNRSearchSeriesSheetViewController.h"
 #import <MZFormSheetPresentationController/MZFormSheetPresentationViewController.h>
 
-@interface SNRSeriesViewController () <SNRNavigationBarButtonProtocol, UIScrollViewDelegate>
+@interface SNRSeriesViewController () <SNRNavigationBarButtonProtocol, UIScrollViewDelegate, SNRServerManagerProtocol>
 @property (weak, nonatomic) IBOutlet SNRBaseTableView *tableView;
 @property (strong, nonatomic) SNRServer *server;
 @end
@@ -62,7 +62,8 @@
     if(!self.server.series.count){
         return 50;
     }
-    return 150;
+    
+    return ((1080.0f / 1920.0f) * MIN(CGRectGetHeight(self.view.frame), CGRectGetWidth(self.view.frame))) * 0.7f;;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -100,18 +101,6 @@
     }
 }
 
-#pragma mark - Navigation Protocol
-
--(void)addSeriesButtonTouchUpInside{
-    [self presentViewController:[SNRSearchSeriesSheetViewController viewController] animated:YES completion:nil];
-}
-
--(UIBarButtonItem *)rightBarButton{
-    return [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
-                                                         target:self
-                                                         action:@selector(addSeriesButtonTouchUpInside)];
-}
-
 #pragma mark - Pull to refresh
 
 -(void)didRequestPullToRefresh:(id)sender{
@@ -127,6 +116,54 @@
             }];
         }
     }];
+}
+
+#pragma mark - Navigation Protocol
+
+-(void)addSeriesButtonTouchUpInside{
+    [self presentViewController:[SNRSearchSeriesSheetViewController viewController] animated:YES completion:nil];
+}
+
+-(UIBarButtonItem *)rightBarButton{
+    return [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
+                                                         target:self
+                                                         action:@selector(addSeriesButtonTouchUpInside)];
+}
+
+#pragma mark - ServerManager Protocol
+
+-(void)didSetActiveServer:(SNRServer *)server atIndex:(NSInteger)index{
+    if(self.server == server){
+        return;
+    }
+    
+    self.server = server;
+    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
+}
+
+-(void)didUnsetActiveServer:(SNRServer *)server atIndex:(NSInteger)integer{
+    if([SNRServerManager manager].servers.count){
+        return;
+    }
+    
+    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
+}
+
+-(void)didAddSeries:(SNRSeries *)series atIndex:(NSInteger)index forServer:(SNRServer *)server{
+    if(self.server != server){
+        return;
+    }
+    
+    [self.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:index inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
+    [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:index inSection:0] atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+}
+
+-(void)didRemoveSeries:(SNRSeries *)series atIndex:(NSInteger)index forServer:(SNRServer *)server{
+    if(self.server != server){
+        return;
+    }
+    
+    [self.tableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:index inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
 @end

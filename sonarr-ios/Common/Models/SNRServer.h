@@ -7,18 +7,19 @@
 //
 
 #import <Foundation/Foundation.h>
+@class UIImage;
 @class SNRServerConfig;
 @class SNRStatus;
 @class SNRSeries;
-@class UIImage;
 @class SNRAPIClient;
 @class SNRProfile;
 @class SNRRootFolder;
+@class SNRServer;
 
 @protocol SNRServerProtocol <NSObject>
 @optional
--(void)didAddSeries:(SNRSeries * __nonnull)series atIndex:(NSInteger)index;
--(void)didRemoveSeries:(SNRSeries * __nonnull)series atIndex:(NSInteger)index;
+-(void)didAddSeries:(SNRSeries * __nonnull)series atIndex:(NSInteger)index forServer:(SNRServer * __nonnull)server;
+-(void)didRemoveSeries:(SNRSeries * __nonnull)series atIndex:(NSInteger)index forServer:(SNRServer * __nonnull)server;
 @end
 
 @interface SNRServer : NSObject <NSCopying>
@@ -33,7 +34,7 @@
 
 -(NSString * __nonnull)generateURLWithEndpoint:(NSString * __nonnull)endpoint;
 
--(instancetype __nullable)initWithConfig:(SNRServerConfig * __nonnull)config NS_DESIGNATED_INITIALIZER;
+-(instancetype __nullable)initWithConfig:(SNRServerConfig * __nonnull)config;
 -(void)validateServerWithCompletion:(void(^ __nullable)(SNRStatus * __nullable status, NSError * __nullable error))completion;
 -(void)profilesWithCompletion:(void(^ __nullable)(NSArray<SNRProfile *> * __nullable profiles, NSError * __nullable error))completion;
 -(void)rootFolderswithCompletion:(void(^ __nullable)(NSArray<SNRRootFolder *> * __nullable rootFolders, NSError * __nullable error))completion;

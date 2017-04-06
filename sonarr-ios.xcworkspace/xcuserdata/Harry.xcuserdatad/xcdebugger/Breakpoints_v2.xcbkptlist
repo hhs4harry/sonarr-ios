@@ -9,13 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "sonarr-ios/Series/Search/Add/Controllers/SNRAddSeriesSheetViewController.m"
-            timestampString = "513108901.748419"
+            filePath = "sonarr-ios/Series/Search/Add/Views/SNRAddSeriesDetailsTableViewCell.m"
+            timestampString = "513138723.092426"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "68"
-            endingLineNumber = "68"
-            landmarkName = "-addSeriesButtonTouchUpInside"
+            startingLineNumber = "235"
+            endingLineNumber = "235"
+            landmarkName = "-pickerView:didSelectRow:inComponent:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -25,46 +25,14 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "sonarr-ios/Series/Search/Add/Controllers/SNRAddSeriesSheetViewController.m"
-            timestampString = "513110517.783085"
+            filePath = "sonarr-ios/Common/Controllers/SNRBaseViewController.m"
+            timestampString = "513139706.599159"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "66"
-            endingLineNumber = "66"
-            landmarkName = "-addSeriesButtonTouchUpInside"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
+            landmarkName = "-didReceiveMemoryWarning"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[SNRAddSeriesSheetViewController addSeriesButtonTouchUpInside]"
-                  moduleName = "Sonarr"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Harry/Documents/developer/Personal/sonarr-ios/sonarr-ios/Series/Search/Add/Controllers/SNRAddSeriesSheetViewController.m"
-                  timestampString = "513120592.605041"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "66"
-                  endingLineNumber = "66"
-                  offsetFromSymbolStart = "29">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__63-[SNRAddSeriesSheetViewController addSeriesButtonTouchUpInside]_block_invoke"
-                  moduleName = "Sonarr"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Harry/Documents/developer/Personal/sonarr-ios/sonarr-ios/Series/Search/Add/Controllers/SNRAddSeriesSheetViewController.m"
-                  timestampString = "513120592.609639"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "67"
-                  endingLineNumber = "67"
-                  offsetFromSymbolStart = "75">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

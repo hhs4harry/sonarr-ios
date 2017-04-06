@@ -9,9 +9,17 @@
 #import <JSONModel/JSONModel.h>
 @class UIImage;
 
+typedef enum : NSUInteger {
+    ImageTypeUnknown = 0,
+    ImageTypeFanArt,
+    ImageTypeBanner,
+    ImageTypePoster,
+} ImageType;
+
 @interface SNRImage : JSONModel
 @property (copy, nonatomic) NSString *coverType;
 @property (copy, nonatomic) NSString *url;
 
 @property (strong, nonatomic) UIImage<Ignore> *image;
+@property (readonly) ImageType type;
 @end

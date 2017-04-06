@@ -84,6 +84,8 @@ typedef enum : NSUInteger {
                                        IGNOREEPISODESWITHFILES : @"false",
                                        IGNOREEPISODESWITHOUTFILES : @"false"
                                        };
+            
+            [self setSeasonPass:-1];
             break;
         case SeriesDetailProfile:
             self.nameLabel.text = @"Quality Profile";
@@ -196,27 +198,34 @@ typedef enum : NSUInteger {
                                              IGNOREEPISODESWITHOUTFILES : @"false"
                                              }.mutableCopy;
             
+            [self setSeasonPass:-1];
+            
             switch (row) {
                 case MonitorTypeAll:
+                    [self setSeasonPass:((SNRSeason *)self.series.seasons.lastObject).seasonNumber.integerValue];
                     break;
                 case MonitorTypeFuture:
+                    [self setSeasonMonitored:((SNRSeason *)self.series.seasons.lastObject).seasonNumber.integerValue];
                     options[IGNOREEPISODESWITHFILES] = @"true";
                     options[IGNOREEPISODESWITHOUTFILES] = @"true";
                     break;
                 case MonitorTypeMissing:
+                    [self setSeasonPass:((SNRSeason *)self.series.seasons.lastObject).seasonNumber.integerValue];
                     options[IGNOREEPISODESWITHFILES] = @"true";
                     break;
                 case MonitorTypeExisting:
+                    [self setSeasonMonitored:((SNRSeason *)self.series.seasons.lastObject).seasonNumber.integerValue];
                     options[IGNOREEPISODESWITHOUTFILES] = @"true";
                     break;
                 case MonitorTypeFirstSeason:
-                    [self setSeasonPass:((SNRSeason *)self.series.seasons.lastObject).seasonNumber.integerValue + 1];
-                    [self setSeasonMonitored:((SNRSeason *)self.series.seasons.firstObject).seasonNumber.integerValue];
+                    [self setSeasonMonitored:1];
+                    break;
                 case MonitorTypeLastSeason:
-                    [self setSeasonPass:self.series.seasons.count - 1];
+                    [self setSeasonPass:-1];
+                    [self setSeasonMonitored:((SNRSeason *)self.series.seasons.lastObject).seasonNumber.integerValue];
                     break;
                 case MonitorTypeNone:
-                    [self setSeasonPass:((SNRSeason *)self.series.seasons.lastObject).seasonNumber.integerValue + 1];
+                    [self setSeasonPass:-1];
                     break;
                 default:
                     break;
@@ -241,20 +250,24 @@ typedef enum : NSUInteger {
 
 #pragma mark - Helper methods
 
--(void)setSeasonPass:(NSInteger)season{
+-(void)setSeasonMonitored:(NSInteger)season{
     [self.series.seasons enumerateObjectsUsingBlock:^(SNRSeason * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        if(obj.seasonNumber.integerValue >= season){
-            obj.monitored = YES;
-        }else{
-            obj.monitored = NO;
+        if(obj.seasonNumber.integerValue == season){
+            obj.monitored = !obj.monitored;
         }
     }];
 }
 
--(void)setSeasonMonitored:(NSInteger)season{
+-(void)setSeasonPass:(NSInteger)season{
     [self.series.seasons enumerateObjectsUsingBlock:^(SNRSeason * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        if(obj.seasonNumber.integerValue == season){
+        if(!idx){
+            return;
+        }
+        
+        if(obj.seasonNumber.integerValue <= season){
             obj.monitored = YES;
+        }else{
+            obj.monitored = NO;
         }
     }];
 }

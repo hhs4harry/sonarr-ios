@@ -13,6 +13,7 @@
 #import "SNRSeries.h"
 #import "SNRProfile.h"
 #import "SNRRootFolder.h"
+#import "SNRImage.h"
 
 NSString * const SNR_SERVER_CONFIG  = @"snr_server_config";
 NSString * const SNR_SERVER_ACTIVE  = @"snr_server_active";
@@ -220,9 +221,29 @@ static NSString * BASEURL;
 }
 
 -(void)addSeries:(SNRSeries * __nonnull)series withCompletion:(void(^ __nullable)(SNRSeries * __nullable series, NSError * __nullable error))completion{
-    [self.client performPOSTCallToEndpoint:[self generateURLWithEndpoint:[SNRSeries endpoint]] withParameters:[series toDictionary] withSuccess:^(id responseObject) {
+    series.monitored = YES;
+    
+    NSMutableDictionary *params = [series toDictionary].mutableCopy;
+    [params setObject:@1 forKey:@"seasonFolder"];
+    
+    __block SNRSeries *bSeries = series;
+    __weak typeof(self) wself = self;
+    
+    [self.client performPOSTCallToEndpoint:[self generateURLWithEndpoint:[SNRSeries endpoint]] withParameters:params withSuccess:^(id responseObject) {
         NSError *error;
         SNRSeries *addedSeries = [[SNRSeries alloc] initWithDictionary:responseObject error:&error];
+        for (SNRImage *image in bSeries.images) {
+            [bSeries imageWithType:image.type].image = image.image;
+        }
+        
+        NSMutableArray *series = wself.series.mutableCopy;
+        [series addObject:addedSeries];
+        NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"sortTitle" ascending:YES];
+        [series sortUsingDescriptors:[NSArray arrayWithObject:sortDescriptor]];
+        
+        wself.series = series;
+        [wself fireDidAddSeries:addedSeries];
+        
         if(completion){
             completion(addedSeries, error);
         }
@@ -236,14 +257,14 @@ static NSString * BASEURL;
 #pragma mark - Delegate
 
 -(void)fireDidAddSeries:(SNRSeries *)series{
-    if(self.delegate && [self.delegate respondsToSelector:@selector(didAddSeries:atIndex:)]){
-        [self.delegate didAddSeries:series atIndex:[self.series indexOfObject:series]];
+    if(self.delegate && [self.delegate respondsToSelector:@selector(didAddSeries:atIndex:forServer:)]){
+        [self.delegate didAddSeries:series atIndex:[self.series indexOfObject:series] forServer:self];
     }
 }
 
 -(void)fireDidRemoveSeries:(SNRSeries *)series{
-    if(self.delegate && [self.delegate respondsToSelector:@selector(didRemoveSeries:atIndex:)]){
-        [self.delegate didRemoveSeries:series atIndex:[self.series indexOfObject:series]];
+    if(self.delegate && [self.delegate respondsToSelector:@selector(didRemoveSeries:atIndex:forServer:)]){
+        [self.delegate didRemoveSeries:series atIndex:[self.series indexOfObject:series] forServer:self];
     }
 }
 

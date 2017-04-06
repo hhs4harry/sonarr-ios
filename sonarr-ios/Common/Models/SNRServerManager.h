@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 @class SNRServer;
+@class SNRSeries;
 
 @protocol SNRServerManagerProtocol <NSObject>
 @optional

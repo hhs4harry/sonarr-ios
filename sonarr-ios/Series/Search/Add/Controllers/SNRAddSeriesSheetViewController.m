@@ -65,7 +65,7 @@
     __weak typeof(self) wself = self;
     [self.server addSeries:self.series withCompletion:^(SNRSeries * _Nullable series, NSError * _Nullable error) {
         if(series){
-            NSLog(@"");
+            [wself dismissViewControllerAnimated:YES completion:nil];
         }
     }];
 }

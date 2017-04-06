@@ -75,8 +75,9 @@ NSString * const SNR_SERVER_MANAGER_DIR = @"sonarr/manager/server";
     [self.servers enumerateObjectsUsingBlock:^(SNRServer * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         if(obj.active){
             self.activeServer = obj;
-            *stop = YES;
         }
+        
+        obj.delegate = self;
     }];
 }
 
@@ -139,6 +140,24 @@ NSString * const SNR_SERVER_MANAGER_DIR = @"sonarr/manager/server";
     }
 }
 
+#pragma mark - Server Delegate
+
+-(void)didAddSeries:(SNRSeries *)series atIndex:(NSInteger)index forServer:(SNRServer *)server{
+    for(id<SNRServerProtocol>observer in self.observers){
+        if([observer respondsToSelector:@selector(didAddSeries:atIndex:forServer:)]){
+            [observer didAddSeries:series atIndex:index forServer:server];
+        }
+    }
+}
+
+-(void)didRemoveSeries:(SNRSeries *)series atIndex:(NSInteger)index forServer:(SNRServer *)server{
+    for(id<SNRServerProtocol>observer in self.observers){
+        if([observer respondsToSelector:@selector(didRemoveSeries:atIndex:forServer:)]){
+            [observer didRemoveSeries:series atIndex:index forServer:server];
+        }
+    }
+}
+
 #pragma mark - Getters / Setters
 
 -(NSMutableArray *)observers{
@@ -168,20 +187,6 @@ NSString * const SNR_SERVER_MANAGER_DIR = @"sonarr/manager/server";
     _activeServer.active = YES;
     
     [self archiveServers];
-}
-
-#pragma mark - Server Delegate
-
--(void)didAddSeries:(SNRSeries *)series atIndex:(NSInteger)index{
-    for(id<SNRServerProtocol>observer in self.observers){
-        if([observer respondsToSelector:@selector(didAddSeries:atIndex:forServer:)]){
-            
-        }
-    }
-}
-
--(void)didRemoveSeries:(SNRSeries *)series atIndex:(NSInteger)index{
-    
 }
 
 @end

@@ -50,10 +50,10 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ur5-uM-5Qw">
-                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
+                                                    <rect key="frame" x="-1" y="-1" width="416" height="102"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bz2-pz-Ude" customClass="SNRImageView">
-                                                            <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="416" height="102"/>
                                                         </imageView>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -65,7 +65,7 @@
                                                     </constraints>
                                                 </view>
                                                 <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="37l-E9-5Cr">
-                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
+                                                    <rect key="frame" x="-1" y="-1" width="416" height="102"/>
                                                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="aired" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iW5-Xq-0Gz">
@@ -92,31 +92,32 @@
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8ch-Qn-xtC" customClass="SNRImageView">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8ch-Qn-xtC" customClass="SNRImageView">
                                                     <rect key="frame" x="8" y="8" width="58" height="84"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="8ch-Qn-xtC" secondAttribute="height" multiplier="0.69:1" id="vyW-X3-nwY"/>
                                                     </constraints>
                                                 </imageView>
                                             </subviews>
+                                            <color key="backgroundColor" red="0.098039215690000001" green="0.098039215690000001" blue="0.098039215690000001" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstItem="ur5-uM-5Qw" firstAttribute="trailing" secondItem="37l-E9-5Cr" secondAttribute="trailing" id="2DQ-UN-5Qe"/>
                                                 <constraint firstItem="Wvc-dj-KKs" firstAttribute="centerY" secondItem="8ch-Qn-xtC" secondAttribute="centerY" constant="-10.5" id="3Sp-Ia-ac4"/>
                                                 <constraint firstItem="Wvc-dj-KKs" firstAttribute="leading" secondItem="8ch-Qn-xtC" secondAttribute="trailing" constant="8" id="B2Y-E4-2yC"/>
-                                                <constraint firstAttribute="bottom" secondItem="37l-E9-5Cr" secondAttribute="bottom" id="ByZ-Gr-Nww"/>
+                                                <constraint firstAttribute="bottom" secondItem="37l-E9-5Cr" secondAttribute="bottom" constant="-1" id="ByZ-Gr-Nww"/>
                                                 <constraint firstItem="8ch-Qn-xtC" firstAttribute="leading" secondItem="LGO-R9-ckE" secondAttribute="leading" constant="8" id="CDM-tw-6oI"/>
                                                 <constraint firstItem="ur5-uM-5Qw" firstAttribute="bottom" secondItem="37l-E9-5Cr" secondAttribute="bottom" id="EBd-7h-VuX"/>
                                                 <constraint firstItem="ur5-uM-5Qw" firstAttribute="top" secondItem="37l-E9-5Cr" secondAttribute="top" id="EFW-1W-9qz"/>
-                                                <constraint firstItem="37l-E9-5Cr" firstAttribute="top" secondItem="LGO-R9-ckE" secondAttribute="top" id="LIh-96-igC"/>
+                                                <constraint firstItem="37l-E9-5Cr" firstAttribute="top" secondItem="LGO-R9-ckE" secondAttribute="top" constant="-1" id="LIh-96-igC"/>
                                                 <constraint firstAttribute="trailing" secondItem="iW5-Xq-0Gz" secondAttribute="trailing" constant="8" id="Tb1-VX-RbP"/>
-                                                <constraint firstItem="37l-E9-5Cr" firstAttribute="leading" secondItem="LGO-R9-ckE" secondAttribute="leading" id="Vib-aB-K2q"/>
+                                                <constraint firstItem="37l-E9-5Cr" firstAttribute="leading" secondItem="LGO-R9-ckE" secondAttribute="leading" constant="-1" id="Vib-aB-K2q"/>
                                                 <constraint firstItem="8ch-Qn-xtC" firstAttribute="top" secondItem="LGO-R9-ckE" secondAttribute="top" constant="8" id="Z3r-SL-L3k"/>
                                                 <constraint firstItem="jiU-xn-BL4" firstAttribute="top" secondItem="Wvc-dj-KKs" secondAttribute="bottom" id="a0X-91-VNE"/>
                                                 <constraint firstItem="iW5-Xq-0Gz" firstAttribute="bottom" secondItem="8ch-Qn-xtC" secondAttribute="bottom" id="a5Y-Ec-1fh"/>
                                                 <constraint firstAttribute="bottom" secondItem="8ch-Qn-xtC" secondAttribute="bottom" constant="8" id="bRZ-lD-t4s"/>
                                                 <constraint firstItem="ur5-uM-5Qw" firstAttribute="leading" secondItem="37l-E9-5Cr" secondAttribute="leading" id="tTY-Tc-cYj"/>
                                                 <constraint firstItem="jiU-xn-BL4" firstAttribute="leading" secondItem="8ch-Qn-xtC" secondAttribute="trailing" constant="8" id="uKs-W4-Eo0"/>
-                                                <constraint firstAttribute="trailing" secondItem="37l-E9-5Cr" secondAttribute="trailing" id="waB-Fb-Ze9"/>
+                                                <constraint firstAttribute="trailing" secondItem="37l-E9-5Cr" secondAttribute="trailing" constant="-1" id="waB-Fb-Ze9"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -214,7 +215,7 @@ Add one now!</string>
                                                     <edgeInsets key="layoutMargins" top="0.0" left="0.0" bottom="0.0" right="0.0"/>
                                                 </view>
                                                 <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W1Q-SV-Dad">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
+                                                    <rect key="frame" x="-1" y="-1" width="377" height="102"/>
                                                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="aired" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aVd-fH-Ujl">
@@ -241,7 +242,7 @@ Add one now!</string>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XFN-WK-pxz" customClass="SNRImageView">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XFN-WK-pxz" customClass="SNRImageView">
                                                     <rect key="frame" x="8" y="8" width="58" height="84"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="XFN-WK-pxz" secondAttribute="height" multiplier="0.69:1" id="cxg-Tm-hhr"/>
@@ -250,21 +251,21 @@ Add one now!</string>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="pCa-Vy-cGO" secondAttribute="bottom" id="1u4-2N-Cnd"/>
-                                                <constraint firstAttribute="trailing" secondItem="W1Q-SV-Dad" secondAttribute="trailing" id="36E-ac-adR"/>
+                                                <constraint firstAttribute="trailing" secondItem="W1Q-SV-Dad" secondAttribute="trailing" constant="-1" id="36E-ac-adR"/>
                                                 <constraint firstItem="Rou-kw-3Dd" firstAttribute="centerY" secondItem="XFN-WK-pxz" secondAttribute="centerY" constant="-10.5" id="7vM-gq-zSK"/>
-                                                <constraint firstAttribute="bottom" secondItem="W1Q-SV-Dad" secondAttribute="bottom" id="8OZ-97-Edc"/>
+                                                <constraint firstAttribute="bottom" secondItem="W1Q-SV-Dad" secondAttribute="bottom" constant="-1" id="8OZ-97-Edc"/>
                                                 <constraint firstItem="8bz-SK-dpV" firstAttribute="top" secondItem="Rou-kw-3Dd" secondAttribute="bottom" id="9Fe-Od-ZSd"/>
                                                 <constraint firstItem="XFN-WK-pxz" firstAttribute="leading" secondItem="ThK-Bt-GUJ" secondAttribute="leading" constant="8" id="9oJ-Kr-75i"/>
                                                 <constraint firstItem="aVd-fH-Ujl" firstAttribute="bottom" secondItem="XFN-WK-pxz" secondAttribute="bottom" id="F44-7g-elO"/>
                                                 <constraint firstItem="pCa-Vy-cGO" firstAttribute="top" secondItem="ThK-Bt-GUJ" secondAttribute="top" id="NMg-5O-UDA"/>
                                                 <constraint firstItem="8bz-SK-dpV" firstAttribute="leading" secondItem="XFN-WK-pxz" secondAttribute="trailing" constant="8" id="Ndt-Bg-Pqr"/>
                                                 <constraint firstItem="Rou-kw-3Dd" firstAttribute="leading" secondItem="XFN-WK-pxz" secondAttribute="trailing" constant="8" id="Sgx-ml-Af1"/>
-                                                <constraint firstItem="W1Q-SV-Dad" firstAttribute="leading" secondItem="ThK-Bt-GUJ" secondAttribute="leading" id="Vzx-gc-dQy"/>
+                                                <constraint firstItem="W1Q-SV-Dad" firstAttribute="leading" secondItem="ThK-Bt-GUJ" secondAttribute="leading" constant="-1" id="Vzx-gc-dQy"/>
                                                 <constraint firstAttribute="bottom" secondItem="XFN-WK-pxz" secondAttribute="bottom" constant="8" id="YFR-Pt-w0c"/>
                                                 <constraint firstItem="XFN-WK-pxz" firstAttribute="top" secondItem="ThK-Bt-GUJ" secondAttribute="top" constant="8" id="aDP-14-o5V"/>
                                                 <constraint firstAttribute="trailing" secondItem="pCa-Vy-cGO" secondAttribute="trailing" id="fLc-5t-zOK"/>
                                                 <constraint firstItem="pCa-Vy-cGO" firstAttribute="leading" secondItem="ThK-Bt-GUJ" secondAttribute="leading" id="s5a-dj-ZQ3"/>
-                                                <constraint firstItem="W1Q-SV-Dad" firstAttribute="top" secondItem="ThK-Bt-GUJ" secondAttribute="top" id="xOG-Jz-6ah"/>
+                                                <constraint firstItem="W1Q-SV-Dad" firstAttribute="top" secondItem="ThK-Bt-GUJ" secondAttribute="top" constant="-1" id="xOG-Jz-6ah"/>
                                                 <constraint firstAttribute="trailing" secondItem="aVd-fH-Ujl" secondAttribute="trailing" constant="8" id="zdg-IR-9FL"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -433,7 +434,7 @@ Add one now!</string>
                                                         </mask>
                                                     </variation>
                                                 </view>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4FW-va-WOs" customClass="SNRImageView">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4FW-va-WOs" customClass="SNRImageView">
                                                     <rect key="frame" x="8" y="51.666666666666671" width="80" height="114.33333333333333"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="4FW-va-WOs" secondAttribute="height" multiplier="0.7:1" id="MXS-5R-jdg"/>

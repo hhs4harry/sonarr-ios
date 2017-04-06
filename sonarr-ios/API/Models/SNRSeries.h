@@ -7,6 +7,8 @@
 //
 
 #import <JSONModel/JSONModel.h>
+#import "SNRImage.h"
+
 @protocol SNRImage;
 @protocol SNRSeason;
 
@@ -16,6 +18,7 @@ extern const NSString * IGNOREEPISODESWITHOUTFILES;
 @interface SNRSeries : JSONModel
 +(NSString *)endpoint;
 +(NSString *)searchEndpoint;
+-(SNRImage *)imageWithType:(ImageType)type;
 
 @property (strong, readonly) NSNumber *id;
 @property (strong, readonly) NSString<Optional> *title;

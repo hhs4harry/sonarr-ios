@@ -68,8 +68,8 @@ const CGFloat PARALLAXRATIO = 0.25;
     self.seriesAiredLabel.text = series.scheduleInfo;
     self.seasonCountLabel.text = series.seriesInfo;
     
-    __block SNRImage *parallax = series.images.firstObject;
-    __block SNRImage *seriesImage = series.images.lastObject;
+    __block SNRImage *parallax = [series imageWithType:ImageTypeFanArt];
+    __block SNRImage *seriesImage = [series imageWithType:ImageTypePoster];
     
     if(parallax.image && seriesImage.image){
         self.parallaxImageView.image = parallax.image;
