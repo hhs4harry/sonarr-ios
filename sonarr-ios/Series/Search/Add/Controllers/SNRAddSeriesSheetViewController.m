@@ -26,7 +26,6 @@
 @property (strong, nonatomic) SNRServer *server;
 @property (strong, nonatomic) SNRSeries *series;
 @property (strong, nonatomic) MXParallaxHeader *parallaxHeader;
-@property (assign, nonatomic) CGFloat imageToViewRatio;
 @end
 
 @implementation SNRAddSeriesSheetViewController
@@ -50,7 +49,6 @@
     
     if(!self.parallaxHeader){
         SNRAddSeriesTableViewCell *cell = (id)[self tableView:self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:NSIntegerMax - 1 inSection:0]];
-        self.imageToViewRatio = [cell imageToViewRatio];
         
         self.parallaxHeader = [[MXParallaxHeader alloc] init];
         self.parallaxHeader.view = cell.contentView;
@@ -91,11 +89,12 @@
 
 -(void)updateParallaxHeaderView{
     CGRect frame =  [self contentViewFrameForPresentationController:nil currentFrame:[UIScreen mainScreen].bounds];
+    CGFloat frameM = MIN(frame.size.width, frame.size.height);
     
     CGFloat minimunHeight = 130.0f;
-    CGFloat propHeight = (1080.0f / 1920.0f) * CGRectGetWidth(frame);
+    CGFloat propHeight = ((1080.0f / 1920.0f) * frameM) + 60.0;
     
-    CGFloat height = MAX(propHeight + propHeight * self.imageToViewRatio, minimunHeight);
+    CGFloat height = MAX(propHeight, minimunHeight);
     
     self.tableView.parallaxHeader.height = height;
     self.tableView.parallaxHeader.mode = MXParallaxHeaderModeFill;
@@ -108,7 +107,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if(!indexPath.row){
-        return 60;
+        return 50;
     }
     return floorf(45);
 }
@@ -131,7 +130,7 @@
         return cell;
     }
     
-    NSInteger index = indexPath.row + 1;
+    NSInteger index = indexPath.row - 1;
     
     if(index == SeriesDetailCount){
         SNRAddSeriesDetailsSwitchTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"seriesDetailSwitchCell" forIndexPath:indexPath];

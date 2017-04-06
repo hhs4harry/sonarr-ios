@@ -18,6 +18,7 @@
 
 -(void)setSeries:(SNRSeries *)series{
     self.infoTextView.text = series.overview;
+    self.infoTextView.textColor = [UIColor whiteColor];
 }
 
 @end

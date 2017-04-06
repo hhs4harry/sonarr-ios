@@ -47,4 +47,35 @@
     }
 }
 
++(UIImage *)scaledForScreen:(UIImage *)image{
+    CGSize size = [UIScreen mainScreen].bounds.size;
+    
+    if(image.size.width > image.size.height){
+        size = CGSizeMake(MAX(size.width, size.height), MIN(size.width, size.height));
+    }else{
+        size = CGSizeMake(MIN(size.width, size.height), MAX(size.width, size.height));
+    }
+    
+    CGFloat ratio = MIN(image.size.width, image.size.height) / MAX(image.size.width, image.size.height);
+    CGFloat a = MAX(size.width, size.height);
+    CGFloat b = ratio * a;
+    
+    if(size.width > size.height){
+        size = CGSizeMake(a, b);
+    }else{
+        size = CGSizeMake(b, a);
+    }
+    
+    UIGraphicsBeginImageContextWithOptions(size, NO, [UIScreen mainScreen].scale);
+    CGContextSetInterpolationQuality(UIGraphicsGetCurrentContext(), kCGInterpolationHigh);
+    CGContextSetShouldAntialias(UIGraphicsGetCurrentContext(), YES);
+    CGContextSetShouldAntialias(UIGraphicsGetCurrentContext(), YES);
+    [image drawInRect:CGRectMake(0, 0, size.width, size.height)];
+    
+    CGAffineTransformMakeScale(a / MAX(image.size.width, image.size.height), a / MAX(image.size.width, image.size.height));
+    
+    UIImage *destImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return destImage;
+}
 @end

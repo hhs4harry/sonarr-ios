@@ -16,8 +16,8 @@
 
 @implementation SNRAddSeriesTableViewCell
 
--(CGFloat)imageToViewRatio{
-    return CGRectGetHeight(self.parallaxImageView.frame) / CGRectGetHeight(self.frame);
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    return;
 }
 
 @end

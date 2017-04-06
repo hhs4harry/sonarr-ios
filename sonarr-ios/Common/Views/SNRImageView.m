@@ -64,27 +64,4 @@
     }
 }
 
-//- (UIImage *)imageWithImage:(UIImage *)image convertToSize:(CGSize)size {
-//    CGFloat ratio = MIN(image.size.width, image.size.height) / MAX(image.size.width, image.size.height);
-//    CGFloat a = MAX(size.width, size.height);
-//    CGFloat b = ratio * a;
-//    
-//    if(size.width > size.height){
-//        size = CGSizeMake(a * 2, b * 2);
-//    }else{
-//        size = CGSizeMake(b * 2, a * 2);
-//    }
-//    
-//    UIGraphicsBeginImageContextWithOptions(size, NO, [UIScreen mainScreen].scale);
-//    CGContextSetInterpolationQuality(UIGraphicsGetCurrentContext(), kCGInterpolationHigh);
-//    CGContextSetShouldAntialias(UIGraphicsGetCurrentContext(), YES);
-//    CGContextSetShouldAntialias(UIGraphicsGetCurrentContext(), YES);
-//    [image drawInRect:CGRectMake(0, 0, size.width, size.height)];
-//    
-//    CGAffineTransformMakeScale(a / MAX(image.size.width, image.size.height), a / MAX(image.size.width, image.size.height));
-//
-//    UIImage *destImage = UIGraphicsGetImageFromCurrentImageContext();
-//    UIGraphicsEndImageContext();
-//    return destImage;
-//}
 @end
