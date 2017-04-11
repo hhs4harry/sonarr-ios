@@ -16,29 +16,37 @@
 @class SNRRootFolder;
 @class SNRServer;
 
+typedef enum : NSInteger {
+    SNRServerStatusUnknown = -1,
+    SNRServerStatusNotRechable,
+    SNRServerStatusActive
+}  SNRServerStatus;
+
 @protocol SNRServerProtocol <NSObject>
 @optional
--(void)didAddSeries:(SNRSeries * __nonnull)series atIndex:(NSInteger)index forServer:(SNRServer * __nonnull)server;
--(void)didRemoveSeries:(SNRSeries * __nonnull)series atIndex:(NSInteger)index forServer:(SNRServer * __nonnull)server;
+-(void)didAddSeries:(NSDictionary<NSNumber *, SNRSeries *> * _Nonnull)series forServer:(SNRServer * _Nonnull)server;
+-(void)didRemoveSeries:(NSDictionary<NSNumber *, SNRSeries *> * _Nonnull)series forServer:(SNRServer * _Nonnull)server;
 @end
 
 @interface SNRServer : NSObject <NSCopying>
-@property (readonly) SNRAPIClient * __nonnull client;
-@property (readonly) SNRServerConfig * __nonnull config;
+@property (readonly) SNRAPIClient * _Nonnull client;
+@property (readonly) SNRServerConfig * _Nonnull config;
+@property (readonly) SNRServerStatus serverStatus;
+
+@property (readonly) NSMutableArray<SNRSeries *> * _Nullable series;
+@property (readonly) NSArray<SNRProfile *> * _Nullable profiles;
+@property (readonly) NSArray<SNRRootFolder *> * _Nullable rootFolders;
+@property (assign, nonatomic) id<SNRServerProtocol> _Nullable delegate;
 @property (assign, nonatomic) BOOL active;
 
-@property (readonly) NSArray<SNRSeries *> * __nullable series;
-@property (readonly) NSArray<SNRProfile *> * __nullable profiles;
-@property (readonly) NSArray<SNRRootFolder *> * __nullable rootFolders;
-@property (assign, nonatomic) id<SNRServerProtocol> __nullable delegate;
+-(NSString * _Nonnull)generateURLWithEndpoint:(NSString * _Nonnull)endpoint;
 
--(NSString * __nonnull)generateURLWithEndpoint:(NSString * __nonnull)endpoint;
-
--(instancetype __nullable)initWithConfig:(SNRServerConfig * __nonnull)config;
--(void)validateServerWithCompletion:(void(^ __nullable)(SNRStatus * __nullable status, NSError * __nullable error))completion;
--(void)profilesWithCompletion:(void(^ __nullable)(NSArray<SNRProfile *> * __nullable profiles, NSError * __nullable error))completion;
--(void)rootFolderswithCompletion:(void(^ __nullable)(NSArray<SNRRootFolder *> * __nullable rootFolders, NSError * __nullable error))completion;
--(void)seriesWithRefresh:(BOOL)refresh andCompletion:(void(^ __nullable)(NSArray<SNRSeries *> * __nullable series, NSError * __nullable error))completion;
--(void)searchForSeries:(NSString * __nonnull)series withCompletion:(void(^ __nullable)(NSArray<SNRSeries *> * __nullable series, NSError * __nullable error))completion;
--(void)addSeries:(SNRSeries * __nonnull)series withCompletion:(void(^ __nullable)(SNRSeries * __nullable series, NSError * __nullable error))completion;
+-(instancetype _Nullable)initWithConfig:(SNRServerConfig * _Nonnull)config;
+-(void)validateServerWithCompletion:(void(^ _Nullable)(SNRStatus * _Nullable status, NSError * _Nullable error))completion;
+-(void)profilesWithCompletion:(void(^ _Nullable)(NSArray<SNRProfile *> * _Nullable profiles, NSError * _Nullable error))completion;
+-(void)rootFolderswithCompletion:(void(^ _Nullable)(NSArray<SNRRootFolder *> * _Nullable rootFolders, NSError * _Nullable error))completion;
+-(void)seriesWithRefresh:(BOOL)refresh andCompletion:(void(^ _Nullable)(NSArray<SNRSeries *> * _Nullable series, NSError * _Nullable error))completion;
+-(void)searchForSeries:(NSString * _Nonnull)series withCompletion:(void(^ _Nullable)(NSArray<SNRSeries *> * _Nullable series, NSError * _Nullable error))completion;
+-(void)addSeries:(SNRSeries * _Nonnull)series withCompletion:(void(^ _Nullable)(SNRSeries * _Nullable series, NSError * _Nullable error))completion;
+-(void)deleteSeries:(SNRSeries * _Nonnull)series withFiles:(BOOL)files andCompletion:(void(^ _Nullable)(BOOL success, NSError * _Nullable error))completion;
 @end

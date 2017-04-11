@@ -142,18 +142,18 @@ NSString * const SNR_SERVER_MANAGER_DIR = @"sonarr/manager/server";
 
 #pragma mark - Server Delegate
 
--(void)didAddSeries:(SNRSeries *)series atIndex:(NSInteger)index forServer:(SNRServer *)server{
+-(void)didAddSeries:(NSDictionary<NSNumber *,SNRSeries *> *)series forServer:(SNRServer *)server{
     for(id<SNRServerProtocol>observer in self.observers){
-        if([observer respondsToSelector:@selector(didAddSeries:atIndex:forServer:)]){
-            [observer didAddSeries:series atIndex:index forServer:server];
+        if([observer respondsToSelector:@selector(didAddSeries:forServer:)]){
+            [observer didAddSeries:series forServer:server];
         }
     }
 }
 
--(void)didRemoveSeries:(SNRSeries *)series atIndex:(NSInteger)index forServer:(SNRServer *)server{
+-(void)didRemoveSeries:(NSDictionary<NSNumber *,SNRSeries *> *)series forServer:(SNRServer *)server{
     for(id<SNRServerProtocol>observer in self.observers){
-        if([observer respondsToSelector:@selector(didRemoveSeries:atIndex:forServer:)]){
-            [observer didRemoveSeries:series atIndex:index forServer:server];
+        if([observer respondsToSelector:@selector(didRemoveSeries:forServer:)]){
+            [observer didRemoveSeries:series forServer:server];
         }
     }
 }

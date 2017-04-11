@@ -16,8 +16,8 @@
 -(void)didDeleteServer:(SNRServer *)server atIndex:(NSInteger)index;
 -(void)didSetActiveServer:(SNRServer *)server atIndex:(NSInteger)index;
 -(void)didUnsetActiveServer:(SNRServer *)server atIndex:(NSInteger)integer;
--(void)didAddSeries:(SNRSeries *)series atIndex:(NSInteger)index forServer:(SNRServer *)server;
--(void)didRemoveSeries:(SNRSeries *)series atIndex:(NSInteger)index forServer:(SNRServer *)server;
+-(void)didAddSeries:(NSDictionary<NSNumber *, SNRSeries *> *)series forServer:(SNRServer *)server;
+-(void)didRemoveSeries:(NSDictionary<NSNumber *, SNRSeries *> *)series forServer:(SNRServer *)server;
 @end
 
 @interface SNRServerManager : NSObject

@@ -28,7 +28,7 @@ NSString * const SERVER_CONFIG_SSL       = @"snr_config_ssl";
     
     self = [super init];
     if(self){
-        _username = [aDecoder decodeObjectForKey:SERVER_CONFIG_USERNAME];;
+        _username = [aDecoder decodeObjectForKey:SERVER_CONFIG_USERNAME];
         _password = [aDecoder decodeObjectForKey:SERVER_CONFIG_PASSWORD];
         _hostname = [aDecoder decodeObjectForKey:SERVER_CONFIG_HOSTNAME];
         _port     = [aDecoder decodeObjectForKey:SERVER_CONFIG_PORT];

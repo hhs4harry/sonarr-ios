@@ -14,6 +14,9 @@
 #import "SNRServer.h"
 #import "SNRSearchSeriesSheetViewController.h"
 #import <MZFormSheetPresentationController/MZFormSheetPresentationViewController.h>
+#import "SNRSeries.h"
+#import "UIColor+App.h"
+#import "SNRActivityIndicatorView.h"
 
 @interface SNRSeriesViewController () <SNRNavigationBarButtonProtocol, UIScrollViewDelegate, SNRServerManagerProtocol>
 @property (weak, nonatomic) IBOutlet SNRBaseTableView *tableView;
@@ -27,7 +30,9 @@
     
     self.server = [SNRServerManager manager].activeServer;
     
-    if(!self.server.series){
+    if(!self.server.series.count){
+        [self.tableView.refreshControl beginRefreshing];
+        
         __weak typeof(self) wself = self;
         [self.server seriesWithRefresh:NO andCompletion:^(NSArray<SNRSeries *> *series, NSError *error) {
             [wself.tableView.refreshControl endRefreshing];
@@ -45,7 +50,7 @@
 -(void)viewDidLoad{
     [super viewDidLoad];
     
-    if(!self.server.series.count){
+    if(self.tableView.refreshControl.isRefreshing){
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.tableView.refreshControl beginRefreshing];
         });
@@ -63,7 +68,7 @@
         return 50;
     }
     
-    return ((1080.0f / 1920.0f) * MIN(CGRectGetHeight(self.view.frame), CGRectGetWidth(self.view.frame))) * 0.7f;;
+    return ((1080.0f / 1920.0f) * MIN(CGRectGetHeight(self.view.frame), CGRectGetWidth(self.view.frame))) * 0.7f;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -101,6 +106,64 @@
     }
 }
 
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    return YES;
+}
+
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return UITableViewCellEditingStyleDelete;
+}
+
+- (void)tableView:(UITableView*)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath*)indexPath{
+    return; //Needed for ios 8.0 to work.
+}
+
+- (NSArray<UITableViewRowAction *> *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath{
+    NSString *deleteString = [NSString stringWithFormat:@"Delete \"%@?\"", ((SNRSeries *)[self.server.series objectAtIndex:indexPath.row]).title];
+    NSString *deleteMessage = [NSString stringWithFormat:@"Are you sure you want to delete \"%@\"?", ((SNRSeries *)[self.server.series objectAtIndex:indexPath.row]).title];
+    
+    __weak typeof(self) wself = self;
+    __block UITableView *tView = tableView;
+    
+    UITableViewRowAction *rowAction= [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDestructive title:@"Delete" handler:^(UITableViewRowAction *action, NSIndexPath *indexPath){
+
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:deleteString message:deleteMessage preferredStyle:UIAlertControllerStyleAlert];
+        [alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+            [tView setEditing:NO animated:YES];
+        }]];
+        [alert addAction:[UIAlertAction actionWithTitle:@"Delete" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+            [tView setEditing:NO animated:YES];
+
+            if([tView.indexPathsForVisibleRows containsObject:indexPath]){
+                [SNRActivityIndicatorView showOnTint:YES onView:[tView cellForRowAtIndexPath:indexPath].contentView];
+            }
+            
+            [wself.server deleteSeries:[wself.server.series objectAtIndex:indexPath.row] withFiles:NO andCompletion:^(BOOL success, NSError * _Nullable error) {
+                if(!success){
+                    [SNRActivityIndicatorView showOnTint:NO onView:[tView cellForRowAtIndexPath:indexPath].contentView];
+                }
+            }];
+        }]];
+        [alert addAction:[UIAlertAction actionWithTitle:@"Delete + Files" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+            [tView setEditing:NO animated:YES];
+            
+            if([tView.indexPathsForVisibleRows containsObject:indexPath]){
+                [SNRActivityIndicatorView showOnTint:YES onView:[tView cellForRowAtIndexPath:indexPath].contentView];
+            }
+            
+            [wself.server deleteSeries:[wself.server.series objectAtIndex:indexPath.row] withFiles:YES andCompletion:^(BOOL success, NSError * _Nullable error) {
+                if(!success){
+                    [SNRActivityIndicatorView showOnTint:NO onView:[tView cellForRowAtIndexPath:indexPath].contentView];
+                }
+            }];
+        }]];
+        
+        [wself presentViewController:alert animated:YES completion:nil];
+    }];
+    
+    return @[rowAction];
+}
+
 #pragma mark - Pull to refresh
 
 -(void)didRequestPullToRefresh:(id)sender{
@@ -108,12 +171,10 @@
     [self.server validateServerWithCompletion:^(SNRStatus * _Nullable status, NSError * _Nullable error) {
         if(status){
             [self.server seriesWithRefresh:YES andCompletion:^(NSArray<SNRSeries *> *series, NSError *error) {
-                if(series){
-                    [wself.tableView reloadData];
-                }
-                //handle error
                 [wself.tableView.refreshControl endRefreshing];
             }];
+        }else{
+            [wself.tableView.refreshControl endRefreshing];
         }
     }];
 }
@@ -149,21 +210,43 @@
     [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
--(void)didAddSeries:(SNRSeries *)series atIndex:(NSInteger)index forServer:(SNRServer *)server{
-    if(self.server != server){
+-(void)didAddSeries:(NSDictionary<NSNumber *,SNRSeries *> *)series forServer:(SNRServer *)server{
+    if(self.server != server ||
+       !series.allKeys.count){
         return;
     }
     
-    [self.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:index inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
-    [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:index inSection:0] atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+    NSMutableArray *indexes = [[NSMutableArray alloc] init];
+    NSMutableArray *reloadIndixes = [[NSMutableArray alloc] init];
+    
+    [series enumerateKeysAndObjectsUsingBlock:^(NSNumber * _Nonnull key, SNRSeries * _Nonnull obj, BOOL * _Nonnull stop) {
+        if(!key.integerValue){
+            return [reloadIndixes addObject:[NSIndexPath indexPathForRow:key.integerValue inSection:0]];
+        }
+        [indexes addObject:[NSIndexPath indexPathForRow:key.integerValue inSection:0]];
+    }];
+        
+    [self.tableView beginUpdates];
+    [self.tableView reloadRowsAtIndexPaths:reloadIndixes withRowAnimation:UITableViewRowAnimationNone];
+    [self.tableView insertRowsAtIndexPaths:indexes withRowAnimation:UITableViewRowAnimationNone];
+    [self.tableView endUpdates];
 }
 
--(void)didRemoveSeries:(SNRSeries *)series atIndex:(NSInteger)index forServer:(SNRServer *)server{
-    if(self.server != server){
+-(void)didRemoveSeries:(NSDictionary<NSNumber *,SNRSeries *> *)series forServer:(SNRServer *)server{
+    if(self.server != server ||
+       !series.allKeys.count){
         return;
     }
     
-    [self.tableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:index inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
+    NSMutableArray *indexes = [[NSMutableArray alloc] init];
+    
+    [series enumerateKeysAndObjectsUsingBlock:^(NSNumber * _Nonnull key, SNRSeries * _Nonnull obj, BOOL * _Nonnull stop) {
+        [indexes addObject:[NSIndexPath indexPathForRow:key.integerValue inSection:0]];
+    }];
+    
+    [self.tableView beginUpdates];
+    [self.tableView deleteRowsAtIndexPaths:indexes withRowAnimation:UITableViewRowAnimationNone];
+    [self.tableView endUpdates];
 }
 
 @end

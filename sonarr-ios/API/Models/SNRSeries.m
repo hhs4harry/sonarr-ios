@@ -155,4 +155,14 @@ const NSString * IGNOREEPISODESWITHOUTFILES = @"ignoreEpisodesWithoutFiles";
     return json;
 }
 
+#pragma mark - Compare
+
+-(BOOL)isEqual:(id)object{
+    if(![object isKindOfClass:[self class]]){
+        return NO;
+    }
+    
+    return self.id.integerValue == ((SNRSeries *)object).id.integerValue;
+}
+
 @end

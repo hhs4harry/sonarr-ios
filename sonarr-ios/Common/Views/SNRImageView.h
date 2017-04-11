@@ -10,6 +10,6 @@
 @class SNRAPIClient;
 
 @interface SNRImageView : UIImageView
--(void)setImageWithURL:(NSURL * __nonnull)url;
--(void)setImageWithURL:(NSURL * __nonnull)url forClient:(SNRAPIClient * __nullable)client andCompletion:(void(^ __nullable)(UIImage * __nullable image))completion;
+-(void)setImageWithURL:(NSURL * _Nonnull)url;
+-(void)setImageWithURL:(NSURL * _Nonnull)url forClient:(SNRAPIClient * _Nullable)client andCompletion:(void(^ _Nullable)(UIImage * _Nullable image))completion;
 @end

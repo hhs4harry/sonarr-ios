@@ -20,10 +20,11 @@ NSString * const SNR_SERVER_ACTIVE  = @"snr_server_active";
 static NSString * BASEURL;
 
 @interface SNRServer() <NSCoding>
+@property (assign, nonatomic) SNRServerStatus serverStatus;
 @property (strong, nonatomic) NSMutableArray *observers;
 @property (strong, nonatomic) SNRAPIClient *client;
 @property (strong, nonatomic) SNRServerConfig *config;
-@property (strong, nonatomic) NSArray<SNRSeries *> *series;
+@property (strong, nonatomic) NSMutableArray<SNRSeries *> *series;
 @property (strong, nonatomic) NSArray<SNRProfile *> *profiles;
 @property (strong, nonatomic) NSArray<SNRRootFolder *> *rootFolders;
 @end
@@ -45,6 +46,13 @@ static NSString * BASEURL;
             config.port = @8989;
         }
         self.client = [[SNRAPIClient alloc] initWithBaseURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@://%@:%@", config.SSL ? @"https" : @"http", config.hostname, config.port.stringValue]]];
+        
+        self.serverStatus = SNRServerStatusUnknown;
+        __weak typeof(self) wself = self;
+        self.client.networkStatusBlock = ^(NetworkStatus status){
+            wself.serverStatus = status ? SNRServerStatusActive : SNRServerStatusNotRechable;
+        };
+        
         self.config = config;
     }
     return self;
@@ -86,6 +94,49 @@ static NSString * BASEURL;
         copy.rootFolders = _rootFolders.copy;
     }
     return copy;
+}
+
+#pragma mark - Adding / Deleting Series
+
+-(void)addSeries:(NSArray<SNRSeries *> *)series{
+    __block NSMutableDictionary *addedSeries = [[NSMutableDictionary alloc] init];
+    __block NSMutableArray *toAdd = [[NSMutableArray alloc] init];
+    __weak typeof(self) wself = self;
+    
+    [series enumerateObjectsUsingBlock:^(SNRSeries * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if([wself.series containsObject:obj]){
+            return;
+        }
+        
+        [toAdd addObject:obj];
+        [wself.series addObject:obj];
+    }];
+    
+    [self.series sortUsingDescriptors:@[[[NSSortDescriptor alloc] initWithKey:@"sortTitle" ascending:YES]]];
+    
+    [toAdd enumerateObjectsUsingBlock:^(SNRSeries * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        [addedSeries setObject:obj forKey:@(idx)];
+    }];
+    
+    [self fireDidAddSeries:addedSeries];
+}
+
+-(void)deleteSeries:(NSArray<SNRSeries *> *)series{
+    __block NSMutableDictionary *objToRemove = [[NSMutableDictionary alloc] init];
+    __block NSMutableArray *seriesAfterDelete = self.series.mutableCopy ? : [[NSMutableArray alloc] init];
+    
+    [series enumerateObjectsUsingBlock:^(SNRSeries * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if(![seriesAfterDelete containsObject:obj]){
+            return;
+        }
+        
+        [objToRemove setObject:obj forKey:@([seriesAfterDelete indexOfObject:obj])];
+        [seriesAfterDelete removeObject:obj];
+    }];
+    
+    self.series = seriesAfterDelete;
+
+    [self fireDidRemoveSeries:objToRemove];
 }
 
 #pragma mark - API
@@ -139,8 +190,7 @@ static NSString * BASEURL;
     [self.client performGETCallToEndpoint:[self generateURLWithEndpoint:[SNRProfile endpoint]] withParameters:nil andSuccess:^(id responseObject) {
         NSError *error;
         NSMutableArray *profiles = [SNRProfile arrayOfModelsFromDictionaries:responseObject error:&error];
-        NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"id" ascending:YES];
-        [profiles sortUsingDescriptors:[NSArray arrayWithObject:sortDescriptor]];
+        [profiles sortUsingDescriptors:@[[[NSSortDescriptor alloc] initWithKey:@"id" ascending:YES]]];
         
         self.profiles = profiles;
         
@@ -165,8 +215,7 @@ static NSString * BASEURL;
     [self.client performGETCallToEndpoint:[self generateURLWithEndpoint:[SNRRootFolder endpoint]] withParameters:nil andSuccess:^(id responseObject) {
         NSError *error;
         NSMutableArray *rFolders = [SNRRootFolder arrayOfModelsFromDictionaries:responseObject error:&error];
-        NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"id" ascending:YES];
-        [rFolders sortUsingDescriptors:[NSArray arrayWithObject:sortDescriptor]];
+        [rFolders sortUsingDescriptors:@[[[NSSortDescriptor alloc] initWithKey:@"id" ascending:YES]]];
         
         self.rootFolders = rFolders;
         
@@ -181,20 +230,19 @@ static NSString * BASEURL;
 }
 
 -(void)seriesWithRefresh:(BOOL)refresh andCompletion:(void(^)(NSArray<SNRSeries *> *series, NSError *error))completion{
-    if(self.series && !refresh){
+    if(self.series.count && !refresh){
         return completion(self.series, nil);
     }
     
+    __weak typeof(self) wself = self;
     [self.client performGETCallToEndpoint:[self generateURLWithEndpoint:[SNRSeries endpoint]] withParameters:nil andSuccess:^(id responseObject) {
         NSError *error;
         NSMutableArray *series = [SNRSeries arrayOfModelsFromDictionaries:responseObject error:&error];
-        NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"sortTitle" ascending:YES];
-        [series sortUsingDescriptors:[NSArray arrayWithObject:sortDescriptor]];
         
-        self.series = series;
+        [wself addSeries:series];
         
         if(completion){
-            completion(self.series, error);
+            completion(wself.series, error);
         }
     } andFailure:^(NSError *error) {
         if(completion){
@@ -210,9 +258,7 @@ static NSString * BASEURL;
     [self.client performGETCallToEndpoint:endpoint withParameters:nil andSuccess:^(id responseObject) {
         NSError *error;
         NSMutableArray *series = [SNRSeries arrayOfModelsFromDictionaries:responseObject error:&error];
-        
-        NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"sortTitle" ascending:YES];
-        [series sortUsingDescriptors:[NSArray arrayWithObject:sortDescriptor]];
+        [series sortUsingDescriptors:@[[[NSSortDescriptor alloc] initWithKey:@"sortTitle" ascending:YES]]];
         
         completion(series, error);
     } andFailure:^(NSError *error) {
@@ -220,7 +266,7 @@ static NSString * BASEURL;
     }];
 }
 
--(void)addSeries:(SNRSeries * __nonnull)series withCompletion:(void(^ __nullable)(SNRSeries * __nullable series, NSError * __nullable error))completion{
+-(void)addSeries:(SNRSeries *)series withCompletion:(void(^)(SNRSeries * series, NSError * error))completion{
     NSMutableDictionary *params = [series toDictionary].mutableCopy;
     [params setObject:@1 forKey:@"seasonFolder"];
     
@@ -230,17 +276,11 @@ static NSString * BASEURL;
     [self.client performPOSTCallToEndpoint:[self generateURLWithEndpoint:[SNRSeries endpoint]] withParameters:params withSuccess:^(id responseObject) {
         NSError *error;
         SNRSeries *addedSeries = [[SNRSeries alloc] initWithDictionary:responseObject error:&error];
-        for (SNRImage *image in bSeries.images) {
-            [bSeries imageWithType:image.type].image = image.image;
+        for (SNRImage *image in addedSeries.images) {
+            image.image = [bSeries imageWithType:image.type].image;
         }
         
-        NSMutableArray *series = wself.series.mutableCopy;
-        [series addObject:addedSeries];
-        NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"sortTitle" ascending:YES];
-        [series sortUsingDescriptors:[NSArray arrayWithObject:sortDescriptor]];
-        
-        wself.series = series;
-        [wself fireDidAddSeries:addedSeries];
+        [wself addSeries:@[addedSeries]];
         
         if(completion){
             completion(addedSeries, error);
@@ -252,18 +292,47 @@ static NSString * BASEURL;
     }];
 }
 
+-(void)deleteSeries:(SNRSeries *)series withFiles:(BOOL)files andCompletion:(void(^)(BOOL success, NSError * error))completion{
+    NSString *endpoint = [self generateURLWithEndpoint:[NSString stringWithFormat:@"%@/%@", [SNRSeries endpoint], series.id.stringValue]];
+    
+    __block SNRSeries *bSeries = series;
+    __weak typeof(self) wself = self;
+    
+    [self.client performDELETECallToEndpoint:endpoint withParameters:@{@"deleteFiles" : files ? @"true" : @"false"} andSuccess:^(id responseObject) {
+        if(completion){
+            completion(YES, nil);
+        }
+
+        [wself deleteSeries:@[bSeries]];
+    } andFailure:^(NSError *error) {
+        if(completion){
+            completion(NO, error);
+        }
+    }];
+}
+
 #pragma mark - Delegate
 
--(void)fireDidAddSeries:(SNRSeries *)series{
-    if(self.delegate && [self.delegate respondsToSelector:@selector(didAddSeries:atIndex:forServer:)]){
-        [self.delegate didAddSeries:series atIndex:[self.series indexOfObject:series] forServer:self];
+-(void)fireDidAddSeries:(NSDictionary<NSNumber *, SNRSeries *> *)series{
+    if(self.delegate && [self.delegate respondsToSelector:@selector(didAddSeries:forServer:)]){
+        [self.delegate didAddSeries:series forServer:self];
     }
 }
 
--(void)fireDidRemoveSeries:(SNRSeries *)series{
-    if(self.delegate && [self.delegate respondsToSelector:@selector(didRemoveSeries:atIndex:forServer:)]){
-        [self.delegate didRemoveSeries:series atIndex:[self.series indexOfObject:series] forServer:self];
+-(void)fireDidRemoveSeries:(NSDictionary<NSNumber *, SNRSeries *> *)series{
+    if(self.delegate && [self.delegate respondsToSelector:@selector(didRemoveSeries:forServer:)]){
+        [self.delegate didRemoveSeries:series forServer:self];
     }
+}
+
+#pragma mark - Getters / Setters
+
+-(NSMutableArray<SNRSeries *> *)series{
+    if(!_series){
+        _series = [[NSMutableArray alloc] init];
+    }
+    
+    return _series;
 }
 
 @end

@@ -6,13 +6,10 @@
 //  Copyright © 2017 Harry Singh. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 #import "SNRNetworkProtocol.h"
-
-//#if AF3
-
+#import <Foundation/Foundation.h>
 #import <AFNetworking/AFHTTPSessionManager.h>
+
 @interface SNRAPIClient : AFHTTPSessionManager <SNRNetworkProtocol>
 
 @end
-//#endif
