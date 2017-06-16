@@ -17,9 +17,17 @@
 #import "SNRSeries.h"
 #import "UIColor+App.h"
 #import "SNRActivityIndicatorView.h"
+#import "SNRRefreshControl.h"
+#import "SNRSeasonsViewController.h"
+
+typedef enum : NSUInteger {
+    SeriesTableViewCellTypeNone = 0,
+    SeriesTableViewCellTypeSeries
+} SeriesTableViewCellType;
 
 @interface SNRSeriesViewController () <SNRNavigationBarButtonProtocol, UIScrollViewDelegate, SNRServerManagerProtocol>
 @property (weak, nonatomic) IBOutlet SNRBaseTableView *tableView;
+@property (assign, nonatomic) SeriesTableViewCellType cellType;
 @property (strong, nonatomic) SNRServer *server;
 @end
 
@@ -28,33 +36,14 @@
 -(void)awakeFromNib{
     [super awakeFromNib];
     
+    self.cellType = SeriesTableViewCellTypeNone;
     self.server = [SNRServerManager manager].activeServer;
-    
-    if(!self.server.series.count){
-        [self.tableView.refreshControl beginRefreshing];
-        
-        __weak typeof(self) wself = self;
-        [self.server seriesWithRefresh:NO andCompletion:^(NSArray<SNRSeries *> *series, NSError *error) {
-            [wself.tableView.refreshControl endRefreshing];
-            [wself.tableView reloadData];
-        }];
-    }
 }
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     
     [self.tableView.refreshControl addTarget:self action:@selector(didRequestPullToRefresh:) forControlEvents:UIControlEventValueChanged];
-}
-
--(void)viewDidLoad{
-    [super viewDidLoad];
-    
-    if(self.tableView.refreshControl.isRefreshing){
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self.tableView.refreshControl beginRefreshing];
-        });
-    }
 }
 
 #pragma mark - TableView
@@ -89,9 +78,14 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath{
-    SNRSeriesTableViewCell *seriesCell = [tableView cellForRowAtIndexPath:indexPath];
-    [seriesCell setSelected:YES];
-    return;
+    if (![self.server.series objectAtIndex:indexPath.row]) {
+        return;
+    }
+    
+    SNRSeasonsViewController *seasonsVC = (id)[SNRSeasonsViewController viewController];
+    seasonsVC.series = [self.server.series objectAtIndex:indexPath.row];
+    
+    [self.navigationController pushViewController:seasonsVC animated:YES];
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
@@ -227,8 +221,13 @@
     }];
         
     [self.tableView beginUpdates];
-    [self.tableView reloadRowsAtIndexPaths:reloadIndixes withRowAnimation:UITableViewRowAnimationNone];
-    [self.tableView insertRowsAtIndexPaths:indexes withRowAnimation:UITableViewRowAnimationNone];
+    if(reloadIndixes.count){
+        [self.tableView reloadRowsAtIndexPaths:reloadIndixes withRowAnimation:UITableViewRowAnimationNone];
+    }
+    
+    if(indexes.count){
+        [self.tableView insertRowsAtIndexPaths:indexes withRowAnimation:UITableViewRowAnimationNone];
+    }
     [self.tableView endUpdates];
 }
 
@@ -247,6 +246,24 @@
     [self.tableView beginUpdates];
     [self.tableView deleteRowsAtIndexPaths:indexes withRowAnimation:UITableViewRowAnimationNone];
     [self.tableView endUpdates];
+}
+
+-(void)setTableView:(SNRBaseTableView *)tableView{
+    _tableView = tableView;
+    
+    if(!self.server.series.count){
+        [tableView.refreshControl beginRefreshing];
+        
+        __weak typeof(self) wself = self;
+        [self.server seriesWithRefresh:NO andCompletion:^(NSArray<SNRSeries *> *series, NSError *error) {
+            if(series.count){
+                wself.cellType = SeriesTableViewCellTypeSeries;
+            }
+            
+            [wself.tableView.refreshControl endRefreshing];
+            [wself.tableView reloadData];
+        }];
+    }
 }
 
 @end

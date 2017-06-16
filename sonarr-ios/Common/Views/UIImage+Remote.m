@@ -78,4 +78,5 @@
     UIGraphicsEndImageContext();
     return destImage;
 }
+
 @end

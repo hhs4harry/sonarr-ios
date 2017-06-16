@@ -10,5 +10,6 @@
 
 @interface NSString (check)
 -(BOOL)nonEmpty;
+-(BOOL)alphaNumeric;
 
 @end

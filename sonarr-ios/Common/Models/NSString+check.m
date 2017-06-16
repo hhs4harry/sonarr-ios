@@ -9,6 +9,7 @@
 #import "NSString+check.h"
 
 @implementation NSString (check)
+
 -(BOOL)nonEmpty{
     if(!self.length){
         return NO;
@@ -19,6 +20,14 @@
     }
     
     return YES;
+}
+
+-(BOOL)alphaNumeric{
+    if ([self nonEmpty] &&
+        [[self componentsSeparatedByCharactersInSet:[NSCharacterSet alphanumericCharacterSet].invertedSet] componentsJoinedByString:@""].length) {
+        return YES;
+    }
+    return NO;
 }
 
 @end
