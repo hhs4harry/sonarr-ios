@@ -56,6 +56,7 @@
 		4A777C771E653683006B1987 /* SNRRelease.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A777C761E653683006B1987 /* SNRRelease.m */; };
 		4A777C7A1E653B49006B1987 /* SNRRootFolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A777C791E653B49006B1987 /* SNRRootFolder.m */; };
 		4A7A235A1E7DE29500141FCE /* SNRServerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7A23591E7DE29500141FCE /* SNRServerManager.m */; };
+		4A9118691EF72825005A3851 /* SNREpisodeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A9118681EF72825005A3851 /* SNREpisodeCell.m */; };
 		4A9E6C511E760507008AB91A /* SNRBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A9E6C501E760507008AB91A /* SNRBaseViewController.m */; };
 		4A9E6C561E760662008AB91A /* SNRNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A9E6C551E760662008AB91A /* SNRNavigationViewController.m */; };
 		4A9E6C591E760C9B008AB91A /* UIColor+App.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A9E6C581E760C9B008AB91A /* UIColor+App.m */; };
@@ -184,6 +185,8 @@
 		4A777C791E653B49006B1987 /* SNRRootFolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRRootFolder.m; path = API/Models/SNRRootFolder.m; sourceTree = "<group>"; };
 		4A7A23581E7DE29500141FCE /* SNRServerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRServerManager.h; path = Common/Models/SNRServerManager.h; sourceTree = "<group>"; };
 		4A7A23591E7DE29500141FCE /* SNRServerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRServerManager.m; path = Common/Models/SNRServerManager.m; sourceTree = "<group>"; };
+		4A9118671EF72825005A3851 /* SNREpisodeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNREpisodeCell.h; path = Seasons/Views/SNREpisodeCell.h; sourceTree = "<group>"; };
+		4A9118681EF72825005A3851 /* SNREpisodeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNREpisodeCell.m; path = Seasons/Views/SNREpisodeCell.m; sourceTree = "<group>"; };
 		4A9E6C4F1E760507008AB91A /* SNRBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRBaseViewController.h; path = Common/Controllers/SNRBaseViewController.h; sourceTree = "<group>"; };
 		4A9E6C501E760507008AB91A /* SNRBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRBaseViewController.m; path = Common/Controllers/SNRBaseViewController.m; sourceTree = "<group>"; };
 		4A9E6C541E760662008AB91A /* SNRNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRNavigationViewController.h; path = Navigation/Controllers/SNRNavigationViewController.h; sourceTree = "<group>"; };
@@ -245,6 +248,8 @@
 			children = (
 				4A23A4CF1EF44CCC0044A567 /* SNRSeasonHeaderCell.h */,
 				4A23A4D01EF44CCC0044A567 /* SNRSeasonHeaderCell.m */,
+				4A9118671EF72825005A3851 /* SNREpisodeCell.h */,
+				4A9118681EF72825005A3851 /* SNREpisodeCell.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -831,6 +836,7 @@
 				4AD9FD141E95F5CF001ADBE1 /* SNRAddSeriesDetailsSwitchTableViewCell.m in Sources */,
 				4AFA7BB11E7B9C8100932038 /* SNRServer.m in Sources */,
 				4A3499101E63D7F600453E63 /* SNRTitle.m in Sources */,
+				4A9118691EF72825005A3851 /* SNREpisodeCell.m in Sources */,
 				4A6D2A921E8DF66800BE876F /* MZFormSheetPresentationController+Keyboard.m in Sources */,
 				4A5F0A2D1E80593D008463F6 /* SNRBaseTableView.m in Sources */,
 				4A777C3F1E63EDF4006B1987 /* SNRRevision.m in Sources */,

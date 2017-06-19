@@ -54,6 +54,16 @@
     [self updateParallaxHeaderView];
 }
 
+#pragma mark - Getter/Setter
+
+-(void)setSeries:(SNRSeries *)series{
+    _series = series;
+    
+    [[SNRServerManager manager].activeServer episodesForSeries:series withCompletion:^(NSArray<SNREpisode *> * _Nullable episodes, NSError * _Nullable error) {
+        
+    }];
+}
+
 #pragma mark - Navigation
 
 -(UIBarButtonItem *)rightBarButton{
@@ -117,6 +127,11 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    for (SNRSeason *season in self.series.seasons) {
+        if (season.seasonNumber.integerValue == section) {
+            return season.episodes.count;
+        }
+    }
     return 0;
 }
 

@@ -9,6 +9,8 @@
 #import <JSONModel/JSONModel.h>
 
 @interface SNREpisode : JSONModel
++(NSString *)endpoint;
+
 @property (strong, nonatomic) NSNumber *seriesId;
 @property (strong, nonatomic) NSNumber<Optional> *episodeFileId;
 @property (strong, nonatomic) NSNumber *seasonNumber;

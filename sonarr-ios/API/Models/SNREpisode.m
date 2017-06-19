@@ -9,10 +9,16 @@
 #import "SNREpisode.h"
 
 @implementation SNREpisode
+
++(NSString *)endpoint{
+    return @"episode";
+}
+
 +(BOOL)propertyIsOptional:(NSString *)propertyName{
     if([propertyName isEqualToString:@"downloading"]){
         return YES;
     }
     return NO;
 }
+
 @end

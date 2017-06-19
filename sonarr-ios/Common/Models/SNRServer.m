@@ -13,7 +13,9 @@
 #import "SNRSeries.h"
 #import "SNRProfile.h"
 #import "SNRRootFolder.h"
+#import "SNREpisode.h"
 #import "SNRImage.h"
+#import "SNRSeason.h"
 
 NSString * const SNR_SERVER_CONFIG  = @"snr_server_config";
 NSString * const SNR_SERVER_ACTIVE  = @"snr_server_active";
@@ -307,6 +309,42 @@ static NSString * BASEURL;
     } andFailure:^(NSError *error) {
         if(completion){
             completion(NO, error);
+        }
+    }];
+}
+
+-(void)episodesForSeries:(SNRSeries *)series withCompletion:(void(^)(NSArray<SNREpisode *> *episodes, NSError * error))completion{
+    NSString *endpoint = [self generateURLWithEndpoint:[SNREpisode endpoint]];
+    
+    [self.client performGETCallToEndpoint:endpoint withParameters:@{@"seriesId" : series.id.stringValue} andSuccess:^(id  _Nullable responseObject) {
+        NSError *error;
+        NSArray<SNREpisode *>* episodes = [SNREpisode arrayOfModelsFromDictionaries:responseObject error:&error];
+        
+        NSMutableDictionary<NSString *, NSMutableArray<SNREpisode *> *> *seasonEpisode = [[NSMutableDictionary alloc] init];
+        
+        for (SNREpisode *episode in episodes) {
+            NSMutableArray *eps;
+            if ([seasonEpisode objectForKey:episode.seasonNumber.stringValue]) {
+                eps = [seasonEpisode objectForKey:episode.seasonNumber.stringValue];
+            } else {
+                eps = [[NSMutableArray alloc] init];
+            }
+            
+            [eps addObject:episode];
+            
+            [seasonEpisode setObject:eps forKey:episode.seasonNumber.stringValue];
+        }
+        
+        for (SNRSeason *season in series.seasons) {
+            season.episodes = seasonEpisode[season.seasonNumber.stringValue];
+        }
+        
+        if(completion){
+            completion(episodes, error);
+        }
+    } andFailure:^(NSError * _Nullable error) {
+        if(completion){
+            completion(nil, error);
         }
     }];
 }

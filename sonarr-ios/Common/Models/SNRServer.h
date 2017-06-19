@@ -15,6 +15,7 @@
 @class SNRProfile;
 @class SNRRootFolder;
 @class SNRServer;
+@class SNREpisode;
 
 typedef enum : NSInteger {
     SNRServerStatusUnknown = -1,
@@ -49,4 +50,5 @@ typedef enum : NSInteger {
 -(void)searchForSeries:(NSString * _Nonnull)series withCompletion:(void(^ _Nullable)(NSArray<SNRSeries *> * _Nullable series, NSError * _Nullable error))completion;
 -(void)addSeries:(SNRSeries * _Nonnull)series withCompletion:(void(^ _Nullable)(SNRSeries * _Nullable series, NSError * _Nullable error))completion;
 -(void)deleteSeries:(SNRSeries * _Nonnull)series withFiles:(BOOL)files andCompletion:(void(^ _Nullable)(BOOL success, NSError * _Nullable error))completion;
+-(void)episodesForSeries:(SNRSeries * _Nonnull)series withCompletion:(void(^ _Nullable)(NSArray<SNREpisode *> * _Nullable episodes, NSError * _Nullable error))completion;
 @end
