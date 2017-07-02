@@ -1,8 +1,8 @@
 //
-//  SNRSeasonsViewController.m
+//  ViewController.m
 //  sonarr-ios
 //
-//  Created by Harry Singh on 15/06/17.
+//  Created by Harry Singh on 2/07/17.
 //  Copyright © 2017 Harry Singh. All rights reserved.
 //
 
@@ -19,49 +19,63 @@
 #import "SNRSeasonHeaderCell.h"
 #import "SNREpisodeCell.h"
 #import "ViewController.h"
-@interface SNRSeasonsViewController () <SNRSeasonHeaderCellProtocol>
-@property (weak, nonatomic) IBOutlet SNRBaseTableView *tableView;
-@property (strong, nonatomic) MXParallaxHeader *parallaxHeader;
-@property (strong, nonatomic) SNRServer *server;
+
+@interface ViewController () <SNRSeasonHeaderCellProtocol>
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) SNRSeries *series;
+@property (strong, nonatomic) SNRServer *server;
 @property (strong, nonatomic) NSMutableDictionary *headerExpanded;
+@property (weak, nonatomic) IBOutlet UIView *parallaxView;
+@property (weak, nonatomic) IBOutlet UIImageView *parallaxImageView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *parallaxViewHeightConstraint;
 @end
 
-@implementation SNRSeasonsViewController
+@implementation ViewController
 
--(void)awakeFromNib{
-    [super awakeFromNib];
+- (void)viewDidLoad {
+    [super viewDidLoad];
     
-    self.server = [SNRServerManager manager].activeServer;
+    [self.tableView registerNib:[UINib nibWithNibName:@"SeasonHeader" bundle:nil]forHeaderFooterViewReuseIdentifier:@"SeasonHeader"];
+    
+    [self.parallaxView addGestureRecognizer:[[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(didPan:)]];
+}
+
+-(void)didPan:(UIPanGestureRecognizer *)urgi{
+    if (urgi.state == UIGestureRecognizerStateEnded) {
+        [UIView animateWithDuration:0.3 animations:^{
+            self.parallaxViewHeightConstraint.constant = 150;
+            [self.view layoutIfNeeded];
+
+        }];
+    } else {
+        CGPoint velocity = [urgi velocityInView:self.view];
+        CGFloat magnitude = sqrtf((velocity.x * velocity.x) + (velocity.y * velocity.y));
+        CGFloat slideMult = magnitude / 200;
+        
+        float slideFactor = 0.8 * slideMult;
+        
+        NSLog(@"X: %f", velocity.x);
+        NSLog(@"Y: %f", velocity.y);
+        
+        if (0 > velocity.y) {
+            self.parallaxViewHeightConstraint.constant -= slideFactor;
+        } else {
+            self.parallaxViewHeightConstraint.constant += slideFactor;
+        }
+    }
 }
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     
-    self.title = self.series.title;
+    
+    SNRImage *parallax = [self.series imageWithType:ImageTypeFanArt];
+    self.parallaxImageView.image = parallax.image;
 }
 
--(void)viewDidLoad{
-    [super viewDidLoad];
-    
-    [self.tableView registerNib:[UINib nibWithNibName:@"SeasonHeader" bundle:nil]forHeaderFooterViewReuseIdentifier:@"SeasonHeader"];
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
 }
-
--(void)viewDidLayoutSubviews{
-    [super viewDidLayoutSubviews];
-    
-    if(!self.parallaxHeader){
-        SNRAddSeriesTableViewCell *cell = (id)[self tableView:self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:NSIntegerMax - 1 inSection:NSIntegerMax - 1]];
-        
-        self.parallaxHeader = [[MXParallaxHeader alloc] init];
-        self.parallaxHeader.view = cell.contentView;
-        self.tableView.parallaxHeader = self.parallaxHeader;
-    }
-    
-    [self updateParallaxHeaderView];
-}
-
-#pragma mark - Getter/Setter
 
 -(void)setSeries:(SNRSeries *)series{
     _series = series;
@@ -71,62 +85,6 @@
     for (int x = 0; x < series.seasons.count; x++) {
         [self.headerExpanded setValue:@(0) forKey:@(x).stringValue];
     }
-    
-    __weak typeof(self) wself = self;
-    [[SNRServerManager manager].activeServer episodesForSeries:series withCompletion:^(NSArray<SNREpisode *> * _Nullable episodes, NSError * _Nullable error) {
-        ViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"ViewController"];
-        [vc setSeries:self.series];
-        [self.navigationController pushViewController:vc animated:YES];
-        
-        [wself.headerExpanded enumerateKeysAndObjectsUsingBlock:^(NSString *  _Nonnull key, NSNumber *  _Nonnull obj, BOOL * _Nonnull stop) {
-            if(obj.boolValue){
-                [wself.tableView reloadSections:[[NSIndexSet alloc] initWithIndex:key.integerValue] withRowAnimation:UITableViewRowAnimationAutomatic];
-            }
-        }];
-    }];
-}
-
-#pragma mark - Navigation
-
--(UIBarButtonItem *)rightBarButton{
-    for (SNRSeries *series in self.server.series) {
-        if(series.tvdbId.integerValue == self.series.tvdbId.integerValue){
-            return nil;
-        }
-    }
-    
-    return [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
-                                                         target:self
-                                                         action:@selector(addSeriesButtonTouchUpInside)];
-}
-
--(void)addSeriesButtonTouchUpInside{
-    [SNRActivityIndicatorView showOnTint:YES onView:self.view];
-    
-    __weak typeof(self) wself = self;
-    [self.server addSeries:self.series withCompletion:^(SNRSeries * _Nullable series, NSError * _Nullable error) {
-        if(series){
-            return [wself dismissViewControllerAnimated:YES completion:nil];
-        }
-        
-        [SNRActivityIndicatorView showOnTint:NO onView:wself.view];
-    }];
-}
-
-#pragma mark - TableView
-
--(void)updateParallaxHeaderView{
-    CGRect frame =  self.view.frame;
-    CGFloat frameM = MIN(frame.size.width, frame.size.height);
-    
-    CGFloat minimunHeight = 130.0f;
-    CGFloat propHeight = ((1080.0f / 1920.0f) * frameM) + 60.0;
-    
-    CGFloat height = MAX(propHeight, minimunHeight);
-    
-    self.tableView.parallaxHeader.height = height;
-    self.tableView.parallaxHeader.mode = MXParallaxHeaderModeFill;
-    self.tableView.parallaxHeader.minimumHeight = minimunHeight;
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -139,6 +97,7 @@
     [headerCell setSeason:season];
     [headerCell setExpanded:[self.headerExpanded[@(section).stringValue] boolValue]];
     headerCell.delegate = self;
+    headerCell.contentView.backgroundColor = [UIColor blackColor];
     return headerCell;
 }
 
@@ -194,15 +153,8 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath{
-//    SNRAddSeriesDetailsTableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
-//    [cell becomeFirstResponder];
-}
-
-#pragma mark - Orientation Transition
-
--(void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator{
-    [self updateParallaxHeaderView];
-    [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
+    //    SNRAddSeriesDetailsTableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+    //    [cell becomeFirstResponder];
 }
 
 #pragma mark - Season Header Cell Protocol
@@ -218,13 +170,14 @@
     
     if (indexPaths.count) {
 #warning CAUSING CRASH ON iOS 11
-//        [self.tableView beginUpdates];
-//        [self.tableView deleteSections:[[NSIndexSet alloc] initWithIndex:section] withRowAnimation:UITableViewRowAnimationAutomatic];
-//        [self.tableView insertSections:[[NSIndexSet alloc] initWithIndex:section] withRowAnimation:UITableViewRowAnimationAutomatic];
-//        [self.tableView endUpdates];
+        //        [self.tableView beginUpdates];
+        //        [self.tableView deleteSections:[[NSIndexSet alloc] initWithIndex:section] withRowAnimation:UITableViewRowAnimationAutomatic];
+        //        [self.tableView insertSections:[[NSIndexSet alloc] initWithIndex:section] withRowAnimation:UITableViewRowAnimationAutomatic];
+        //        [self.tableView endUpdates];
         expanded ? [self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic] : [self.tableView deleteRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
-//        [self.tableView reloadData];
+        //        [self.tableView reloadData];
     }
 }
+
 
 @end

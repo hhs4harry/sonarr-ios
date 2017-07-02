@@ -8,6 +8,7 @@
 
 #import "SNRSeries.h"
 #import "SNRRatings.h"
+#import "SNRSeason.h"
 
 @protocol SNRTitle;
 @protocol SNRImage;
@@ -140,6 +141,14 @@ const NSString * IGNOREEPISODESWITHOUTFILES = @"ignoreEpisodesWithoutFiles";
     }
     
     return nil;
+}
+
+-(void)setSeasons:(NSArray<Optional, SNRSeason> *)seasons{
+    if (((SNRSeason *)seasons.lastObject).seasonNumber.integerValue > ((SNRSeason *)seasons.firstObject).seasonNumber.integerValue) {
+        _seasons = (id)[[seasons reverseObjectEnumerator] allObjects];
+    } else {
+        _seasons = seasons;
+    }
 }
 
 #pragma mark - JSON

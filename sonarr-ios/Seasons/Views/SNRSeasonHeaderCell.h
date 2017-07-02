@@ -9,7 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "SNRSeason.h"
 
-@interface SNRSeasonHeaderCell : UITableViewCell
--(void)setSeason:(SNRSeason *)season;
+@protocol SNRSeasonHeaderCellProtocol
+@required
+-(void)season:(SNRSeason *)season expanded:(BOOL)expanded;
+@end
 
+@interface SNRSeasonHeaderCell : UITableViewHeaderFooterView
+@property (weak) id<SNRSeasonHeaderCellProtocol> delegate;
+-(void)setSeason:(SNRSeason *)season;
+-(void)setExpanded:(BOOL)expanded;
 @end
