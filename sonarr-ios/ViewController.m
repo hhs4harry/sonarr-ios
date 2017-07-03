@@ -43,7 +43,7 @@
 -(void)didPan:(UIPanGestureRecognizer *)urgi{
     if (urgi.state == UIGestureRecognizerStateEnded) {
         [UIView animateWithDuration:0.3 animations:^{
-            self.parallaxViewHeightConstraint.constant = 150;
+            self.parallaxViewHeightConstraint.constant = 250;
             [self.view layoutIfNeeded];
 
         }];
