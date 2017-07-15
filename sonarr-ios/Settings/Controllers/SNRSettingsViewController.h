@@ -8,6 +8,10 @@
 
 #import "SNRBaseSheetViewController.h"
 
-@interface SNRSettingsViewController : SNRBaseViewController
+@protocol SNRSettingsProtocol
+-(void)openSettings:(BOOL)open;
+@end
 
+@interface SNRSettingsViewController : SNRBaseViewController
+@property (weak, nonatomic) id<SNRSettingsProtocol> delegate;
 @end

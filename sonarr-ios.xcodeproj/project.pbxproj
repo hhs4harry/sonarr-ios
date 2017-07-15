@@ -28,6 +28,7 @@
 		4A3499171E63D94A00453E63 /* SNRSeason.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A3499161E63D94A00453E63 /* SNRSeason.m */; };
 		4A34991A1E63D9A600453E63 /* SNRStatistics.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A3499191E63D9A600453E63 /* SNRStatistics.m */; };
 		4A3499231E63DD1000453E63 /* SNRRatings.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A3499221E63DD1000453E63 /* SNRRatings.m */; };
+		4A3ECE971F1A845700B16899 /* SNRFrontViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A3ECE961F1A845700B16899 /* SNRFrontViewController.m */; };
 		4A5F0A201E8037DD008463F6 /* SNRServerManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A5F0A1F1E8037DD008463F6 /* SNRServerManagerViewController.m */; };
 		4A5F0A241E803C3B008463F6 /* SNRServerTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A5F0A231E803C3B008463F6 /* SNRServerTableViewCell.m */; };
 		4A5F0A291E805829008463F6 /* SNRSeriesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A5F0A281E805829008463F6 /* SNRSeriesViewController.m */; };
@@ -131,6 +132,8 @@
 		4A3499191E63D9A600453E63 /* SNRStatistics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRStatistics.m; path = API/Models/SNRStatistics.m; sourceTree = "<group>"; };
 		4A3499211E63DD1000453E63 /* SNRRatings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRRatings.h; path = API/Models/SNRRatings.h; sourceTree = "<group>"; };
 		4A3499221E63DD1000453E63 /* SNRRatings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRRatings.m; path = API/Models/SNRRatings.m; sourceTree = "<group>"; };
+		4A3ECE951F1A845700B16899 /* SNRFrontViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SNRFrontViewController.h; sourceTree = "<group>"; };
+		4A3ECE961F1A845700B16899 /* SNRFrontViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SNRFrontViewController.m; sourceTree = "<group>"; };
 		4A5F0A1E1E8037DD008463F6 /* SNRServerManagerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRServerManagerViewController.h; path = Auth/Controllers/SNRServerManagerViewController.h; sourceTree = "<group>"; };
 		4A5F0A1F1E8037DD008463F6 /* SNRServerManagerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRServerManagerViewController.m; path = Auth/Controllers/SNRServerManagerViewController.m; sourceTree = "<group>"; };
 		4A5F0A221E803C3B008463F6 /* SNRServerTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRServerTableViewCell.h; path = Auth/Views/SNRServerTableViewCell.h; sourceTree = "<group>"; };
@@ -299,6 +302,7 @@
 				4A9E6C521E760633008AB91A /* Navigation */,
 				4A3498CE1E635DC100453E63 /* Analytics */,
 				4A3498C91E635CA400453E63 /* Auth */,
+				4A3ECE931F1A843000B16899 /* Front */,
 				4AE5DA6C1F19E0D8002A8BF5 /* Settings */,
 				4A5F0A251E805806008463F6 /* Series */,
 				4A3498CF1E635DDF00453E63 /* Resources */,
@@ -443,6 +447,23 @@
 				4A777C791E653B49006B1987 /* SNRRootFolder.m */,
 			);
 			name = Models;
+			sourceTree = "<group>";
+		};
+		4A3ECE931F1A843000B16899 /* Front */ = {
+			isa = PBXGroup;
+			children = (
+				4A3ECE941F1A843A00B16899 /* Controllers */,
+			);
+			path = Front;
+			sourceTree = "<group>";
+		};
+		4A3ECE941F1A843A00B16899 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				4A3ECE951F1A845700B16899 /* SNRFrontViewController.h */,
+				4A3ECE961F1A845700B16899 /* SNRFrontViewController.m */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		4A5F0A211E803BD4008463F6 /* Views */ = {
@@ -899,6 +920,7 @@
 				4A23A4D11EF44CCC0044A567 /* SNRSeasonHeaderCell.m in Sources */,
 				4A9E6C591E760C9B008AB91A /* UIColor+App.m in Sources */,
 				4A777C4C1E63FE9C006B1987 /* SNRHistory.m in Sources */,
+				4A3ECE971F1A845700B16899 /* SNRFrontViewController.m in Sources */,
 				4A34991A1E63D9A600453E63 /* SNRStatistics.m in Sources */,
 				4AC66C071EF3738800A80E93 /* SNRSeasonsViewController.m in Sources */,
 				4A147BBA1E8AD2C5000807AD /* SNRRefreshControl.m in Sources */,

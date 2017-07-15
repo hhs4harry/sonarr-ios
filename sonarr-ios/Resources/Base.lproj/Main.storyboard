@@ -173,10 +173,10 @@ Add one now!</string>
             </objects>
             <point key="canvasLocation" x="666.66666666666674" y="140.21739130434784"/>
         </scene>
-        <!--View Controller-->
+        <!--Front View Controller-->
         <scene sceneID="avb-Rk-E0S">
             <objects>
-                <viewController id="CdW-zd-MTc" sceneMemberID="viewController">
+                <viewController id="CdW-zd-MTc" customClass="SNRFrontViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jDW-DP-nIk"/>
                         <viewControllerLayoutGuide type="bottom" id="M1o-iA-HYI"/>
@@ -186,30 +186,53 @@ Add one now!</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FJj-OE-m4o">
-                                <rect key="frame" x="0.0" y="20" width="414" height="666"/>
+                                <rect key="frame" x="0.0" y="20" width="414" height="616"/>
                                 <connections>
-                                    <segue destination="v2l-hH-Qkq" kind="embed" id="ySu-z1-4fY"/>
+                                    <segue destination="v2l-hH-Qkq" kind="embed" identifier="navigationSegue" id="ySu-z1-4fY"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j5n-Kf-NJG">
-                                <rect key="frame" x="0.0" y="686" width="414" height="736"/>
+                                <rect key="frame" x="0.0" y="636" width="414" height="736"/>
                                 <connections>
-                                    <segue destination="kNH-rg-x7J" kind="embed" id="McV-pq-xRw"/>
+                                    <segue destination="kNH-rg-x7J" kind="embed" identifier="settingsSegue" id="McV-pq-xRw"/>
                                 </connections>
                             </containerView>
+                            <tabBar contentMode="scaleToFill" barStyle="black" translatesAutoresizingMaskIntoConstraints="NO" id="ODR-Ym-xAB">
+                                <rect key="frame" x="0.0" y="686" width="414" height="50"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="3Kf-qd-aYr"/>
+                                </constraints>
+                                <items>
+                                    <tabBarItem title="Series" image="tv" selectedImage="tv_selected" id="bEj-GF-A4E">
+                                        <inset key="largeContentSizeImageInsets" minX="0.0" minY="1" maxX="0.0" maxY="0.0"/>
+                                    </tabBarItem>
+                                </items>
+                            </tabBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="j5n-Kf-NJG" firstAttribute="height" secondItem="g9J-G3-fGn" secondAttribute="height" id="1f3-K2-3Zt"/>
                             <constraint firstItem="FJj-OE-m4o" firstAttribute="top" secondItem="jDW-DP-nIk" secondAttribute="bottom" id="BAf-qg-YqY"/>
                             <constraint firstItem="FJj-OE-m4o" firstAttribute="leading" secondItem="g9J-G3-fGn" secondAttribute="leading" id="EO2-Z7-uHi"/>
+                            <constraint firstAttribute="trailing" secondItem="ODR-Ym-xAB" secondAttribute="trailing" id="FBN-Es-gvi"/>
                             <constraint firstAttribute="trailing" secondItem="j5n-Kf-NJG" secondAttribute="trailing" id="ZPR-K3-X75"/>
-                            <constraint firstItem="j5n-Kf-NJG" firstAttribute="top" secondItem="M1o-iA-HYI" secondAttribute="top" constant="-50" id="Zhn-mG-ISu"/>
+                            <constraint firstItem="j5n-Kf-NJG" firstAttribute="top" secondItem="M1o-iA-HYI" secondAttribute="top" constant="-100" id="Zhn-mG-ISu"/>
+                            <constraint firstItem="ODR-Ym-xAB" firstAttribute="leading" secondItem="g9J-G3-fGn" secondAttribute="leading" id="fqH-Mp-UUe"/>
+                            <constraint firstItem="M1o-iA-HYI" firstAttribute="top" secondItem="ODR-Ym-xAB" secondAttribute="bottom" id="mzk-Dl-dGK"/>
                             <constraint firstAttribute="trailing" secondItem="FJj-OE-m4o" secondAttribute="trailing" id="naO-lg-rYG"/>
-                            <constraint firstAttribute="bottom" secondItem="FJj-OE-m4o" secondAttribute="bottom" constant="50" id="pMe-8R-7A9"/>
+                            <constraint firstAttribute="bottom" secondItem="FJj-OE-m4o" secondAttribute="bottom" constant="100" id="pMe-8R-7A9"/>
                             <constraint firstItem="j5n-Kf-NJG" firstAttribute="leading" secondItem="g9J-G3-fGn" secondAttribute="leading" id="rVv-Xs-MDJ"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="navContentView" destination="FJj-OE-m4o" id="5iB-Sx-ZOx"/>
+                        <outlet property="seriesTabBarItem" destination="bEj-GF-A4E" id="YUs-sD-YxW"/>
+                        <outlet property="settingsContainerTopConstraint" destination="Zhn-mG-ISu" id="eGC-8v-6sN"/>
+                        <outlet property="settingsContainerView" destination="j5n-Kf-NJG" id="ROx-Kp-cYl"/>
+                        <outlet property="tabBar" destination="ODR-Ym-xAB" id="4du-My-daj"/>
+                        <outlet property="tabBarBottomConstraint" destination="mzk-Dl-dGK" id="dix-tu-jUT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2IT-9B-CXy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1413,6 +1436,10 @@ Add one now!</string>
         <scene sceneID="gap-II-6Z8">
             <objects>
                 <viewController id="kNH-rg-x7J" customClass="SNRSettingsViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="sNb-Xa-HT4"/>
+                        <viewControllerLayoutGuide type="bottom" id="UXI-sV-ewg"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="YES" id="U5d-PJ-ffW">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1427,12 +1454,28 @@ Add one now!</string>
                                             <constraint firstAttribute="width" secondItem="KUP-1N-lgq" secondAttribute="height" multiplier="1:1" id="ghd-Nw-qXO"/>
                                         </constraints>
                                         <state key="normal" image="chevron"/>
+                                        <connections>
+                                            <action selector="chevronTouchUpInide:" destination="kNH-rg-x7J" eventType="touchUpInside" id="cEm-Co-da7"/>
+                                        </connections>
+                                    </button>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UTT-vZ-Rad">
+                                        <rect key="frame" x="364" y="0.0" width="50" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="7Op-CU-QnY"/>
+                                        </constraints>
+                                        <state key="normal" image="plus"/>
+                                        <connections>
+                                            <action selector="addButtonTouchUpInside:" destination="kNH-rg-x7J" eventType="touchUpInside" id="wmu-SO-Lrn"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstItem="UTT-vZ-Rad" firstAttribute="width" secondItem="UTT-vZ-Rad" secondAttribute="height" multiplier="1:1" id="2Km-Wm-Pku"/>
                                     <constraint firstItem="KUP-1N-lgq" firstAttribute="leading" secondItem="3Fj-y1-z32" secondAttribute="leading" id="GRL-d9-qzN"/>
+                                    <constraint firstItem="UTT-vZ-Rad" firstAttribute="top" secondItem="3Fj-y1-z32" secondAttribute="top" id="XNZ-Av-ISb"/>
                                     <constraint firstItem="KUP-1N-lgq" firstAttribute="top" secondItem="3Fj-y1-z32" secondAttribute="top" id="a7p-HU-wmd"/>
+                                    <constraint firstAttribute="trailing" secondItem="UTT-vZ-Rad" secondAttribute="trailing" id="suy-2F-QrT"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap To Add Server" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q9f-X8-gaW">
@@ -1456,6 +1499,9 @@ Add one now!</string>
                             <constraint firstItem="3Fj-y1-z32" firstAttribute="top" secondItem="U5d-PJ-ffW" secondAttribute="top" id="ohr-3H-LU9"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="addButton" destination="UTT-vZ-Rad" id="k5s-HC-nX9"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uVN-By-tXt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1464,6 +1510,9 @@ Add one now!</string>
     </scenes>
     <resources>
         <image name="chevron" width="16" height="16"/>
+        <image name="plus" width="25" height="25"/>
         <image name="sonarr_icon" width="164" height="164"/>
+        <image name="tv" width="25" height="25"/>
+        <image name="tv_selected" width="25" height="25"/>
     </resources>
 </document>
