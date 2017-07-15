@@ -8,6 +8,6 @@
 
 #import "SNRBaseSheetViewController.h"
 
-@interface SNRSettingsViewController : SNRBaseSheetViewController
+@interface SNRSettingsViewController : SNRBaseViewController
 
 @end

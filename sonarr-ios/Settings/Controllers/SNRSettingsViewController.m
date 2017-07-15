@@ -7,7 +7,6 @@
 //
 
 #import "SNRSettingsViewController.h"
-#import <MZFormSheetPresentationController/MZFormSheetPresentationViewController.h>
 
 @interface SNRSettingsViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -15,12 +14,5 @@
 @end
 
 @implementation SNRSettingsViewController
-
-- (CGRect)contentViewFrameForPresentationController:(MZFormSheetPresentationController *)presentationController currentFrame:(CGRect)currentFrame {
-    CGFloat viewW = CGRectGetWidth([UIScreen mainScreen].bounds);
-    CGFloat viewH = CGRectGetHeight([UIScreen mainScreen].bounds);
-    
-    return CGRectMake(0, 0, viewW, viewH);
-}
 
 @end
