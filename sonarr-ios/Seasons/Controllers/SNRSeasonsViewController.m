@@ -44,7 +44,7 @@
 -(void)viewDidLoad{
     [super viewDidLoad];
     
-    [self.tableView registerNib:[UINib nibWithNibName:@"SeasonHeader" bundle:nil]forHeaderFooterViewReuseIdentifier:@"SeasonHeader"];
+    [self.tableView registerNib:[UINib nibWithNibName:@"SeasonHeader" bundle:nil] forHeaderFooterViewReuseIdentifier:@"SeasonHeader"];
 }
 
 -(void)viewDidLayoutSubviews{

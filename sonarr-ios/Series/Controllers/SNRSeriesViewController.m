@@ -19,6 +19,7 @@
 #import "SNRActivityIndicatorView.h"
 #import "SNRRefreshControl.h"
 #import "SNRSeasonsViewController.h"
+#import "SNRSettingsViewController.h"
 
 typedef enum : NSUInteger {
     SeriesTableViewCellTypeNone = 0,
@@ -177,6 +178,17 @@ typedef enum : NSUInteger {
 
 -(void)addSeriesButtonTouchUpInside{
     [self presentViewController:[SNRSearchSeriesSheetViewController viewController] animated:YES completion:nil];
+}
+
+-(void)settingsButtonTouchUpInside{
+    [self presentViewController:[SNRSettingsViewController viewController] animated:YES completion:nil];
+}
+
+-(UIBarButtonItem *)backBarButton{
+    return [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"settings"]
+                                            style:UIBarButtonItemStyleDone
+                                           target:self
+                                           action:@selector(settingsButtonTouchUpInside)];
 }
 
 -(UIBarButtonItem *)rightBarButton{

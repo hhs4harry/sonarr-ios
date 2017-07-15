@@ -69,6 +69,7 @@
 		4AC66C071EF3738800A80E93 /* SNRSeasonsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AC66C061EF3738800A80E93 /* SNRSeasonsViewController.m */; };
 		4AD9FD141E95F5CF001ADBE1 /* SNRAddSeriesDetailsSwitchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AD9FD131E95F5CF001ADBE1 /* SNRAddSeriesDetailsSwitchTableViewCell.m */; };
 		4AD9FD171E960B9A001ADBE1 /* SNRAddSeriesDetailsInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AD9FD161E960B9A001ADBE1 /* SNRAddSeriesDetailsInfoTableViewCell.m */; };
+		4AE5DA701F19E105002A8BF5 /* SNRSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AE5DA6F1F19E105002A8BF5 /* SNRSettingsViewController.m */; };
 		4AFA7BB11E7B9C8100932038 /* SNRServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AFA7BB01E7B9C8100932038 /* SNRServer.m */; };
 /* End PBXBuildFile section */
 
@@ -214,6 +215,8 @@
 		4AD9FD131E95F5CF001ADBE1 /* SNRAddSeriesDetailsSwitchTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRAddSeriesDetailsSwitchTableViewCell.m; path = Series/Search/Add/Views/SNRAddSeriesDetailsSwitchTableViewCell.m; sourceTree = "<group>"; };
 		4AD9FD151E960B9A001ADBE1 /* SNRAddSeriesDetailsInfoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRAddSeriesDetailsInfoTableViewCell.h; path = Series/Search/Add/Views/SNRAddSeriesDetailsInfoTableViewCell.h; sourceTree = "<group>"; };
 		4AD9FD161E960B9A001ADBE1 /* SNRAddSeriesDetailsInfoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRAddSeriesDetailsInfoTableViewCell.m; path = Series/Search/Add/Views/SNRAddSeriesDetailsInfoTableViewCell.m; sourceTree = "<group>"; };
+		4AE5DA6E1F19E105002A8BF5 /* SNRSettingsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SNRSettingsViewController.h; sourceTree = "<group>"; };
+		4AE5DA6F1F19E105002A8BF5 /* SNRSettingsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SNRSettingsViewController.m; sourceTree = "<group>"; };
 		4AFA7BAF1E7B9C8100932038 /* SNRServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRServer.h; path = Common/Models/SNRServer.h; sourceTree = "<group>"; };
 		4AFA7BB01E7B9C8100932038 /* SNRServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRServer.m; path = Common/Models/SNRServer.m; sourceTree = "<group>"; };
 		90C3F8C36C856C91C0FCE823 /* Pods-sonarr-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sonarr-ios.release.xcconfig"; path = "Pods/Target Support Files/Pods-sonarr-ios/Pods-sonarr-ios.release.xcconfig"; sourceTree = "<group>"; };
@@ -296,6 +299,7 @@
 				4A9E6C521E760633008AB91A /* Navigation */,
 				4A3498CE1E635DC100453E63 /* Analytics */,
 				4A3498C91E635CA400453E63 /* Auth */,
+				4AE5DA6C1F19E0D8002A8BF5 /* Settings */,
 				4A5F0A251E805806008463F6 /* Series */,
 				4A3498CF1E635DDF00453E63 /* Resources */,
 				4A3498961E63587200453E63 /* Supporting Files */,
@@ -636,6 +640,23 @@
 			name = Controllers;
 			sourceTree = "<group>";
 		};
+		4AE5DA6C1F19E0D8002A8BF5 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				4AE5DA6D1F19E0E1002A8BF5 /* Controllers */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		4AE5DA6D1F19E0E1002A8BF5 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				4AE5DA6E1F19E105002A8BF5 /* SNRSettingsViewController.h */,
+				4AE5DA6F1F19E105002A8BF5 /* SNRSettingsViewController.m */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 		B8FB5143EB65B483C8D32A07 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -887,6 +908,7 @@
 				4AA5D5EF1E668F8300C044C7 /* SNRAddServerPopUpViewController.m in Sources */,
 				4A34990A1E63C59400453E63 /* SNRStatus.m in Sources */,
 				4A777C6B1E653357006B1987 /* SNRCutoff.m in Sources */,
+				4AE5DA701F19E105002A8BF5 /* SNRSettingsViewController.m in Sources */,
 				4A14754C1E7B32C1006B6888 /* UIAlertController+Show.m in Sources */,
 				4A147BAD1E89D4F2000807AD /* NSString+check.m in Sources */,
 				4A3498DE1E635E7900453E63 /* AppDelegate.m in Sources */,
@@ -1050,12 +1072,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = JCPQYCKCFL;
 				INFOPLIST_FILE = "$(SRCROOT)/sonarr-ios/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.harrysingh.sonarr-ios";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Debug;
 		};
@@ -1065,12 +1090,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = JCPQYCKCFL;
 				INFOPLIST_FILE = "$(SRCROOT)/sonarr-ios/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.harrysingh.sonarr-ios";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Release;
 		};
