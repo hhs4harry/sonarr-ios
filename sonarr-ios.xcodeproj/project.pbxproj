@@ -29,6 +29,7 @@
 		4A34991A1E63D9A600453E63 /* SNRStatistics.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A3499191E63D9A600453E63 /* SNRStatistics.m */; };
 		4A3499231E63DD1000453E63 /* SNRRatings.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A3499221E63DD1000453E63 /* SNRRatings.m */; };
 		4A3ECE971F1A845700B16899 /* SNRFrontViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A3ECE961F1A845700B16899 /* SNRFrontViewController.m */; };
+		4A3ECE9B1F1BE7E700B16899 /* SNRAddServerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A3ECE9A1F1BE7E700B16899 /* SNRAddServerCell.m */; };
 		4A5F0A201E8037DD008463F6 /* SNRServerManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A5F0A1F1E8037DD008463F6 /* SNRServerManagerViewController.m */; };
 		4A5F0A241E803C3B008463F6 /* SNRServerTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A5F0A231E803C3B008463F6 /* SNRServerTableViewCell.m */; };
 		4A5F0A291E805829008463F6 /* SNRSeriesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A5F0A281E805829008463F6 /* SNRSeriesViewController.m */; };
@@ -134,6 +135,8 @@
 		4A3499221E63DD1000453E63 /* SNRRatings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRRatings.m; path = API/Models/SNRRatings.m; sourceTree = "<group>"; };
 		4A3ECE951F1A845700B16899 /* SNRFrontViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SNRFrontViewController.h; sourceTree = "<group>"; };
 		4A3ECE961F1A845700B16899 /* SNRFrontViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SNRFrontViewController.m; sourceTree = "<group>"; };
+		4A3ECE991F1BE7E700B16899 /* SNRAddServerCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SNRAddServerCell.h; sourceTree = "<group>"; };
+		4A3ECE9A1F1BE7E700B16899 /* SNRAddServerCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SNRAddServerCell.m; sourceTree = "<group>"; };
 		4A5F0A1E1E8037DD008463F6 /* SNRServerManagerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRServerManagerViewController.h; path = Auth/Controllers/SNRServerManagerViewController.h; sourceTree = "<group>"; };
 		4A5F0A1F1E8037DD008463F6 /* SNRServerManagerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRServerManagerViewController.m; path = Auth/Controllers/SNRServerManagerViewController.m; sourceTree = "<group>"; };
 		4A5F0A221E803C3B008463F6 /* SNRServerTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRServerTableViewCell.h; path = Auth/Views/SNRServerTableViewCell.h; sourceTree = "<group>"; };
@@ -466,6 +469,15 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
+		4A3ECE981F1BE7AB00B16899 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				4A3ECE991F1BE7E700B16899 /* SNRAddServerCell.h */,
+				4A3ECE9A1F1BE7E700B16899 /* SNRAddServerCell.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		4A5F0A211E803BD4008463F6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -664,6 +676,7 @@
 		4AE5DA6C1F19E0D8002A8BF5 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				4A3ECE981F1BE7AB00B16899 /* Views */,
 				4AE5DA6D1F19E0E1002A8BF5 /* Controllers */,
 			);
 			path = Settings;
@@ -889,6 +902,7 @@
 				4A5F0A381E81A8E6008463F6 /* SNRSeriesTableViewCell.m in Sources */,
 				4A777C711E653561006B1987 /* SNRQueue.m in Sources */,
 				4A777C741E653615006B1987 /* SNRProfile.m in Sources */,
+				4A3ECE9B1F1BE7E700B16899 /* SNRAddServerCell.m in Sources */,
 				4A5F0A241E803C3B008463F6 /* SNRServerTableViewCell.m in Sources */,
 				4A7A235A1E7DE29500141FCE /* SNRServerManager.m in Sources */,
 				4A777C331E63EBC9006B1987 /* SNRCalendar.m in Sources */,

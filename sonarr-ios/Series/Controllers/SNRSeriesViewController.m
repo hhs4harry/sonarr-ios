@@ -184,13 +184,6 @@ typedef enum : NSUInteger {
     [self presentViewController:[SNRSettingsViewController viewController] animated:YES completion:nil];
 }
 
--(UIBarButtonItem *)backBarButton{
-    return [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"settings"]
-                                            style:UIBarButtonItemStyleDone
-                                           target:self
-                                           action:@selector(settingsButtonTouchUpInside)];
-}
-
 -(UIBarButtonItem *)rightBarButton{
     return [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch
                                                          target:self
