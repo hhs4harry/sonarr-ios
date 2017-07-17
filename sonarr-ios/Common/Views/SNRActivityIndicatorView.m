@@ -53,7 +53,8 @@
             [instance setTag:NSIntegerMax - 1];
             instance.translatesAutoresizingMaskIntoConstraints = NO;
             
-            [view insertSubview:instance atIndex:0];
+            [view addSubview:instance];
+            [view bringSubviewToFront:instance];
             
             [NSLayoutConstraint activateConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[v]|" options:0 metrics:nil views:@{@"v" : instance}]];
             [NSLayoutConstraint activateConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[v]|" options:0 metrics:nil views:@{@"v" : instance}]];

@@ -72,6 +72,7 @@
 		4AD9FD141E95F5CF001ADBE1 /* SNRAddSeriesDetailsSwitchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AD9FD131E95F5CF001ADBE1 /* SNRAddSeriesDetailsSwitchTableViewCell.m */; };
 		4AD9FD171E960B9A001ADBE1 /* SNRAddSeriesDetailsInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AD9FD161E960B9A001ADBE1 /* SNRAddSeriesDetailsInfoTableViewCell.m */; };
 		4AE5DA701F19E105002A8BF5 /* SNRSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AE5DA6F1F19E105002A8BF5 /* SNRSettingsViewController.m */; };
+		4AEAEABC1F1C3D0D00255C7A /* SNRServerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AEAEABB1F1C3D0D00255C7A /* SNRServerCell.m */; };
 		4AFA7BB11E7B9C8100932038 /* SNRServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AFA7BB01E7B9C8100932038 /* SNRServer.m */; };
 /* End PBXBuildFile section */
 
@@ -223,6 +224,8 @@
 		4AD9FD161E960B9A001ADBE1 /* SNRAddSeriesDetailsInfoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRAddSeriesDetailsInfoTableViewCell.m; path = Series/Search/Add/Views/SNRAddSeriesDetailsInfoTableViewCell.m; sourceTree = "<group>"; };
 		4AE5DA6E1F19E105002A8BF5 /* SNRSettingsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SNRSettingsViewController.h; sourceTree = "<group>"; };
 		4AE5DA6F1F19E105002A8BF5 /* SNRSettingsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SNRSettingsViewController.m; sourceTree = "<group>"; };
+		4AEAEABA1F1C3D0D00255C7A /* SNRServerCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SNRServerCell.h; sourceTree = "<group>"; };
+		4AEAEABB1F1C3D0D00255C7A /* SNRServerCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SNRServerCell.m; sourceTree = "<group>"; };
 		4AFA7BAF1E7B9C8100932038 /* SNRServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRServer.h; path = Common/Models/SNRServer.h; sourceTree = "<group>"; };
 		4AFA7BB01E7B9C8100932038 /* SNRServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRServer.m; path = Common/Models/SNRServer.m; sourceTree = "<group>"; };
 		90C3F8C36C856C91C0FCE823 /* Pods-sonarr-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sonarr-ios.release.xcconfig"; path = "Pods/Target Support Files/Pods-sonarr-ios/Pods-sonarr-ios.release.xcconfig"; sourceTree = "<group>"; };
@@ -474,6 +477,8 @@
 			children = (
 				4A3ECE991F1BE7E700B16899 /* SNRAddServerCell.h */,
 				4A3ECE9A1F1BE7E700B16899 /* SNRAddServerCell.m */,
+				4AEAEABA1F1C3D0D00255C7A /* SNRServerCell.h */,
+				4AEAEABB1F1C3D0D00255C7A /* SNRServerCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -951,6 +956,7 @@
 				4A6D2A9B1E8DFB9F00BE876F /* SNRSearchSeriesSheetViewController.m in Sources */,
 				4A777C7A1E653B49006B1987 /* SNRRootFolder.m in Sources */,
 				4A777C6E1E65340A006B1987 /* SNRItem.m in Sources */,
+				4AEAEABC1F1C3D0D00255C7A /* SNRServerCell.m in Sources */,
 				4A5F0A301E81A6BC008463F6 /* UIImage+Remote.m in Sources */,
 				4A9E6C6B1E7785FE008AB91A /* SNRAPIClient.m in Sources */,
 				4A3499131E63D8ED00453E63 /* SNRImage.m in Sources */,

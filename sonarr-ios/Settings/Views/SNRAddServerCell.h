@@ -8,9 +8,12 @@
 
 #import <UIKit/UIKit.h>
 @class SNRAddServerCell;
+@class SNRServerConfig;
+@class SNRStatus;
 
 @protocol SNRAddServerCellProtocol
 -(void)expand:(BOOL)expand cell:(SNRAddServerCell *)cell;
+-(void)addServerWithConfig:(SNRServerConfig *)config andCompletion:(void(^)(SNRStatus *status, NSError *error))completion;
 @end
 
 @interface SNRAddServerCell : UITableViewCell

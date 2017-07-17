@@ -30,13 +30,13 @@
 }
 
 - (IBAction)addTouchUpInside:(id)sender {
-    SNRServerConfig *config = [[SNRServerConfig alloc] init];
-    config.hostname         = self.ipTextField.text;
-    config.username         = self.usernameTextField.text;
-    config.password         = self.passwordTextField.text;
-    config.apiKey           = self.apiKeyTextField.text;
-    config.port             = @(self.portTextField.text.integerValue);
-    config.SSL              = self.sslSwitch.on;
+    SNRServerConfig *config = [[SNRServerConfig alloc] initWithHostname:self.ipTextField.text apiKey:self.apiKeyTextField.text port:@(self.portTextField.text.integerValue) andSSL:self.sslSwitch.on];
+//    config.hostname         = self.ipTextField.text;
+//    config.username         = self.usernameTextField.text;
+//    config.password         = self.passwordTextField.text;
+//    config.apiKey           = self.apiKeyTextField.text;
+//    config.port             = @(self.portTextField.text.integerValue);
+//    config.SSL              = self.sslSwitch.on;
     
     SNRServer *server = [[SNRServer alloc] initWithConfig:config];
     

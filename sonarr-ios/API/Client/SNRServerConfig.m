@@ -7,6 +7,7 @@
 //
 
 #import "SNRServerConfig.h"
+#import "NSString+check.h"
 
 NSString * const SERVER_CONFIG_USERNAME  = @"snr_config_username";
 NSString * const SERVER_CONFIG_PASSWORD  = @"snr_conig_password";
@@ -16,10 +17,29 @@ NSString * const SERVER_CONFIG_APIKEY    = @"snr_config_apikey";
 NSString * const SERVER_CONFIG_SSL       = @"snr_config_ssl";
 
 @interface SNRServerConfig() <NSCoding>
-
+@property (strong, nonatomic) NSString *username;
+@property (strong, nonatomic) NSString *password;
+@property (strong, nonatomic) NSString *hostname;
+@property (strong, nonatomic) NSNumber *port;
+@property (strong, nonatomic) NSString *apiKey;
+@property (nonatomic) BOOL SSL;
 @end
 
 @implementation SNRServerConfig
+
+-(instancetype)initWithHostname:(NSString *)hostname apiKey:(NSString *)apiKey port:(NSNumber *)port andSSL:(BOOL)ssl{
+    self = [super init];
+    
+    if (hostname.nonEmpty && apiKey.nonEmpty && port != nil) {
+        self.hostname = hostname;
+        self.apiKey = apiKey;
+        self.port = port;
+        
+        return self;
+    }
+    
+    return nil;
+}
 
 -(instancetype)initWithCoder:(NSCoder *)aDecoder{
     if(!aDecoder){

@@ -11,10 +11,10 @@
 #import "SNRServerManager.h"
 #import "SNRServerConfig.h"
 #import "SNRAddServerCell.h"
+#import "SNRServerCell.h"
 
 @interface SNRSettingsViewController () <UITableViewDataSource, UITableViewDelegate, SNRAddServerCellProtocol>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (weak, nonatomic) IBOutlet UIButton *addButton;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (assign, nonatomic) BOOL open;
 @property (strong, nonatomic) UITapGestureRecognizer *tap;
@@ -56,7 +56,6 @@
     
     [UIView animateWithDuration:0.3 animations:^{
         [self updateTitle];
-        [self.addButton setHidden:!self.open];
         
         self.chevronButton.transform = open ? CGAffineTransformMakeRotation(M_PI) : CGAffineTransformIdentity;
     }];
@@ -91,11 +90,12 @@
         return cell;
     }
     
-    return [[UITableViewCell alloc] init];
+    SNRServerCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SNRServerCellSBID" forIndexPath:indexPath];
+    return cell;
 }
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.servers.count + 1;
+    return self.servers.count + 2;
 }
 
 #pragma mark - TableView Delegate
@@ -116,4 +116,15 @@
     [self.tableView beginUpdates];
     [self.tableView endUpdates];
 }
+
+- (void)addServerWithConfig:(SNRServerConfig *)config andCompletion:(void(^)(SNRStatus *status, NSError *error))completion{
+    __block SNRServer *newServer = [[SNRServer alloc] initWithConfig:config];
+    [newServer validateServerWithCompletion:^(SNRStatus * _Nullable status, NSError * _Nullable error) {
+        if (status) {
+            [[SNRServerManager manager] addServer:newServer];
+        }
+        completion(status, error);
+    }];
+}
+
 @end

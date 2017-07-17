@@ -45,7 +45,7 @@ static NSString * BASEURL;
     self = [super init];
     if (self) {
         if(!config.port){
-            config.port = @8989;
+            config = [[SNRServerConfig alloc] initWithHostname:config.hostname apiKey:config.apiKey port:@(8989) andSSL:config.SSL];
         }
         self.client = [[SNRAPIClient alloc] initWithBaseURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@://%@:%@", config.SSL ? @"https" : @"http", config.hostname, config.port.stringValue]]];
         
