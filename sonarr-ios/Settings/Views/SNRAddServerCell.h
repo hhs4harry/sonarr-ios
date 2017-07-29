@@ -7,15 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-@class SNRAddServerCell;
-@class SNRServerConfig;
-@class SNRStatus;
+#import "SNRSettingsCell.h"
 
-@protocol SNRAddServerCellProtocol
--(void)expand:(BOOL)expand cell:(SNRAddServerCell *)cell;
--(void)addServerWithConfig:(SNRServerConfig *)config andCompletion:(void(^)(SNRStatus *status, NSError *error))completion;
-@end
+@interface SNRAddServerCell : SNRSettingsCell
 
-@interface SNRAddServerCell : UITableViewCell
-@property (weak, nonatomic) id<SNRAddServerCellProtocol> delegate;
 @end

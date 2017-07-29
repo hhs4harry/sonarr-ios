@@ -8,4 +8,5 @@ target 'Sonarr' do
   pod 'UIFloatLabelTextField', '~> 1.2'
   pod 'IQKeyboardManager', '~> 4.0'
   pod 'MXParallaxHeader', '~> 0.6'
+  pod 'SDWebImage', '~> 4.0'
 end

@@ -37,6 +37,7 @@
 		4A5F0A301E81A6BC008463F6 /* UIImage+Remote.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A5F0A2F1E81A6BC008463F6 /* UIImage+Remote.m */; };
 		4A5F0A331E81A70B008463F6 /* SNRImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A5F0A321E81A70B008463F6 /* SNRImageView.m */; };
 		4A5F0A381E81A8E6008463F6 /* SNRSeriesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A5F0A371E81A8E6008463F6 /* SNRSeriesTableViewCell.m */; };
+		4A6106801F2C4CDF00FC3A1B /* SNRSettingsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A61067F1F2C4CDF00FC3A1B /* SNRSettingsCell.m */; };
 		4A6D2A8D1E8DAA6F00BE876F /* SNRSheetNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A6D2A8C1E8DAA6F00BE876F /* SNRSheetNavigationViewController.m */; };
 		4A6D2A921E8DF66800BE876F /* MZFormSheetPresentationController+Keyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A6D2A911E8DF66800BE876F /* MZFormSheetPresentationController+Keyboard.m */; };
 		4A6D2A9B1E8DFB9F00BE876F /* SNRSearchSeriesSheetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A6D2A9A1E8DFB9F00BE876F /* SNRSearchSeriesSheetViewController.m */; };
@@ -152,6 +153,8 @@
 		4A5F0A321E81A70B008463F6 /* SNRImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRImageView.m; path = Common/Views/SNRImageView.m; sourceTree = "<group>"; };
 		4A5F0A361E81A8E6008463F6 /* SNRSeriesTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRSeriesTableViewCell.h; path = Series/Views/SNRSeriesTableViewCell.h; sourceTree = "<group>"; };
 		4A5F0A371E81A8E6008463F6 /* SNRSeriesTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRSeriesTableViewCell.m; path = Series/Views/SNRSeriesTableViewCell.m; sourceTree = "<group>"; };
+		4A61067E1F2C4CDF00FC3A1B /* SNRSettingsCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SNRSettingsCell.h; sourceTree = "<group>"; };
+		4A61067F1F2C4CDF00FC3A1B /* SNRSettingsCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SNRSettingsCell.m; sourceTree = "<group>"; };
 		4A6D2A8B1E8DAA6F00BE876F /* SNRSheetNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRSheetNavigationViewController.h; path = Navigation/Controllers/SNRSheetNavigationViewController.h; sourceTree = "<group>"; };
 		4A6D2A8C1E8DAA6F00BE876F /* SNRSheetNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRSheetNavigationViewController.m; path = Navigation/Controllers/SNRSheetNavigationViewController.m; sourceTree = "<group>"; };
 		4A6D2A901E8DF66800BE876F /* MZFormSheetPresentationController+Keyboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MZFormSheetPresentationController+Keyboard.h"; path = "Libraries/Controllers/MZFormSheetPresentationController+Keyboard.h"; sourceTree = "<group>"; };
@@ -475,6 +478,8 @@
 		4A3ECE981F1BE7AB00B16899 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				4A61067E1F2C4CDF00FC3A1B /* SNRSettingsCell.h */,
+				4A61067F1F2C4CDF00FC3A1B /* SNRSettingsCell.m */,
 				4A3ECE991F1BE7E700B16899 /* SNRAddServerCell.h */,
 				4A3ECE9A1F1BE7E700B16899 /* SNRAddServerCell.m */,
 				4AEAEABA1F1C3D0D00255C7A /* SNRServerCell.h */,
@@ -781,7 +786,7 @@
 		4A34988B1E63587200453E63 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0820;
+				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = "Harry Singh";
 				TargetAttributes = {
 					4A3498921E63587200453E63 = {
@@ -909,6 +914,7 @@
 				4A777C741E653615006B1987 /* SNRProfile.m in Sources */,
 				4A3ECE9B1F1BE7E700B16899 /* SNRAddServerCell.m in Sources */,
 				4A5F0A241E803C3B008463F6 /* SNRServerTableViewCell.m in Sources */,
+				4A6106801F2C4CDF00FC3A1B /* SNRSettingsCell.m in Sources */,
 				4A7A235A1E7DE29500141FCE /* SNRServerManager.m in Sources */,
 				4A777C331E63EBC9006B1987 /* SNRCalendar.m in Sources */,
 				4AD9FD141E95F5CF001ADBE1 /* SNRAddSeriesDetailsSwitchTableViewCell.m in Sources */,
@@ -1027,7 +1033,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -1035,7 +1043,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -1075,7 +1087,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -1083,7 +1097,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;

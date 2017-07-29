@@ -11,131 +11,57 @@
 #import "SNRServerConfig.h"
 #import "SNRActivityIndicatorView.h"
 
-@interface SNRAddServerCell() <UITextFieldDelegate>
+@interface SNRAddServerCell()
+@property (weak, nonatomic) IBOutlet UILabel *addServerLabel;
 @property (weak, nonatomic) IBOutlet UITextField *ipTextfield;
 @property (weak, nonatomic) IBOutlet UITextField *apiTextField;
 @property (weak, nonatomic) IBOutlet UITextField *portTextField;
 @property (weak, nonatomic) IBOutlet UISwitch *sslSwitch;
-@property (weak, nonatomic) IBOutlet UIButton *tickButton;
-@property (weak, nonatomic) IBOutlet UIButton *adServerButton;
+@property (weak, nonatomic) IBOutlet UIButton *leftButton;
+@property (weak, nonatomic) IBOutlet UIButton *rightButton;
 @property (assign, nonatomic) BOOL open;
 @end
 
 @implementation SNRAddServerCell
 
--(void)awakeFromNib{
-    [super awakeFromNib];
+- (IBAction)rightButtonTouchUpInside:(id)sender {
+    [self endEditing:YES];
     
-    self.open = NO;
+    if(![self validateInput]) {
+        return;
+    }
+    
+    SNRServerConfig *config = [[SNRServerConfig alloc] initWithHostname:self.ipTextfield.text apiKey:self.apiTextField.text port:@(self.portTextField.text.integerValue) andSSL:self.sslSwitch.on];
+    
+    [SNRActivityIndicatorView showOnTint:YES onView:self];
+    
+    __weak typeof(self) wself = self;
+    [self.delegate addServerWithConfig:config andCompletion:^(SNRStatus *status, NSError *error) {
+        if (status) {
+            wself.open = NO;
+            [wself.delegate expanded:wself.open cell:wself];
+            [wself resetInput];
+        } else {
+#warning - TODO: Handle Error
+        }
+        [SNRActivityIndicatorView show:NO onView:wself];
+    }];
 }
 
-- (IBAction)addServerButtonTouchUpInside:(id)sender {
-    self.open = !self.open;
+-(void)setOpen:(BOOL)open {
+    _open = open;
     
     [UIView animateWithDuration:0.3 animations:^{
-        self.tickButton.hidden = !self.open;
-        self.adServerButton.transform = self.open ? CGAffineTransformMakeRotation(M_PI_4) : CGAffineTransformIdentity;
+        self.rightButton.hidden = !open;
+        self.leftButton.transform = open ? CGAffineTransformMakeRotation(M_PI_4) : CGAffineTransformIdentity;
     }];
-
-    [self.delegate expand:self.open cell:self];
+    
+    [self.delegate expanded:open cell:self];
 }
 
 -(void)setSslSwitch:(UISwitch *)sslSwitch{
     _sslSwitch = sslSwitch;
     
-    sslSwitch.transform = CGAffineTransformMakeScale(21 / sslSwitch.frame.size.height, 21 / sslSwitch.frame.size.height);
-}
-
-- (IBAction)tickTouchUpInside:(id)sender {
-    [self endEditing:YES];
-    
-    if (self.ipTextfield.text.nonEmpty &&
-        self.apiTextField.text.nonEmpty &&
-        self.portTextField.text.nonEmpty) {
-        
-        SNRServerConfig *config = [[SNRServerConfig alloc] initWithHostname:self.ipTextfield.text apiKey:self.apiTextField.text port:@(self.portTextField.text.integerValue) andSSL:self.sslSwitch.on];
-        
-        [SNRActivityIndicatorView showOnTint:YES onView:self];
-        
-        __weak typeof(self) wself = self;
-        [self.delegate addServerWithConfig:config andCompletion:^(SNRStatus *status, NSError *error) {
-            if (status) {
-                
-            }
-            [SNRActivityIndicatorView show:NO onView:wself];
-        }];
-    } else {
-        if (!self.ipTextfield.text.nonEmpty) {
-            [self showError:YES onTextField:self.ipTextfield];
-        }
-        
-        if (!self.apiTextField.text.nonEmpty) {
-            [self showError:YES onTextField:self.apiTextField];
-        }
-        
-        if (!self.portTextField.text.nonEmpty) {
-            [self showError:YES onTextField:self.portTextField];
-        }
-    }
-}
-
--(void)showError:(BOOL)show onTextField:(UITextField *)textfield{
-    NSString *text;
-    if (textfield.placeholder) {
-        text = textfield.placeholder;
-    } else {
-        text = textfield.attributedPlaceholder.string;
-    }
-    
-    textfield.attributedPlaceholder = [[NSAttributedString alloc] initWithString:text attributes:@{NSForegroundColorAttributeName : show ? [[UIColor redColor] colorWithAlphaComponent:0.5] : [[UIColor whiteColor] colorWithAlphaComponent:0.5]}];
-}
-
-- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
-    if (textField == self.ipTextfield) {
-        NSMutableCharacterSet *charSet = [NSMutableCharacterSet alphanumericCharacterSet];
-        [charSet formUnionWithCharacterSet:[NSCharacterSet characterSetWithCharactersInString:@"."]];
-        return ![string stringByTrimmingCharactersInSet:charSet].length;
-    } else if (textField == self.apiTextField){
-        return ![string stringByTrimmingCharactersInSet:[NSCharacterSet alphanumericCharacterSet]].length;
-    } else if (textField == self.portTextField) {
-        if(range.length + range.location > textField.text.length){
-            return NO;
-        }
-        
-        NSUInteger newLength = [textField.text length] + [string length] - range.length;
-        if (newLength > 5) {
-            return NO;
-        } else if ([string stringByTrimmingCharactersInSet:[NSCharacterSet decimalDigitCharacterSet]].length) {
-            return NO;
-        }
-        
-        return !([textField.text stringByReplacingCharactersInRange:range withString:string].integerValue > 65535);
-    } else {
-        return YES;
-    }
-}
-
--(void)textFieldDidBeginEditing:(UITextField *)textField{
-    [self showError:NO onTextField:textField];
-}
-
-#pragma mark - Setters
-
--(void)setIpTextfield:(UITextField *)ipTextfield{
-    _ipTextfield = ipTextfield;
-    
-    [self showError:NO onTextField:ipTextfield];
-}
-
--(void)setApiTextField:(UITextField *)apiTextField{
-    _apiTextField = apiTextField;
-    
-    [self showError:NO onTextField:apiTextField];
-}
-
--(void)setPortTextField:(UITextField *)portTextField{
-    _portTextField = portTextField;
-    
-    [self showError:NO onTextField:portTextField];
+    sslSwitch.transform = CGAffineTransformMakeScale(20 / sslSwitch.frame.size.height, 20 / sslSwitch.frame.size.height);
 }
 @end

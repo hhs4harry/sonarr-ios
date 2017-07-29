@@ -12,8 +12,10 @@
 #import "SNRServerConfig.h"
 #import "SNRAddServerCell.h"
 #import "SNRServerCell.h"
+#import "SNRServerManager.h"
+#import "SNRSettingsCell.h"
 
-@interface SNRSettingsViewController () <UITableViewDataSource, UITableViewDelegate, SNRAddServerCellProtocol>
+@interface SNRSettingsViewController () <UITableViewDataSource, UITableViewDelegate, SNRSettingsCellProtocol>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (assign, nonatomic) BOOL open;
@@ -21,6 +23,7 @@
 @property (strong, nonatomic) NSMutableArray<SNRServer *>* servers;
 @property (weak, nonatomic) IBOutlet UIButton *chevronButton;
 @property (assign, nonatomic) BOOL addingServer;
+@property (assign, nonatomic) BOOL editingServer;
 @end
 
 @implementation SNRSettingsViewController
@@ -77,10 +80,6 @@
     }
 }
 
-- (IBAction)addButtonTouchUpInside:(id)sender {
-    
-}
-
 #pragma mark - TableView DataSource
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
@@ -91,27 +90,33 @@
     }
     
     SNRServerCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SNRServerCellSBID" forIndexPath:indexPath];
+    cell.delegate = self;
+    [cell configureWithServer:self.servers[indexPath.row - 1]];
     return cell;
 }
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.servers.count + 2;
+    return self.servers.count + 1;
 }
 
 #pragma mark - TableView Delegate
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (!indexPath.row) {
-        return self.addingServer ? 200 : 50;
+        return self.addingServer ? 190 : 50;
     }
     
-    return 50;
+    return self.editingServer ? 190 : 50;
 }
 
-#pragma mark - AddServerCell Protocol
+#pragma mark - SettingsCell Protocol
 
--(void)expand:(BOOL)expand cell:(SNRAddServerCell *)cell{
-    self.addingServer = expand;
+-(void)expanded:(BOOL)expanded cell:(SNRSettingsCell *)cell {
+    if ([cell isKindOfClass:[SNRServerCell class]]) {
+        self.editingServer = expanded;
+    } else if ([cell isKindOfClass:[SNRAddServerCell class]]) {
+        self.addingServer = expanded;
+    }
     
     [self.tableView beginUpdates];
     [self.tableView endUpdates];
@@ -126,5 +131,4 @@
         completion(status, error);
     }];
 }
-
 @end

@@ -34,6 +34,7 @@ NSString * const SERVER_CONFIG_SSL       = @"snr_config_ssl";
         self.hostname = hostname;
         self.apiKey = apiKey;
         self.port = port;
+        self.SSL = ssl;
         
         return self;
     }

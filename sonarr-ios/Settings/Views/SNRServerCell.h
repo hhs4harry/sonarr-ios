@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SNRSettingsCell.h"
+@class SNRServer;
 
-@interface SNRServerCell : UITableViewCell
-
+@interface SNRServerCell : SNRSettingsCell
+-(void)configureWithServer:(SNRServer *)server;
 @end
