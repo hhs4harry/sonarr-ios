@@ -15,12 +15,17 @@
 #import "SNRServerManager.h"
 #import "SNRSettingsCell.h"
 
-@interface SNRSettingsViewController () <UITableViewDataSource, UITableViewDelegate, SNRSettingsCellProtocol>
+typedef enum : NSUInteger {
+    SNRSettingsSectionAddServer = 0,
+    SNRSettingsSectionActiveServer,
+    SNRSettingsSectionCount,
+} SNRSettingsSection;
+
+@interface SNRSettingsViewController () <UITableViewDataSource, UITableViewDelegate, SNRSettingsCellProtocol, SNRServerManagerProtocol>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (assign, nonatomic) BOOL open;
 @property (strong, nonatomic) UITapGestureRecognizer *tap;
-@property (strong, nonatomic) NSMutableArray<SNRServer *>* servers;
 @property (weak, nonatomic) IBOutlet UIButton *chevronButton;
 @property (assign, nonatomic) BOOL addingServer;
 @property (assign, nonatomic) BOOL editingServer;
@@ -36,15 +41,21 @@
     
     self.tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(chevronTouchUpInide:)];
     self.view.gestureRecognizers = @[self.tap];
+    
+    [[SNRServerManager manager] addObserver:self];
+}
+
+-(void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    
+    [[SNRServerManager manager] removeObserver:self];
 }
 
 -(void)viewDidLoad{
     [super viewDidLoad];
-    
-    self.servers = [SNRServerManager manager].servers;
-    
+
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        if (!self.servers) {
+        if ([SNRServerManager manager].servers) {
             [self openSettings:YES];
         }
     });
@@ -82,8 +93,8 @@
 
 #pragma mark - TableView DataSource
 
-- (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
-    if (!indexPath.row) {
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.section == SNRSettingsSectionAddServer) {
         SNRAddServerCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SNRAddServerCellSBID" forIndexPath:indexPath];
         cell.delegate = self;
         return cell;
@@ -91,18 +102,25 @@
     
     SNRServerCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SNRServerCellSBID" forIndexPath:indexPath];
     cell.delegate = self;
-    [cell configureWithServer:self.servers[indexPath.row - 1]];
+    [cell configureWithServer:[SNRServerManager manager].servers[indexPath.row]];
     return cell;
 }
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.servers.count + 1;
+    if (section == SNRSettingsSectionAddServer) {
+        return 1;
+    }
+    return [SNRServerManager manager].servers.count;
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return SNRSettingsSectionCount;
 }
 
 #pragma mark - TableView Delegate
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    if (!indexPath.row) {
+    if (indexPath.section == SNRSettingsSectionAddServer) {
         return self.addingServer ? 190 : 50;
     }
     
@@ -131,4 +149,23 @@
         completion(status, error);
     }];
 }
+
+#pragma mark - SNRServerManager protocol
+
+-(void)didAddServer:(SNRServer *)server atIndex:(NSInteger)index{
+    [self.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:index inSection:SNRSettingsSectionActiveServer]] withRowAnimation:UITableViewRowAnimationAutomatic];
+}
+
+-(void)didDeleteServer:(SNRServer *)server atIndex:(NSInteger)index{
+    [self.tableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:index inSection:SNRSettingsSectionActiveServer]] withRowAnimation:UITableViewRowAnimationAutomatic];
+}
+
+-(void)didSetActiveServer:(SNRServer *)server atIndex:(NSInteger)index{
+    [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:index inSection:SNRSettingsSectionActiveServer]] withRowAnimation:UITableViewRowAnimationAutomatic];
+}
+
+-(void)didUnsetActiveServer:(SNRServer *)server atIndex:(NSInteger)index{
+    [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:index inSection:SNRSettingsSectionActiveServer]] withRowAnimation:UITableViewRowAnimationAutomatic];
+}
+
 @end

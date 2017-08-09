@@ -30,7 +30,7 @@
     [self sd_cancelCurrentImageLoad];
     
     url = [NSURL URLWithString:[client.baseURL.absoluteString stringByAppendingString: url.absoluteString]];
-    [self sd_setImageWithURL:url placeholderImage:nil options:SDWebImageAllowInvalidSSLCertificates ^ SDWebImageScaleDownLargeImages progress:nil completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
+    [self sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"placeholder_icon"] options:SDWebImageAllowInvalidSSLCertificates ^ SDWebImageScaleDownLargeImages progress:nil completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
         completion(image);
     }];
 }

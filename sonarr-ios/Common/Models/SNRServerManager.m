@@ -46,11 +46,11 @@ NSString * const SNR_SERVER_MANAGER_DIR = @"sonarr/manager/server";
     server.delegate = self;
     [self.servers addObject:server];
     
+    [self fireDidAddServer:server atIndex:[self.servers indexOfObject:server]];
+    
     if(self.servers.count == 1){
         [self setActiveServer:server];
     }
-    
-    [self fireDidAddServer:server atIndex:[self.servers indexOfObject:server]];
 }
 
 -(void)removeServer:(SNRServer *)server{

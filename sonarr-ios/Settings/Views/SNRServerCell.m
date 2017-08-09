@@ -86,6 +86,8 @@
     if(![self validateInput]) {
         return;
     }
+    
+    self.open = !self.open;
 }
 
 #pragma mark - Setters
