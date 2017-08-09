@@ -103,6 +103,14 @@ const CGFloat PARALLAXRATIO = 0.25;
         self.scrollView = scrollView;
     }
     
+    CGSize imageSize = self.parallaxImageView.image.size;
+    if (CGSizeEqualToSize(CGSizeZero, imageSize)) {
+        imageSize = CGSizeMake(1920, 1080);
+    }
+    
+    CGFloat ratio = MIN(imageSize.width, imageSize.height) / MAX(imageSize.height, imageSize.width);
+    CGFloat maxOffSet = ((ratio * CGRectGetWidth(self.frame)) - CGRectGetHeight(self.frame)) / 2;
+    
     CGFloat contentOffSet, cellOffSet, percent, extraHeight;
     contentOffSet = scrollView.contentOffset.y;
     cellOffSet = CGRectGetMinY(self.frame) - contentOffSet;
@@ -112,11 +120,12 @@ const CGFloat PARALLAXRATIO = 0.25;
     CGRect parallaxRect = self.parallaxImageView.frame;
     parallaxRect.origin.y = -extraHeight * percent;
     
-    if(CGRectGetMinY(parallaxRect) > 0 ||
-       (CGRectGetMinY(parallaxRect) + CGRectGetHeight(parallaxRect)) > CGRectGetHeight(self.frame)){
-        return;
+    if (CGRectGetMinY(parallaxRect) <= -maxOffSet) {
+        parallaxRect.origin.y = -maxOffSet;
+    } else if (CGRectGetMinY(parallaxRect) >= maxOffSet) {
+        parallaxRect.origin.y = maxOffSet;
     }
-    
+
     self.parallaxImageView.frame = parallaxRect;
 }
 
