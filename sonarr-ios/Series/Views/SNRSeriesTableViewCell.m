@@ -14,6 +14,7 @@
 #import "UIImage+Remote.h"
 #import "UIColor+App.h"
 #import <SDWebImage/UIView+WebCache.h>
+#import "SNRConstants.h"
 
 @interface SNRSeriesTableViewCell()
 @property (weak, nonatomic) IBOutlet SNRImageView *parallaxImageView;
@@ -24,8 +25,6 @@
 @property (strong, nonatomic) SNRSeries *series;
 @property (strong, nonatomic) UIScrollView *scrollView;
 @end
-
-const CGFloat PARALLAXRATIO = 0.25;
 
 @implementation SNRSeriesTableViewCell
 
@@ -105,7 +104,7 @@ const CGFloat PARALLAXRATIO = 0.25;
     
     CGSize imageSize = self.parallaxImageView.image.size;
     if (CGSizeEqualToSize(CGSizeZero, imageSize)) {
-        imageSize = CGSizeMake(1920, 1080);
+        imageSize = kBannerSize;
     }
     
     CGFloat ratio = MIN(imageSize.width, imageSize.height) / MAX(imageSize.height, imageSize.width);
@@ -115,7 +114,7 @@ const CGFloat PARALLAXRATIO = 0.25;
     contentOffSet = scrollView.contentOffset.y;
     cellOffSet = CGRectGetMinY(self.frame) - contentOffSet;
     percent = (cellOffSet + CGRectGetHeight(self.frame)) / (CGRectGetHeight(scrollView.frame) + CGRectGetHeight(self.frame));
-    extraHeight = CGRectGetHeight(self.frame) * (PARALLAXRATIO);
+    extraHeight = CGRectGetHeight(self.frame) * (kParallaxRatio);
     
     CGRect parallaxRect = self.parallaxImageView.frame;
     parallaxRect.origin.y = -extraHeight * percent;

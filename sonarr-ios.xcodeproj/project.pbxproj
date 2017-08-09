@@ -62,6 +62,7 @@
 		4A777C7A1E653B49006B1987 /* SNRRootFolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A777C791E653B49006B1987 /* SNRRootFolder.m */; };
 		4A7A235A1E7DE29500141FCE /* SNRServerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7A23591E7DE29500141FCE /* SNRServerManager.m */; };
 		4A9118691EF72825005A3851 /* SNREpisodeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A9118681EF72825005A3851 /* SNREpisodeCell.m */; };
+		4A9BD4DB1F3BB21200EB8A3F /* SNRConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A9BD4DA1F3BB21200EB8A3F /* SNRConstants.m */; };
 		4A9E6C511E760507008AB91A /* SNRBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A9E6C501E760507008AB91A /* SNRBaseViewController.m */; };
 		4A9E6C561E760662008AB91A /* SNRNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A9E6C551E760662008AB91A /* SNRNavigationViewController.m */; };
 		4A9E6C591E760C9B008AB91A /* UIColor+App.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A9E6C581E760C9B008AB91A /* UIColor+App.m */; };
@@ -203,6 +204,8 @@
 		4A7A23591E7DE29500141FCE /* SNRServerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRServerManager.m; path = Common/Models/SNRServerManager.m; sourceTree = "<group>"; };
 		4A9118671EF72825005A3851 /* SNREpisodeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNREpisodeCell.h; path = Seasons/Views/SNREpisodeCell.h; sourceTree = "<group>"; };
 		4A9118681EF72825005A3851 /* SNREpisodeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNREpisodeCell.m; path = Seasons/Views/SNREpisodeCell.m; sourceTree = "<group>"; };
+		4A9BD4D91F3BB21200EB8A3F /* SNRConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SNRConstants.h; path = Common/Models/SNRConstants.h; sourceTree = "<group>"; };
+		4A9BD4DA1F3BB21200EB8A3F /* SNRConstants.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = SNRConstants.m; path = Common/Models/SNRConstants.m; sourceTree = "<group>"; };
 		4A9E6C4F1E760507008AB91A /* SNRBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRBaseViewController.h; path = Common/Controllers/SNRBaseViewController.h; sourceTree = "<group>"; };
 		4A9E6C501E760507008AB91A /* SNRBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRBaseViewController.m; path = Common/Controllers/SNRBaseViewController.m; sourceTree = "<group>"; };
 		4A9E6C541E760662008AB91A /* SNRNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRNavigationViewController.h; path = Navigation/Controllers/SNRNavigationViewController.h; sourceTree = "<group>"; };
@@ -392,6 +395,8 @@
 				4A9E6C581E760C9B008AB91A /* UIColor+App.m */,
 				4A147BAB1E89D4F2000807AD /* NSString+check.h */,
 				4A147BAC1E89D4F2000807AD /* NSString+check.m */,
+				4A9BD4D91F3BB21200EB8A3F /* SNRConstants.h */,
+				4A9BD4DA1F3BB21200EB8A3F /* SNRConstants.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -934,6 +939,7 @@
 				4A777C421E63F242006B1987 /* SNRCommand.m in Sources */,
 				4A3498E01E635E7900453E63 /* main.m in Sources */,
 				4A777C4F1E640407006B1987 /* SNRRecord.m in Sources */,
+				4A9BD4DB1F3BB21200EB8A3F /* SNRConstants.m in Sources */,
 				4A5F0A291E805829008463F6 /* SNRSeriesViewController.m in Sources */,
 				4AD9FD171E960B9A001ADBE1 /* SNRAddSeriesDetailsInfoTableViewCell.m in Sources */,
 				4A777C391E63ECED006B1987 /* SNREpisode.m in Sources */,
