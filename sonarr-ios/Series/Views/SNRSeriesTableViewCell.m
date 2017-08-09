@@ -13,6 +13,7 @@
 #import "SNRImage.h"
 #import "UIImage+Remote.h"
 #import "UIColor+App.h"
+#import <SDWebImage/UIView+WebCache.h>
 
 @interface SNRSeriesTableViewCell()
 @property (weak, nonatomic) IBOutlet SNRImageView *parallaxImageView;
@@ -29,6 +30,9 @@ const CGFloat PARALLAXRATIO = 0.25;
 @implementation SNRSeriesTableViewCell
 
 -(void)prepareForReuse{
+    [self.parallaxImageView sd_cancelCurrentImageLoad];
+    [self.seriesImageView sd_cancelCurrentImageLoad];
+    
     SNRImage *parallax = self.series.images.firstObject;
     SNRImage *seriesImage = self.series.images.lastObject;
     
@@ -57,11 +61,7 @@ const CGFloat PARALLAXRATIO = 0.25;
 -(void)setSeries:(SNRSeries *)series forServer:(SNRServer *)server{
     self.parallaxImageView.image = nil;
     self.seriesImageView.image = nil;
-    
-    self.tag++;
-    self.parallaxImageView.tag = self.tag;
-    self.seriesImageView.tag = self.tag;
-    
+
     self.series = series;
     
     self.seriesTitleLabel.text = self.series.title;

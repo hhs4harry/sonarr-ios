@@ -20,6 +20,9 @@ PODS:
   - MZAppearance (1.1.6)
   - MZFormSheetPresentationController (2.4.2):
     - MZAppearance
+  - SDWebImage (4.1.0):
+    - SDWebImage/Core (= 4.1.0)
+  - SDWebImage/Core (4.1.0)
   - UIFloatLabelTextField (1.2.7)
 
 DEPENDENCIES:
@@ -28,6 +31,7 @@ DEPENDENCIES:
   - JSONModel (~> 1.7)
   - MXParallaxHeader (~> 0.6)
   - MZFormSheetPresentationController (~> 2.4)
+  - SDWebImage (~> 4.0)
   - UIFloatLabelTextField (~> 1.2)
 
 SPEC CHECKSUMS:
@@ -37,8 +41,9 @@ SPEC CHECKSUMS:
   MXParallaxHeader: 858c403532ed933b381556a81ce333d7065ad182
   MZAppearance: 0c06d3fa9cc55142f1da14bc8631fbe8fd6e19d5
   MZFormSheetPresentationController: c1dc3bce639d2393b3cc416fcb6e050eb5bca062
+  SDWebImage: 0e435c14e402a6730315a0fb79f95e68654d55a4
   UIFloatLabelTextField: ec6e82ae7cc06185bda955a9dce17e81cf34327c
 
-PODFILE CHECKSUM: 82ea59e82d89fa0e5036eb22ffb2b798ee19dfe3
+PODFILE CHECKSUM: a8c28aab0cf25e5637e3f37ab7e6927560942f3d
 
 COCOAPODS: 1.2.1

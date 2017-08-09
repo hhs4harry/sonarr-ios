@@ -48,6 +48,26 @@
     }];
 }
 
+#pragma mark - Setters
+
+-(void)setIpTextfield:(UITextField *)ipTextfield{
+    _ipTextfield = ipTextfield;
+    
+    [self showError:NO onTextField:ipTextfield];
+}
+
+-(void)setApiTextField:(UITextField *)apiTextField{
+    _apiTextField = apiTextField;
+    
+    [self showError:NO onTextField:apiTextField];
+}
+
+-(void)setPortTextField:(UITextField *)portTextField{
+    _portTextField = portTextField;
+    
+    [self showError:NO onTextField:portTextField];
+}
+
 -(void)setOpen:(BOOL)open {
     _open = open;
     

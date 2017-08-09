@@ -9,6 +9,12 @@
 #import "SNRImageView.h"
 #import "UIImage+Remote.h"
 #import "SNRActivityIndicatorView.h"
+#import "SNRAPIClient.h"
+#import "SNRServerManager.h"
+#import "SNRServer.h"
+
+#import <SDWebImage/UIImageView+WebCache.h>
+#import <SDWebImage/UIView+WebCache.h>
 
 @interface SNRImageView()
 @property (strong, nonatomic) UIActivityIndicatorView *activityIndicator;
@@ -16,52 +22,17 @@
 
 @implementation SNRImageView
 
--(void)awakeFromNib{
-    [super awakeFromNib];
-    
-    self.layer.allowsEdgeAntialiasing = YES;
-}
-
--(void)setImage:(UIImage *)image{
-    [super setImage:image];
-    
-    [SNRActivityIndicatorView show:NO onView:self];
-}
-
 -(void)setImageWithURL:(NSURL *)url{
     [self setImageWithURL:url forClient:nil andCompletion:nil];
 }
 
 -(void)setImageWithURL:(NSURL *)url forClient:(SNRAPIClient *)client andCompletion:(void(^)(UIImage *image))completion{
-    NSInteger tag = self.tag + 1;
-    self.tag = tag;
+    [self sd_cancelCurrentImageLoad];
     
-    [SNRActivityIndicatorView show:YES onView:self];
-    
-    __weak typeof(self) wself = self;
-    
-    __block void(^finishUp)(UIImage *image) = ^(UIImage *image){
-        if(tag == self.tag){
-            if(image){
-                __strong typeof(wself) sself = wself;
-                sself.image = image;
-            }
-        }
-        
-        if(completion){
-            completion(image);
-        }
-    };
-    
-    if(client){
-        [UIImage imageWithURL:url forClient:client andCompletion:^(UIImage *image) {
-            finishUp(image);
-        }];
-    }else{
-        [UIImage imageWithURL:url andCompletion:^(UIImage *image) {
-            finishUp(image);
-        }];
-    }
+    url = [NSURL URLWithString:[client.baseURL.absoluteString stringByAppendingString: url.absoluteString]];
+    [self sd_setImageWithURL:url placeholderImage:nil options:SDWebImageAllowInvalidSSLCertificates ^ SDWebImageScaleDownLargeImages progress:nil completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
+        completion(image);
+    }];
 }
 
 @end

@@ -60,7 +60,7 @@
 
 -(void)showError:(BOOL)show onTextField:(UITextField *)textfield{
     NSString *text;
-    if (textfield.placeholder) {
+    if (textfield.placeholder.length) {
         text = textfield.placeholder;
     } else {
         text = textfield.attributedPlaceholder.string;
