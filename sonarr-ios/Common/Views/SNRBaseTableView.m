@@ -28,12 +28,15 @@
 }
 
 -(void)reloadData{
-    [UIView transitionWithView:self
-                      duration:0.5f
-                       options:UIViewAnimationOptionTransitionCurlUp
-                    animations:^(void) {
-                        [super reloadData];
-                    } completion:nil];
+    CATransition* transition = [CATransition animation];
+    transition.type = kCATransitionFade;
+    transition.subtype = kCATransitionFromTop;
+    transition.duration = 0.2;
+    transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    transition.fillMode = kCAFillModeBoth;
+
+    [self.layer addAnimation:transition forKey:@"reloadData"];
+    [super reloadData];
 }
 
 -(void)setPullToRefresh:(BOOL)pullToRefresh{

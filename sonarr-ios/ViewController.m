@@ -19,15 +19,16 @@
 #import "SNRSeasonHeaderCell.h"
 #import "SNREpisodeCell.h"
 #import "ViewController.h"
+#import "SNRConstants.h"
 
 @interface ViewController () <SNRSeasonHeaderCellProtocol>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (strong, nonatomic) SNRSeries *series;
-@property (strong, nonatomic) SNRServer *server;
-@property (strong, nonatomic) NSMutableDictionary *headerExpanded;
 @property (weak, nonatomic) IBOutlet UIView *parallaxView;
 @property (weak, nonatomic) IBOutlet UIImageView *parallaxImageView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *parallaxViewHeightConstraint;
+@property (strong, nonatomic) SNRSeries *series;
+@property (strong, nonatomic) SNRServer *server;
+@property (strong, nonatomic) NSMutableDictionary *headerExpanded;
 @end
 
 @implementation ViewController
@@ -40,22 +41,48 @@
     [self.parallaxView addGestureRecognizer:[[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(didPan:)]];
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    
+    
+    SNRImage *parallax = [self.series imageWithType:ImageTypeFanArt];
+    self.parallaxImageView.image = parallax.image;
+    
+    [self animateParallaxImageViewToDefaultState:NO];
+}
+
+-(void)animateParallaxImageViewToDefaultState:(BOOL)animate{
+    CGFloat frameWidth = CGRectGetWidth(self.view.frame);
+    CGSize imageSize = self.parallaxImageView.image.size;
+    
+    if (CGSizeEqualToSize(CGSizeZero, imageSize)) {
+        imageSize = kBannerSize;
+    }
+    
+    CGFloat ratio = MIN(imageSize.height, imageSize.width) / MAX(imageSize.height, imageSize.width);
+    
+    self.parallaxViewHeightConstraint.constant = ratio * frameWidth;
+    
+    if (animate) {
+        [UIView animateWithDuration:0.2 animations:^{
+            [self.view layoutIfNeeded];
+        }];
+    }
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+}
+
 -(void)didPan:(UIPanGestureRecognizer *)urgi{
     if (urgi.state == UIGestureRecognizerStateEnded) {
-        [UIView animateWithDuration:0.3 animations:^{
-            self.parallaxViewHeightConstraint.constant = 250;
-            [self.view layoutIfNeeded];
-
-        }];
+        [self animateParallaxImageViewToDefaultState:YES];
     } else {
         CGPoint velocity = [urgi velocityInView:self.view];
         CGFloat magnitude = sqrtf((velocity.x * velocity.x) + (velocity.y * velocity.y));
         CGFloat slideMult = magnitude / 200;
         
         float slideFactor = 0.8 * slideMult;
-        
-        NSLog(@"X: %f", velocity.x);
-        NSLog(@"Y: %f", velocity.y);
         
         if (0 > velocity.y) {
             self.parallaxViewHeightConstraint.constant -= slideFactor;
@@ -65,27 +92,7 @@
     }
 }
 
--(void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
-    
-    
-    SNRImage *parallax = [self.series imageWithType:ImageTypeFanArt];
-    self.parallaxImageView.image = parallax.image;
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-}
-
--(void)setSeries:(SNRSeries *)series{
-    _series = series;
-    
-    self.headerExpanded = [[NSMutableDictionary alloc] init];
-    
-    for (int x = 0; x < series.seasons.count; x++) {
-        [self.headerExpanded setValue:@(0) forKey:@(x).stringValue];
-    }
-}
+#pragma mark - TableView
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return self.series.seasons.count;
@@ -128,10 +135,10 @@
 - (BOOL)tableView:(UITableView *)tableView shouldIndentWhileEditingRowAtIndexPath:(NSIndexPath *)indexPath{
     return NO;
 }
+
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
     NSLog(@"here");
 }
-
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     if(indexPath.row == NSIntegerMax - 1 && indexPath.section == NSIntegerMax - 1){
@@ -153,8 +160,19 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath{
-    //    SNRAddSeriesDetailsTableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
-    //    [cell becomeFirstResponder];
+
+}
+
+#pragma mark - Setters
+
+-(void)setSeries:(SNRSeries *)series{
+    _series = series;
+    
+    self.headerExpanded = [[NSMutableDictionary alloc] init];
+    
+    for (int x = 0; x < series.seasons.count; x++) {
+        [self.headerExpanded setValue:@(0) forKey:@(x).stringValue];
+    }
 }
 
 #pragma mark - Season Header Cell Protocol
@@ -169,15 +187,8 @@
     }
     
     if (indexPaths.count) {
-#warning CAUSING CRASH ON iOS 11
-        //        [self.tableView beginUpdates];
-        //        [self.tableView deleteSections:[[NSIndexSet alloc] initWithIndex:section] withRowAnimation:UITableViewRowAnimationAutomatic];
-        //        [self.tableView insertSections:[[NSIndexSet alloc] initWithIndex:section] withRowAnimation:UITableViewRowAnimationAutomatic];
-        //        [self.tableView endUpdates];
         expanded ? [self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic] : [self.tableView deleteRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
-        //        [self.tableView reloadData];
     }
 }
-
 
 @end
