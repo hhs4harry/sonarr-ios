@@ -455,7 +455,7 @@ Add one now!</string>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 Season" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6h2-Tc-Ea3">
-                                        <rect key="frame" x="74.666666666666671" y="50" width="47" height="21"/>
+                                        <rect key="frame" x="85" y="50" width="47" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="Wcd-dQ-wJA"/>
                                         </constraints>
@@ -464,7 +464,7 @@ Add one now!</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B3M-w4-eJr">
-                                        <rect key="frame" x="74.666666666666671" y="29" width="29" height="21"/>
+                                        <rect key="frame" x="85" y="29" width="29" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="v3c-tm-9es"/>
                                         </constraints>
@@ -473,17 +473,16 @@ Add one now!</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1bM-ex-7TM" customClass="SNRImageView">
-                                        <rect key="frame" x="8" y="8" width="58.666666666666671" height="84"/>
+                                        <rect key="frame" x="8" y="0.0" width="69" height="100"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" secondItem="1bM-ex-7TM" secondAttribute="height" multiplier="0.69:1" id="ohb-mi-X9R"/>
+                                            <constraint firstAttribute="height" constant="100" id="1a2-jU-jF0"/>
+                                            <constraint firstAttribute="width" secondItem="1bM-ex-7TM" secondAttribute="height" multiplier="0.69:1" id="zqn-GF-TZr"/>
                                         </constraints>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="1bM-ex-7TM" firstAttribute="top" secondItem="Zzh-9f-UTE" secondAttribute="top" constant="8" id="2cv-uo-Lrk"/>
                                     <constraint firstItem="XDk-5d-h4V" firstAttribute="top" secondItem="Zzh-9f-UTE" secondAttribute="top" id="2wV-2k-IuC"/>
-                                    <constraint firstAttribute="bottom" secondItem="1bM-ex-7TM" secondAttribute="bottom" constant="8" id="4lJ-43-LPW"/>
                                     <constraint firstAttribute="bottom" secondItem="fIu-jk-Wc6" secondAttribute="bottom" id="9ac-tQ-y3X"/>
                                     <constraint firstItem="B3M-w4-eJr" firstAttribute="leading" secondItem="1bM-ex-7TM" secondAttribute="trailing" constant="8" id="ByX-ul-bON"/>
                                     <constraint firstItem="1bM-ex-7TM" firstAttribute="centerY" secondItem="Zzh-9f-UTE" secondAttribute="centerY" id="Ewo-6q-hpL"/>
@@ -500,9 +499,11 @@ Add one now!</string>
                                     <constraint firstAttribute="trailing" secondItem="XDk-5d-h4V" secondAttribute="trailing" id="zjc-Yv-yil"/>
                                 </constraints>
                                 <connections>
-                                    <outlet property="parallaxImageView" destination="XDk-5d-h4V" id="sDm-bs-I3O"/>
+                                    <outlet property="parallaxImageView" destination="XDk-5d-h4V" id="hau-Kc-IUM"/>
+                                    <outlet property="parallaxViewHeightConstraint" destination="YpR-YA-KhJ" id="B01-QV-obq"/>
                                     <outlet property="seasonLabel" destination="6h2-Tc-Ea3" id="01K-5Y-G49"/>
                                     <outlet property="seriesImageView" destination="1bM-ex-7TM" id="A4r-h5-Nr8"/>
+                                    <outlet property="seriesImageViewHeightConstraint" destination="1a2-jU-jF0" id="vcp-Eh-bm6"/>
                                     <outlet property="seriesTitleLabel" destination="B3M-w4-eJr" id="ME4-Pq-vl1"/>
                                 </connections>
                             </view>
@@ -519,9 +520,7 @@ Add one now!</string>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="parallaxImageView" destination="XDk-5d-h4V" id="rtR-yp-O1u"/>
-                        <outlet property="parallaxView" destination="Zzh-9f-UTE" id="xXn-uR-Qzk"/>
-                        <outlet property="parallaxViewHeightConstraint" destination="YpR-YA-KhJ" id="pEw-xy-hK4"/>
+                        <outlet property="parallaxView" destination="Zzh-9f-UTE" id="xgS-at-Sa2"/>
                         <outlet property="tableView" destination="6nF-jW-ln7" id="No9-JF-O5b"/>
                     </connections>
                 </viewController>

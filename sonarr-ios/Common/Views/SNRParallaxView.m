@@ -12,12 +12,23 @@
 #import "SNRServerManager.h"
 #import "SNRAPIClient.h"
 #import "SNRServer.h"
+#import "SNRConstants.h"
+
+CGFloat const kTopBottomSpace = 24.0;
+#define kParallaxRatio 0.25
+#define kBannerSize CGSizeMake(1920, 1080)
+
+#define kMinParallaxViewHeight [UIScreen mainScreen].bounds.size.height * 0.2
+#define kMaxParallaxViewHeight [UIScreen mainScreen].bounds.size.height * 0.7
 
 @interface SNRParallaxView()
 @property (weak, nonatomic) IBOutlet SNRImageView *parallaxImageView;
 @property (weak, nonatomic) IBOutlet SNRImageView *seriesImageView;
 @property (weak, nonatomic) IBOutlet UILabel *seriesTitleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *seasonLabel;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *parallaxViewHeightConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *seriesImageViewHeightConstraint;
+@property (assign, nonatomic) CGFloat seriesInitialHeight;
 @end
 
 @implementation SNRParallaxView
@@ -26,20 +37,91 @@
    return [super initWithCoder:aDecoder];
 }
 
--(void)configureWithSeries:(SNRSeries *)series{
-    SNRImage *parallaxImage = [series imageWithType:ImageTypeBanner];
-    SNRImage *seriesImage = [series imageWithType:ImageTypePoster];
+-(void)configureWithSeries:(SNRSeries *)series forServer:(SNRServer *)server{
+    __block SNRImage *parallaxImage = [series imageWithType:ImageTypeFanArt];
+    __block SNRImage *seriesImage = [series imageWithType:ImageTypePoster];
     
     if (parallaxImage.image) {
         self.parallaxImageView.image = parallaxImage.image;
     } else {
-        [self.parallaxImageView setImageWithURL:[NSURL URLWithString:[series imageWithType:ImageTypeBanner].url] forClient:[SNRServerManager manager].activeServer.client andCompletion:^(UIImage * _Nullable image) {
-            
+        NSURL *parallaxImageURL = [NSURL URLWithString:[server generateURLWithEndpoint:parallaxImage.url]];
+        [self.parallaxImageView setImageWithURL:parallaxImageURL forClient:[SNRServerManager manager].activeServer.client andCompletion:^(UIImage * _Nullable image) {
+            parallaxImage.image = image;
         }];
     }
     
     if (seriesImage.image) {
         self.seriesImageView.image = seriesImage.image;
+    } else {
+        NSURL *imageURL =  [NSURL URLWithString:[server generateURLWithEndpoint:seriesImage.url]];
+        [self.seriesImageView setImageWithURL:imageURL forClient:server.client andCompletion:^(UIImage * _Nullable image) {
+            seriesImage.image = image;
+        }];
+    }
+    
+    self.seriesTitleLabel.text = series.title;
+    self.seasonLabel.text = series.seriesInfo;
+    
+    __weak typeof(self) wself = self;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [wself animateToDefaultState:NO];
+    });
+}
+
+-(void)animateToDefaultState:(BOOL)animate{
+    CGFloat frameWidth = CGRectGetWidth(self.frame);
+    CGSize imageSize = self.parallaxImageView.image.size;
+    
+    if (CGSizeEqualToSize(CGSizeZero, imageSize)) {
+        imageSize = kBannerSize;
+    }
+    
+    CGFloat ratio = MIN(imageSize.height, imageSize.width) / MAX(imageSize.height, imageSize.width);
+    
+    self.parallaxViewHeightConstraint.constant = ratio * frameWidth;
+    self.seriesImageViewHeightConstraint.constant = self.parallaxViewHeightConstraint.constant - kTopBottomSpace;
+
+    if (animate) {
+        [UIView animateWithDuration:0.2 animations:^{
+            self.seriesImageView.alpha = 1.0;
+            self.seriesTitleLabel.alpha = 1.0;
+            self.seasonLabel.alpha = 1.0;
+            [self.superview layoutIfNeeded];
+        }];
+    }
+    
+    if (!self.seriesInitialHeight || floorf(self.seriesInitialHeight) == 0.0) {
+        self.seriesInitialHeight = self.seriesImageViewHeightConstraint.constant;
+    }
+}
+
+-(void)didPan:(UIPanGestureRecognizer *)urgi {
+    if (urgi.state == UIGestureRecognizerStateEnded) {
+        if (self.parallaxViewHeightConstraint.constant > (self.seriesInitialHeight + kTopBottomSpace)) {
+            [self animateToDefaultState:YES];
+        }
+    } else {
+        CGPoint velocity = [urgi velocityInView:self];
+        CGFloat magnitude = sqrtf((velocity.x * velocity.x) + (velocity.y * velocity.y));
+        CGFloat slideMult = magnitude / ((self.parallaxViewHeightConstraint.constant >= 150) ? (self.parallaxViewHeightConstraint.constant - 100) : 100);
+        
+        float slideFactor = 0.8 * slideMult;
+        
+        if (0 > velocity.y &&
+            self.parallaxViewHeightConstraint.constant - slideFactor >= kMinParallaxViewHeight) {
+                self.parallaxViewHeightConstraint.constant -= slideFactor;
+        } else if (0 < velocity.y &&
+                   self.parallaxViewHeightConstraint.constant - slideFactor <= kMaxParallaxViewHeight){
+            self.parallaxViewHeightConstraint.constant += slideFactor;
+        }
+        
+        if (self.parallaxViewHeightConstraint.constant - kTopBottomSpace <= self.seriesInitialHeight) {
+            self.seriesImageViewHeightConstraint.constant = self.parallaxViewHeightConstraint.constant - kTopBottomSpace;
+        }
+        
+        self.seriesImageView.alpha = 1.0 - ((self.parallaxViewHeightConstraint.constant - kTopBottomSpace - self.seriesInitialHeight) / 100);
+        self.seriesTitleLabel.alpha = self.seriesImageView.alpha;
+        self.seasonLabel.alpha = self.seriesImageView.alpha;
     }
 }
 

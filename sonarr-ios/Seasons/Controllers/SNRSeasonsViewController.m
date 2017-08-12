@@ -19,12 +19,12 @@
 #import "SNRSeasonHeaderCell.h"
 #import "SNREpisodeCell.h"
 #import "SNRConstants.h"
+#import "SNRParallaxView.h"
 
 @interface SNRSeasonsViewController () <SNRSeasonHeaderCellProtocol>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (weak, nonatomic) IBOutlet UIView *parallaxView;
-@property (weak, nonatomic) IBOutlet UIImageView *parallaxImageView;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *parallaxViewHeightConstraint;
+@property (weak, nonatomic) IBOutlet SNRParallaxView *parallaxView;
+
 @property (strong, nonatomic) SNRSeries *series;
 @property (strong, nonatomic) SNRServer *server;
 @property (strong, nonatomic) NSMutableDictionary *headerExpanded;
@@ -51,51 +51,31 @@
     
     self.title = self.series.title;
     
-    SNRImage *parallax = [self.series imageWithType:ImageTypeFanArt];
-    self.parallaxImageView.image = parallax.image;
-    
-    [self animateParallaxImageViewToDefaultState:NO];
-}
-
--(void)animateParallaxImageViewToDefaultState:(BOOL)animate{
-    CGFloat frameWidth = CGRectGetWidth(self.view.frame);
-    CGSize imageSize = self.parallaxImageView.image.size;
-    
-    if (CGSizeEqualToSize(CGSizeZero, imageSize)) {
-        imageSize = kBannerSize;
-    }
-    
-    CGFloat ratio = MIN(imageSize.height, imageSize.width) / MAX(imageSize.height, imageSize.width);
-    
-    self.parallaxViewHeightConstraint.constant = ratio * frameWidth;
-    
-    if (animate) {
-        [UIView animateWithDuration:0.2 animations:^{
-            [self.view layoutIfNeeded];
-        }];
-    }
+    [self.parallaxView configureWithSeries:self.series forServer:self.server];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
 
--(void)didPan:(UIPanGestureRecognizer *)urgi{
-    if (urgi.state == UIGestureRecognizerStateEnded) {
-        [self animateParallaxImageViewToDefaultState:YES];
-    } else {
-        CGPoint velocity = [urgi velocityInView:self.view];
-        CGFloat magnitude = sqrtf((velocity.x * velocity.x) + (velocity.y * velocity.y));
-        CGFloat slideMult = magnitude / 200;
-        
-        float slideFactor = 0.8 * slideMult;
-        
-        if (0 > velocity.y) {
-            self.parallaxViewHeightConstraint.constant -= slideFactor;
-        } else {
-            self.parallaxViewHeightConstraint.constant += slideFactor;
-        }
-    }
+-(void)didPan:(UIPanGestureRecognizer *)urgi {
+    [self.parallaxView didPan:urgi];
+//
+//    if (urgi.state == UIGestureRecognizerStateEnded) {
+//        [self.parallaxView animateToDefaultState:NO];
+//    } else {
+//        CGPoint velocity = [urgi velocityInView:self.view];
+//        CGFloat magnitude = sqrtf((velocity.x * velocity.x) + (velocity.y * velocity.y));
+//        CGFloat slideMult = magnitude / 200;
+//
+//        float slideFactor = 0.8 * slideMult;
+//
+//        if (0 > velocity.y) {
+//            self.parallaxViewHeightConstraint.constant -= slideFactor;
+//        } else {
+//            self.parallaxViewHeightConstraint.constant += slideFactor;
+//        }
+//    }
 }
 
 #pragma mark - TableView

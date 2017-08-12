@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 @class SNRSeries;
+@class SNRServer;
 
 @interface SNRParallaxView : UIView
--(void)configureWithSeries:(SNRSeries *)series;
-
+-(void)configureWithSeries:(SNRSeries *)series forServer:(SNRServer *)server;
+-(void)animateToDefaultState:(BOOL)animate;
+-(void)didPan:(UIPanGestureRecognizer *)urgi;
 @end
