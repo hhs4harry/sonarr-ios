@@ -301,7 +301,7 @@ Add one now!</string>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Some Random Episode" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mzm-fL-rXc">
-                                                    <rect key="frame" x="31.666666666666671" y="8" width="158.33333333333331" height="18"/>
+                                                    <rect key="frame" x="23.666666666666671" y="8" width="158.33333333333331" height="18"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="18" id="MT1-on-UWe"/>
                                                     </constraints>
@@ -310,7 +310,7 @@ Add one now!</string>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1080p 1920x1080" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0aw-Lp-U42">
-                                                    <rect key="frame" x="31.666666666666664" y="26" width="94.333333333333343" height="16"/>
+                                                    <rect key="frame" x="23.666666666666664" y="26" width="94.333333333333343" height="16"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="16" id="asQ-3p-wm9"/>
                                                     </constraints>
@@ -319,7 +319,7 @@ Add one now!</string>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E2n-M4-aUy">
-                                                    <rect key="frame" x="16" y="15" width="7.6666666666666679" height="21"/>
+                                                    <rect key="frame" x="8" y="15" width="7.6666666666666652" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
@@ -330,7 +330,7 @@ Add one now!</string>
                                                 <constraint firstAttribute="bottomMargin" secondItem="0aw-Lp-U42" secondAttribute="bottom" id="4WM-ES-N4e"/>
                                                 <constraint firstItem="E2n-M4-aUy" firstAttribute="centerY" secondItem="bVB-Gc-YvW" secondAttribute="centerY" id="CvJ-LC-Sjm"/>
                                                 <constraint firstItem="0aw-Lp-U42" firstAttribute="leading" secondItem="E2n-M4-aUy" secondAttribute="trailing" constant="8" id="FRt-tV-ZF9"/>
-                                                <constraint firstItem="E2n-M4-aUy" firstAttribute="leading" secondItem="bVB-Gc-YvW" secondAttribute="leadingMargin" constant="8" id="N0o-yl-ZcM"/>
+                                                <constraint firstItem="E2n-M4-aUy" firstAttribute="leading" secondItem="bVB-Gc-YvW" secondAttribute="leading" constant="8" id="N0o-yl-ZcM"/>
                                                 <constraint firstItem="mzm-fL-rXc" firstAttribute="leading" secondItem="E2n-M4-aUy" secondAttribute="trailing" constant="8" id="Yuz-CG-VNf"/>
                                                 <constraint firstItem="mzm-fL-rXc" firstAttribute="top" secondItem="bVB-Gc-YvW" secondAttribute="topMargin" id="zLz-eb-Ndx"/>
                                             </constraints>
@@ -353,12 +353,12 @@ Add one now!</string>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XDk-5d-h4V" customClass="SNRImageView">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
                                     </imageView>
-                                    <view clipsSubviews="YES" alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fIu-jk-Wc6">
+                                    <view clipsSubviews="YES" alpha="0.69999999999999996" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fIu-jk-Wc6">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 Season" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6h2-Tc-Ea3">
-                                        <rect key="frame" x="85" y="50" width="47" height="21"/>
+                                        <rect key="frame" x="85" y="79" width="47" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="Wcd-dQ-wJA"/>
                                         </constraints>
@@ -367,7 +367,7 @@ Add one now!</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B3M-w4-eJr">
-                                        <rect key="frame" x="85" y="29" width="29" height="21"/>
+                                        <rect key="frame" x="85" y="58" width="29" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="v3c-tm-9es"/>
                                         </constraints>
@@ -393,8 +393,8 @@ Add one now!</string>
                                     <constraint firstItem="XDk-5d-h4V" firstAttribute="leading" secondItem="Zzh-9f-UTE" secondAttribute="leading" id="JNa-Rs-PFG"/>
                                     <constraint firstAttribute="bottom" secondItem="XDk-5d-h4V" secondAttribute="bottom" id="VZc-jy-ef2"/>
                                     <constraint firstAttribute="height" constant="100" id="YpR-YA-KhJ"/>
+                                    <constraint firstItem="6h2-Tc-Ea3" firstAttribute="bottom" secondItem="1bM-ex-7TM" secondAttribute="bottom" id="fhZ-0V-IkI"/>
                                     <constraint firstItem="fIu-jk-Wc6" firstAttribute="top" secondItem="Zzh-9f-UTE" secondAttribute="top" id="gTS-GP-a6n"/>
-                                    <constraint firstItem="B3M-w4-eJr" firstAttribute="centerY" secondItem="Zzh-9f-UTE" secondAttribute="centerY" constant="-10.5" id="i8A-dz-otP"/>
                                     <constraint firstItem="1bM-ex-7TM" firstAttribute="leading" secondItem="Zzh-9f-UTE" secondAttribute="leading" constant="8" id="jle-kW-RPN"/>
                                     <constraint firstItem="fIu-jk-Wc6" firstAttribute="leading" secondItem="Zzh-9f-UTE" secondAttribute="leading" id="lvu-qV-u59"/>
                                     <constraint firstItem="6h2-Tc-Ea3" firstAttribute="leading" secondItem="B3M-w4-eJr" secondAttribute="leading" id="tRR-WP-nPW"/>
@@ -408,6 +408,7 @@ Add one now!</string>
                                     <outlet property="seriesImageView" destination="1bM-ex-7TM" id="A4r-h5-Nr8"/>
                                     <outlet property="seriesImageViewHeightConstraint" destination="1a2-jU-jF0" id="vcp-Eh-bm6"/>
                                     <outlet property="seriesTitleLabel" destination="B3M-w4-eJr" id="ME4-Pq-vl1"/>
+                                    <outlet property="tintView" destination="fIu-jk-Wc6" id="0aB-b8-iHb"/>
                                 </connections>
                             </view>
                         </subviews>

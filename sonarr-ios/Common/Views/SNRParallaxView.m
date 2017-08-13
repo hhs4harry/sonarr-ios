@@ -15,12 +15,14 @@
 #import "SNRConstants.h"
 
 CGFloat const kTopBottomSpace = 24.0;
+CGFloat const kTintViewColorAlpha = 0.7;
 #define kMinParallaxViewHeight [UIScreen mainScreen].bounds.size.height * 0.2
 #define kMaxParallaxViewHeight [UIScreen mainScreen].bounds.size.height * 0.7
 
 @interface SNRParallaxView()
 @property (weak, nonatomic) IBOutlet SNRImageView *parallaxImageView;
 @property (weak, nonatomic) IBOutlet SNRImageView *seriesImageView;
+@property (weak, nonatomic) IBOutlet UIView *tintView;
 @property (weak, nonatomic) IBOutlet UILabel *seriesTitleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *seasonLabel;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *parallaxViewHeightConstraint;
@@ -83,6 +85,7 @@ CGFloat const kTopBottomSpace = 24.0;
             self.seriesImageView.alpha = 1.0;
             self.seriesTitleLabel.alpha = 1.0;
             self.seasonLabel.alpha = 1.0;
+            self.tintView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:kTintViewColorAlpha];
             [self.superview layoutIfNeeded];
         }];
     }
@@ -103,8 +106,8 @@ CGFloat const kTopBottomSpace = 24.0;
         CGPoint velocity = [urgi velocityInView:self];
         CGFloat magnitude = sqrtf((velocity.x * velocity.x) + (velocity.y * velocity.y));
         CGFloat slideMult = magnitude / ((self.parallaxViewHeightConstraint.constant >= 150) ? (self.parallaxViewHeightConstraint.constant - 100) : 100);
+        CGFloat slideFactor = 1.0 * slideMult;
         
-        CGFloat slideFactor = 0.8 * slideMult;
         BOOL panned = NO;
         
         if (0 > velocity.y &&
@@ -124,6 +127,7 @@ CGFloat const kTopBottomSpace = 24.0;
         self.seriesImageView.alpha = 1.0 - ((self.parallaxViewHeightConstraint.constant - kTopBottomSpace - self.seriesInitialHeight) / 100);
         self.seriesTitleLabel.alpha = self.seriesImageView.alpha;
         self.seasonLabel.alpha = self.seriesImageView.alpha;
+        self.tintView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:MIN(self.seriesImageView.alpha, kTintViewColorAlpha)];
         
         return panned;
     }
