@@ -10,7 +10,6 @@
 		259F2E248A9B5D0391C7AB70 /* libPods-Sonarr.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 33A1E1334CB8B3457ED5F1B3 /* libPods-Sonarr.a */; };
 		4A0969651E843F7800A8C35E /* SNRActivityIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0969641E843F7800A8C35E /* SNRActivityIndicatorView.m */; };
 		4A1107281F089B2E0005BE80 /* SeasonHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A1107271F089B2E0005BE80 /* SeasonHeader.xib */; };
-		4A11072B1F09714B0005BE80 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A11072A1F09714B0005BE80 /* ViewController.m */; };
 		4A12575D1E93168F0060746F /* SNRAddSeriesDetailsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A12575C1E93168F0060746F /* SNRAddSeriesDetailsTableViewCell.m */; };
 		4A14754C1E7B32C1006B6888 /* UIAlertController+Show.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A14754B1E7B32C1006B6888 /* UIAlertController+Show.m */; };
 		4A147BAD1E89D4F2000807AD /* NSString+check.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A147BAC1E89D4F2000807AD /* NSString+check.m */; };
@@ -102,8 +101,6 @@
 		4A0969631E843F7800A8C35E /* SNRActivityIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRActivityIndicatorView.h; path = Common/Views/SNRActivityIndicatorView.h; sourceTree = "<group>"; };
 		4A0969641E843F7800A8C35E /* SNRActivityIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRActivityIndicatorView.m; path = Common/Views/SNRActivityIndicatorView.m; sourceTree = "<group>"; };
 		4A1107271F089B2E0005BE80 /* SeasonHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SeasonHeader.xib; path = Resources/Nib/SeasonHeader.xib; sourceTree = "<group>"; };
-		4A1107291F09714B0005BE80 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		4A11072A1F09714B0005BE80 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		4A12575B1E93168F0060746F /* SNRAddSeriesDetailsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRAddSeriesDetailsTableViewCell.h; path = Series/Search/Add/Views/SNRAddSeriesDetailsTableViewCell.h; sourceTree = "<group>"; };
 		4A12575C1E93168F0060746F /* SNRAddSeriesDetailsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRAddSeriesDetailsTableViewCell.m; path = Series/Search/Add/Views/SNRAddSeriesDetailsTableViewCell.m; sourceTree = "<group>"; };
 		4A14754A1E7B32C1006B6888 /* UIAlertController+Show.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIAlertController+Show.h"; path = "Common/Controllers/UIAlertController+Show.h"; sourceTree = "<group>"; };
@@ -322,8 +319,6 @@
 				4A5F0A251E805806008463F6 /* Series */,
 				4A3498CF1E635DDF00453E63 /* Resources */,
 				4A3498961E63587200453E63 /* Supporting Files */,
-				4A1107291F09714B0005BE80 /* ViewController.h */,
-				4A11072A1F09714B0005BE80 /* ViewController.m */,
 			);
 			path = "sonarr-ios";
 			sourceTree = "<group>";
@@ -953,7 +948,6 @@
 				4A3499171E63D94A00453E63 /* SNRSeason.m in Sources */,
 				4A6D2A8D1E8DAA6F00BE876F /* SNRSheetNavigationViewController.m in Sources */,
 				4A9E6C511E760507008AB91A /* SNRBaseViewController.m in Sources */,
-				4A11072B1F09714B0005BE80 /* ViewController.m in Sources */,
 				4A23A4D11EF44CCC0044A567 /* SNRSeasonHeaderCell.m in Sources */,
 				4A9E6C591E760C9B008AB91A /* UIColor+App.m in Sources */,
 				4A777C4C1E63FE9C006B1987 /* SNRHistory.m in Sources */,
