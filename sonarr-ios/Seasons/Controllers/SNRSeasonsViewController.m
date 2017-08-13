@@ -54,15 +54,6 @@
     [self.tableView.panGestureRecognizer addTarget:self action:@selector(didPan:)];
 }
 
-- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer{
-    if (self.tableView.contentOffset.y == 0) {
-        return ![self.parallaxView canExtend];
-    }
-    
-    return YES;
-}
-
-
 -(void)didPan:(UIPanGestureRecognizer *)urgi {
     if (urgi.view == self.parallaxView) {
         [self.parallaxView didPan:urgi];
