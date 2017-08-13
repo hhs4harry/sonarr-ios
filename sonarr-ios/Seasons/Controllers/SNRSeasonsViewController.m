@@ -21,7 +21,7 @@
 #import "SNRConstants.h"
 #import "SNRParallaxView.h"
 
-@interface SNRSeasonsViewController () <SNRSeasonHeaderCellProtocol, UIGestureRecognizerDelegate>
+@interface SNRSeasonsViewController () <SNRSeasonHeaderCellProtocol>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet SNRParallaxView *parallaxView;
 
