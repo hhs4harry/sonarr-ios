@@ -13,5 +13,5 @@
 @interface SNRParallaxView : UIView
 -(void)configureWithSeries:(SNRSeries *)series forServer:(SNRServer *)server;
 -(void)animateToDefaultState:(BOOL)animate;
--(void)didPan:(UIPanGestureRecognizer *)urgi;
+-(BOOL)didPan:(UIPanGestureRecognizer *)urgi;
 @end

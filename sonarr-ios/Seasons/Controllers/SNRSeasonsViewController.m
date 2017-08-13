@@ -21,7 +21,7 @@
 #import "SNRConstants.h"
 #import "SNRParallaxView.h"
 
-@interface SNRSeasonsViewController () <SNRSeasonHeaderCellProtocol>
+@interface SNRSeasonsViewController () <SNRSeasonHeaderCellProtocol, UIGestureRecognizerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet SNRParallaxView *parallaxView;
 
@@ -42,7 +42,6 @@
     [super viewDidLoad];
     
     [self.tableView registerNib:[UINib nibWithNibName:@"SeasonHeader" bundle:nil]forHeaderFooterViewReuseIdentifier:@"SeasonHeader"];
-    
     [self.parallaxView addGestureRecognizer:[[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(didPan:)]];
 }
 
@@ -52,30 +51,36 @@
     self.title = self.series.title;
     
     [self.parallaxView configureWithSeries:self.series forServer:self.server];
+    [self.tableView.panGestureRecognizer addTarget:self action:@selector(didPan:)];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer{
+    if (self.tableView.contentOffset.y == 0) {
+        return ![self.parallaxView canExtend];
+    }
+    
+    return YES;
 }
+
 
 -(void)didPan:(UIPanGestureRecognizer *)urgi {
-    [self.parallaxView didPan:urgi];
-//
-//    if (urgi.state == UIGestureRecognizerStateEnded) {
-//        [self.parallaxView animateToDefaultState:NO];
-//    } else {
-//        CGPoint velocity = [urgi velocityInView:self.view];
-//        CGFloat magnitude = sqrtf((velocity.x * velocity.x) + (velocity.y * velocity.y));
-//        CGFloat slideMult = magnitude / 200;
-//
-//        float slideFactor = 0.8 * slideMult;
-//
-//        if (0 > velocity.y) {
-//            self.parallaxViewHeightConstraint.constant -= slideFactor;
-//        } else {
-//            self.parallaxViewHeightConstraint.constant += slideFactor;
-//        }
-//    }
+    if (urgi.view == self.parallaxView) {
+        [self.parallaxView didPan:urgi];
+    } else {
+        CGPoint translation = [urgi translationInView:self.tableView];
+        
+        if (translation.y < 0) {
+            if ([self.parallaxView didPan:urgi]) {
+                [self.tableView setContentOffset:CGPointMake(self.tableView.contentOffset.x, 0)];
+            }
+        } else if (translation.y > 0) {
+            if (self.tableView.contentOffset.y == 0) {
+                if([self.parallaxView didPan:urgi]) {
+                    [self.tableView setContentOffset:CGPointMake(0, 0)];
+                }
+            }
+        }
+    }
 }
 
 #pragma mark - TableView
@@ -99,7 +104,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return indexPath.row ? floorf(45) : 50;
+    return indexPath.row ? floorf(45) : floorf(50);
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -153,6 +158,10 @@
 
 -(void)setSeries:(SNRSeries *)series{
     _series = series;
+    
+    if (!((SNRSeason *)series.seasons.firstObject).episodes.count) {
+        [self.server episodesForSeries:series withCompletion:nil];
+    }
     
     self.headerExpanded = [[NSMutableDictionary alloc] init];
     

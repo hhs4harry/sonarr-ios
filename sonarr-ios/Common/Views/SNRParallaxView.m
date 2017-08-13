@@ -15,9 +15,6 @@
 #import "SNRConstants.h"
 
 CGFloat const kTopBottomSpace = 24.0;
-#define kParallaxRatio 0.25
-#define kBannerSize CGSizeMake(1920, 1080)
-
 #define kMinParallaxViewHeight [UIScreen mainScreen].bounds.size.height * 0.2
 #define kMaxParallaxViewHeight [UIScreen mainScreen].bounds.size.height * 0.7
 
@@ -82,7 +79,7 @@ CGFloat const kTopBottomSpace = 24.0;
     self.seriesImageViewHeightConstraint.constant = self.parallaxViewHeightConstraint.constant - kTopBottomSpace;
 
     if (animate) {
-        [UIView animateWithDuration:0.2 animations:^{
+        [UIView animateWithDuration:0.3 animations:^{
             self.seriesImageView.alpha = 1.0;
             self.seriesTitleLabel.alpha = 1.0;
             self.seasonLabel.alpha = 1.0;
@@ -95,24 +92,29 @@ CGFloat const kTopBottomSpace = 24.0;
     }
 }
 
--(void)didPan:(UIPanGestureRecognizer *)urgi {
+-(BOOL)didPan:(UIPanGestureRecognizer *)urgi {
     if (urgi.state == UIGestureRecognizerStateEnded) {
         if (self.parallaxViewHeightConstraint.constant > (self.seriesInitialHeight + kTopBottomSpace)) {
             [self animateToDefaultState:YES];
+            return YES;
         }
+        return NO;
     } else {
         CGPoint velocity = [urgi velocityInView:self];
         CGFloat magnitude = sqrtf((velocity.x * velocity.x) + (velocity.y * velocity.y));
         CGFloat slideMult = magnitude / ((self.parallaxViewHeightConstraint.constant >= 150) ? (self.parallaxViewHeightConstraint.constant - 100) : 100);
         
-        float slideFactor = 0.8 * slideMult;
+        CGFloat slideFactor = 0.8 * slideMult;
+        BOOL panned = NO;
         
         if (0 > velocity.y &&
             self.parallaxViewHeightConstraint.constant - slideFactor >= kMinParallaxViewHeight) {
                 self.parallaxViewHeightConstraint.constant -= slideFactor;
+            panned = YES;
         } else if (0 < velocity.y &&
                    self.parallaxViewHeightConstraint.constant - slideFactor <= kMaxParallaxViewHeight){
             self.parallaxViewHeightConstraint.constant += slideFactor;
+            panned = YES;
         }
         
         if (self.parallaxViewHeightConstraint.constant - kTopBottomSpace <= self.seriesInitialHeight) {
@@ -122,7 +124,10 @@ CGFloat const kTopBottomSpace = 24.0;
         self.seriesImageView.alpha = 1.0 - ((self.parallaxViewHeightConstraint.constant - kTopBottomSpace - self.seriesInitialHeight) / 100);
         self.seriesTitleLabel.alpha = self.seriesImageView.alpha;
         self.seasonLabel.alpha = self.seriesImageView.alpha;
+        
+        return panned;
     }
+    return NO;
 }
 
 @end

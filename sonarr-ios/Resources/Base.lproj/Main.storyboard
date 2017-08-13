@@ -252,7 +252,7 @@ Add one now!</string>
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6nF-jW-ln7">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6nF-jW-ln7">
                                 <rect key="frame" x="0.0" y="120" width="414" height="616"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -293,105 +293,8 @@ Add one now!</string>
                                             <outlet property="titleLabel" destination="3B2-gV-UA7" id="Iwc-WH-FTV"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="seriesHeaderCell" rowHeight="177" id="irc-pK-ExK" customClass="SNRAddSeriesTableViewCell">
-                                        <rect key="frame" x="0.0" y="78" width="414" height="177"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="irc-pK-ExK" id="H9m-x0-JaS">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="177"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="deQ-3a-Zqr">
-                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="108.66666666666667"/>
-                                                    <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tEO-jm-eWj" customClass="SNRImageView">
-                                                            <rect key="frame" x="0.0" y="0.0" width="414" height="108.66666666666667"/>
-                                                        </imageView>
-                                                        <view clipsSubviews="YES" alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pm2-dq-7eV">
-                                                            <rect key="frame" x="0.0" y="0.0" width="414" height="108.66666666666667"/>
-                                                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                                        </view>
-                                                    </subviews>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="trailing" secondItem="tEO-jm-eWj" secondAttribute="trailing" id="3Ys-3M-B9F"/>
-                                                        <constraint firstItem="pm2-dq-7eV" firstAttribute="leading" secondItem="deQ-3a-Zqr" secondAttribute="leading" id="6os-n6-inm"/>
-                                                        <constraint firstItem="pm2-dq-7eV" firstAttribute="top" secondItem="deQ-3a-Zqr" secondAttribute="top" id="AbL-de-if1"/>
-                                                        <constraint firstItem="tEO-jm-eWj" firstAttribute="leading" secondItem="deQ-3a-Zqr" secondAttribute="leading" id="G1T-Ek-W2y"/>
-                                                        <constraint firstAttribute="trailing" secondItem="pm2-dq-7eV" secondAttribute="trailing" id="KUA-PX-VOr"/>
-                                                        <constraint firstItem="tEO-jm-eWj" firstAttribute="top" secondItem="deQ-3a-Zqr" secondAttribute="top" placeholder="YES" id="QZW-eh-aRs"/>
-                                                        <constraint firstAttribute="bottom" secondItem="tEO-jm-eWj" secondAttribute="bottom" id="SGF-Wz-oXM"/>
-                                                        <constraint firstItem="pm2-dq-7eV" firstAttribute="height" secondItem="deQ-3a-Zqr" secondAttribute="height" id="Z5Y-kx-FW9"/>
-                                                        <constraint firstItem="tEO-jm-eWj" firstAttribute="height" secondItem="deQ-3a-Zqr" secondAttribute="height" id="ah8-Ji-i66"/>
-                                                        <constraint firstAttribute="width" secondItem="deQ-3a-Zqr" secondAttribute="height" multiplier="1:0.21" id="slq-dd-Rd0"/>
-                                                        <constraint firstAttribute="width" secondItem="deQ-3a-Zqr" secondAttribute="height" multiplier="1:0.21" id="y6o-EC-XZf"/>
-                                                    </constraints>
-                                                    <variation key="default">
-                                                        <mask key="constraints">
-                                                            <exclude reference="slq-dd-Rd0"/>
-                                                            <exclude reference="y6o-EC-XZf"/>
-                                                        </mask>
-                                                    </variation>
-                                                    <variation key="heightClass=compact-widthClass=compact">
-                                                        <mask key="constraints">
-                                                            <include reference="slq-dd-Rd0"/>
-                                                        </mask>
-                                                    </variation>
-                                                    <variation key="heightClass=compact-widthClass=regular">
-                                                        <mask key="constraints">
-                                                            <include reference="y6o-EC-XZf"/>
-                                                        </mask>
-                                                    </variation>
-                                                </view>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="beZ-Z7-Aiu" customClass="SNRImageView">
-                                                    <rect key="frame" x="8" y="51.666666666666671" width="80" height="114.33333333333333"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" secondItem="beZ-Z7-Aiu" secondAttribute="height" multiplier="0.7:1" id="QVx-L4-de7"/>
-                                                        <constraint firstAttribute="width" constant="80" id="lAf-tm-zN7"/>
-                                                    </constraints>
-                                                </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hii-dk-WwX">
-                                                    <rect key="frame" x="96" y="116.66666666666666" width="31" height="20.999999999999972"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="21" id="TVO-T3-n8k"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 Season" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CdL-Eq-feO">
-                                                    <rect key="frame" x="96" y="137" width="54.666666666666657" height="21"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="21" id="LE2-oL-h40"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                            <constraints>
-                                                <constraint firstItem="Hii-dk-WwX" firstAttribute="top" secondItem="deQ-3a-Zqr" secondAttribute="bottom" constant="8" id="9Ed-LJ-wL9"/>
-                                                <constraint firstAttribute="trailing" secondItem="deQ-3a-Zqr" secondAttribute="trailing" id="Aff-Ns-3qH"/>
-                                                <constraint firstItem="deQ-3a-Zqr" firstAttribute="leading" secondItem="H9m-x0-JaS" secondAttribute="leading" id="KV7-4e-LVO"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="deQ-3a-Zqr" secondAttribute="bottom" constant="60" id="VzM-7R-Lcr"/>
-                                                <constraint firstItem="Hii-dk-WwX" firstAttribute="leading" secondItem="beZ-Z7-Aiu" secondAttribute="trailing" constant="8" id="YMV-ql-vXW"/>
-                                                <constraint firstItem="deQ-3a-Zqr" firstAttribute="top" secondItem="H9m-x0-JaS" secondAttribute="top" id="dTK-WJ-moL"/>
-                                                <constraint firstItem="CdL-Eq-feO" firstAttribute="leading" secondItem="beZ-Z7-Aiu" secondAttribute="trailing" constant="8" id="pmL-qo-Owy"/>
-                                                <constraint firstItem="beZ-Z7-Aiu" firstAttribute="leading" secondItem="H9m-x0-JaS" secondAttribute="leading" constant="8" id="uqE-GU-SGa"/>
-                                                <constraint firstItem="CdL-Eq-feO" firstAttribute="bottom" secondItem="beZ-Z7-Aiu" secondAttribute="bottom" constant="-8" id="yfq-IY-hS2"/>
-                                                <constraint firstItem="beZ-Z7-Aiu" firstAttribute="centerY" secondItem="pm2-dq-7eV" secondAttribute="bottom" id="zaW-aA-bCd"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.078431372550000003" green="0.078431372550000003" blue="0.078431372550000003" alpha="1" colorSpace="calibratedRGB"/>
-                                        <connections>
-                                            <outlet property="parallaxImageView" destination="tEO-jm-eWj" id="ogc-ce-grX"/>
-                                            <outlet property="seasonCountLabel" destination="CdL-Eq-feO" id="u9W-dZ-oql"/>
-                                            <outlet property="seriesImageView" destination="beZ-Z7-Aiu" id="W3x-ta-z5t"/>
-                                            <outlet property="seriesTitleLabel" destination="Hii-dk-WwX" id="Yec-zk-AAf"/>
-                                        </connections>
-                                    </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="episodeCell" rowHeight="50" id="hDu-dE-M6q" customClass="SNREpisodeCell">
-                                        <rect key="frame" x="0.0" y="255" width="414" height="50"/>
+                                        <rect key="frame" x="0.0" y="78" width="414" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hDu-dE-M6q" id="bVB-Gc-YvW">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
