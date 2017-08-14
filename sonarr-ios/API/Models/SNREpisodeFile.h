@@ -10,6 +10,8 @@
 @class SNRQuality;
 
 @interface SNREpisodeFile : JSONModel
++(NSString *)endpoint;
+
 @property (strong, nonatomic) NSNumber *id;
 @property (strong, nonatomic) NSNumber *seriesId;
 @property (strong, nonatomic) NSNumber *seasonNumber;

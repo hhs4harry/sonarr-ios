@@ -94,15 +94,19 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return indexPath.row ? floorf(45) : floorf(50);
+    return floorf(45);
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     if (![self.headerExpanded[@(section).stringValue] boolValue]) {
         return 0;
     }
+    
     SNRSeason *season = [self.series.seasons objectAtIndex:section];
-    return season.episodes.count;
+    if (season.episodes && season.episodes.count) {
+        return season.episodes.count;
+    }
+    return 1;
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -123,9 +127,14 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     SNRSeason *season = [self.series.seasons objectAtIndex:indexPath.section];
-    SNREpisode *episode = [season.episodes objectAtIndex:indexPath.row];
-    SNREpisodeCell *cell = (id)[tableView dequeueReusableCellWithIdentifier:@"episodeCell" forIndexPath:indexPath];
-    [cell setEpisode:episode];
+    if (season.episodes && season.episodes.count) {
+        SNREpisode *episode = [season.episodes objectAtIndex:indexPath.row];
+        SNREpisodeCell *cell = (id)[tableView dequeueReusableCellWithIdentifier:@"episodeCell" forIndexPath:indexPath];
+        [cell setEpisode:episode];
+        return cell;
+    }
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"episodeLoadingCell" forIndexPath:indexPath];
     return cell;
 }
 
@@ -142,26 +151,40 @@
 -(void)setSeries:(SNRSeries *)series{
     _series = series;
     
-    if (!((SNRSeason *)series.seasons.firstObject).episodes.count) {
-        [self.server episodesForSeries:series withCompletion:nil];
-    }
-    
-    self.headerExpanded = [[NSMutableDictionary alloc] init];
-    
-    for (int x = 0; x < series.seasons.count; x++) {
-        [self.headerExpanded setValue:@(0) forKey:@(x).stringValue];
+    if (series.seasons && series.seasons.count) {
+        if (!((SNRSeason *)series.seasons.firstObject).episodes || ((SNRSeason *)series.seasons.firstObject).episodes.count) {
+            __weak typeof(self) wself = self;
+            [self.server episodesForSeries:series withCompletion:^(NSArray<SNREpisode *> * _Nullable episodes, NSError * _Nullable error) {
+                [wself.tableView reloadData];
+            }];
+        }
+        
+        self.headerExpanded = [[NSMutableDictionary alloc] init];
+        
+        for (int x = 0; x < series.seasons.count; x++) {
+            [self.headerExpanded setValue:@(0) forKey:@(x).stringValue];
+        }
     }
 }
 
 #pragma mark - Season Header Cell Protocol
 
 - (void)season:(SNRSeason *)season expanded:(BOOL)expanded {
-    NSInteger section = [self.series.seasons indexOfObject:season];
-    self.headerExpanded[@(section).stringValue] = @(expanded);
-    
     NSMutableArray *indexPaths = [[NSMutableArray alloc] init];
-    for (int x = 0; x < season.episodes.count; x++) {
-        [indexPaths addObject:[NSIndexPath indexPathForRow:x inSection:section]];
+    NSInteger section = [self.series.seasons indexOfObject:season];
+
+    if (expanded) {
+        self.headerExpanded[@(section).stringValue] = @(expanded);
+        
+        for (int x = 0; x < [self tableView:self.tableView numberOfRowsInSection:section]; x++) {
+            [indexPaths addObject:[NSIndexPath indexPathForRow:x inSection:section]];
+        }
+    } else {
+        for (int x = 0; x < [self tableView:self.tableView numberOfRowsInSection:section]; x++) {
+            [indexPaths addObject:[NSIndexPath indexPathForRow:x inSection:section]];
+        }
+        
+        self.headerExpanded[@(section).stringValue] = @(expanded);
     }
     
     if (indexPaths.count) {

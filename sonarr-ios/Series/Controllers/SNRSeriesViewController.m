@@ -206,6 +206,9 @@ typedef enum : NSUInteger {
     if (self.server.series && self.server.series.count) {
         [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
     } else {
+        if (self.tableView) {
+            [self.tableView.refreshControl beginRefreshing];
+        }
         [self.server seriesWithRefresh:NO andCompletion:nil];
     }
 }
@@ -269,7 +272,9 @@ typedef enum : NSUInteger {
 -(void)setTableView:(SNRBaseTableView *)tableView{
     _tableView = tableView;
     
-    [tableView.refreshControl beginRefreshing];
+    if (self.server && (!self.server.series || !self.server.series.count)) {
+        [tableView.refreshControl beginRefreshing];
+    }
 }
 
 -(void)setServer:(SNRServer *)server{

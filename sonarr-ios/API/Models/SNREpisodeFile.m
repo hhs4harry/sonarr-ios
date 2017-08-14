@@ -10,4 +10,8 @@
 
 @implementation SNREpisodeFile
 
++(NSString *)endpoint{
+    return @"episodefile";
+}
+
 @end

@@ -7,6 +7,8 @@
 //
 
 #import "SNREpisode.h"
+#import "SNREpisodeFile.h"
+#import "SNRQuality.h"
 
 @implementation SNREpisode
 
@@ -19,6 +21,27 @@
         return YES;
     }
     return NO;
+}
+
+-(NSString *)formattedAirDate {
+    if (!self.airDateUtc) {
+        return @"";
+    }
+    
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat:@"MMM dd, YYYY"];
+    NSString *dateString = [dateFormat stringFromDate:self.airDateUtc];
+    return dateString;
+}
+
+-(NSString *)episodeFileStatus {
+    if (self.file.quality.quality.name) {
+        return self.file.quality.quality.name;
+    } else if (self.airDateUtc && [[NSDate date] laterDate:self.airDateUtc] == self.airDateUtc) {
+        return @"Unaired";
+    } else {
+        return @"Missing";
+    }
 }
 
 @end

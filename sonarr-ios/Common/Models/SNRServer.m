@@ -16,6 +16,7 @@
 #import "SNREpisode.h"
 #import "SNRImage.h"
 #import "SNRSeason.h"
+#import "SNREpisodeFile.h"
 
 NSString * const SNR_SERVER_CONFIG  = @"snr_server_config";
 NSString * const SNR_SERVER_ACTIVE  = @"snr_server_active";
@@ -36,22 +37,22 @@ static NSString * BASEURL;
 #pragma mark - Life cycle
 
 -(instancetype)initWithConfig:(SNRServerConfig *)config{
-    if(!config ||
+    if (!config ||
        !config.apiKey ||
-       !config.hostname){
+       !config.hostname) {
         return nil;
     }
     
     self = [super init];
     if (self) {
-        if(!config.port){
+        if (!config.port) {
             config = [[SNRServerConfig alloc] initWithHostname:config.hostname apiKey:config.apiKey port:@(8989) andSSL:config.SSL];
         }
         self.client = [[SNRAPIClient alloc] initWithBaseURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@://%@:%@", config.SSL ? @"https" : @"http", config.hostname, config.port.stringValue]]];
         
         self.serverStatus = SNRServerStatusUnknown;
         __weak typeof(self) wself = self;
-        self.client.networkStatusBlock = ^(NetworkStatus status){
+        self.client.networkStatusBlock = ^(NetworkStatus status) {
             wself.serverStatus = status ? SNRServerStatusActive : SNRServerStatusNotRechable;
         };
         
@@ -67,7 +68,7 @@ static NSString * BASEURL;
 }
 
 -(instancetype)initWithCoder:(NSCoder *)aDecoder{
-    if(!aDecoder){
+    if (!aDecoder) {
         return nil;
     }
     
@@ -77,7 +78,7 @@ static NSString * BASEURL;
 }
 
 -(void)encodeWithCoder:(NSCoder *)aCoder{
-    if(!aCoder){
+    if (!aCoder) {
         return;
     }
     
@@ -87,7 +88,7 @@ static NSString * BASEURL;
 
 - (id)copyWithZone:(nullable NSZone *)zone{
     SNRServer *copy = [[[self class] allocWithZone:zone] init];
-    if(copy){
+    if (copy) {
         copy.client = [_client copy];
         copy.config = [_config copy];
         copy.active = _active;
@@ -106,7 +107,7 @@ static NSString * BASEURL;
     __weak typeof(self) wself = self;
     
     [series enumerateObjectsUsingBlock:^(SNRSeries * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        if([wself.series containsObject:obj]){
+        if ([wself.series containsObject:obj]) {
             return;
         }
         
@@ -128,7 +129,7 @@ static NSString * BASEURL;
     __block NSMutableArray *seriesAfterDelete = self.series.mutableCopy ? : [[NSMutableArray alloc] init];
     
     [series enumerateObjectsUsingBlock:^(SNRSeries * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        if(![seriesAfterDelete containsObject:obj]){
+        if (![seriesAfterDelete containsObject:obj]) {
             return;
         }
         
@@ -153,7 +154,7 @@ static NSString * BASEURL;
             self.config.apiKey];
     
     for (NSString *comp in components) {
-        if([comp isEqualToString:endpoint]){
+        if ([comp isEqualToString:endpoint]) {
             continue;
         }
         [[url stringByAppendingString:@"&"] stringByAppendingString:@"comp"];
@@ -166,7 +167,7 @@ static NSString * BASEURL;
     [self.client performGETCallToEndpoint:[self generateURLWithEndpoint:[SNRStatus endpoint]] withParameters:nil andSuccess:^(id responseObject) {
         NSError *error;
         SNRStatus *status;
-        if(!(status = [[SNRStatus alloc] initWithDictionary:responseObject error:&error])){
+        if (!(status = [[SNRStatus alloc] initWithDictionary:responseObject error:&error])) {
             NSLog(@"Error at SNRClient - ValidateServerWithCompletion");
             NSLog(@"Error parsing to JSON model: %@", error.userInfo);
             NSLog(@"Response: %@", responseObject);
@@ -175,15 +176,19 @@ static NSString * BASEURL;
         [self profilesWithCompletion:nil];
         [self rootFolderswithCompletion:nil];
         
-        completion(status, error);
+        if (completion) {
+            completion(status, error);
+        }
     } andFailure:^(NSError *error) {
-        completion(nil, error);
+        if (completion) {
+            completion(nil, error);
+        }
     }];
 }
 
 -(void)profilesWithCompletion:(void(^)(NSArray<SNRProfile *> *profiles, NSError *error))completion{
-    if(self.profiles){
-        if(completion){
+    if (self.profiles) {
+        if (completion) {
             completion(self.profiles, nil);
         }
         return;
@@ -196,19 +201,19 @@ static NSString * BASEURL;
         
         self.profiles = profiles;
         
-        if(completion){
+        if (completion) {
             completion(self.profiles, error);
         }
     } andFailure:^(NSError *error) {
-        if(completion){
+        if (completion) {
             completion(nil, error);
         }
     }];
 }
 
 -(void)rootFolderswithCompletion:(void(^)(NSArray<SNRRootFolder *> *rootFolders, NSError * error))completion{
-    if(self.rootFolders){
-        if(completion){
+    if (self.rootFolders) {
+        if (completion) {
             completion(self.rootFolders, nil);
         }
         return;
@@ -221,18 +226,18 @@ static NSString * BASEURL;
         
         self.rootFolders = rFolders;
         
-        if(completion){
+        if (completion) {
             completion(self.rootFolders, error);
         }
     } andFailure:^(NSError *error) {
-        if(completion){
+        if (completion) {
             completion(nil, error);
         }
     }];
 }
 
 -(void)seriesWithRefresh:(BOOL)refresh andCompletion:(void(^)(NSArray<SNRSeries *> *series, NSError *error))completion{
-    if(self.series.count && !refresh){
+    if (self.series.count && !refresh) {
         return completion(self.series, nil);
     }
     
@@ -243,11 +248,37 @@ static NSString * BASEURL;
         
         [wself addSeries:series];
         
-        if(completion){
+        if (completion) {
             completion(wself.series, error);
         }
     } andFailure:^(NSError *error) {
-        if(completion){
+        if (completion) {
+            completion(nil, error);
+        }
+    }];
+}
+
+-(void)episodeFilesForSeries:(SNRSeries *)series andCompletion:(void(^)(NSArray<SNREpisodeFile *> *series, NSError *error))completion{
+    NSString *endpoint = [self generateURLWithEndpoint:[SNREpisodeFile endpoint]];
+    [self.client performGETCallToEndpoint:endpoint withParameters:@{@"seriesId" : series.id.stringValue} andSuccess:^(id  _Nullable responseObject) {
+        NSError *error;
+        NSMutableArray<SNREpisodeFile *> *episodefiles = [SNREpisodeFile arrayOfModelsFromDictionaries:responseObject error:&error];
+
+        [series.seasons enumerateObjectsUsingBlock:^(SNRSeason * _Nonnull season, NSUInteger idx, BOOL * _Nonnull stop) {
+            [season.episodes enumerateObjectsUsingBlock:^(SNREpisode * _Nonnull episode, NSUInteger idx, BOOL * _Nonnull stop) {
+                [episodefiles enumerateObjectsUsingBlock:^(SNREpisodeFile *_Nonnull episodeFile, NSUInteger idx, BOOL * _Nonnull stop) {
+                    if (episode.episodeFileId.integerValue == episodeFile.id.integerValue) {
+                        episode.file = episodeFile;
+                    }
+                }];
+            }];
+        }];
+
+        if (completion) {
+            completion(episodefiles, error);
+        }
+    } andFailure:^(NSError * _Nullable error) {
+        if (completion) {
             completion(nil, error);
         }
     }];
@@ -262,9 +293,13 @@ static NSString * BASEURL;
         NSMutableArray *series = [SNRSeries arrayOfModelsFromDictionaries:responseObject error:&error];
         [series sortUsingDescriptors:@[[[NSSortDescriptor alloc] initWithKey:@"sortTitle" ascending:YES]]];
         
-        completion(series, error);
+        if (completion) {
+            completion(series, error);
+        }
     } andFailure:^(NSError *error) {
-        completion(nil, error);
+        if (completion) {
+            completion(nil, error);
+        }
     }];
 }
 
@@ -284,11 +319,11 @@ static NSString * BASEURL;
         
         [wself addSeries:@[addedSeries]];
         
-        if(completion){
+        if (completion) {
             completion(addedSeries, error);
         }
     } andFailure:^(NSError *error) {
-        if(completion){
+        if (completion) {
             completion(nil, error);
         }
     }];
@@ -301,13 +336,13 @@ static NSString * BASEURL;
     __weak typeof(self) wself = self;
     
     [self.client performDELETECallToEndpoint:endpoint withParameters:@{@"deleteFiles" : files ? @"true" : @"false"} andSuccess:^(id responseObject) {
-        if(completion){
+        if (completion) {
             completion(YES, nil);
         }
 
         [wself deleteSeries:@[bSeries]];
     } andFailure:^(NSError *error) {
-        if(completion){
+        if (completion) {
             completion(NO, error);
         }
     }];
@@ -316,6 +351,7 @@ static NSString * BASEURL;
 -(void)episodesForSeries:(SNRSeries *)series withCompletion:(void(^)(NSArray<SNREpisode *> *episodes, NSError * error))completion{
     NSString *endpoint = [self generateURLWithEndpoint:[SNREpisode endpoint]];
     
+    __weak typeof(self) wself = self;
     [self.client performGETCallToEndpoint:endpoint withParameters:@{@"seriesId" : series.id.stringValue} andSuccess:^(id  _Nullable responseObject) {
         NSError *error;
         NSArray<SNREpisode *>* episodes = [SNREpisode arrayOfModelsFromDictionaries:responseObject error:&error];
@@ -339,11 +375,13 @@ static NSString * BASEURL;
             season.episodes = seasonEpisode[season.seasonNumber.stringValue];
         }
         
-        if(completion){
+        [wself episodeFilesForSeries:series andCompletion:nil];
+
+        if (completion) {
             completion(episodes, error);
         }
     } andFailure:^(NSError * _Nullable error) {
-        if(completion){
+        if (completion) {
             completion(nil, error);
         }
     }];
@@ -352,13 +390,13 @@ static NSString * BASEURL;
 #pragma mark - Delegate
 
 -(void)fireDidAddSeries:(NSDictionary<NSNumber *, SNRSeries *> *)series{
-    if(self.delegate && [self.delegate respondsToSelector:@selector(didAddSeries:forServer:)]){
+    if (self.delegate && [self.delegate respondsToSelector:@selector(didAddSeries:forServer:)]) {
         [self.delegate didAddSeries:series forServer:self];
     }
 }
 
 -(void)fireDidRemoveSeries:(NSDictionary<NSNumber *, SNRSeries *> *)series{
-    if(self.delegate && [self.delegate respondsToSelector:@selector(didRemoveSeries:forServer:)]){
+    if (self.delegate && [self.delegate respondsToSelector:@selector(didRemoveSeries:forServer:)]) {
         [self.delegate didRemoveSeries:series forServer:self];
     }
 }
@@ -366,7 +404,7 @@ static NSString * BASEURL;
 #pragma mark - Getters / Setters
 
 -(NSMutableArray<SNRSeries *> *)series{
-    if(!_series){
+    if (!_series) {
         _series = [[NSMutableArray alloc] init];
     }
     
