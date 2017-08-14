@@ -20,13 +20,18 @@
 #import "SNRRefreshControl.h"
 #import "SNRSeasonsViewController.h"
 #import "SNRSettingsViewController.h"
+#import "SNRConstants.h"
+#import "UIImage+Utility.h"
+
+const CGFloat kNoSeriesHeight = 50.0f;
+const CGFloat kSeriesHeightPercentage = 0.6f;
 
 typedef enum : NSUInteger {
     SeriesTableViewCellTypeNone = 0,
     SeriesTableViewCellTypeSeries
 } SeriesTableViewCellType;
 
-@interface SNRSeriesViewController () <SNRNavigationBarButtonProtocol, UIScrollViewDelegate, SNRServerManagerProtocol>
+@interface SNRSeriesViewController () <SNRNavigationBarButtonProtocol, UIScrollViewDelegate, SNRServerManagerProtocol, SNRBaseTableViewProtocol>
 @property (weak, nonatomic) IBOutlet SNRBaseTableView *tableView;
 @property (assign, nonatomic) SeriesTableViewCellType cellType;
 @property (strong, nonatomic) SNRServer *server;
@@ -41,12 +46,6 @@ typedef enum : NSUInteger {
     self.server = [SNRServerManager manager].activeServer;
 }
 
--(void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
-    
-    [self.tableView.refreshControl addTarget:self action:@selector(didRequestPullToRefresh:) forControlEvents:UIControlEventValueChanged];
-}
-
 #pragma mark - TableView
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
@@ -55,10 +54,16 @@ typedef enum : NSUInteger {
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if(!self.server.series.count){
-        return 50;
+        return kNoSeriesHeight;
     }
     
-    return ((1080.0f / 1920.0f) * MIN(CGRectGetHeight(self.view.frame), CGRectGetWidth(self.view.frame))) * 0.7f;
+    UIImage *img = [((SNRSeries *)self.server.series.firstObject) imageWithType:ImageTypeFanArt].image;
+    CGFloat ratio = kBannerSizeRatio;
+    if (img) {
+        ratio = img.ratio;
+    }
+    
+    return (ratio * MIN(CGRectGetHeight(self.tableView.frame), CGRectGetWidth(self.tableView.frame))) * kSeriesHeightPercentage;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -161,15 +166,15 @@ typedef enum : NSUInteger {
 
 #pragma mark - Pull to refresh
 
--(void)didRequestPullToRefresh:(id)sender{
+-(void)didRequestRefresh:(SNRBaseTableView *)tableView{
     __weak typeof(self) wself = self;
     [self.server validateServerWithCompletion:^(SNRStatus * _Nullable status, NSError * _Nullable error) {
         if(status){
-            [self.server seriesWithRefresh:YES andCompletion:^(NSArray<SNRSeries *> *series, NSError *error) {
-                [wself.tableView.refreshControl endRefreshing];
+            [wself.server seriesWithRefresh:YES andCompletion:^(NSArray<SNRSeries *> *series, NSError *error) {
+                [tableView.refreshControl endRefreshing];
             }];
         }else{
-            [wself.tableView.refreshControl endRefreshing];
+            [tableView.refreshControl endRefreshing];
         }
     }];
 }
@@ -198,7 +203,11 @@ typedef enum : NSUInteger {
     }
     
     self.server = server;
-    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
+    if (self.server.series && self.server.series.count) {
+        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
+    } else {
+        [self.server seriesWithRefresh:NO andCompletion:nil];
+    }
 }
 
 -(void)didUnsetActiveServer:(SNRServer *)server atIndex:(NSInteger)integer{
@@ -224,7 +233,9 @@ typedef enum : NSUInteger {
         }
         [indexes addObject:[NSIndexPath indexPathForRow:key.integerValue inSection:0]];
     }];
-        
+    
+    [self.tableView.refreshControl endRefreshing];
+    
     [self.tableView beginUpdates];
     if(reloadIndixes.count){
         [self.tableView reloadRowsAtIndexPaths:reloadIndixes withRowAnimation:UITableViewRowAnimationNone];
@@ -253,22 +264,19 @@ typedef enum : NSUInteger {
     [self.tableView endUpdates];
 }
 
+#pragma mark - Setters
+
 -(void)setTableView:(SNRBaseTableView *)tableView{
     _tableView = tableView;
     
-    if(!self.server.series.count){
-        [tableView.refreshControl beginRefreshing];
-        
-        __weak typeof(self) wself = self;
-        [self.server seriesWithRefresh:NO andCompletion:^(NSArray<SNRSeries *> *series, NSError *error) {
-            if(series.count){
-                wself.cellType = SeriesTableViewCellTypeSeries;
-            }
-            
-            [wself.tableView.refreshControl endRefreshing];
-            [wself.tableView reloadData];
-        }];
-    }
+    [tableView.refreshControl beginRefreshing];
 }
 
+-(void)setServer:(SNRServer *)server{
+    _server = server;
+    
+    if(server && (!server.series || !server.series.count)){
+        [server seriesWithRefresh:NO andCompletion:nil];
+    }
+}
 @end

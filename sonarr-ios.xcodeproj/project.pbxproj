@@ -15,6 +15,8 @@
 		4A147BAD1E89D4F2000807AD /* NSString+check.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A147BAC1E89D4F2000807AD /* NSString+check.m */; };
 		4A147BBA1E8AD2C5000807AD /* SNRRefreshControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A147BB91E8AD2C5000807AD /* SNRRefreshControl.m */; };
 		4A23A4D11EF44CCC0044A567 /* SNRSeasonHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A23A4D01EF44CCC0044A567 /* SNRSeasonHeaderCell.m */; };
+		4A31EF121F4101310055B437 /* Arial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4A31EF101F41010E0055B437 /* Arial.ttf */; };
+		4A31EF151F4102EB0055B437 /* UIFont+Sonarr.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A31EF141F4102EB0055B437 /* UIFont+Sonarr.m */; };
 		4A3498D21E635E5300453E63 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A3498D01E635E5300453E63 /* Assets.xcassets */; };
 		4A3498D81E635E6C00453E63 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4A3498D41E635E6C00453E63 /* LaunchScreen.storyboard */; };
 		4A3498D91E635E6C00453E63 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4A3498D61E635E6C00453E63 /* Main.storyboard */; };
@@ -69,6 +71,7 @@
 		4A9E6C611E765B67008AB91A /* SNRBaseSheetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A9E6C601E765B67008AB91A /* SNRBaseSheetViewController.m */; };
 		4A9E6C681E777DCB008AB91A /* SNRServerConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A9E6C671E777DCB008AB91A /* SNRServerConfig.m */; };
 		4A9E6C6B1E7785FE008AB91A /* SNRAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A9E6C6A1E7785FE008AB91A /* SNRAPIClient.m */; };
+		4AA3F6CA1F41220500EF048D /* UIImage+Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AA3F6C91F41220500EF048D /* UIImage+Utility.m */; };
 		4AA5D5EF1E668F8300C044C7 /* SNRAddServerPopUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AA5D5EE1E668F8300C044C7 /* SNRAddServerPopUpViewController.m */; };
 		4AC66C071EF3738800A80E93 /* SNRSeasonsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AC66C061EF3738800A80E93 /* SNRSeasonsViewController.m */; };
 		4AD9FD141E95F5CF001ADBE1 /* SNRAddSeriesDetailsSwitchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AD9FD131E95F5CF001ADBE1 /* SNRAddSeriesDetailsSwitchTableViewCell.m */; };
@@ -111,6 +114,9 @@
 		4A147BB91E8AD2C5000807AD /* SNRRefreshControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRRefreshControl.m; path = Common/Controllers/SNRRefreshControl.m; sourceTree = "<group>"; };
 		4A23A4CF1EF44CCC0044A567 /* SNRSeasonHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRSeasonHeaderCell.h; path = Seasons/Views/SNRSeasonHeaderCell.h; sourceTree = "<group>"; };
 		4A23A4D01EF44CCC0044A567 /* SNRSeasonHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRSeasonHeaderCell.m; path = Seasons/Views/SNRSeasonHeaderCell.m; sourceTree = "<group>"; };
+		4A31EF101F41010E0055B437 /* Arial.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Arial.ttf; sourceTree = "<group>"; };
+		4A31EF131F4102EB0055B437 /* UIFont+Sonarr.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "UIFont+Sonarr.h"; path = "Common/Models/UIFont+Sonarr.h"; sourceTree = "<group>"; };
+		4A31EF141F4102EB0055B437 /* UIFont+Sonarr.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "UIFont+Sonarr.m"; path = "Common/Models/UIFont+Sonarr.m"; sourceTree = "<group>"; };
 		4A3498931E63587200453E63 /* Sonarr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sonarr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A3498AC1E63587200453E63 /* sonarr-iosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "sonarr-iosTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A3498B71E63587200453E63 /* sonarr-iosUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "sonarr-iosUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -220,6 +226,8 @@
 		4A9E6C671E777DCB008AB91A /* SNRServerConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRServerConfig.m; path = API/Client/SNRServerConfig.m; sourceTree = "<group>"; };
 		4A9E6C691E7785FE008AB91A /* SNRAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRAPIClient.h; path = API/Client/SNRAPIClient.h; sourceTree = "<group>"; };
 		4A9E6C6A1E7785FE008AB91A /* SNRAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRAPIClient.m; path = API/Client/SNRAPIClient.m; sourceTree = "<group>"; };
+		4AA3F6C81F41220500EF048D /* UIImage+Utility.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "UIImage+Utility.h"; path = "Common/Views/UIImage+Utility.h"; sourceTree = "<group>"; };
+		4AA3F6C91F41220500EF048D /* UIImage+Utility.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Utility.m"; path = "Common/Views/UIImage+Utility.m"; sourceTree = "<group>"; };
 		4AA5D5ED1E668F8300C044C7 /* SNRAddServerPopUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRAddServerPopUpViewController.h; path = Auth/Controllers/SNRAddServerPopUpViewController.h; sourceTree = "<group>"; };
 		4AA5D5EE1E668F8300C044C7 /* SNRAddServerPopUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRAddServerPopUpViewController.m; path = Auth/Controllers/SNRAddServerPopUpViewController.m; sourceTree = "<group>"; };
 		4AC66C051EF3738800A80E93 /* SNRSeasonsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRSeasonsViewController.h; path = Seasons/Controllers/SNRSeasonsViewController.h; sourceTree = "<group>"; };
@@ -283,6 +291,14 @@
 				4A9118681EF72825005A3851 /* SNREpisodeCell.m */,
 			);
 			name = Views;
+			sourceTree = "<group>";
+		};
+		4A31EF111F41011A0055B437 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				4A31EF101F41010E0055B437 /* Arial.ttf */,
+			);
+			name = Fonts;
 			sourceTree = "<group>";
 		};
 		4A34988A1E63587200453E63 = {
@@ -364,6 +380,7 @@
 		4A3498CF1E635DDF00453E63 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				4A31EF111F41011A0055B437 /* Fonts */,
 				4A1107261F089AD20005BE80 /* Nib */,
 				4A3498D41E635E6C00453E63 /* LaunchScreen.storyboard */,
 				4A3498D61E635E6C00453E63 /* Main.storyboard */,
@@ -395,6 +412,8 @@
 				4A147BAC1E89D4F2000807AD /* NSString+check.m */,
 				4A9BD4D91F3BB21200EB8A3F /* SNRConstants.h */,
 				4A9BD4DA1F3BB21200EB8A3F /* SNRConstants.m */,
+				4A31EF131F4102EB0055B437 /* UIFont+Sonarr.h */,
+				4A31EF141F4102EB0055B437 /* UIFont+Sonarr.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -533,6 +552,8 @@
 				4A0969641E843F7800A8C35E /* SNRActivityIndicatorView.m */,
 				4A9BD4DC1F3BDDC300EB8A3F /* SNRParallaxView.h */,
 				4A9BD4DD1F3BDDC300EB8A3F /* SNRParallaxView.m */,
+				4AA3F6C81F41220500EF048D /* UIImage+Utility.h */,
+				4AA3F6C91F41220500EF048D /* UIImage+Utility.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -839,6 +860,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4A3498D91E635E6C00453E63 /* Main.storyboard in Resources */,
+				4A31EF121F4101310055B437 /* Arial.ttf in Resources */,
 				4A3498D21E635E5300453E63 /* Assets.xcassets in Resources */,
 				4A3498D81E635E6C00453E63 /* LaunchScreen.storyboard in Resources */,
 				4A1107281F089B2E0005BE80 /* SeasonHeader.xib in Resources */,
@@ -955,6 +977,7 @@
 				4A34991A1E63D9A600453E63 /* SNRStatistics.m in Sources */,
 				4AC66C071EF3738800A80E93 /* SNRSeasonsViewController.m in Sources */,
 				4A147BBA1E8AD2C5000807AD /* SNRRefreshControl.m in Sources */,
+				4A31EF151F4102EB0055B437 /* UIFont+Sonarr.m in Sources */,
 				4A0969651E843F7800A8C35E /* SNRActivityIndicatorView.m in Sources */,
 				4A6D2AA31E8DFBE900BE876F /* SNRAddSeriesSheetViewController.m in Sources */,
 				4A12575D1E93168F0060746F /* SNRAddSeriesDetailsTableViewCell.m in Sources */,
@@ -977,6 +1000,7 @@
 				4A777C521E64078B006B1987 /* SNRData.m in Sources */,
 				4A777C491E63FB2F006B1987 /* SNREpisodeFile.m in Sources */,
 				4A34990D1E63CF2B00453E63 /* SNRSeries.m in Sources */,
+				4AA3F6CA1F41220500EF048D /* UIImage+Utility.m in Sources */,
 				4A5F0A331E81A70B008463F6 /* SNRImageView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

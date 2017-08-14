@@ -10,7 +10,7 @@
 #import "UIColor+App.h"
 #import "SNRRefreshControl.h"
 
-@interface SNRBaseTableView()
+@interface SNRBaseTableView() <SNRRefreshControlProtocol>
 @property (assign, nonatomic) IBInspectable BOOL pullToRefresh;
 @property (strong, nonatomic) SNRRefreshControl *refreshControl;
 
@@ -44,8 +44,15 @@
     
     if(_pullToRefresh){
         self.refreshControl = [[SNRRefreshControl alloc] init];
+        self.refreshControl.delegate = self;
         [self insertSubview:self.refreshControl atIndex:0];
     }
+}
+
+#pragma mark - SNRRefreshControlProtocol
+
+-(void)didRequestRefresh{
+    [((id<SNRBaseTableViewProtocol>)self.delegate) didRequestRefresh:self];
 }
 
 @end

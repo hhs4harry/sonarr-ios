@@ -45,6 +45,7 @@
 
     [UISwitch appearance].tintColor = [UIColor primary];
     [UISwitch appearance].onTintColor = [UIColor primary];
+    
     return YES;
 }
 

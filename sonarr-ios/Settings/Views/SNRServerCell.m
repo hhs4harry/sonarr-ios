@@ -15,7 +15,7 @@
 @interface SNRServerCell()
 @property (weak, nonatomic) IBOutlet UILabel *ipLabel;
 @property (weak, nonatomic) IBOutlet UILabel *apiKeyLabel;
-@property (weak, nonatomic) IBOutlet UIImageView *bgImageView;
+@property (weak, nonatomic) IBOutlet UIView *bgView;
 @property (weak, nonatomic) IBOutlet UITextField *ipTextfield;
 @property (weak, nonatomic) IBOutlet UITextField *apiTextField;
 @property (weak, nonatomic) IBOutlet UITextField *portTextField;

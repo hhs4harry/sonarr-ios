@@ -86,7 +86,6 @@
     [headerCell setSeason:season];
     [headerCell setExpanded:[self.headerExpanded[@(section).stringValue] boolValue]];
     headerCell.delegate = self;
-    headerCell.contentView.backgroundColor = [UIColor blackColor];
     return headerCell;
 }
 
@@ -123,13 +122,6 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    if(indexPath.row == NSIntegerMax - 1 && indexPath.section == NSIntegerMax - 1){
-        SNRAddSeriesTableViewCell *seriesCell = (id)[tableView dequeueReusableCellWithIdentifier:@"seriesHeaderCell"];
-        seriesCell.tag = indexPath.row;
-        [seriesCell setSeries:self.series forServer:self.server];
-        return (id)seriesCell;
-    }
-    
     SNRSeason *season = [self.series.seasons objectAtIndex:indexPath.section];
     SNREpisode *episode = [season.episodes objectAtIndex:indexPath.row];
     SNREpisodeCell *cell = (id)[tableView dequeueReusableCellWithIdentifier:@"episodeCell" forIndexPath:indexPath];

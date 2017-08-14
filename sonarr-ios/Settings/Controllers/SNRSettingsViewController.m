@@ -161,6 +161,7 @@ typedef enum : NSUInteger {
 }
 
 -(void)didSetActiveServer:(SNRServer *)server atIndex:(NSInteger)index{
+    
     [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:index inSection:SNRSettingsSectionActiveServer]] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 

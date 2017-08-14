@@ -8,5 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol SNRRefreshControlProtocol
+-(void)didRequestRefresh;
+
+@end
+
 @interface SNRRefreshControl : UIRefreshControl
+@property (weak, nonatomic) id<SNRRefreshControlProtocol> delegate;
 @end

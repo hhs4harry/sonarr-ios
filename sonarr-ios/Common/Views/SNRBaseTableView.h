@@ -7,6 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+@class SNRBaseTableView;
+
+@protocol SNRBaseTableViewProtocol <UITableViewDelegate>
+-(void)didRequestRefresh:(SNRBaseTableView *)tableView;
+@end
 
 @interface SNRBaseTableView : UITableView
+
 @end

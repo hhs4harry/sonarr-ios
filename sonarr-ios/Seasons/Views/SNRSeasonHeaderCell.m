@@ -10,7 +10,8 @@
 
 @interface SNRSeasonHeaderCell()
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
-@property (weak, nonatomic) IBOutlet UIImageView *chevron;
+@property (weak, nonatomic) IBOutlet UIButton *chevronButton;
+@property (weak, nonatomic) IBOutlet UIView *headerBackgroundView;
 @property (strong, nonatomic) SNRSeason *season;
 @property (assign, nonatomic) BOOL expanded;
 
@@ -30,6 +31,10 @@
     [self.delegate season:self.season expanded:self.expanded];
 }
 
+- (IBAction)chevronButtonTouchUpInside:(id)sender {
+    [self cellTouchUpInside:sender];
+}
+
 -(void)setSeason:(SNRSeason *)season{
     _season = season;
     
@@ -44,9 +49,16 @@
 -(void)setExpanded:(BOOL)expanded{
     _expanded = expanded;
     
-    [UIView animateWithDuration:0.4 animations:^{
-        self.chevron.transform = !expanded ? CGAffineTransformMakeRotation(M_PI_2) : CGAffineTransformMakeRotation(-M_PI_2);
+    [UIView animateWithDuration:0.3 animations:^{
+        self.chevronButton.transform = expanded ? CGAffineTransformIdentity : CGAffineTransformMakeRotation(M_PI);
     }];
+}
+
+-(void)setChevronButton:(UIButton *)chevronButton{
+    _chevronButton = chevronButton;
+    
+    // Rotate chevron to be the correct way when first loaded.
+    self.chevronButton.transform = CGAffineTransformMakeRotation(M_PI);
 }
 
 @end

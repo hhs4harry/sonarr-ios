@@ -30,6 +30,8 @@
         self.backgroundColor = [UIColor primary];
         
         self.actualRect = self.bounds;
+        
+        [self addTarget:self action:@selector(requestRefresh) forControlEvents:UIControlEventValueChanged];
     }
     return self;
 }
@@ -66,6 +68,10 @@
             }];
         }];
     }
+}
+
+-(void)requestRefresh{
+    [self.delegate didRequestRefresh];
 }
 
 @end
