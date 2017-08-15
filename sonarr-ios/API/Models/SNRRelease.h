@@ -10,23 +10,25 @@
 @class SNRQuality;
 
 @interface SNRRelease : JSONModel
-@property (copy, nonatomic) NSString *guid;
-@property (strong, nonatomic) SNRQuality *quality;
-@property (strong, nonatomic) NSNumber *age;
-@property (strong, nonatomic) NSNumber *size;
-@property (copy, nonatomic) NSString *indexer;
-@property (copy, nonatomic) NSString *releaseGroup;
-@property (copy, nonatomic) NSString *title;
++(NSString *)endpoint;
+
+@property (copy, nonatomic) NSString<Optional> *guid;
+@property (strong, nonatomic) SNRQuality<Optional> *quality;
+@property (strong, nonatomic) NSNumber<Optional> *age;
+@property (strong, nonatomic) NSNumber<Optional> *size;
+@property (copy, nonatomic) NSString<Optional> *indexer;
+@property (copy, nonatomic) NSString<Optional> *releaseGroup;
+@property (copy, nonatomic) NSString<Optional> *title;
 @property (nonatomic) BOOL fullSeason;
 @property (nonatomic) BOOL sceneSource;
-@property (strong, nonatomic) NSNumber *seasonNumber;
-@property (copy, nonatomic) NSString *language;
-@property (copy, nonatomic) NSString *seriesTitle;
-@property (copy, nonatomic) NSArray *episodeNumbers;
+@property (strong, nonatomic) NSNumber<Optional> *seasonNumber;
+@property (copy, nonatomic) NSString<Optional> *language;
+@property (copy, nonatomic) NSString<Optional> *seriesTitle;
+@property (copy, nonatomic) NSArray<Optional> *episodeNumbers;
 @property (nonatomic) BOOL approved;
-@property (strong, nonatomic) NSNumber *tvRageId;
-@property (copy, nonatomic) NSArray *rejections;
-@property (strong, nonatomic) NSDate *publishDate;
-@property (copy, nonatomic) NSString *downloadUrl;
+@property (strong, nonatomic) NSNumber<Optional> *tvRageId;
+@property (copy, nonatomic) NSArray<Optional> *rejections;
+@property (strong, nonatomic) NSDate<Optional> *publishDate;
+@property (copy, nonatomic) NSString<Optional> *downloadUrl;
 @property (nonatomic) BOOL downloadAllowed;
 @end

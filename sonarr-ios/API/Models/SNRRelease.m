@@ -10,4 +10,19 @@
 
 @implementation SNRRelease
 
++(NSString *)endpoint{
+    return @"release";
+}
+
++(BOOL)propertyIsOptional:(NSString *)propertyName {
+    if ([propertyName isEqualToString:@"fullSeason"] ||
+        [propertyName isEqualToString:@"sceneSource"] ||
+        [propertyName isEqualToString:@"approved"] ||
+        [propertyName isEqualToString:@"downloadAllowed"]) {
+        return YES;
+    }
+    
+    return NO;
+}
+
 @end

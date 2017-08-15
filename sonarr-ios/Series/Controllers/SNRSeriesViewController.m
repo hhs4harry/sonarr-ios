@@ -138,7 +138,7 @@ typedef enum : NSUInteger {
                 [SNRActivityIndicatorView showOnTint:YES onView:[tView cellForRowAtIndexPath:indexPath].contentView];
             }
             
-            [wself.server deleteSeries:[wself.server.series objectAtIndex:indexPath.row] withFiles:NO andCompletion:^(BOOL success, NSError * _Nullable error) {
+            [wself.server deleteSeries:[wself.server.series objectAtIndex:indexPath.row] withFiles:NO withCompletion:^(BOOL success, NSError * _Nullable error) {
                 if(!success){
                     [SNRActivityIndicatorView showOnTint:NO onView:[tView cellForRowAtIndexPath:indexPath].contentView];
                 }
@@ -151,7 +151,7 @@ typedef enum : NSUInteger {
                 [SNRActivityIndicatorView showOnTint:YES onView:[tView cellForRowAtIndexPath:indexPath].contentView];
             }
             
-            [wself.server deleteSeries:[wself.server.series objectAtIndex:indexPath.row] withFiles:YES andCompletion:^(BOOL success, NSError * _Nullable error) {
+            [wself.server deleteSeries:[wself.server.series objectAtIndex:indexPath.row] withFiles:YES withCompletion:^(BOOL success, NSError * _Nullable error) {
                 if(!success){
                     [SNRActivityIndicatorView showOnTint:NO onView:[tView cellForRowAtIndexPath:indexPath].contentView];
                 }
@@ -170,7 +170,7 @@ typedef enum : NSUInteger {
     __weak typeof(self) wself = self;
     [self.server validateServerWithCompletion:^(SNRStatus * _Nullable status, NSError * _Nullable error) {
         if(status){
-            [wself.server seriesWithRefresh:YES andCompletion:^(NSArray<SNRSeries *> *series, NSError *error) {
+            [wself.server seriesWithRefresh:YES withCompletion:^(NSArray<SNRSeries *> *series, NSError *error) {
                 [tableView.refreshControl endRefreshing];
             }];
         }else{
@@ -209,7 +209,7 @@ typedef enum : NSUInteger {
         if (self.tableView) {
             [self.tableView.refreshControl beginRefreshing];
         }
-        [self.server seriesWithRefresh:NO andCompletion:nil];
+        [self.server seriesWithRefresh:NO withCompletion:nil];
     }
 }
 
@@ -281,7 +281,7 @@ typedef enum : NSUInteger {
     _server = server;
     
     if(server && (!server.series || !server.series.count)){
-        [server seriesWithRefresh:NO andCompletion:nil];
+        [server seriesWithRefresh:NO withCompletion:nil];
     }
 }
 @end

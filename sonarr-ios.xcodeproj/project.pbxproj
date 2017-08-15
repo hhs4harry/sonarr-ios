@@ -9,17 +9,11 @@
 /* Begin PBXBuildFile section */
 		259F2E248A9B5D0391C7AB70 /* libPods-Sonarr.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 33A1E1334CB8B3457ED5F1B3 /* libPods-Sonarr.a */; };
 		4A0969651E843F7800A8C35E /* SNRActivityIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0969641E843F7800A8C35E /* SNRActivityIndicatorView.m */; };
-		4A1107281F089B2E0005BE80 /* SeasonHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A1107271F089B2E0005BE80 /* SeasonHeader.xib */; };
-		4A12575D1E93168F0060746F /* SNRAddSeriesDetailsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A12575C1E93168F0060746F /* SNRAddSeriesDetailsTableViewCell.m */; };
 		4A14754C1E7B32C1006B6888 /* UIAlertController+Show.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A14754B1E7B32C1006B6888 /* UIAlertController+Show.m */; };
 		4A147BAD1E89D4F2000807AD /* NSString+check.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A147BAC1E89D4F2000807AD /* NSString+check.m */; };
 		4A147BBA1E8AD2C5000807AD /* SNRRefreshControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A147BB91E8AD2C5000807AD /* SNRRefreshControl.m */; };
 		4A23A4D11EF44CCC0044A567 /* SNRSeasonHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A23A4D01EF44CCC0044A567 /* SNRSeasonHeaderCell.m */; };
-		4A31EF121F4101310055B437 /* Arial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4A31EF101F41010E0055B437 /* Arial.ttf */; };
 		4A31EF151F4102EB0055B437 /* UIFont+Sonarr.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A31EF141F4102EB0055B437 /* UIFont+Sonarr.m */; };
-		4A3498D21E635E5300453E63 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A3498D01E635E5300453E63 /* Assets.xcassets */; };
-		4A3498D81E635E6C00453E63 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4A3498D41E635E6C00453E63 /* LaunchScreen.storyboard */; };
-		4A3498D91E635E6C00453E63 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4A3498D61E635E6C00453E63 /* Main.storyboard */; };
 		4A3498DE1E635E7900453E63 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A3498DB1E635E7900453E63 /* AppDelegate.m */; };
 		4A3498E01E635E7900453E63 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A3498DD1E635E7900453E63 /* main.m */; };
 		4A34990A1E63C59400453E63 /* SNRStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A3499091E63C59400453E63 /* SNRStatus.m */; };
@@ -41,10 +35,18 @@
 		4A6106801F2C4CDF00FC3A1B /* SNRSettingsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A61067F1F2C4CDF00FC3A1B /* SNRSettingsCell.m */; };
 		4A6D2A8D1E8DAA6F00BE876F /* SNRSheetNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A6D2A8C1E8DAA6F00BE876F /* SNRSheetNavigationViewController.m */; };
 		4A6D2A921E8DF66800BE876F /* MZFormSheetPresentationController+Keyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A6D2A911E8DF66800BE876F /* MZFormSheetPresentationController+Keyboard.m */; };
-		4A6D2A9B1E8DFB9F00BE876F /* SNRSearchSeriesSheetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A6D2A9A1E8DFB9F00BE876F /* SNRSearchSeriesSheetViewController.m */; };
-		4A6D2A9E1E8DFBB300BE876F /* SNRSearchSeriesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A6D2A9D1E8DFBB300BE876F /* SNRSearchSeriesTableViewCell.m */; };
-		4A6D2AA31E8DFBE900BE876F /* SNRAddSeriesSheetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A6D2AA21E8DFBE900BE876F /* SNRAddSeriesSheetViewController.m */; };
-		4A6D2AA71E8EDBF000BE876F /* SNRAddSeriesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A6D2AA61E8EDBF000BE876F /* SNRAddSeriesTableViewCell.m */; };
+		4A6DE98C1F429EAD0000BF48 /* SNRAddSeriesSheetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A6DE9771F429E600000BF48 /* SNRAddSeriesSheetViewController.m */; };
+		4A6DE98D1F429EAD0000BF48 /* SNRAddSeriesDetailsInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A6DE9801F429EA30000BF48 /* SNRAddSeriesDetailsInfoTableViewCell.m */; };
+		4A6DE98E1F429EAD0000BF48 /* SNRAddSeriesDetailsSwitchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A6DE9831F429EA30000BF48 /* SNRAddSeriesDetailsSwitchTableViewCell.m */; };
+		4A6DE98F1F429EAD0000BF48 /* SNRAddSeriesDetailsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A6DE9811F429EA30000BF48 /* SNRAddSeriesDetailsTableViewCell.m */; };
+		4A6DE9901F429EAD0000BF48 /* SNRAddSeriesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A6DE9821F429EA30000BF48 /* SNRAddSeriesTableViewCell.m */; };
+		4A6DE9911F429EB10000BF48 /* SNRSearchSeriesSheetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A6DE97B1F429E600000BF48 /* SNRSearchSeriesSheetViewController.m */; };
+		4A6DE9921F429EB90000BF48 /* SNRSearchSeriesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A6DE97E1F429E600000BF48 /* SNRSearchSeriesTableViewCell.m */; };
+		4A6DE99E1F429F1C0000BF48 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A6DE9951F429F150000BF48 /* Assets.xcassets */; };
+		4A6DE99F1F429F200000BF48 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4A6DE9961F429F150000BF48 /* LaunchScreen.storyboard */; };
+		4A6DE9A01F429F200000BF48 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4A6DE9981F429F150000BF48 /* Main.storyboard */; };
+		4A6DE9A11F429F250000BF48 /* SeasonHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A6DE99D1F429F150000BF48 /* SeasonHeader.xib */; };
+		4A6DE9A21F429F280000BF48 /* Arial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4A6DE99B1F429F150000BF48 /* Arial.ttf */; };
 		4A777C331E63EBC9006B1987 /* SNRCalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A777C321E63EBC9006B1987 /* SNRCalendar.m */; };
 		4A777C391E63ECED006B1987 /* SNREpisode.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A777C381E63ECED006B1987 /* SNREpisode.m */; };
 		4A777C3C1E63EDAE006B1987 /* SNRQuality.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A777C3B1E63EDAE006B1987 /* SNRQuality.m */; };
@@ -74,8 +76,6 @@
 		4AA3F6CA1F41220500EF048D /* UIImage+Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AA3F6C91F41220500EF048D /* UIImage+Utility.m */; };
 		4AA5D5EF1E668F8300C044C7 /* SNRAddServerPopUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AA5D5EE1E668F8300C044C7 /* SNRAddServerPopUpViewController.m */; };
 		4AC66C071EF3738800A80E93 /* SNRSeasonsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AC66C061EF3738800A80E93 /* SNRSeasonsViewController.m */; };
-		4AD9FD141E95F5CF001ADBE1 /* SNRAddSeriesDetailsSwitchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AD9FD131E95F5CF001ADBE1 /* SNRAddSeriesDetailsSwitchTableViewCell.m */; };
-		4AD9FD171E960B9A001ADBE1 /* SNRAddSeriesDetailsInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AD9FD161E960B9A001ADBE1 /* SNRAddSeriesDetailsInfoTableViewCell.m */; };
 		4AE5DA701F19E105002A8BF5 /* SNRSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AE5DA6F1F19E105002A8BF5 /* SNRSettingsViewController.m */; };
 		4AEAEABC1F1C3D0D00255C7A /* SNRServerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AEAEABB1F1C3D0D00255C7A /* SNRServerCell.m */; };
 		4AFA7BB11E7B9C8100932038 /* SNRServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AFA7BB01E7B9C8100932038 /* SNRServer.m */; };
@@ -103,9 +103,6 @@
 		33A1E1334CB8B3457ED5F1B3 /* libPods-Sonarr.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Sonarr.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A0969631E843F7800A8C35E /* SNRActivityIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRActivityIndicatorView.h; path = Common/Views/SNRActivityIndicatorView.h; sourceTree = "<group>"; };
 		4A0969641E843F7800A8C35E /* SNRActivityIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRActivityIndicatorView.m; path = Common/Views/SNRActivityIndicatorView.m; sourceTree = "<group>"; };
-		4A1107271F089B2E0005BE80 /* SeasonHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SeasonHeader.xib; path = Resources/Nib/SeasonHeader.xib; sourceTree = "<group>"; };
-		4A12575B1E93168F0060746F /* SNRAddSeriesDetailsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRAddSeriesDetailsTableViewCell.h; path = Series/Search/Add/Views/SNRAddSeriesDetailsTableViewCell.h; sourceTree = "<group>"; };
-		4A12575C1E93168F0060746F /* SNRAddSeriesDetailsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRAddSeriesDetailsTableViewCell.m; path = Series/Search/Add/Views/SNRAddSeriesDetailsTableViewCell.m; sourceTree = "<group>"; };
 		4A14754A1E7B32C1006B6888 /* UIAlertController+Show.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIAlertController+Show.h"; path = "Common/Controllers/UIAlertController+Show.h"; sourceTree = "<group>"; };
 		4A14754B1E7B32C1006B6888 /* UIAlertController+Show.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIAlertController+Show.m"; path = "Common/Controllers/UIAlertController+Show.m"; sourceTree = "<group>"; };
 		4A147BAB1E89D4F2000807AD /* NSString+check.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+check.h"; path = "Common/Models/NSString+check.h"; sourceTree = "<group>"; };
@@ -114,15 +111,11 @@
 		4A147BB91E8AD2C5000807AD /* SNRRefreshControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRRefreshControl.m; path = Common/Controllers/SNRRefreshControl.m; sourceTree = "<group>"; };
 		4A23A4CF1EF44CCC0044A567 /* SNRSeasonHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRSeasonHeaderCell.h; path = Seasons/Views/SNRSeasonHeaderCell.h; sourceTree = "<group>"; };
 		4A23A4D01EF44CCC0044A567 /* SNRSeasonHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRSeasonHeaderCell.m; path = Seasons/Views/SNRSeasonHeaderCell.m; sourceTree = "<group>"; };
-		4A31EF101F41010E0055B437 /* Arial.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Arial.ttf; sourceTree = "<group>"; };
 		4A31EF131F4102EB0055B437 /* UIFont+Sonarr.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "UIFont+Sonarr.h"; path = "Common/Models/UIFont+Sonarr.h"; sourceTree = "<group>"; };
 		4A31EF141F4102EB0055B437 /* UIFont+Sonarr.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "UIFont+Sonarr.m"; path = "Common/Models/UIFont+Sonarr.m"; sourceTree = "<group>"; };
 		4A3498931E63587200453E63 /* Sonarr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sonarr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A3498AC1E63587200453E63 /* sonarr-iosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "sonarr-iosTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A3498B71E63587200453E63 /* sonarr-iosUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "sonarr-iosUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		4A3498D01E635E5300453E63 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Resources/Assets.xcassets; sourceTree = "<group>"; };
-		4A3498D51E635E6C00453E63 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Resources/Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		4A3498D71E635E6C00453E63 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Resources/Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4A3498DA1E635E7900453E63 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = "Supporting Files/AppDelegate.h"; sourceTree = "<group>"; };
 		4A3498DB1E635E7900453E63 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = "Supporting Files/AppDelegate.m"; sourceTree = "<group>"; };
 		4A3498DD1E635E7900453E63 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = "Supporting Files/main.m"; sourceTree = "<group>"; };
@@ -164,14 +157,25 @@
 		4A6D2A8C1E8DAA6F00BE876F /* SNRSheetNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRSheetNavigationViewController.m; path = Navigation/Controllers/SNRSheetNavigationViewController.m; sourceTree = "<group>"; };
 		4A6D2A901E8DF66800BE876F /* MZFormSheetPresentationController+Keyboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MZFormSheetPresentationController+Keyboard.h"; path = "Libraries/Controllers/MZFormSheetPresentationController+Keyboard.h"; sourceTree = "<group>"; };
 		4A6D2A911E8DF66800BE876F /* MZFormSheetPresentationController+Keyboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MZFormSheetPresentationController+Keyboard.m"; path = "Libraries/Controllers/MZFormSheetPresentationController+Keyboard.m"; sourceTree = "<group>"; };
-		4A6D2A991E8DFB9F00BE876F /* SNRSearchSeriesSheetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRSearchSeriesSheetViewController.h; path = Series/Search/Controllers/SNRSearchSeriesSheetViewController.h; sourceTree = "<group>"; };
-		4A6D2A9A1E8DFB9F00BE876F /* SNRSearchSeriesSheetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRSearchSeriesSheetViewController.m; path = Series/Search/Controllers/SNRSearchSeriesSheetViewController.m; sourceTree = "<group>"; };
-		4A6D2A9C1E8DFBB300BE876F /* SNRSearchSeriesTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRSearchSeriesTableViewCell.h; path = Series/Search/Views/SNRSearchSeriesTableViewCell.h; sourceTree = "<group>"; };
-		4A6D2A9D1E8DFBB300BE876F /* SNRSearchSeriesTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRSearchSeriesTableViewCell.m; path = Series/Search/Views/SNRSearchSeriesTableViewCell.m; sourceTree = "<group>"; };
-		4A6D2AA11E8DFBE900BE876F /* SNRAddSeriesSheetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRAddSeriesSheetViewController.h; path = Series/Search/Add/Controllers/SNRAddSeriesSheetViewController.h; sourceTree = "<group>"; };
-		4A6D2AA21E8DFBE900BE876F /* SNRAddSeriesSheetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRAddSeriesSheetViewController.m; path = Series/Search/Add/Controllers/SNRAddSeriesSheetViewController.m; sourceTree = "<group>"; };
-		4A6D2AA51E8EDBF000BE876F /* SNRAddSeriesTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRAddSeriesTableViewCell.h; path = Series/Search/Add/Views/SNRAddSeriesTableViewCell.h; sourceTree = "<group>"; };
-		4A6D2AA61E8EDBF000BE876F /* SNRAddSeriesTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRAddSeriesTableViewCell.m; path = Series/Search/Add/Views/SNRAddSeriesTableViewCell.m; sourceTree = "<group>"; };
+		4A6DE9761F429E600000BF48 /* SNRAddSeriesSheetViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SNRAddSeriesSheetViewController.h; sourceTree = "<group>"; };
+		4A6DE9771F429E600000BF48 /* SNRAddSeriesSheetViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SNRAddSeriesSheetViewController.m; sourceTree = "<group>"; };
+		4A6DE97A1F429E600000BF48 /* SNRSearchSeriesSheetViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SNRSearchSeriesSheetViewController.h; sourceTree = "<group>"; };
+		4A6DE97B1F429E600000BF48 /* SNRSearchSeriesSheetViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SNRSearchSeriesSheetViewController.m; sourceTree = "<group>"; };
+		4A6DE97D1F429E600000BF48 /* SNRSearchSeriesTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SNRSearchSeriesTableViewCell.h; sourceTree = "<group>"; };
+		4A6DE97E1F429E600000BF48 /* SNRSearchSeriesTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SNRSearchSeriesTableViewCell.m; sourceTree = "<group>"; };
+		4A6DE9801F429EA30000BF48 /* SNRAddSeriesDetailsInfoTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SNRAddSeriesDetailsInfoTableViewCell.m; sourceTree = "<group>"; };
+		4A6DE9811F429EA30000BF48 /* SNRAddSeriesDetailsTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SNRAddSeriesDetailsTableViewCell.m; sourceTree = "<group>"; };
+		4A6DE9821F429EA30000BF48 /* SNRAddSeriesTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SNRAddSeriesTableViewCell.m; sourceTree = "<group>"; };
+		4A6DE9831F429EA30000BF48 /* SNRAddSeriesDetailsSwitchTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SNRAddSeriesDetailsSwitchTableViewCell.m; sourceTree = "<group>"; };
+		4A6DE9841F429EA30000BF48 /* SNRAddSeriesDetailsSwitchTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SNRAddSeriesDetailsSwitchTableViewCell.h; sourceTree = "<group>"; };
+		4A6DE9851F429EA30000BF48 /* SNRAddSeriesDetailsTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SNRAddSeriesDetailsTableViewCell.h; sourceTree = "<group>"; };
+		4A6DE9861F429EA30000BF48 /* SNRAddSeriesDetailsInfoTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SNRAddSeriesDetailsInfoTableViewCell.h; sourceTree = "<group>"; };
+		4A6DE9871F429EA30000BF48 /* SNRAddSeriesTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SNRAddSeriesTableViewCell.h; sourceTree = "<group>"; };
+		4A6DE9951F429F150000BF48 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4A6DE9971F429F150000BF48 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		4A6DE9991F429F150000BF48 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		4A6DE99B1F429F150000BF48 /* Arial.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Arial.ttf; sourceTree = "<group>"; };
+		4A6DE99D1F429F150000BF48 /* SeasonHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SeasonHeader.xib; sourceTree = "<group>"; };
 		4A777C311E63EBC9006B1987 /* SNRCalendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRCalendar.h; path = API/Models/SNRCalendar.h; sourceTree = "<group>"; };
 		4A777C321E63EBC9006B1987 /* SNRCalendar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRCalendar.m; path = API/Models/SNRCalendar.m; sourceTree = "<group>"; };
 		4A777C371E63ECED006B1987 /* SNREpisode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNREpisode.h; path = API/Models/SNREpisode.h; sourceTree = "<group>"; };
@@ -232,10 +236,6 @@
 		4AA5D5EE1E668F8300C044C7 /* SNRAddServerPopUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRAddServerPopUpViewController.m; path = Auth/Controllers/SNRAddServerPopUpViewController.m; sourceTree = "<group>"; };
 		4AC66C051EF3738800A80E93 /* SNRSeasonsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRSeasonsViewController.h; path = Seasons/Controllers/SNRSeasonsViewController.h; sourceTree = "<group>"; };
 		4AC66C061EF3738800A80E93 /* SNRSeasonsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRSeasonsViewController.m; path = Seasons/Controllers/SNRSeasonsViewController.m; sourceTree = "<group>"; };
-		4AD9FD121E95F5CF001ADBE1 /* SNRAddSeriesDetailsSwitchTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRAddSeriesDetailsSwitchTableViewCell.h; path = Series/Search/Add/Views/SNRAddSeriesDetailsSwitchTableViewCell.h; sourceTree = "<group>"; };
-		4AD9FD131E95F5CF001ADBE1 /* SNRAddSeriesDetailsSwitchTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRAddSeriesDetailsSwitchTableViewCell.m; path = Series/Search/Add/Views/SNRAddSeriesDetailsSwitchTableViewCell.m; sourceTree = "<group>"; };
-		4AD9FD151E960B9A001ADBE1 /* SNRAddSeriesDetailsInfoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRAddSeriesDetailsInfoTableViewCell.h; path = Series/Search/Add/Views/SNRAddSeriesDetailsInfoTableViewCell.h; sourceTree = "<group>"; };
-		4AD9FD161E960B9A001ADBE1 /* SNRAddSeriesDetailsInfoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRAddSeriesDetailsInfoTableViewCell.m; path = Series/Search/Add/Views/SNRAddSeriesDetailsInfoTableViewCell.m; sourceTree = "<group>"; };
 		4AE5DA6E1F19E105002A8BF5 /* SNRSettingsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SNRSettingsViewController.h; sourceTree = "<group>"; };
 		4AE5DA6F1F19E105002A8BF5 /* SNRSettingsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SNRSettingsViewController.m; sourceTree = "<group>"; };
 		4AEAEABA1F1C3D0D00255C7A /* SNRServerCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SNRServerCell.h; sourceTree = "<group>"; };
@@ -274,14 +274,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		4A1107261F089AD20005BE80 /* Nib */ = {
-			isa = PBXGroup;
-			children = (
-				4A1107271F089B2E0005BE80 /* SeasonHeader.xib */,
-			);
-			name = Nib;
-			sourceTree = "<group>";
-		};
 		4A23A4CE1EF44C880044A567 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -291,14 +283,6 @@
 				4A9118681EF72825005A3851 /* SNREpisodeCell.m */,
 			);
 			name = Views;
-			sourceTree = "<group>";
-		};
-		4A31EF111F41011A0055B437 /* Fonts */ = {
-			isa = PBXGroup;
-			children = (
-				4A31EF101F41010E0055B437 /* Arial.ttf */,
-			);
-			name = Fonts;
 			sourceTree = "<group>";
 		};
 		4A34988A1E63587200453E63 = {
@@ -331,9 +315,11 @@
 				4A3498CE1E635DC100453E63 /* Analytics */,
 				4A3498C91E635CA400453E63 /* Auth */,
 				4A3ECE931F1A843000B16899 /* Front */,
+				4A6DE9731F429E600000BF48 /* Search */,
 				4AE5DA6C1F19E0D8002A8BF5 /* Settings */,
 				4A5F0A251E805806008463F6 /* Series */,
-				4A3498CF1E635DDF00453E63 /* Resources */,
+				4AC66C031EF3733A00A80E93 /* Seasons */,
+				4A6DE9941F429F150000BF48 /* Resources */,
 				4A3498961E63587200453E63 /* Supporting Files */,
 			);
 			path = "sonarr-ios";
@@ -375,18 +361,6 @@
 			children = (
 			);
 			name = Analytics;
-			sourceTree = "<group>";
-		};
-		4A3498CF1E635DDF00453E63 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				4A31EF111F41011A0055B437 /* Fonts */,
-				4A1107261F089AD20005BE80 /* Nib */,
-				4A3498D41E635E6C00453E63 /* LaunchScreen.storyboard */,
-				4A3498D61E635E6C00453E63 /* Main.storyboard */,
-				4A3498D01E635E5300453E63 /* Assets.xcassets */,
-			);
-			name = Resources;
 			sourceTree = "<group>";
 		};
 		4A3499041E63A39800453E63 /* Common */ = {
@@ -522,8 +496,6 @@
 		4A5F0A251E805806008463F6 /* Series */ = {
 			isa = PBXGroup;
 			children = (
-				4AC66C031EF3733A00A80E93 /* Seasons */,
-				4A6D2A961E8DFB8200BE876F /* Search */,
 				4A5F0A351E81A8C1008463F6 /* Views */,
 				4A5F0A261E80580E008463F6 /* Controllers */,
 			);
@@ -584,65 +556,93 @@
 			name = Controllers;
 			sourceTree = "<group>";
 		};
-		4A6D2A961E8DFB8200BE876F /* Search */ = {
+		4A6DE9731F429E600000BF48 /* Search */ = {
 			isa = PBXGroup;
 			children = (
-				4A6D2A9F1E8DFBD300BE876F /* Add */,
-				4A6D2A981E8DFB8C00BE876F /* Views */,
-				4A6D2A971E8DFB8700BE876F /* Controllers */,
+				4A6DE9741F429E600000BF48 /* Add */,
+				4A6DE9791F429E600000BF48 /* Controllers */,
+				4A6DE97C1F429E600000BF48 /* Views */,
 			);
-			name = Search;
+			path = Search;
 			sourceTree = "<group>";
 		};
-		4A6D2A971E8DFB8700BE876F /* Controllers */ = {
+		4A6DE9741F429E600000BF48 /* Add */ = {
 			isa = PBXGroup;
 			children = (
-				4A6D2A991E8DFB9F00BE876F /* SNRSearchSeriesSheetViewController.h */,
-				4A6D2A9A1E8DFB9F00BE876F /* SNRSearchSeriesSheetViewController.m */,
+				4A6DE9751F429E600000BF48 /* Controllers */,
+				4A6DE9781F429E600000BF48 /* Views */,
 			);
-			name = Controllers;
+			path = Add;
 			sourceTree = "<group>";
 		};
-		4A6D2A981E8DFB8C00BE876F /* Views */ = {
+		4A6DE9751F429E600000BF48 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				4A6D2A9C1E8DFBB300BE876F /* SNRSearchSeriesTableViewCell.h */,
-				4A6D2A9D1E8DFBB300BE876F /* SNRSearchSeriesTableViewCell.m */,
+				4A6DE9761F429E600000BF48 /* SNRAddSeriesSheetViewController.h */,
+				4A6DE9771F429E600000BF48 /* SNRAddSeriesSheetViewController.m */,
 			);
-			name = Views;
+			path = Controllers;
 			sourceTree = "<group>";
 		};
-		4A6D2A9F1E8DFBD300BE876F /* Add */ = {
+		4A6DE9781F429E600000BF48 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				4A6D2AA41E8EDBBE00BE876F /* Views */,
-				4A6D2AA01E8DFBD800BE876F /* Controllers */,
+				4A6DE9861F429EA30000BF48 /* SNRAddSeriesDetailsInfoTableViewCell.h */,
+				4A6DE9801F429EA30000BF48 /* SNRAddSeriesDetailsInfoTableViewCell.m */,
+				4A6DE9841F429EA30000BF48 /* SNRAddSeriesDetailsSwitchTableViewCell.h */,
+				4A6DE9831F429EA30000BF48 /* SNRAddSeriesDetailsSwitchTableViewCell.m */,
+				4A6DE9851F429EA30000BF48 /* SNRAddSeriesDetailsTableViewCell.h */,
+				4A6DE9811F429EA30000BF48 /* SNRAddSeriesDetailsTableViewCell.m */,
+				4A6DE9871F429EA30000BF48 /* SNRAddSeriesTableViewCell.h */,
+				4A6DE9821F429EA30000BF48 /* SNRAddSeriesTableViewCell.m */,
 			);
-			name = Add;
+			path = Views;
 			sourceTree = "<group>";
 		};
-		4A6D2AA01E8DFBD800BE876F /* Controllers */ = {
+		4A6DE9791F429E600000BF48 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				4A6D2AA11E8DFBE900BE876F /* SNRAddSeriesSheetViewController.h */,
-				4A6D2AA21E8DFBE900BE876F /* SNRAddSeriesSheetViewController.m */,
+				4A6DE97A1F429E600000BF48 /* SNRSearchSeriesSheetViewController.h */,
+				4A6DE97B1F429E600000BF48 /* SNRSearchSeriesSheetViewController.m */,
 			);
-			name = Controllers;
+			path = Controllers;
 			sourceTree = "<group>";
 		};
-		4A6D2AA41E8EDBBE00BE876F /* Views */ = {
+		4A6DE97C1F429E600000BF48 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				4A6D2AA51E8EDBF000BE876F /* SNRAddSeriesTableViewCell.h */,
-				4A6D2AA61E8EDBF000BE876F /* SNRAddSeriesTableViewCell.m */,
-				4A12575B1E93168F0060746F /* SNRAddSeriesDetailsTableViewCell.h */,
-				4A12575C1E93168F0060746F /* SNRAddSeriesDetailsTableViewCell.m */,
-				4AD9FD121E95F5CF001ADBE1 /* SNRAddSeriesDetailsSwitchTableViewCell.h */,
-				4AD9FD131E95F5CF001ADBE1 /* SNRAddSeriesDetailsSwitchTableViewCell.m */,
-				4AD9FD151E960B9A001ADBE1 /* SNRAddSeriesDetailsInfoTableViewCell.h */,
-				4AD9FD161E960B9A001ADBE1 /* SNRAddSeriesDetailsInfoTableViewCell.m */,
+				4A6DE97D1F429E600000BF48 /* SNRSearchSeriesTableViewCell.h */,
+				4A6DE97E1F429E600000BF48 /* SNRSearchSeriesTableViewCell.m */,
 			);
-			name = Views;
+			path = Views;
+			sourceTree = "<group>";
+		};
+		4A6DE9941F429F150000BF48 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				4A6DE99A1F429F150000BF48 /* Fonts */,
+				4A6DE99C1F429F150000BF48 /* Nib */,
+				4A6DE9951F429F150000BF48 /* Assets.xcassets */,
+				4A6DE9961F429F150000BF48 /* LaunchScreen.storyboard */,
+				4A6DE9981F429F150000BF48 /* Main.storyboard */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		4A6DE99A1F429F150000BF48 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				4A6DE99B1F429F150000BF48 /* Arial.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		4A6DE99C1F429F150000BF48 /* Nib */ = {
+			isa = PBXGroup;
+			children = (
+				4A6DE99D1F429F150000BF48 /* SeasonHeader.xib */,
+			);
+			path = Nib;
 			sourceTree = "<group>";
 		};
 		4A777C7B1E654999006B1987 /* Client */ = {
@@ -859,11 +859,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4A3498D91E635E6C00453E63 /* Main.storyboard in Resources */,
-				4A31EF121F4101310055B437 /* Arial.ttf in Resources */,
-				4A3498D21E635E5300453E63 /* Assets.xcassets in Resources */,
-				4A3498D81E635E6C00453E63 /* LaunchScreen.storyboard in Resources */,
-				4A1107281F089B2E0005BE80 /* SeasonHeader.xib in Resources */,
+				4A6DE9A01F429F200000BF48 /* Main.storyboard in Resources */,
+				4A6DE99E1F429F1C0000BF48 /* Assets.xcassets in Resources */,
+				4A6DE99F1F429F200000BF48 /* LaunchScreen.storyboard in Resources */,
+				4A6DE9A21F429F280000BF48 /* Arial.ttf in Resources */,
+				4A6DE9A11F429F250000BF48 /* SeasonHeader.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -944,7 +944,6 @@
 				4A6106801F2C4CDF00FC3A1B /* SNRSettingsCell.m in Sources */,
 				4A7A235A1E7DE29500141FCE /* SNRServerManager.m in Sources */,
 				4A777C331E63EBC9006B1987 /* SNRCalendar.m in Sources */,
-				4AD9FD141E95F5CF001ADBE1 /* SNRAddSeriesDetailsSwitchTableViewCell.m in Sources */,
 				4AFA7BB11E7B9C8100932038 /* SNRServer.m in Sources */,
 				4A9BD4DE1F3BDDC300EB8A3F /* SNRParallaxView.m in Sources */,
 				4A3499101E63D7F600453E63 /* SNRTitle.m in Sources */,
@@ -954,20 +953,23 @@
 				4A777C3F1E63EDF4006B1987 /* SNRRevision.m in Sources */,
 				4A5F0A201E8037DD008463F6 /* SNRServerManagerViewController.m in Sources */,
 				4A9E6C561E760662008AB91A /* SNRNavigationViewController.m in Sources */,
-				4A6D2AA71E8EDBF000BE876F /* SNRAddSeriesTableViewCell.m in Sources */,
+				4A6DE98F1F429EAD0000BF48 /* SNRAddSeriesDetailsTableViewCell.m in Sources */,
 				4A777C461E63F7AF006B1987 /* SNRDiskSpace.m in Sources */,
 				4A777C3C1E63EDAE006B1987 /* SNRQuality.m in Sources */,
 				4A9E6C681E777DCB008AB91A /* SNRServerConfig.m in Sources */,
 				4A777C771E653683006B1987 /* SNRRelease.m in Sources */,
 				4A777C421E63F242006B1987 /* SNRCommand.m in Sources */,
+				4A6DE98D1F429EAD0000BF48 /* SNRAddSeriesDetailsInfoTableViewCell.m in Sources */,
 				4A3498E01E635E7900453E63 /* main.m in Sources */,
 				4A777C4F1E640407006B1987 /* SNRRecord.m in Sources */,
+				4A6DE9921F429EB90000BF48 /* SNRSearchSeriesTableViewCell.m in Sources */,
 				4A9BD4DB1F3BB21200EB8A3F /* SNRConstants.m in Sources */,
+				4A6DE98C1F429EAD0000BF48 /* SNRAddSeriesSheetViewController.m in Sources */,
 				4A5F0A291E805829008463F6 /* SNRSeriesViewController.m in Sources */,
-				4AD9FD171E960B9A001ADBE1 /* SNRAddSeriesDetailsInfoTableViewCell.m in Sources */,
 				4A777C391E63ECED006B1987 /* SNREpisode.m in Sources */,
 				4A3499231E63DD1000453E63 /* SNRRatings.m in Sources */,
 				4A3499171E63D94A00453E63 /* SNRSeason.m in Sources */,
+				4A6DE9901F429EAD0000BF48 /* SNRAddSeriesTableViewCell.m in Sources */,
 				4A6D2A8D1E8DAA6F00BE876F /* SNRSheetNavigationViewController.m in Sources */,
 				4A9E6C511E760507008AB91A /* SNRBaseViewController.m in Sources */,
 				4A23A4D11EF44CCC0044A567 /* SNRSeasonHeaderCell.m in Sources */,
@@ -979,27 +981,25 @@
 				4A147BBA1E8AD2C5000807AD /* SNRRefreshControl.m in Sources */,
 				4A31EF151F4102EB0055B437 /* UIFont+Sonarr.m in Sources */,
 				4A0969651E843F7800A8C35E /* SNRActivityIndicatorView.m in Sources */,
-				4A6D2AA31E8DFBE900BE876F /* SNRAddSeriesSheetViewController.m in Sources */,
-				4A12575D1E93168F0060746F /* SNRAddSeriesDetailsTableViewCell.m in Sources */,
 				4AA5D5EF1E668F8300C044C7 /* SNRAddServerPopUpViewController.m in Sources */,
 				4A34990A1E63C59400453E63 /* SNRStatus.m in Sources */,
 				4A777C6B1E653357006B1987 /* SNRCutoff.m in Sources */,
+				4A6DE9911F429EB10000BF48 /* SNRSearchSeriesSheetViewController.m in Sources */,
 				4AE5DA701F19E105002A8BF5 /* SNRSettingsViewController.m in Sources */,
 				4A14754C1E7B32C1006B6888 /* UIAlertController+Show.m in Sources */,
 				4A147BAD1E89D4F2000807AD /* NSString+check.m in Sources */,
 				4A3498DE1E635E7900453E63 /* AppDelegate.m in Sources */,
-				4A6D2A9B1E8DFB9F00BE876F /* SNRSearchSeriesSheetViewController.m in Sources */,
 				4A777C7A1E653B49006B1987 /* SNRRootFolder.m in Sources */,
 				4A777C6E1E65340A006B1987 /* SNRItem.m in Sources */,
 				4AEAEABC1F1C3D0D00255C7A /* SNRServerCell.m in Sources */,
 				4A5F0A301E81A6BC008463F6 /* UIImage+Remote.m in Sources */,
 				4A9E6C6B1E7785FE008AB91A /* SNRAPIClient.m in Sources */,
 				4A3499131E63D8ED00453E63 /* SNRImage.m in Sources */,
-				4A6D2A9E1E8DFBB300BE876F /* SNRSearchSeriesTableViewCell.m in Sources */,
 				4A9E6C611E765B67008AB91A /* SNRBaseSheetViewController.m in Sources */,
 				4A777C521E64078B006B1987 /* SNRData.m in Sources */,
 				4A777C491E63FB2F006B1987 /* SNREpisodeFile.m in Sources */,
 				4A34990D1E63CF2B00453E63 /* SNRSeries.m in Sources */,
+				4A6DE98E1F429EAD0000BF48 /* SNRAddSeriesDetailsSwitchTableViewCell.m in Sources */,
 				4AA3F6CA1F41220500EF048D /* UIImage+Utility.m in Sources */,
 				4A5F0A331E81A70B008463F6 /* SNRImageView.m in Sources */,
 			);
@@ -1035,18 +1035,18 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		4A3498D41E635E6C00453E63 /* LaunchScreen.storyboard */ = {
+		4A6DE9961F429F150000BF48 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				4A3498D51E635E6C00453E63 /* Base */,
+				4A6DE9971F429F150000BF48 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
-		4A3498D61E635E6C00453E63 /* Main.storyboard */ = {
+		4A6DE9981F429F150000BF48 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				4A3498D71E635E6C00453E63 /* Base */,
+				4A6DE9991F429F150000BF48 /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";

@@ -17,6 +17,7 @@
 #import "SNRImage.h"
 #import "SNRSeason.h"
 #import "SNREpisodeFile.h"
+#import "SNRRelease.h"
 
 NSString * const SNR_SERVER_CONFIG  = @"snr_server_config";
 NSString * const SNR_SERVER_ACTIVE  = @"snr_server_active";
@@ -236,7 +237,7 @@ static NSString * BASEURL;
     }];
 }
 
--(void)seriesWithRefresh:(BOOL)refresh andCompletion:(void(^)(NSArray<SNRSeries *> *series, NSError *error))completion{
+-(void)seriesWithRefresh:(BOOL)refresh withCompletion:(void(^)(NSArray<SNRSeries *> *series, NSError *error))completion{
     if (self.series.count && !refresh) {
         return completion(self.series, nil);
     }
@@ -258,7 +259,7 @@ static NSString * BASEURL;
     }];
 }
 
--(void)episodeFilesForSeries:(SNRSeries *)series andCompletion:(void(^)(NSArray<SNREpisodeFile *> *series, NSError *error))completion{
+-(void)episodeFilesForSeries:(SNRSeries *)series withCompletion:(void(^)(NSArray<SNREpisodeFile *> *series, NSError *error))completion{
     NSString *endpoint = [self generateURLWithEndpoint:[SNREpisodeFile endpoint]];
     [self.client performGETCallToEndpoint:endpoint withParameters:@{@"seriesId" : series.id.stringValue} andSuccess:^(id  _Nullable responseObject) {
         NSError *error;
@@ -303,6 +304,24 @@ static NSString * BASEURL;
     }];
 }
 
+-(void)releasesForEpisode:(SNREpisode *)episode withCompletion:(void(^)(NSArray<SNRRelease *> *releases, NSError *error))completion{
+    NSString *endpoint = [self generateURLWithEndpoint:[SNRRelease endpoint]];
+
+    [self.client performGETCallToEndpoint:endpoint withParameters:@{ @"episodeId" : episode.id.stringValue } andSuccess:^(id  _Nullable responseObject) {
+        NSError *error;
+        NSArray<SNRRelease *> *releases = [SNRRelease arrayOfModelsFromDictionaries:responseObject error:&error];
+        
+        episode.releases = releases;
+        if (completion) {
+            completion(releases, error);
+        }
+    } andFailure:^(NSError * _Nullable error) {
+        if (completion) {
+            completion(nil, error);
+        }
+    }];
+}
+
 -(void)addSeries:(SNRSeries *)series withCompletion:(void(^)(SNRSeries * series, NSError * error))completion{
     NSMutableDictionary *params = [series toDictionary].mutableCopy;
     [params setObject:@1 forKey:@"seasonFolder"];
@@ -329,7 +348,7 @@ static NSString * BASEURL;
     }];
 }
 
--(void)deleteSeries:(SNRSeries *)series withFiles:(BOOL)files andCompletion:(void(^)(BOOL success, NSError * error))completion{
+-(void)deleteSeries:(SNRSeries *)series withFiles:(BOOL)files withCompletion:(void(^)(BOOL success, NSError * error))completion{
     NSString *endpoint = [self generateURLWithEndpoint:[NSString stringWithFormat:@"%@/%@", [SNRSeries endpoint], series.id.stringValue]];
     
     __block SNRSeries *bSeries = series;
@@ -375,8 +394,8 @@ static NSString * BASEURL;
             season.episodes = seasonEpisode[season.seasonNumber.stringValue];
         }
         
-        [wself episodeFilesForSeries:series andCompletion:nil];
-
+        [wself episodeFilesForSeries:series withCompletion:nil];
+        
         if (completion) {
             completion(episodes, error);
         }
