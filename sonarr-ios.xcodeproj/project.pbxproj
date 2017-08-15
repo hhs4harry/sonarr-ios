@@ -25,6 +25,8 @@
 		4A3499231E63DD1000453E63 /* SNRRatings.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A3499221E63DD1000453E63 /* SNRRatings.m */; };
 		4A3ECE971F1A845700B16899 /* SNRFrontViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A3ECE961F1A845700B16899 /* SNRFrontViewController.m */; };
 		4A3ECE9B1F1BE7E700B16899 /* SNRAddServerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A3ECE9A1F1BE7E700B16899 /* SNRAddServerCell.m */; };
+		4A58F1CF1F42A2480091E56A /* SNRReleasesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A58F1CE1F42A2480091E56A /* SNRReleasesViewController.m */; };
+		4A58F1D31F42C84B0091E56A /* SNRReleaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A58F1D21F42C84B0091E56A /* SNRReleaseCell.m */; };
 		4A5F0A201E8037DD008463F6 /* SNRServerManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A5F0A1F1E8037DD008463F6 /* SNRServerManagerViewController.m */; };
 		4A5F0A241E803C3B008463F6 /* SNRServerTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A5F0A231E803C3B008463F6 /* SNRServerTableViewCell.m */; };
 		4A5F0A291E805829008463F6 /* SNRSeriesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A5F0A281E805829008463F6 /* SNRSeriesViewController.m */; };
@@ -137,6 +139,10 @@
 		4A3ECE961F1A845700B16899 /* SNRFrontViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SNRFrontViewController.m; sourceTree = "<group>"; };
 		4A3ECE991F1BE7E700B16899 /* SNRAddServerCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SNRAddServerCell.h; sourceTree = "<group>"; };
 		4A3ECE9A1F1BE7E700B16899 /* SNRAddServerCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SNRAddServerCell.m; sourceTree = "<group>"; };
+		4A58F1CD1F42A2480091E56A /* SNRReleasesViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SNRReleasesViewController.h; sourceTree = "<group>"; };
+		4A58F1CE1F42A2480091E56A /* SNRReleasesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SNRReleasesViewController.m; sourceTree = "<group>"; };
+		4A58F1D11F42C84B0091E56A /* SNRReleaseCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SNRReleaseCell.h; sourceTree = "<group>"; };
+		4A58F1D21F42C84B0091E56A /* SNRReleaseCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SNRReleaseCell.m; sourceTree = "<group>"; };
 		4A5F0A1E1E8037DD008463F6 /* SNRServerManagerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRServerManagerViewController.h; path = Auth/Controllers/SNRServerManagerViewController.h; sourceTree = "<group>"; };
 		4A5F0A1F1E8037DD008463F6 /* SNRServerManagerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRServerManagerViewController.m; path = Auth/Controllers/SNRServerManagerViewController.m; sourceTree = "<group>"; };
 		4A5F0A221E803C3B008463F6 /* SNRServerTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRServerTableViewCell.h; path = Auth/Views/SNRServerTableViewCell.h; sourceTree = "<group>"; };
@@ -319,6 +325,7 @@
 				4AE5DA6C1F19E0D8002A8BF5 /* Settings */,
 				4A5F0A251E805806008463F6 /* Series */,
 				4AC66C031EF3733A00A80E93 /* Seasons */,
+				4A58F1CB1F42A1F20091E56A /* Releases */,
 				4A6DE9941F429F150000BF48 /* Resources */,
 				4A3498961E63587200453E63 /* Supporting Files */,
 			);
@@ -480,6 +487,33 @@
 				4A3ECE9A1F1BE7E700B16899 /* SNRAddServerCell.m */,
 				4AEAEABA1F1C3D0D00255C7A /* SNRServerCell.h */,
 				4AEAEABB1F1C3D0D00255C7A /* SNRServerCell.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		4A58F1CB1F42A1F20091E56A /* Releases */ = {
+			isa = PBXGroup;
+			children = (
+				4A58F1D01F42C8360091E56A /* Views */,
+				4A58F1CC1F42A2260091E56A /* Controllers */,
+			);
+			path = Releases;
+			sourceTree = "<group>";
+		};
+		4A58F1CC1F42A2260091E56A /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				4A58F1CD1F42A2480091E56A /* SNRReleasesViewController.h */,
+				4A58F1CE1F42A2480091E56A /* SNRReleasesViewController.m */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		4A58F1D01F42C8360091E56A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				4A58F1D11F42C84B0091E56A /* SNRReleaseCell.h */,
+				4A58F1D21F42C84B0091E56A /* SNRReleaseCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -950,6 +984,7 @@
 				4A9118691EF72825005A3851 /* SNREpisodeCell.m in Sources */,
 				4A6D2A921E8DF66800BE876F /* MZFormSheetPresentationController+Keyboard.m in Sources */,
 				4A5F0A2D1E80593D008463F6 /* SNRBaseTableView.m in Sources */,
+				4A58F1CF1F42A2480091E56A /* SNRReleasesViewController.m in Sources */,
 				4A777C3F1E63EDF4006B1987 /* SNRRevision.m in Sources */,
 				4A5F0A201E8037DD008463F6 /* SNRServerManagerViewController.m in Sources */,
 				4A9E6C561E760662008AB91A /* SNRNavigationViewController.m in Sources */,
@@ -994,6 +1029,7 @@
 				4AEAEABC1F1C3D0D00255C7A /* SNRServerCell.m in Sources */,
 				4A5F0A301E81A6BC008463F6 /* UIImage+Remote.m in Sources */,
 				4A9E6C6B1E7785FE008AB91A /* SNRAPIClient.m in Sources */,
+				4A58F1D31F42C84B0091E56A /* SNRReleaseCell.m in Sources */,
 				4A3499131E63D8ED00453E63 /* SNRImage.m in Sources */,
 				4A9E6C611E765B67008AB91A /* SNRBaseSheetViewController.m in Sources */,
 				4A777C521E64078B006B1987 /* SNRData.m in Sources */,

@@ -9,6 +9,7 @@
 #import <JSONModel/JSONModel.h>
 @class SNREpisodeFile;
 @class SNRRelease;
+@protocol SNRRelease;
 
 @interface SNREpisode : JSONModel
 +(NSString *)endpoint;
@@ -30,7 +31,7 @@
 @property (assign, nonatomic) BOOL downloading;
 @property (strong, nonatomic) NSNumber *id;
 @property (strong, nonatomic) SNREpisodeFile<Optional> *file;
-@property (strong, nonatomic) NSArray<SNRRelease *> *releases;
+@property (strong, nonatomic) NSArray<SNRRelease, Optional> *releases;
 
 -(NSString *)formattedAirDate;
 -(NSString *)episodeFileStatus;

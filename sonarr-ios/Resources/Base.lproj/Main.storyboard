@@ -271,7 +271,7 @@ Add one now!</string>
                                                     </constraints>
                                                 </activityIndicatorView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="13b-rY-pQP">
-                                                    <rect key="frame" x="169.66666666666666" y="25" width="75" height="21"/>
+                                                    <rect key="frame" x="169.66666666666666" y="27" width="75" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
@@ -280,7 +280,7 @@ Add one now!</string>
                                             <color key="backgroundColor" red="0.098039215690000001" green="0.098039215690000001" blue="0.098039215690000001" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstItem="13b-rY-pQP" firstAttribute="centerX" secondItem="r8V-6E-AFv" secondAttribute="centerX" id="A7K-RU-2kG"/>
-                                                <constraint firstItem="13b-rY-pQP" firstAttribute="top" secondItem="r8V-6E-AFv" secondAttribute="bottom" id="DbQ-Mv-ewZ"/>
+                                                <constraint firstItem="13b-rY-pQP" firstAttribute="top" secondItem="r8V-6E-AFv" secondAttribute="bottom" constant="2" id="DbQ-Mv-ewZ"/>
                                                 <constraint firstItem="r8V-6E-AFv" firstAttribute="centerY" secondItem="cHh-Ky-y9c" secondAttribute="centerY" constant="-10" id="V2d-Fz-Nj1"/>
                                                 <constraint firstItem="r8V-6E-AFv" firstAttribute="centerX" secondItem="cHh-Ky-y9c" secondAttribute="centerX" id="ds7-en-NP2"/>
                                             </constraints>
@@ -330,6 +330,9 @@ Add one now!</string>
                                                         <constraint firstAttribute="width" secondItem="Hvh-vg-I5O" secondAttribute="height" multiplier="1:1" id="OBj-IG-Cl4"/>
                                                     </constraints>
                                                     <state key="normal" image="search"/>
+                                                    <connections>
+                                                        <action selector="searchTouchUpInside:" destination="hDu-dE-M6q" eventType="touchUpInside" id="mfN-A7-gt0"/>
+                                                    </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="May 13, 2016" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JBO-4b-Wi2">
                                                     <rect key="frame" x="306" y="26.666666666666664" width="58" height="15.999999999999993"/>
@@ -459,10 +462,10 @@ Add one now!</string>
             </objects>
             <point key="canvasLocation" x="1366.6666666666667" y="138.58695652173915"/>
         </scene>
-        <!--View Controller-->
+        <!--Releases View Controller-->
         <scene sceneID="3Pj-wx-aLc">
             <objects>
-                <viewController id="PBg-uM-Xy5" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SNRReleasesViewControllerSBID" useStoryboardIdentifierAsRestorationIdentifier="YES" id="PBg-uM-Xy5" customClass="SNRReleasesViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="j3J-sx-Xe4"/>
                         <viewControllerLayoutGuide type="bottom" id="enn-aJ-N4R"/>
@@ -471,19 +474,19 @@ Add one now!</string>
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8aa-4F-oX0">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8aa-4F-oX0">
                                 <rect key="frame" x="0.0" y="20" width="414" height="716"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.34901960780000002" green="0.34901960780000002" blue="0.34901960780000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="50" id="0ya-7q-wCD">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="releaseCell" rowHeight="50" id="0ya-7q-wCD" customClass="SNRReleaseCell">
                                         <rect key="frame" x="0.0" y="28" width="414" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0ya-7q-wCD" id="wBW-ch-gSx">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="49.666666666666664"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Some random episode" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3bD-wm-hg4">
-                                                    <rect key="frame" x="8" y="7" width="136" height="18"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Some random episode" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="3bD-wm-hg4">
+                                                    <rect key="frame" x="8" y="7" width="356.33333333333331" height="18"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="18" id="oet-Qg-GQN"/>
                                                     </constraints>
@@ -531,6 +534,9 @@ Add one now!</string>
                                                         <constraint firstAttribute="width" secondItem="x9I-vV-hSA" secondAttribute="height" multiplier="1:1" id="yoX-5q-N7J"/>
                                                     </constraints>
                                                     <state key="normal" image="download"/>
+                                                    <connections>
+                                                        <action selector="downloadButtonTouchUpInside:" destination="0ya-7q-wCD" eventType="touchUpInside" id="7j7-p5-Dhg"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -551,10 +557,23 @@ Add one now!</string>
                                                 <constraint firstItem="OaL-p1-xCJ" firstAttribute="centerY" secondItem="Wib-or-Yaj" secondAttribute="centerY" id="hV3-YX-RGu"/>
                                                 <constraint firstItem="aN8-9I-VWH" firstAttribute="height" secondItem="KyW-IU-n0l" secondAttribute="height" id="rFz-7e-tYm"/>
                                                 <constraint firstAttribute="trailing" secondItem="x9I-vV-hSA" secondAttribute="trailing" id="uRq-Ba-P3B"/>
+                                                <constraint firstItem="x9I-vV-hSA" firstAttribute="leading" secondItem="3bD-wm-hg4" secondAttribute="trailing" id="vco-b0-1pk"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="ageLabel" destination="KyW-IU-n0l" id="djb-Tf-Z6H"/>
+                                            <outlet property="downloadButton" destination="x9I-vV-hSA" id="OQt-Oz-nMo"/>
+                                            <outlet property="providerLabel" destination="aN8-9I-VWH" id="hXU-SE-mnQ"/>
+                                            <outlet property="qualityLabel" destination="OaL-p1-xCJ" id="Bwj-RV-6MA"/>
+                                            <outlet property="sizeLabel" destination="Wib-or-Yaj" id="G5z-Gh-2cP"/>
+                                            <outlet property="titleLabel" destination="3bD-wm-hg4" id="zpi-7j-UOM"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="PBg-uM-Xy5" id="rbX-s0-Beb"/>
+                                    <outlet property="delegate" destination="PBg-uM-Xy5" id="6Pq-rA-y0c"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -565,6 +584,9 @@ Add one now!</string>
                             <constraint firstItem="8aa-4F-oX0" firstAttribute="leading" secondItem="UuW-JN-Ad5" secondAttribute="leading" id="scd-EA-Ikh"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="8aa-4F-oX0" id="0Lj-iS-FP2"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9OO-Ae-jYl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

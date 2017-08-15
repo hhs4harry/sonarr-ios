@@ -31,4 +31,6 @@
 @property (strong, nonatomic) NSDate<Optional> *publishDate;
 @property (copy, nonatomic) NSString<Optional> *downloadUrl;
 @property (nonatomic) BOOL downloadAllowed;
+
+-(NSString *)formattedSize;
 @end

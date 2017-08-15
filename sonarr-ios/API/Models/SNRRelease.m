@@ -25,4 +25,8 @@
     return NO;
 }
 
+-(NSString *)formattedSize {
+    return @"985MB";
+}
+
 @end

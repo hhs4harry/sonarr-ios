@@ -36,4 +36,8 @@
     }
 }
 
+- (IBAction)searchTouchUpInside:(id)sender {
+    [self.delegate manualSearchForEpisode:self.episode];
+}
+
 @end

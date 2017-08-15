@@ -20,8 +20,10 @@
 #import "SNREpisodeCell.h"
 #import "SNRConstants.h"
 #import "SNRParallaxView.h"
+#import "SNRReleasesViewController.h"
+#import <MZFormSheetPresentationController/MZFormSheetPresentationViewController.h>
 
-@interface SNRSeasonsViewController () <SNRSeasonHeaderCellProtocol>
+@interface SNRSeasonsViewController () <SNRSeasonHeaderCellProtocol, SNREpisodeCellProtocol>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet SNRParallaxView *parallaxView;
 
@@ -94,6 +96,11 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    SNRSeason *season = [self.series.seasons objectAtIndex:indexPath.section];
+    if (!season.episodes && !season.episodes.count) {
+        return floor(65);
+    }
+    
     return floorf(45);
 }
 
@@ -131,6 +138,7 @@
         SNREpisode *episode = [season.episodes objectAtIndex:indexPath.row];
         SNREpisodeCell *cell = (id)[tableView dequeueReusableCellWithIdentifier:@"episodeCell" forIndexPath:indexPath];
         [cell setEpisode:episode];
+        cell.delegate = self;
         return cell;
     }
     
@@ -190,6 +198,19 @@
     if (indexPaths.count) {
         expanded ? [self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic] : [self.tableView deleteRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
     }
+}
+
+#pragma mark - Episode Cell Protocol
+
+-(void)automaticSearchForEpisode:(SNREpisode *)episode {
+    
+}
+
+-(void)manualSearchForEpisode:(SNREpisode *)episode {
+    MZFormSheetPresentationViewController *sheetViewPresentationController = (id)[SNRReleasesViewController viewController];
+    SNRReleasesViewController *releaseViewController = (id)sheetViewPresentationController.contentViewController;
+    [releaseViewController setServer:self.server series:self.series andEpisode:episode];
+    [self presentViewController:sheetViewPresentationController animated:YES completion:nil];
 }
 
 @end

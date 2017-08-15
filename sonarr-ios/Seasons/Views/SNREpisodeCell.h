@@ -9,7 +9,14 @@
 #import <UIKit/UIKit.h>
 @class SNREpisode;
 
-@interface SNREpisodeCell : UITableViewCell
--(void)setEpisode:(SNREpisode *)episode;
+@protocol SNREpisodeCellProtocol
+-(void)automaticSearchForEpisode:(SNREpisode *)episode;
+-(void)manualSearchForEpisode:(SNREpisode *)episode;
 
+@end
+
+@interface SNREpisodeCell : UITableViewCell
+@property (weak, nonatomic) id<SNREpisodeCellProtocol> delegate;
+
+-(void)setEpisode:(SNREpisode *)episode;
 @end
