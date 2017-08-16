@@ -35,13 +35,24 @@
 }
 
 -(NSString *)episodeFileStatus {
-    if (self.file.quality.quality.name) {
+    if (!self.hasFile) {
+        return @"Missing";
+    } else if (self.hasFile && !self.file) {
+        return @"Loading...";
+    } else if (self.file.quality.quality.name) {
         return self.file.quality.quality.name;
     } else if (self.airDateUtc && [[NSDate date] laterDate:self.airDateUtc] == self.airDateUtc) {
         return @"Unaired";
     } else {
-        return @"Missing";
+        return @"Unknown";
     }
 }
 
+-(NSString *)seasonxEpisode{
+    if (!self.seasonNumber || !self.episodeNumber) {
+        return @"";
+    }
+    
+    return [[self.seasonNumber.stringValue stringByAppendingString:@"x"] stringByAppendingString:self.episodeNumber.stringValue];
+}
 @end

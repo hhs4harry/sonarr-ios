@@ -11,7 +11,10 @@
 #define kParallaxRatio 0.25
 #define kBannerSize CGSizeMake(1920, 1080)
 #define kBannerSizeRatio MIN(kBannerSize.width, kBannerSize.height) / MAX(kBannerSize.width, kBannerSize.height)
-#define kDefaultFontName @"Arial"
+#define kDefaultFontName @"OpenSans-Light"
+#define kDefaultFontBoldName @"OpenSans-Bold"
+#define kBytesInMB 1048576
+#define kMBInGB 1000
 
 @interface SNRConstants : NSObject
 

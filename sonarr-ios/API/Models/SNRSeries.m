@@ -9,6 +9,7 @@
 #import "SNRSeries.h"
 #import "SNRRatings.h"
 #import "SNRSeason.h"
+#import "SNRConstants.h"
 
 @protocol SNRTitle;
 @protocol SNRImage;
@@ -149,6 +150,17 @@ const NSString * IGNOREEPISODESWITHOUTFILES = @"ignoreEpisodesWithoutFiles";
     } else {
         _seasons = seasons;
     }
+}
+
+-(NSString *)formattedSize {
+    if (self.sizeOnDisk && self.sizeOnDisk.floatValue) {
+        if (self.sizeOnDisk.floatValue / kBytesInMB > kMBInGB) {
+            return [NSString stringWithFormat:@"%0.2f GB", (self.sizeOnDisk.floatValue / kBytesInMB) / kMBInGB];
+        } else {
+            return [NSString stringWithFormat:@"%0.2f MB", (self.sizeOnDisk.floatValue / kBytesInMB)];
+        }
+    }
+    return @"0b";
 }
 
 #pragma mark - JSON

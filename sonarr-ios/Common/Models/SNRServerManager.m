@@ -60,7 +60,17 @@ NSString * const SNR_SERVER_MANAGER_DIR = @"sonarr/manager/server";
     }
     
     NSInteger serverIndex = [self.servers indexOfObject:server];
+    
+    if (self.activeServer == server &&
+        self.servers.count == 2) {
+        self.activeServer = self.servers[(serverIndex == 0) ? 1 : 0];
+    }
+    
     [self.servers removeObjectAtIndex:serverIndex];
+    
+    if (!self.servers || !self.servers.count) {
+        _activeServer = nil;
+    }
     
     [self fireDidRemoveServer:server atIndex:serverIndex];
 }

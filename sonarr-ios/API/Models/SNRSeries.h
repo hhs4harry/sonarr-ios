@@ -19,6 +19,7 @@ extern const NSString * IGNOREEPISODESWITHOUTFILES;
 +(NSString *)endpoint;
 +(NSString *)searchEndpoint;
 -(SNRImage *)imageWithType:(ImageType)type;
+-(NSString *)formattedSize;
 
 @property (readonly) NSNumber *id;
 @property (readonly) NSNumber *tvdbId;

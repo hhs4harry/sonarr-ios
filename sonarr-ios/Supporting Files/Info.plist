@@ -4,6 +4,8 @@
 <dict>
 	<key>UIAppFonts</key>
 	<array>
+		<string>OpenSans-Light.ttf</string>
+		<string>OpenSans-Bold.ttf</string>
 		<string>Arial.ttf</string>
 	</array>
 	<key>CFBundleDevelopmentRegion</key>

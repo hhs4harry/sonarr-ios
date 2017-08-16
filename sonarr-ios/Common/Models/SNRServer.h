@@ -45,14 +45,21 @@ typedef enum : NSInteger {
 -(NSString * _Nonnull)generateURLWithEndpoint:(NSString * _Nonnull)endpoint;
 
 -(instancetype _Nullable)initWithConfig:(SNRServerConfig * _Nonnull)config;
+
 -(void)validateServerWithCompletion:(void(^ _Nullable)(SNRStatus * _Nullable status, NSError * _Nullable error))completion;
+
 -(void)profilesWithCompletion:(void(^ _Nullable)(NSArray<SNRProfile *> * _Nullable profiles, NSError * _Nullable error))completion;
 -(void)rootFolderswithCompletion:(void(^ _Nullable)(NSArray<SNRRootFolder *> * _Nullable rootFolders, NSError * _Nullable error))completion;
+
 -(void)seriesWithRefresh:(BOOL)refresh withCompletion:(void(^ _Nullable)(NSArray<SNRSeries *> * _Nullable series, NSError * _Nullable error))completion;
 -(void)searchForSeries:(NSString * _Nonnull)series withCompletion:(void(^ _Nullable)(NSArray<SNRSeries *> * _Nullable series, NSError * _Nullable error))completion;
 -(void)addSeries:(SNRSeries * _Nonnull)series withCompletion:(void(^ _Nullable)(SNRSeries * _Nullable series, NSError * _Nullable error))completion;
 -(void)deleteSeries:(SNRSeries * _Nonnull)series withFiles:(BOOL)files withCompletion:(void(^ _Nullable)(BOOL success, NSError * _Nullable error))completion;
+
 -(void)episodesForSeries:(SNRSeries * _Nonnull)series withCompletion:(void(^ _Nullable)(NSArray<SNREpisode *> * _Nullable episodes, NSError * _Nullable error))completion;
 -(void)episodeFilesForSeries:(SNRSeries * _Nonnull)series withCompletion:(void(^ _Nullable)(NSArray<SNREpisodeFile *> * _Nullable series, NSError * _Nullable error))completion;
+-(void)updateEpisode:(SNREpisode * _Nonnull)episode withCompletion:(void(^ _Nullable)(SNREpisode * _Nullable episode, NSError * _Nullable error))completion;
+
 -(void)releasesForEpisode:(SNREpisode * _Nonnull)episode withCompletion:(void(^ _Nullable)(NSArray<SNRRelease *> * _Nullable releases, NSError * _Nullable error))completion;
+-(void)downloadRelease:(SNRRelease * _Nonnull)release onEpisode:(SNREpisode * _Nonnull)episode withCompletion:(void(^ _Nullable)(SNRRelease * _Nullable releases, NSError * _Nullable error))completion;
 @end

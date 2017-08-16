@@ -35,4 +35,5 @@
 
 -(NSString *)formattedAirDate;
 -(NSString *)episodeFileStatus;
+-(NSString *)seasonxEpisode;
 @end

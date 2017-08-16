@@ -11,6 +11,12 @@
 #import "SNREpisode.h"
 #import "SNRServer.h"
 
+@protocol SNRReleaseViewControllerProtocol
+-(void)didDismissWithError:(NSError * _Nonnull)error;
+@end
+
 @interface SNRReleasesViewController : SNRBaseSheetViewController
--(void)setServer:(SNRServer *)server series:(SNRSeries *)series andEpisode:(SNREpisode *)episode;
+@property (weak, nonatomic, nullable) id<SNRReleaseViewControllerProtocol> delegate;
+
+-(void)setServer:(SNRServer * _Nonnull)server series:(SNRSeries * _Nonnull)series andEpisode:(SNREpisode * _Nonnull)episode;
 @end

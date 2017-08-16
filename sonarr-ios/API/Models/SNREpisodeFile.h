@@ -21,4 +21,5 @@
 @property (strong, nonatomic) NSDate<Optional> *dateAdded;
 @property (strong, nonatomic) SNRQuality<Optional> *quality;
 
+-(NSString *)formattedSize;
 @end

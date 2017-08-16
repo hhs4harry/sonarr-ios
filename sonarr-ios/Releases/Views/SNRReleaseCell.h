@@ -9,8 +9,14 @@
 #import <UIKit/UIKit.h>
 @class SNRRelease;
 
-@interface SNRReleaseCell : UITableViewCell
+@protocol SNRReleaseCellProtocol
+-(void)downloadRelease:(SNRRelease * _Nonnull)release withCompletion:(void(^ _Nullable)(SNRRelease * _Nullable release, NSError * _Nullable error))completion;
 
--(void)setRelease:(SNRRelease *)release;
+@end
+
+@interface SNRReleaseCell : UITableViewCell
+@property (weak, nonatomic, nullable) id<SNRReleaseCellProtocol> delegate;
+
+-(void)setRelease:(SNRRelease * _Nonnull)release;
 
 @end

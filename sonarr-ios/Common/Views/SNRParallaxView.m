@@ -61,10 +61,7 @@ CGFloat const kTintViewColorAlpha = 0.7;
     self.seriesTitleLabel.text = series.title;
     self.seasonLabel.text = series.seriesInfo;
     
-    __weak typeof(self) wself = self;
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [wself animateToDefaultState:NO];
-    });
+    [self animateToDefaultState:NO];
 }
 
 -(void)animateToDefaultState:(BOOL)animate{

@@ -44,7 +44,7 @@
             instance.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.5f];
         }
         
-        dispatch_async(dispatch_get_main_queue(), ^{
+        void(^finishUp)(void) = ^() {
             if(!instance.indicator.isAnimating){
                 [instance.indicator startAnimating];
             }
@@ -58,16 +58,46 @@
             
             [NSLayoutConstraint activateConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[v]|" options:0 metrics:nil views:@{@"v" : instance}]];
             [NSLayoutConstraint activateConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[v]|" options:0 metrics:nil views:@{@"v" : instance}]];
-        });
+        };
+        
+        if ([NSThread isMainThread]) {
+            finishUp();
+        } else {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                finishUp();
+            });
+        }
     }else if(instance && !show){
-        [instance removeFromSuperview];
+        void(^finishUp)(void) = ^() {
+            [instance removeFromSuperview];
+        };
+        
+        if ([NSThread isMainThread]) {
+            finishUp();
+        } else {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                finishUp();
+            });
+        }
     }else{
-        dispatch_async(dispatch_get_main_queue(), ^{
+        void(^finishUp)(void) = ^() {
             [instance.indicator startAnimating];
             instance.hidden = !show;
-        });
+        };
+        
+        if ([NSThread isMainThread]) {
+            finishUp();
+        } else {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                finishUp();
+            });
+        }
     }
     return instance;
+}
+
++(instancetype _Nullable)show:(BOOL)show onView:(id _Nonnull)view withStyle:(UIActivityIndicatorViewStyle)style{
+    return [self show:show onView:view withStyle:style andTint:NO];
 }
 
 +(instancetype)show:(BOOL)show onView:(id)view{

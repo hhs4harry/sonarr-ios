@@ -310,10 +310,106 @@ static NSString * BASEURL;
     [self.client performGETCallToEndpoint:endpoint withParameters:@{ @"episodeId" : episode.id.stringValue } andSuccess:^(id  _Nullable responseObject) {
         NSError *error;
         NSArray<SNRRelease *> *releases = [SNRRelease arrayOfModelsFromDictionaries:responseObject error:&error];
+        releases = [releases sortedArrayUsingComparator:^NSComparisonResult(SNRRelease * _Nonnull obj1, SNRRelease * _Nonnull obj2) {
+            if (obj1.age.integerValue < obj2.age.integerValue) {
+                return NSOrderedAscending;
+            } else if (obj1.age.integerValue > obj2.age.integerValue) {
+                return NSOrderedDescending;
+            } else {
+                // Do a 2nd sort on size
+                if (obj1.size.integerValue > obj2.size.integerValue) {
+                    return NSOrderedAscending;
+                } else if (obj1.size.integerValue < obj2.size.integerValue) {
+                    return NSOrderedDescending;
+                } else {
+                    return NSOrderedSame;
+                }
+            }
+        }];
         
-        episode.releases = releases;
+        episode.releases = (id)releases;
         if (completion) {
             completion(releases, error);
+        }
+    } andFailure:^(NSError * _Nullable error) {
+        if (completion) {
+            completion(nil, error);
+        }
+    }];
+}
+
+// Download release only works after setting the monitored property on the series and updating it.
+// Therefore a call has to be made to unset the monitored property after download has begun.
+-(void)downloadRelease:(SNRRelease *)release onEpisode:(SNREpisode *)episode withCompletion:(void(^)(SNRRelease * releases, NSError *error))completion{
+    __block BOOL updatedMonitorStatus = NO;
+    
+    void(^ download)(SNREpisode *epp, SNRRelease *rel) = ^(SNREpisode *epp, SNRRelease *rel){
+        void(^revertEpisodeMonitoredStatus)(SNREpisode *revertEpp) = ^(SNREpisode *revertEpp) {
+            revertEpp.monitored = NO;
+            [self updateEpisode:revertEpp withCompletion:nil];
+        };
+        
+        __weak typeof(self) wself = self;
+        [self updateEpisode:epp withCompletion:^(SNREpisode *episode, NSError *error) {
+            if (episode) {
+                if (updatedMonitorStatus) {
+                    revertEpisodeMonitoredStatus(episode);
+                }
+                
+                NSString *endpoint = [self generateURLWithEndpoint:[SNRRelease endpoint]];
+                
+                [wself.client performPOSTCallToEndpoint:endpoint withParameters:rel.toDictionary withSuccess:^(id  _Nullable responseObject) {
+                    if (completion) {
+                        completion(rel, nil);
+                    }
+                } andFailure:^(NSError * _Nullable error) {
+                    if (completion) {
+                        completion(nil, error);
+                    }
+                }];
+            } else {
+                if (completion) {
+                    completion(nil, error);
+                }
+            }
+        }];
+    };
+    
+    if (!episode.monitored) {
+        episode.monitored = YES;
+        updatedMonitorStatus = YES;
+        
+        download(episode, release);
+    } else {
+        download(episode, release);
+    }
+}
+
+-(void)pushRelease:(SNRRelease *)release withCompletion:(void(^)(SNRRelease * releases, NSError *error))completion{
+    NSString *endpoint = [self generateURLWithEndpoint:[SNRRelease downloadEndpoint]];
+    
+    [self.client performPOSTCallToEndpoint:endpoint withParameters:release.toDictionary withSuccess:^(id  _Nullable responseObject) {
+        NSError *error;
+        SNRRelease *pushedRelease = [[SNRRelease alloc] initWithDictionary:responseObject error:&error];
+        release.guid = pushedRelease.guid;
+        
+        if (completion) {
+            completion(release, error);
+        }
+    } andFailure:^(NSError * _Nullable error) {
+        NSLog(@"%@", [[NSString alloc] initWithData:error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey] encoding:4]);
+        if (completion) {
+            completion(nil, error);
+        }
+    }];
+}
+
+-(void)updateEpisode:(SNREpisode *)episode withCompletion:(void(^)(SNREpisode *episode, NSError *error))completion{
+    NSString *endpoint = [self generateURLWithEndpoint:[SNREpisode endpoint]];
+    
+    [self.client performPUTCallToEndpoint:endpoint withParameters:episode.toDictionary andSuccess:^(id  _Nullable responseObject) {
+        if (completion) {
+            completion(episode, nil);
         }
     } andFailure:^(NSError * _Nullable error) {
         if (completion) {

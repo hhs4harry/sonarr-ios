@@ -23,7 +23,7 @@
 #import "SNRReleasesViewController.h"
 #import <MZFormSheetPresentationController/MZFormSheetPresentationViewController.h>
 
-@interface SNRSeasonsViewController () <SNRSeasonHeaderCellProtocol, SNREpisodeCellProtocol>
+@interface SNRSeasonsViewController () <SNRSeasonHeaderCellProtocol, SNREpisodeCellProtocol, SNRReleaseViewControllerProtocol>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet SNRParallaxView *parallaxView;
 
@@ -209,8 +209,15 @@
 -(void)manualSearchForEpisode:(SNREpisode *)episode {
     MZFormSheetPresentationViewController *sheetViewPresentationController = (id)[SNRReleasesViewController viewController];
     SNRReleasesViewController *releaseViewController = (id)sheetViewPresentationController.contentViewController;
+    releaseViewController.delegate = self;
     [releaseViewController setServer:self.server series:self.series andEpisode:episode];
     [self presentViewController:sheetViewPresentationController animated:YES completion:nil];
+}
+
+#pragma mark - Release View Controller Delegate
+
+-(void)didDismissWithError:(NSError *)error{
+#warning handle error
 }
 
 @end

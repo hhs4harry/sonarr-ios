@@ -28,7 +28,7 @@ typedef enum : NSUInteger {
 @property (strong, nonatomic) UITapGestureRecognizer *tap;
 @property (weak, nonatomic) IBOutlet UIButton *chevronButton;
 @property (assign, nonatomic) BOOL addingServer;
-@property (assign, nonatomic) BOOL editingServer;
+@property (strong, nonatomic) NSMutableArray<NSNumber *> *editingServer;
 @end
 
 @implementation SNRSettingsViewController
@@ -126,14 +126,15 @@ typedef enum : NSUInteger {
         return self.addingServer ? 190 : 50;
     }
     
-    return self.editingServer ? 190 : 50;
+    return [self.editingServer objectAtIndex:indexPath.item].boolValue ? 190 : 50;
 }
 
 #pragma mark - SettingsCell Protocol
 
 -(void)expanded:(BOOL)expanded cell:(SNRSettingsCell *)cell {
     if ([cell isKindOfClass:[SNRServerCell class]]) {
-        self.editingServer = expanded;
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+        [self.editingServer replaceObjectAtIndex:indexPath.item withObject:@(expanded)];
     } else if ([cell isKindOfClass:[SNRAddServerCell class]]) {
         self.addingServer = expanded;
     }
@@ -155,15 +156,16 @@ typedef enum : NSUInteger {
 #pragma mark - SNRServerManager protocol
 
 -(void)didAddServer:(SNRServer *)server atIndex:(NSInteger)index{
+    [self.editingServer insertObject:@(NO) atIndex:index];
     [self.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:index inSection:SNRSettingsSectionActiveServer]] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
 -(void)didDeleteServer:(SNRServer *)server atIndex:(NSInteger)index{
+    [self.editingServer removeObjectAtIndex:index];
     [self.tableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:index inSection:SNRSettingsSectionActiveServer]] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
 -(void)didSetActiveServer:(SNRServer *)server atIndex:(NSInteger)index{
-    
     [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:index inSection:SNRSettingsSectionActiveServer]] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
@@ -171,4 +173,19 @@ typedef enum : NSUInteger {
     [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:index inSection:SNRSettingsSectionActiveServer]] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
+#pragma mark - Setters/Getters
+
+-(NSMutableArray<NSNumber *> *)editingServer{
+    if (!_editingServer) {
+        NSMutableArray<NSNumber *> *exp = [[NSMutableArray alloc] init];
+        
+        [[SNRServerManager manager].servers enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            [exp insertObject:@(NO) atIndex:idx];
+        }];
+
+        _editingServer = exp;
+    }
+    
+    return _editingServer;
+}
 @end

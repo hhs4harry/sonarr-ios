@@ -30,7 +30,7 @@
 -(void)didReceiveMemoryWarning{
     [super didReceiveMemoryWarning];
     
-    NSLog(@"Memory Warning on VC: %@", NSStringFromClass([self class]));
+    NSLog(@"Memory Warning at : %@", NSStringFromClass([self class]));
 }
 
 -(void)viewDidDisappear:(BOOL)animated{
