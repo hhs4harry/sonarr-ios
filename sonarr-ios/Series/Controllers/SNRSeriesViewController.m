@@ -213,11 +213,8 @@ typedef enum : NSUInteger {
     }
 }
 
--(void)didUnsetActiveServer:(SNRServer *)server atIndex:(NSInteger)integer{
-    if([SNRServerManager manager].servers.count){
-        return;
-    }
-    
+-(void)didUnsetActiveServer:(SNRServer *)server atIndex:(NSInteger)index{
+    self.server = nil;
     [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 

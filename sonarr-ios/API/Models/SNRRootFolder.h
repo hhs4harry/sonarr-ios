@@ -11,8 +11,8 @@
 @interface SNRRootFolder : JSONModel
 +(NSString *)endpoint;
 
-@property (copy, nonatomic) NSString *path;
-@property (strong, nonatomic) NSNumber *freeSpace;
-@property (copy, nonatomic) NSArray *unmappedFolders;
+@property (copy, nonatomic) NSString<Optional> *path;
+@property (strong, nonatomic) NSNumber<Optional> *freeSpace;
+@property (copy, nonatomic) NSArray<Optional> *unmappedFolders;
 @property (strong, nonatomic) NSNumber *id;
 @end

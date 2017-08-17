@@ -50,6 +50,11 @@
 -(void)setRelease:(SNRRelease *)release{
     _episodeRelease = release;
 
+    if (!release.downloadAllowed) {
+        self.downloadButton.alpha = 0.3f;
+        self.downloadButton.userInteractionEnabled = NO;
+    }
+    
     // Remove activity indicator if one exists.
     [SNRActivityIndicatorView show:NO onView:self.downloadButton];
     

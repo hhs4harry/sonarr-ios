@@ -28,8 +28,6 @@
 		4A58F1CF1F42A2480091E56A /* SNRReleasesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A58F1CE1F42A2480091E56A /* SNRReleasesViewController.m */; };
 		4A58F1D31F42C84B0091E56A /* SNRReleaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A58F1D21F42C84B0091E56A /* SNRReleaseCell.m */; };
 		4A5E5E6C1F4376AE0043835F /* SNRReleaseEpisodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A5E5E6B1F4376AE0043835F /* SNRReleaseEpisodeView.m */; };
-		4A5E5E6E1F4392A70043835F /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4A5E5E6D1F4392A60043835F /* OpenSans-Light.ttf */; };
-		4A5E5E701F4392B10043835F /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4A5E5E6F1F4392B10043835F /* OpenSans-Bold.ttf */; };
 		4A5F0A201E8037DD008463F6 /* SNRServerManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A5F0A1F1E8037DD008463F6 /* SNRServerManagerViewController.m */; };
 		4A5F0A241E803C3B008463F6 /* SNRServerTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A5F0A231E803C3B008463F6 /* SNRServerTableViewCell.m */; };
 		4A5F0A291E805829008463F6 /* SNRSeriesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A5F0A281E805829008463F6 /* SNRSeriesViewController.m */; };
@@ -80,6 +78,8 @@
 		4A9E6C6B1E7785FE008AB91A /* SNRAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A9E6C6A1E7785FE008AB91A /* SNRAPIClient.m */; };
 		4AA3F6CA1F41220500EF048D /* UIImage+Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AA3F6C91F41220500EF048D /* UIImage+Utility.m */; };
 		4AA5D5EF1E668F8300C044C7 /* SNRAddServerPopUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AA5D5EE1E668F8300C044C7 /* SNRAddServerPopUpViewController.m */; };
+		4AA75DC41F4614DD0007E2D1 /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4AA75DC21F4614BE0007E2D1 /* OpenSans-Bold.ttf */; };
+		4AA75DC51F4614DD0007E2D1 /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4AA75DC31F4614BE0007E2D1 /* OpenSans-Light.ttf */; };
 		4AC66C071EF3738800A80E93 /* SNRSeasonsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AC66C061EF3738800A80E93 /* SNRSeasonsViewController.m */; };
 		4AE5DA701F19E105002A8BF5 /* SNRSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AE5DA6F1F19E105002A8BF5 /* SNRSettingsViewController.m */; };
 		4AEAEABC1F1C3D0D00255C7A /* SNRServerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AEAEABB1F1C3D0D00255C7A /* SNRServerCell.m */; };
@@ -148,8 +148,6 @@
 		4A58F1D21F42C84B0091E56A /* SNRReleaseCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SNRReleaseCell.m; sourceTree = "<group>"; };
 		4A5E5E6A1F4376AE0043835F /* SNRReleaseEpisodeView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SNRReleaseEpisodeView.h; sourceTree = "<group>"; };
 		4A5E5E6B1F4376AE0043835F /* SNRReleaseEpisodeView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SNRReleaseEpisodeView.m; sourceTree = "<group>"; };
-		4A5E5E6D1F4392A60043835F /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Light.ttf"; path = "../../../../../../../Downloads/open-sans/OpenSans-Light.ttf"; sourceTree = "<group>"; };
-		4A5E5E6F1F4392B10043835F /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Bold.ttf"; path = "../../../../../../../Downloads/open-sans/OpenSans-Bold.ttf"; sourceTree = "<group>"; };
 		4A5F0A1E1E8037DD008463F6 /* SNRServerManagerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRServerManagerViewController.h; path = Auth/Controllers/SNRServerManagerViewController.h; sourceTree = "<group>"; };
 		4A5F0A1F1E8037DD008463F6 /* SNRServerManagerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRServerManagerViewController.m; path = Auth/Controllers/SNRServerManagerViewController.m; sourceTree = "<group>"; };
 		4A5F0A221E803C3B008463F6 /* SNRServerTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRServerTableViewCell.h; path = Auth/Views/SNRServerTableViewCell.h; sourceTree = "<group>"; };
@@ -247,6 +245,8 @@
 		4AA3F6C91F41220500EF048D /* UIImage+Utility.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Utility.m"; path = "Common/Views/UIImage+Utility.m"; sourceTree = "<group>"; };
 		4AA5D5ED1E668F8300C044C7 /* SNRAddServerPopUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRAddServerPopUpViewController.h; path = Auth/Controllers/SNRAddServerPopUpViewController.h; sourceTree = "<group>"; };
 		4AA5D5EE1E668F8300C044C7 /* SNRAddServerPopUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRAddServerPopUpViewController.m; path = Auth/Controllers/SNRAddServerPopUpViewController.m; sourceTree = "<group>"; };
+		4AA75DC21F4614BE0007E2D1 /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Bold.ttf"; sourceTree = "<group>"; };
+		4AA75DC31F4614BE0007E2D1 /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Light.ttf"; sourceTree = "<group>"; };
 		4AC66C051EF3738800A80E93 /* SNRSeasonsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRSeasonsViewController.h; path = Seasons/Controllers/SNRSeasonsViewController.h; sourceTree = "<group>"; };
 		4AC66C061EF3738800A80E93 /* SNRSeasonsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRSeasonsViewController.m; path = Seasons/Controllers/SNRSeasonsViewController.m; sourceTree = "<group>"; };
 		4AE5DA6E1F19E105002A8BF5 /* SNRSettingsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SNRSettingsViewController.h; sourceTree = "<group>"; };
@@ -675,8 +675,8 @@
 		4A6DE99A1F429F150000BF48 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				4A5E5E6F1F4392B10043835F /* OpenSans-Bold.ttf */,
-				4A5E5E6D1F4392A60043835F /* OpenSans-Light.ttf */,
+				4AA75DC21F4614BE0007E2D1 /* OpenSans-Bold.ttf */,
+				4AA75DC31F4614BE0007E2D1 /* OpenSans-Light.ttf */,
 				4A6DE99B1F429F150000BF48 /* Arial.ttf */,
 			);
 			path = Fonts;
@@ -904,10 +904,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4A5E5E6E1F4392A70043835F /* OpenSans-Light.ttf in Resources */,
-				4A5E5E701F4392B10043835F /* OpenSans-Bold.ttf in Resources */,
 				4A6DE9A01F429F200000BF48 /* Main.storyboard in Resources */,
 				4A6DE99E1F429F1C0000BF48 /* Assets.xcassets in Resources */,
+				4AA75DC51F4614DD0007E2D1 /* OpenSans-Light.ttf in Resources */,
+				4AA75DC41F4614DD0007E2D1 /* OpenSans-Bold.ttf in Resources */,
 				4A6DE99F1F429F200000BF48 /* LaunchScreen.storyboard in Resources */,
 				4A6DE9A21F429F280000BF48 /* Arial.ttf in Resources */,
 				4A6DE9A11F429F250000BF48 /* SeasonHeader.xib in Resources */,

@@ -1500,7 +1500,7 @@ Add one now!</string>
                                                             </attributedString>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="eksplex.asuscomm.com" placeholder="X.X.X.X or XXXXX.XXX" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6qW-cP-lvO">
+                                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="10.0.0.183" placeholder="X.X.X.X or XXXXX.XXX" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6qW-cP-lvO">
                                                             <rect key="frame" x="12.666666666666657" y="78.333333333333329" width="389" height="20"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="20" id="tAC-DP-8Gc"/>
@@ -1512,7 +1512,7 @@ Add one now!</string>
                                                                 <outlet property="delegate" destination="eY5-Bo-haw" id="MKI-WU-4L3"/>
                                                             </connections>
                                                         </textField>
-                                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="ef96fe34c1294c66b93d42519d61f43e" placeholder="ef85fe34c1294c66b93d42519d61f43e" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="p6C-Ei-SXy">
+                                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="a80fe84100da413f9f34d6ead134b310" placeholder="ef85fe34c1294c66b93d42519d61f43e" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="p6C-Ei-SXy">
                                                             <rect key="frame" x="12.666666666666657" y="120.66666666666666" width="389" height="20.999999999999972"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="20" id="Hbs-AB-jjM"/>
@@ -1556,7 +1556,7 @@ Add one now!</string>
                                                             </attributedString>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="8990" placeholder="8989" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gno-Ox-bmY">
+                                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="8989" placeholder="8989" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gno-Ox-bmY">
                                                             <rect key="frame" x="12.666666666666671" y="164" width="165.66666666666669" height="20"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="20" id="xhY-of-0n9"/>

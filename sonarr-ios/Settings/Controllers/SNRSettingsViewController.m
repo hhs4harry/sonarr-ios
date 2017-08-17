@@ -14,6 +14,7 @@
 #import "SNRServerCell.h"
 #import "SNRServerManager.h"
 #import "SNRSettingsCell.h"
+#import "SNRActivityIndicatorView.h"
 
 typedef enum : NSUInteger {
     SNRSettingsSectionAddServer = 0,
@@ -94,6 +95,42 @@ typedef enum : NSUInteger {
 }
 
 #pragma mark - TableView DataSource
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    return indexPath.section == SNRSettingsSectionActiveServer;
+}
+
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return UITableViewCellEditingStyleDelete;
+}
+
+- (void)tableView:(UITableView*)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath*)indexPath{
+    return; //Needed for ios 8.0 to work.
+}
+
+- (NSArray<UITableViewRowAction *> *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath{
+    __block SNRServer *server = [[SNRServerManager manager].servers objectAtIndex:indexPath.item];
+    __weak typeof(self) wself = self;
+    __block UITableView *tView = tableView;
+    
+    UITableViewRowAction *deleteAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDestructive title:@"Delete" handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath)
+    {
+        NSString *deleteString = [[@"Delete " stringByAppendingString:server.config.hostname] stringByAppendingString:@"?"];
+        NSString *deleteMessage = @"Are you sure you want to delete this server?";
+                                  
+        UIAlertController *deleteAlert = [UIAlertController alertControllerWithTitle:deleteString message:deleteMessage preferredStyle:UIAlertControllerStyleAlert];
+        [deleteAlert addAction:[UIAlertAction actionWithTitle:@"Delete" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+            [[SNRServerManager manager] removeServer:server];
+        }]];
+        [deleteAlert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+            [tView setEditing:NO animated:YES];
+        }]];
+        
+        [wself presentViewController:deleteAlert animated:YES completion:nil];
+    }];
+    
+    return @[deleteAction];
+}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == SNRSettingsSectionAddServer) {
