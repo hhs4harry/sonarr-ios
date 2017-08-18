@@ -22,8 +22,10 @@
 #import "SNRParallaxView.h"
 #import "SNRReleasesViewController.h"
 #import <MZFormSheetPresentationController/MZFormSheetPresentationViewController.h>
+#import "SNRNavigationViewController.h"
+#import "SNRConstants.h"
 
-@interface SNRSeasonsViewController () <SNRSeasonHeaderCellProtocol, SNREpisodeCellProtocol, SNRReleaseViewControllerProtocol>
+@interface SNRSeasonsViewController () <SNRSeasonHeaderCellProtocol, SNREpisodeCellProtocol, SNRReleaseViewControllerProtocol, SNRNavigationBarButtonProtocol>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet SNRParallaxView *parallaxView;
 
@@ -220,4 +222,17 @@
 #warning handle error
 }
 
+#pragma mark - Navigation Protocol
+
+-(UIBarButtonItem *)backBarButton{
+    UIBarButtonItem *item = [SNRConstants backButton];
+    item.target = self;
+    item.action = @selector(backButtonTouched);
+    
+    return item;
+}
+
+-(void)backButtonTouched{
+    [self.navigationController popViewControllerAnimated:YES];
+}
 @end

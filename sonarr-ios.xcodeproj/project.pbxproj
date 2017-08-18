@@ -38,12 +38,11 @@
 		4A6106801F2C4CDF00FC3A1B /* SNRSettingsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A61067F1F2C4CDF00FC3A1B /* SNRSettingsCell.m */; };
 		4A6D2A8D1E8DAA6F00BE876F /* SNRSheetNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A6D2A8C1E8DAA6F00BE876F /* SNRSheetNavigationViewController.m */; };
 		4A6D2A921E8DF66800BE876F /* MZFormSheetPresentationController+Keyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A6D2A911E8DF66800BE876F /* MZFormSheetPresentationController+Keyboard.m */; };
-		4A6DE98C1F429EAD0000BF48 /* SNRAddSeriesSheetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A6DE9771F429E600000BF48 /* SNRAddSeriesSheetViewController.m */; };
+		4A6DE98C1F429EAD0000BF48 /* SNRAddSeriesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A6DE9771F429E600000BF48 /* SNRAddSeriesViewController.m */; };
 		4A6DE98D1F429EAD0000BF48 /* SNRAddSeriesDetailsInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A6DE9801F429EA30000BF48 /* SNRAddSeriesDetailsInfoTableViewCell.m */; };
 		4A6DE98E1F429EAD0000BF48 /* SNRAddSeriesDetailsSwitchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A6DE9831F429EA30000BF48 /* SNRAddSeriesDetailsSwitchTableViewCell.m */; };
 		4A6DE98F1F429EAD0000BF48 /* SNRAddSeriesDetailsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A6DE9811F429EA30000BF48 /* SNRAddSeriesDetailsTableViewCell.m */; };
 		4A6DE9901F429EAD0000BF48 /* SNRAddSeriesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A6DE9821F429EA30000BF48 /* SNRAddSeriesTableViewCell.m */; };
-		4A6DE9911F429EB10000BF48 /* SNRSearchSeriesSheetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A6DE97B1F429E600000BF48 /* SNRSearchSeriesSheetViewController.m */; };
 		4A6DE9921F429EB90000BF48 /* SNRSearchSeriesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A6DE97E1F429E600000BF48 /* SNRSearchSeriesTableViewCell.m */; };
 		4A6DE99E1F429F1C0000BF48 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A6DE9951F429F150000BF48 /* Assets.xcassets */; };
 		4A6DE99F1F429F200000BF48 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4A6DE9961F429F150000BF48 /* LaunchScreen.storyboard */; };
@@ -80,6 +79,8 @@
 		4AA5D5EF1E668F8300C044C7 /* SNRAddServerPopUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AA5D5EE1E668F8300C044C7 /* SNRAddServerPopUpViewController.m */; };
 		4AA75DC41F4614DD0007E2D1 /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4AA75DC21F4614BE0007E2D1 /* OpenSans-Bold.ttf */; };
 		4AA75DC51F4614DD0007E2D1 /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4AA75DC31F4614BE0007E2D1 /* OpenSans-Light.ttf */; };
+		4AA75DC91F4643100007E2D1 /* SNRPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AA75DC81F4643100007E2D1 /* SNRPageViewController.m */; };
+		4AA75DCC1F4660F50007E2D1 /* SNRSearchSeriesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AA75DCA1F4660F20007E2D1 /* SNRSearchSeriesViewController.m */; };
 		4AC66C071EF3738800A80E93 /* SNRSeasonsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AC66C061EF3738800A80E93 /* SNRSeasonsViewController.m */; };
 		4AE5DA701F19E105002A8BF5 /* SNRSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AE5DA6F1F19E105002A8BF5 /* SNRSettingsViewController.m */; };
 		4AEAEABC1F1C3D0D00255C7A /* SNRServerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AEAEABB1F1C3D0D00255C7A /* SNRServerCell.m */; };
@@ -168,10 +169,8 @@
 		4A6D2A8C1E8DAA6F00BE876F /* SNRSheetNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRSheetNavigationViewController.m; path = Navigation/Controllers/SNRSheetNavigationViewController.m; sourceTree = "<group>"; };
 		4A6D2A901E8DF66800BE876F /* MZFormSheetPresentationController+Keyboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MZFormSheetPresentationController+Keyboard.h"; path = "Libraries/Controllers/MZFormSheetPresentationController+Keyboard.h"; sourceTree = "<group>"; };
 		4A6D2A911E8DF66800BE876F /* MZFormSheetPresentationController+Keyboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MZFormSheetPresentationController+Keyboard.m"; path = "Libraries/Controllers/MZFormSheetPresentationController+Keyboard.m"; sourceTree = "<group>"; };
-		4A6DE9761F429E600000BF48 /* SNRAddSeriesSheetViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SNRAddSeriesSheetViewController.h; sourceTree = "<group>"; };
-		4A6DE9771F429E600000BF48 /* SNRAddSeriesSheetViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SNRAddSeriesSheetViewController.m; sourceTree = "<group>"; };
-		4A6DE97A1F429E600000BF48 /* SNRSearchSeriesSheetViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SNRSearchSeriesSheetViewController.h; sourceTree = "<group>"; };
-		4A6DE97B1F429E600000BF48 /* SNRSearchSeriesSheetViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SNRSearchSeriesSheetViewController.m; sourceTree = "<group>"; };
+		4A6DE9761F429E600000BF48 /* SNRAddSeriesViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SNRAddSeriesViewController.h; sourceTree = "<group>"; };
+		4A6DE9771F429E600000BF48 /* SNRAddSeriesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SNRAddSeriesViewController.m; sourceTree = "<group>"; };
 		4A6DE97D1F429E600000BF48 /* SNRSearchSeriesTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SNRSearchSeriesTableViewCell.h; sourceTree = "<group>"; };
 		4A6DE97E1F429E600000BF48 /* SNRSearchSeriesTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SNRSearchSeriesTableViewCell.m; sourceTree = "<group>"; };
 		4A6DE9801F429EA30000BF48 /* SNRAddSeriesDetailsInfoTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SNRAddSeriesDetailsInfoTableViewCell.m; sourceTree = "<group>"; };
@@ -247,6 +246,10 @@
 		4AA5D5EE1E668F8300C044C7 /* SNRAddServerPopUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRAddServerPopUpViewController.m; path = Auth/Controllers/SNRAddServerPopUpViewController.m; sourceTree = "<group>"; };
 		4AA75DC21F4614BE0007E2D1 /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Bold.ttf"; sourceTree = "<group>"; };
 		4AA75DC31F4614BE0007E2D1 /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Light.ttf"; sourceTree = "<group>"; };
+		4AA75DC71F4643100007E2D1 /* SNRPageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SNRPageViewController.h; path = Common/Controllers/SNRPageViewController.h; sourceTree = "<group>"; };
+		4AA75DC81F4643100007E2D1 /* SNRPageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = SNRPageViewController.m; path = Common/Controllers/SNRPageViewController.m; sourceTree = "<group>"; };
+		4AA75DCA1F4660F20007E2D1 /* SNRSearchSeriesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SNRSearchSeriesViewController.m; sourceTree = "<group>"; };
+		4AA75DCB1F4660F20007E2D1 /* SNRSearchSeriesViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SNRSearchSeriesViewController.h; sourceTree = "<group>"; };
 		4AC66C051EF3738800A80E93 /* SNRSeasonsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRSeasonsViewController.h; path = Seasons/Controllers/SNRSeasonsViewController.h; sourceTree = "<group>"; };
 		4AC66C061EF3738800A80E93 /* SNRSeasonsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRSeasonsViewController.m; path = Seasons/Controllers/SNRSeasonsViewController.m; sourceTree = "<group>"; };
 		4AE5DA6E1F19E105002A8BF5 /* SNRSettingsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SNRSettingsViewController.h; sourceTree = "<group>"; };
@@ -621,8 +624,8 @@
 		4A6DE9751F429E600000BF48 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				4A6DE9761F429E600000BF48 /* SNRAddSeriesSheetViewController.h */,
-				4A6DE9771F429E600000BF48 /* SNRAddSeriesSheetViewController.m */,
+				4A6DE9761F429E600000BF48 /* SNRAddSeriesViewController.h */,
+				4A6DE9771F429E600000BF48 /* SNRAddSeriesViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -645,8 +648,8 @@
 		4A6DE9791F429E600000BF48 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				4A6DE97A1F429E600000BF48 /* SNRSearchSeriesSheetViewController.h */,
-				4A6DE97B1F429E600000BF48 /* SNRSearchSeriesSheetViewController.m */,
+				4AA75DCB1F4660F20007E2D1 /* SNRSearchSeriesViewController.h */,
+				4AA75DCA1F4660F20007E2D1 /* SNRSearchSeriesViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -713,6 +716,8 @@
 				4A9E6C601E765B67008AB91A /* SNRBaseSheetViewController.m */,
 				4A147BB81E8AD2C5000807AD /* SNRRefreshControl.h */,
 				4A147BB91E8AD2C5000807AD /* SNRRefreshControl.m */,
+				4AA75DC71F4643100007E2D1 /* SNRPageViewController.h */,
+				4AA75DC81F4643100007E2D1 /* SNRPageViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -1012,10 +1017,11 @@
 				4A777C4F1E640407006B1987 /* SNRRecord.m in Sources */,
 				4A6DE9921F429EB90000BF48 /* SNRSearchSeriesTableViewCell.m in Sources */,
 				4A9BD4DB1F3BB21200EB8A3F /* SNRConstants.m in Sources */,
-				4A6DE98C1F429EAD0000BF48 /* SNRAddSeriesSheetViewController.m in Sources */,
+				4A6DE98C1F429EAD0000BF48 /* SNRAddSeriesViewController.m in Sources */,
 				4A5F0A291E805829008463F6 /* SNRSeriesViewController.m in Sources */,
 				4A777C391E63ECED006B1987 /* SNREpisode.m in Sources */,
 				4A3499231E63DD1000453E63 /* SNRRatings.m in Sources */,
+				4AA75DCC1F4660F50007E2D1 /* SNRSearchSeriesViewController.m in Sources */,
 				4A3499171E63D94A00453E63 /* SNRSeason.m in Sources */,
 				4A6DE9901F429EAD0000BF48 /* SNRAddSeriesTableViewCell.m in Sources */,
 				4A6D2A8D1E8DAA6F00BE876F /* SNRSheetNavigationViewController.m in Sources */,
@@ -1033,7 +1039,7 @@
 				4AA5D5EF1E668F8300C044C7 /* SNRAddServerPopUpViewController.m in Sources */,
 				4A34990A1E63C59400453E63 /* SNRStatus.m in Sources */,
 				4A777C6B1E653357006B1987 /* SNRCutoff.m in Sources */,
-				4A6DE9911F429EB10000BF48 /* SNRSearchSeriesSheetViewController.m in Sources */,
+				4AA75DC91F4643100007E2D1 /* SNRPageViewController.m in Sources */,
 				4AE5DA701F19E105002A8BF5 /* SNRSettingsViewController.m in Sources */,
 				4A14754C1E7B32C1006B6888 /* UIAlertController+Show.m in Sources */,
 				4A147BAD1E89D4F2000807AD /* NSString+check.m in Sources */,

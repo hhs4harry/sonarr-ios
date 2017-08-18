@@ -12,7 +12,7 @@
 #import "SNRBaseTableView.h"
 #import "SNRServerManager.h"
 #import "SNRServer.h"
-#import "SNRSearchSeriesSheetViewController.h"
+#import "SNRSearchSeriesViewController.h"
 #import <MZFormSheetPresentationController/MZFormSheetPresentationViewController.h>
 #import "SNRSeries.h"
 #import "UIColor+App.h"
@@ -44,6 +44,12 @@ typedef enum : NSUInteger {
     
     self.cellType = SeriesTableViewCellTypeNone;
     self.server = [SNRServerManager manager].activeServer;
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    
+    self.title = @"Series";
 }
 
 #pragma mark - TableView
@@ -182,7 +188,7 @@ typedef enum : NSUInteger {
 #pragma mark - Navigation Protocol
 
 -(void)addSeriesButtonTouchUpInside{
-    [self presentViewController:[SNRSearchSeriesSheetViewController viewController] animated:YES completion:nil];
+    [self presentViewController:[SNRSearchSeriesViewController viewController] animated:YES completion:nil];
 }
 
 -(void)settingsButtonTouchUpInside{

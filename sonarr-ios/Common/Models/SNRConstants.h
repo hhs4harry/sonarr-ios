@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 #define kParallaxRatio 0.25
 #define kBannerSize CGSizeMake(1920, 1080)
@@ -17,5 +18,6 @@
 #define kMBInGB 1000
 
 @interface SNRConstants : NSObject
++(UIBarButtonItem *)backButton;
 
 @end

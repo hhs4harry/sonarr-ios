@@ -52,7 +52,9 @@
 #pragma mark - SNRRefreshControlProtocol
 
 -(void)didRequestRefresh{
-    [((id<SNRBaseTableViewProtocol>)self.delegate) didRequestRefresh:self];
+    if (self.delegate) {
+        [((id<SNRBaseTableViewProtocol>)self.delegate) didRequestRefresh:self];
+    }
 }
 
 @end

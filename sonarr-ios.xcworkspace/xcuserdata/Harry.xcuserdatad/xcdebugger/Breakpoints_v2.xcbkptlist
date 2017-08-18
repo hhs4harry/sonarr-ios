@@ -52,7 +52,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "sonarr-ios/Common/Models/SNRServer.m"
-            timestampString = "524550313.369698"
+            timestampString = "524551294.428077"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "366"

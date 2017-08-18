@@ -26,7 +26,8 @@
     [UINavigationBar appearance].translucent = NO;
     [UINavigationBar appearance].tintColor = [UIColor whiteColor];
     [[UINavigationBar appearance] setTitleTextAttributes:@{
-                                                           NSForegroundColorAttributeName: [UIColor whiteColor]
+                                                           NSForegroundColorAttributeName: [UIColor whiteColor],
+                                                           NSFontAttributeName : [UIFont systemFontOfSize:16]
                                                            }];
     
     [UIFloatLabelTextField appearance].floatLabelActiveColor = [UIColor primary];

@@ -160,10 +160,10 @@ typedef enum : NSUInteger {
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == SNRSettingsSectionAddServer) {
-        return self.addingServer ? 190 : 50;
+        return self.addingServer ? 195 : 50;
     }
     
-    return [self.editingServer objectAtIndex:indexPath.item].boolValue ? 190 : 50;
+    return [self.editingServer objectAtIndex:indexPath.item].boolValue ? 195 : 50;
 }
 
 #pragma mark - SettingsCell Protocol

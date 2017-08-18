@@ -8,6 +8,6 @@
 
 #import "SNRBaseSheetViewController.h"
 
-@interface SNRSearchSeriesSheetViewController : SNRBaseSheetViewController
+@interface SNRSearchSeriesViewController : SNRBaseViewController
 
 @end

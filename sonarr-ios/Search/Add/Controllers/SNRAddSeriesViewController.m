@@ -1,12 +1,12 @@
 //
-//  SNRAddSeriesSheetViewController.m
+//  SNRAddSeriesViewController.m
 //  sonarr-ios
 //
 //  Created by Harry Singh on 30/03/17.
 //  Copyright © 2017 Harry Singh. All rights reserved.
 //
 
-#import "SNRAddSeriesSheetViewController.h"
+#import "SNRAddSeriesViewController.h"
 #import "SNRAddSeriesTableViewCell.h"
 #import "SNRAddSeriesDetailsTableViewCell.h"
 #import "SNRSeries.h"
@@ -20,15 +20,16 @@
 #import "SNRActivityIndicatorView.h"
 #import "SNRAddSeriesDetailsSwitchTableViewCell.h"
 #import "SNRAddSeriesDetailsInfoTableViewCell.h"
+#import "SNRConstants.h"
 
-@interface SNRAddSeriesSheetViewController () <SNRNavigationBarButtonProtocol>
+@interface SNRAddSeriesViewController () <SNRNavigationBarButtonProtocol>
 @property (weak, nonatomic) IBOutlet SNRBaseTableView *tableView;
 @property (strong, nonatomic) SNRServer *server;
 @property (strong, nonatomic) SNRSeries *series;
 @property (strong, nonatomic) MXParallaxHeader *parallaxHeader;
 @end
 
-@implementation SNRAddSeriesSheetViewController
+@implementation SNRAddSeriesViewController
 
 #pragma mark - Life cycle
 
@@ -88,7 +89,7 @@
 #pragma mark - TableView
 
 -(void)updateParallaxHeaderView{
-    CGRect frame =  [self contentViewFrameForPresentationController:nil currentFrame:[UIScreen mainScreen].bounds];
+    CGRect frame =  self.view.frame;
     CGFloat frameM = MIN(frame.size.width, frame.size.height);
     
     CGFloat minimunHeight = 130.0f;
@@ -156,27 +157,24 @@
     [cell becomeFirstResponder];
 }
 
-#pragma mark - Base View Controller
-
-- (BOOL)shouldUseContentViewFrameForPresentationController:(MZFormSheetPresentationController *)presentationController {
-    return YES;
-}
-
-- (CGRect)contentViewFrameForPresentationController:(MZFormSheetPresentationController *)presentationController currentFrame:(CGRect)currentFrame {
-    CGFloat viewW = CGRectGetWidth([UIScreen mainScreen].bounds);
-    CGFloat viewH = CGRectGetHeight([UIScreen mainScreen].bounds);
-    
-    if(viewW > viewH){
-        return CGRectMake(viewW * 0.1, viewH * 0.05, viewW * 0.8, viewH * 0.9);
-    }
-    
-    return CGRectMake(viewW * 0.05, viewH * 0.15, viewW * 0.9, viewH * 0.7);
-}
-
 #pragma mark - Orientation Transition
 
 -(void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator{
     [self updateParallaxHeaderView];
     [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
+}
+
+#pragma mark - Navigation Protocol
+
+-(UIBarButtonItem *)backBarButton{
+    UIBarButtonItem *item = [SNRConstants backButton];
+    item.target = self;
+    item.action = @selector(backButtonTouched);
+    
+    return item;
+}
+
+-(void)backButtonTouched{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 @end

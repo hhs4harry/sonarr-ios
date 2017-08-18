@@ -6,8 +6,7 @@
 //  Copyright © 2017 Harry Singh. All rights reserved.
 //
 
-#import <MZFormSheetPresentationController/MZFormSheetPresentationViewController.h>
-#import "SNRSearchSeriesSheetViewController.h"
+#import "SNRSearchSeriesViewController.h"
 #import "SNRBaseTableView.h"
 #import "SNRSearchSeriesTableViewCell.h"
 #import "NSString+check.h"
@@ -15,9 +14,9 @@
 #import "SNRServerManager.h"
 #import "SNRRefreshControl.h"
 #import "SNRSeriesViewController.h"
-#import "SNRAddSeriesSheetViewController.h"
+#import "SNRAddSeriesViewController.h"
 
-@interface SNRSearchSeriesSheetViewController () <UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, SNRSeriesAddProtocol>
+@interface SNRSearchSeriesViewController () <UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, SNRSeriesAddProtocol, SNRBaseTableViewProtocol>
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (strong, nonatomic) NSString *currSearch;
 @property (weak, nonatomic) IBOutlet SNRBaseTableView *tableView;
@@ -25,7 +24,7 @@
 @property (strong, nonatomic) NSArray *series;
 @end
 
-@implementation SNRSearchSeriesSheetViewController
+@implementation SNRSearchSeriesViewController
 
 #pragma mark - Life cycle
 
@@ -45,8 +44,6 @@
     [super viewWillAppear:animated];
     
     self.title = @"Search";
-    
-    [self.tableView.refreshControl addTarget:self action:@selector(didRequestPullToRefresh:) forControlEvents:UIControlEventValueChanged];
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
@@ -69,7 +66,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if(!self.series.count){
-        return 50;
+        return 60;
     }
     
     return ((1080.0f / 1920.0f) * MIN(CGRectGetHeight(self.view.frame), CGRectGetWidth(self.view.frame))) * 0.7f;
@@ -93,7 +90,7 @@
     return seriesCell;
 }
 
--(void)didRequestPullToRefresh:(id)sender{
+-(void)didRequestRefresh:(SNRBaseTableView *)tableView{
     if(![self.searchBar.text nonEmpty]){
         [self.tableView.refreshControl endRefreshing];
         return;
@@ -167,7 +164,7 @@
 #pragma mark - Navigation
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-    [((SNRAddSeriesSheetViewController *)segue.destinationViewController) setSeries:[self.series objectAtIndex:self.tableView.indexPathForSelectedRow.row]];
+    [((SNRAddSeriesViewController *)segue.destinationViewController) setSeries:[self.series objectAtIndex:self.tableView.indexPathForSelectedRow.row]];
     [super prepareForSegue:segue sender:sender];
 }
 
