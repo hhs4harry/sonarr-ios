@@ -10,6 +10,7 @@
 #import "SNRImageView.h"
 #import "SNRSeries.h"
 #import "SNRImage.h"
+#import "SNRServer.h"
 
 @interface SNRSearchSeriesTableViewCell()
 @property (weak, nonatomic) IBOutlet SNRImageView *parallaxImageView;
@@ -24,41 +25,28 @@
 @implementation SNRSearchSeriesTableViewCell
 
 -(void)setSeries:(SNRSeries *)series forServer:(SNRServer *)server{
-    self.parallaxImageView.tag = self.tag + 1;
-    self.seriesImageView.tag = self.tag + 1;
-    self.tag = self.parallaxImageView.tag;
-    
     self.series = series;
     
     self.seriesTitleLabel.text = self.series.title;
     self.seriesAiredLabel.text = series.scheduleInfo;
     self.seasonCountLabel.text = series.seriesInfo;
     
-    __block SNRImage *parallax = series.images.firstObject;
-    __block SNRImage *seriesImage = series.images.lastObject;
+    SNRImage *parallax = [series imageWithType:ImageTypeFanArt];
+    SNRImage *seriesImage = [series imageWithType:ImageTypePoster];
     
-    if(parallax.image && seriesImage.image){
-        self.parallaxImageView.image = parallax.image;
-        self.seriesImageView.image = seriesImage.image;
+    if (!parallax && !seriesImage) {
         return;
     }
     
-    if(parallax.image){
-        self.parallaxImageView.image = parallax.image;
-    }else{
-        NSURL *paralaxImageURL = [NSURL URLWithString:parallax.url];
-        [self.parallaxImageView setImageWithURL:paralaxImageURL forClient:nil andCompletion:^(UIImage * _Nullable image) {
-            parallax.image = image;
-        }];
+    NSURL *paralaxImageURL = [NSURL URLWithString:parallax.url];
+    NSURL *imageURL =  [NSURL URLWithString:seriesImage.url];
+    
+    if (paralaxImageURL) {
+        [self.parallaxImageView setImageWithURL:paralaxImageURL];
     }
     
-    if(seriesImage.image){
-        self.seriesImageView.image = seriesImage.image;
-    }else{
-        NSURL *imageURL =  [NSURL URLWithString:seriesImage.url];
-        [self.seriesImageView setImageWithURL:imageURL forClient:nil andCompletion:^(UIImage * _Nullable image) {
-            seriesImage.image = image;
-        }];
+    if (imageURL) {
+        [self.seriesImageView setImageWithURL:imageURL];
     }
 }
 

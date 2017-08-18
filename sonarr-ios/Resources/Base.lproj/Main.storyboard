@@ -517,7 +517,7 @@ Add one now!</string>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WEBDL-1080p" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OaL-p1-xCJ">
-                                                    <rect key="frame" x="43.333333333333343" y="30.000000000000004" width="53.666666666666657" height="9.3333333333333393"/>
+                                                    <rect key="frame" x="43.333333333333343" y="29.666666666666671" width="53.666666666666657" height="9.3333333333333286"/>
                                                     <color key="backgroundColor" red="0.34901960780000002" green="0.34901960780000002" blue="0.34901960780000002" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="8"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1700,7 +1700,7 @@ Add one now!</string>
                                                             </constraints>
                                                         </view>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="eksplex.asuscomm.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uc0-aX-YVD">
-                                                            <rect key="frame" x="147.33333333333337" y="10.666666666666668" width="119.66666666666663" height="15.000000000000004"/>
+                                                            <rect key="frame" x="148" y="10.666666666666668" width="119.66666666666669" height="15.000000000000004"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="15" id="OIj-oc-mFJ"/>
                                                             </constraints>
@@ -1927,7 +1927,7 @@ Add one now!</string>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap To Add Server" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q9f-X8-gaW">
-                                <rect key="frame" x="154" y="0.0" width="106.66666666666669" height="50"/>
+                                <rect key="frame" x="154.66666666666669" y="0.0" width="106.66666666666669" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="48p-6R-JvQ"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="rMq-En-SLu"/>

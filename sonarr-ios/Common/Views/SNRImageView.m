@@ -23,7 +23,7 @@
 @implementation SNRImageView
 
 -(void)setImageWithURL:(NSURL *)url{
-    [self setImageWithURL:url forClient:nil andCompletion:nil];
+    [self sd_setImageWithURL:url];
 }
 
 -(void)setImageWithURL:(NSURL *)url forClient:(SNRAPIClient *)client andCompletion:(void(^)(UIImage *image))completion{
