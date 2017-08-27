@@ -59,33 +59,6 @@
     [self updateParallaxHeaderView];
 }
 
-#pragma mark - Navigation
-
--(UIBarButtonItem *)rightBarButton{
-    for (SNRSeries *series in self.server.series) {
-        if(series.tvdbId.integerValue == self.series.tvdbId.integerValue){
-            return nil;
-        }
-    }
-    
-    return [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
-                                                         target:self
-                                                         action:@selector(addSeriesButtonTouchUpInside)];
-}
-
--(void)addSeriesButtonTouchUpInside{
-    [SNRActivityIndicatorView showOnTint:YES onView:self.view];
-    
-    __weak typeof(self) wself = self;
-    [self.server addSeries:self.series withCompletion:^(SNRSeries * _Nullable series, NSError * _Nullable error) {
-        if(series){
-            return [wself dismissViewControllerAnimated:YES completion:nil];
-        }
-        
-        [SNRActivityIndicatorView showOnTint:NO onView:wself.view];
-    }];
-}
-
 #pragma mark - TableView
 
 -(void)updateParallaxHeaderView{
@@ -166,11 +139,35 @@
 
 #pragma mark - Navigation Protocol
 
+-(UIBarButtonItem *)rightBarButton{
+    for (SNRSeries *series in self.server.series) {
+        if(series.tvdbId.integerValue == self.series.tvdbId.integerValue){
+            return nil;
+        }
+    }
+    
+    return [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
+                                                         target:self
+                                                         action:@selector(addSeriesButtonTouchUpInside)];
+}
+
+-(void)addSeriesButtonTouchUpInside{
+    [SNRActivityIndicatorView showOnTint:YES onView:self.view];
+    
+    __weak typeof(self) wself = self;
+    [self.server addSeries:self.series withCompletion:^(SNRSeries * _Nullable series, NSError * _Nullable error) {
+        if(series){
+            return [wself dismissViewControllerAnimated:YES completion:nil];
+        }
+        
+        [SNRActivityIndicatorView showOnTint:NO onView:wself.view];
+    }];
+}
+
 -(UIBarButtonItem *)backBarButton{
     UIBarButtonItem *item = [SNRConstants backButton];
-    item.target = self;
-    item.action = @selector(backButtonTouched);
-    
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(backButtonTouched)];
+    item.customView.gestureRecognizers = @[tapGesture];
     return item;
 }
 

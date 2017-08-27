@@ -226,8 +226,8 @@
 
 -(UIBarButtonItem *)backBarButton{
     UIBarButtonItem *item = [SNRConstants backButton];
-    item.target = self;
-    item.action = @selector(backButtonTouched);
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(backButtonTouched)];
+    item.customView.gestureRecognizers = @[tapGesture];
     
     return item;
 }
