@@ -12,7 +12,7 @@
 #import "SNRNavigationViewController.h"
 #import "SNRPageViewController.h"
 
-@interface SNRFrontViewController () <SNRSettingsProtocol>
+@interface SNRFrontViewController () <SNRSettingsProtocol, UITabBarDelegate, SNRPageViewControllerProtocol>
 @property (weak, nonatomic) IBOutlet UIView *navContentView;
 @property (weak, nonatomic) IBOutlet UIView *settingsContainerView;
 @property (weak, nonatomic) IBOutlet UITabBar *tabBar;
@@ -31,10 +31,37 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     
+    self.pageViewController.sDelegate = self;
+    
     [self.tabBar setSelectedItem:self.seriesTabBarItem];
     [self.tabBar setTintColor:[UIColor primary]];
     [self.tabBar setBackgroundImage:[UIImage imageNamed:@"black"]];
+    self.tabBar.delegate = self;
     [self.seriesTabBarItem setTitlePositionAdjustment:UIOffsetMake(0.0f, -5.0f)];
+}
+
+-(void)pageViewController:(SNRPageViewController *)controller didScrollToIndex:(NSInteger)index{
+    switch (index) {
+        case 0:
+            [self.tabBar setSelectedItem:self.seriesTabBarItem];
+            break;
+        case 1:
+            [self.tabBar setSelectedItem:self.searchTabBarItem];
+            break;
+    }
+}
+
+#pragma mark - TabBar Delegate
+
+- (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item{
+    switch (item.tag) {
+        case 0:
+            [self.pageViewController scrollToViewController:self.seriesNavigationController];
+            break;
+        case 1:
+            [self.pageViewController scrollToViewController:self.searchNavigationController];
+            break;
+    }
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{

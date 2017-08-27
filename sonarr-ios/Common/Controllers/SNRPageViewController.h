@@ -7,7 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+@class SNRPageViewController;
+
+@protocol SNRPageViewControllerProtocol
+-(void)pageViewController:(SNRPageViewController *)controller didScrollToIndex:(NSInteger)index;
+@end
 
 @interface SNRPageViewController : UIPageViewController
+@property (assign, nonatomic) id<SNRPageViewControllerProtocol> sDelegate;
+
 -(void)setTabViewControllers:(NSArray<UIViewController *> *)controllers;
+-(void)scrollToViewController:(UIViewController *)controller;
 @end

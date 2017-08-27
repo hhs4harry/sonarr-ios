@@ -10,6 +10,7 @@
 
 @interface SNRPageViewController () <UIPageViewControllerDelegate, UIPageViewControllerDataSource>
 @property (strong, nonatomic) NSArray<UIViewController *> *controllers;
+@property (assign, nonatomic) NSInteger currIndex;
 @end
 
 @implementation SNRPageViewController
@@ -22,6 +23,7 @@
 }
 
 -(void)setTabViewControllers:(NSArray<UIViewController *> *)controllers{
+    self.currIndex = 0;
     self.controllers = controllers;
 }
 
@@ -43,6 +45,24 @@
     }
     
     return [self.controllers objectAtIndex:index-1];
+}
+
+-(void)pageViewController:(UIPageViewController *)pageViewController didFinishAnimating:(BOOL)finished previousViewControllers:(NSArray<UIViewController *> *)previousViewControllers transitionCompleted:(BOOL)completed{
+    self.currIndex = [self.controllers indexOfObject:previousViewControllers.firstObject];
+    self.currIndex = self.controllers.count - 1 - self.currIndex;
+}
+
+-(void)scrollToViewController:(UIViewController *)controller{
+    [self setViewControllers:@[controller] direction:[self.controllers indexOfObject:controller] > self.currIndex ? UIPageViewControllerNavigationDirectionForward : UIPageViewControllerNavigationDirectionReverse animated:YES completion:nil];
+    self.currIndex = [self.controllers indexOfObject:controller];
+}
+
+-(void)setCurrIndex:(NSInteger)currIndex{
+    _currIndex = currIndex;
+    
+    if (self.sDelegate && [(NSObject *)self.sDelegate respondsToSelector:@selector(pageViewController:didScrollToIndex:)]) {
+        [self.sDelegate pageViewController:self didScrollToIndex:currIndex];
+    }
 }
 
 @end
