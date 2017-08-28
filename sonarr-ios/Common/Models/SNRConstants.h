@@ -16,8 +16,10 @@
 #define kDefaultFontBoldName @"OpenSans-Bold"
 #define kBytesInMB 1048576
 #define kMBInGB 1000
+#define kNoSeriesHeight 50.0f;
+#define kSeriesHeightPercentage 0.6f;
 
 @interface SNRConstants : NSObject
-+(UIBarButtonItem *)backButton;
++(UIBarButtonItem *)backButtonTarget:(id)target andSelector:(SEL)selector;
 
 @end

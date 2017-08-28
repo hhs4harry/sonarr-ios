@@ -225,7 +225,7 @@
 #pragma mark - Navigation Protocol
 
 -(UIBarButtonItem *)backBarButton{
-    UIBarButtonItem *item = [SNRConstants backButton];
+    UIBarButtonItem *item = [SNRConstants backButtonTarget:self andSelector:@selector(backButtonTouched)];
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(backButtonTouched)];
     item.customView.gestureRecognizers = @[tapGesture];
     

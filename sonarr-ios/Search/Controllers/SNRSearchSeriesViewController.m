@@ -15,6 +15,7 @@
 #import "SNRRefreshControl.h"
 #import "SNRSeriesViewController.h"
 #import "SNRAddSeriesViewController.h"
+#import "SNRConstants.h"
 
 @interface SNRSearchSeriesViewController () <UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, SNRSeriesAddProtocol, SNRBaseTableViewProtocol>
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
@@ -66,10 +67,10 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if(!self.series.count){
-        return 60;
+        return kNoSeriesHeight;
     }
     
-    return ((1080.0f / 1920.0f) * MIN(CGRectGetHeight(self.view.frame), CGRectGetWidth(self.view.frame))) * 0.7f;
+    return (kBannerSizeRatio * MIN(CGRectGetHeight(self.tableView.frame), CGRectGetWidth(self.tableView.frame))) * kSeriesHeightPercentage;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{

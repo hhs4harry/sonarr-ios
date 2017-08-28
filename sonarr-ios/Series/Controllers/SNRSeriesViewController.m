@@ -23,9 +23,6 @@
 #import "SNRConstants.h"
 #import "UIImage+Utility.h"
 
-const CGFloat kNoSeriesHeight = 50.0f;
-const CGFloat kSeriesHeightPercentage = 0.6f;
-
 typedef enum : NSUInteger {
     SeriesTableViewCellTypeNone = 0,
     SeriesTableViewCellTypeSeries

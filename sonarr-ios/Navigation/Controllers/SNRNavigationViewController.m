@@ -20,6 +20,7 @@
 -(void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated{
     if([viewController conformsToProtocol:@protocol(SNRNavigationBarButtonProtocol)]){
         if([viewController respondsToSelector:@selector(backBarButton)]){
+            viewController.navigationItem.hidesBackButton = YES;
             viewController.navigationItem.leftBarButtonItem = [((id<SNRNavigationBarButtonProtocol> )viewController) backBarButton];
         }
         if([viewController respondsToSelector:@selector(rightBarButton)]){

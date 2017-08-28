@@ -11,36 +11,17 @@
 
 @implementation SNRConstants
 
-+(UIBarButtonItem *)backButton{
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100 , 25)];
-    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"chevron_left"]];
++(UIBarButtonItem *)backButtonTarget:(id)target andSelector:(SEL)selector{
+    UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 60, 60)];
+    [btn setImage:[UIImage imageNamed:@"chevron_left"] forState:UIControlStateNormal];
+    [btn setTitle:@"Back" forState:UIControlStateNormal];
+    [btn addTarget:target action:selector forControlEvents:UIControlEventTouchUpInside];
+    [btn.titleLabel setFont:[UIFont systemFontOfSize:13]];
+    [btn.titleLabel setTextColor:[UIColor whiteColor]];
+    [btn setImageEdgeInsets:UIEdgeInsetsMake(0, -21, 0, 0)];
+    [btn setTitleEdgeInsets:UIEdgeInsetsMake(0, -15, 0, 0)];
     
-    [view addSubview:imageView];
-    imageView.translatesAutoresizingMaskIntoConstraints = NO;
-    
-    [[NSLayoutConstraint constraintWithItem:imageView attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:view attribute:NSLayoutAttributeLeft multiplier:1.0 constant:-10] setActive:YES];
-    [[NSLayoutConstraint constraintWithItem:imageView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:view attribute:NSLayoutAttributeTop multiplier:1.0 constant:0.0] setActive:YES];
-    [[NSLayoutConstraint constraintWithItem:imageView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:view attribute:NSLayoutAttributeBottom multiplier:1.0 constant:0.0] setActive:YES];
-    [[NSLayoutConstraint constraintWithItem:imageView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:imageView attribute:NSLayoutAttributeHeight multiplier:0.9 constant:1.0] setActive:YES];
-
-    
-    UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
-    title.font = [UIFont systemFontOfSize:13];
-    title.text = @"Back";
-    title.textColor = [UIColor whiteColor];
-    
-    [view addSubview:title];
-    title.translatesAutoresizingMaskIntoConstraints = NO;
-    
-    [[NSLayoutConstraint constraintWithItem:title attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:imageView attribute:NSLayoutAttributeRight multiplier:1.0 constant:2] setActive:YES];
-    [[NSLayoutConstraint constraintWithItem:title attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:view attribute:NSLayoutAttributeRight multiplier:1.0 constant:0.0] setActive:YES];
-    [[NSLayoutConstraint constraintWithItem:title attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:view attribute:NSLayoutAttributeTop multiplier:1.0 constant:0.0] setActive:YES];
-    [[NSLayoutConstraint constraintWithItem:title attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:view attribute:NSLayoutAttributeBottom multiplier:1.0 constant:0.0] setActive:YES];
-    
-    [view layoutIfNeeded];
-    
-    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithCustomView:view];
+    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithCustomView:btn];
     return item;
 }
-
 @end

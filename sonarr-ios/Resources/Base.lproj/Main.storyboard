@@ -517,7 +517,7 @@ Add one now!</string>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WEBDL-1080p" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OaL-p1-xCJ">
-                                                    <rect key="frame" x="43.333333333333343" y="29.666666666666671" width="53.666666666666657" height="9.3333333333333286"/>
+                                                    <rect key="frame" x="43.333333333333343" y="30.333333333333336" width="53.666666666666657" height="9.3333333333333357"/>
                                                     <color key="backgroundColor" red="0.34901960780000002" green="0.34901960780000002" blue="0.34901960780000002" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="8"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -713,7 +713,7 @@ Add one now!</string>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="18n-nv-KLw" customClass="SNRBaseTableView">
                                 <rect key="frame" x="0.0" y="120" width="414" height="616"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.098039215690000001" green="0.098039215690000001" blue="0.098039215690000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="seriesAddCell" rowHeight="100" id="xnY-L3-sAB" customClass="SNRSearchSeriesTableViewCell">
                                         <rect key="frame" x="0.0" y="28" width="414" height="100"/>
@@ -814,7 +814,7 @@ Add one now!</string>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No series found." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ryo-NT-eS2">
                                                     <rect key="frame" x="152.33333333333337" y="38" width="110.66666666666663" height="20.666666666666664"/>
                                                     <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="15"/>
-                                                    <nil key="textColor"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -823,6 +823,7 @@ Add one now!</string>
                                                 <constraint firstItem="ryo-NT-eS2" firstAttribute="centerX" secondItem="hfD-XJ-zFv" secondAttribute="centerX" id="Oyz-C3-WE1"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="instructionsCell" rowHeight="95" id="Qdw-35-jou">
                                         <rect key="frame" x="0.0" y="223" width="414" height="95"/>
@@ -833,20 +834,23 @@ Add one now!</string>
                                             <subviews>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="center" text="Search using a title or tvdb id with the following format 'tvdb:75897'" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Rve-Xk-L0K">
                                                     <rect key="frame" x="82" y="17.666666666666671" width="250" height="60"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="250" id="MMr-55-QH5"/>
                                                         <constraint firstAttribute="height" constant="60" id="njV-fB-W8B"/>
                                                     </constraints>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
                                             </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstItem="Rve-Xk-L0K" firstAttribute="centerX" secondItem="uDN-ZJ-Wzb" secondAttribute="centerX" id="776-12-Ers"/>
                                                 <constraint firstItem="Rve-Xk-L0K" firstAttribute="centerY" secondItem="uDN-ZJ-Wzb" secondAttribute="centerY" id="Z4p-Rq-1jS"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                 </prototypes>
                                 <userDefinedRuntimeAttributes>
@@ -860,7 +864,7 @@ Add one now!</string>
                             <searchBar contentMode="redraw" searchBarStyle="prominent" placeholder="e.g. Archer or tvdb:75897" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HC3-bv-Rvp">
                                 <rect key="frame" x="0.0" y="64" width="414" height="56"/>
                                 <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardAppearance="alert"/>
                                 <connections>
                                     <outlet property="delegate" destination="g1N-hN-kcn" id="TaM-Ye-kBB"/>
                                 </connections>
@@ -1700,7 +1704,7 @@ Add one now!</string>
                                                             </constraints>
                                                         </view>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="eksplex.asuscomm.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uc0-aX-YVD">
-                                                            <rect key="frame" x="148" y="10.666666666666668" width="119.66666666666669" height="15.000000000000004"/>
+                                                            <rect key="frame" x="147.33333333333337" y="10.666666666666668" width="119.66666666666663" height="15.000000000000004"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="15" id="OIj-oc-mFJ"/>
                                                             </constraints>
@@ -1927,7 +1931,7 @@ Add one now!</string>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap To Add Server" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q9f-X8-gaW">
-                                <rect key="frame" x="154.66666666666669" y="0.0" width="106.66666666666669" height="50"/>
+                                <rect key="frame" x="154.33333333333337" y="0.0" width="106.66666666666663" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="48p-6R-JvQ"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="rMq-En-SLu"/>
