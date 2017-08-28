@@ -78,13 +78,19 @@ CGFloat const kTintViewColorAlpha = 0.7;
     self.seriesImageViewHeightConstraint.constant = self.parallaxViewHeightConstraint.constant - kTopBottomSpace;
 
     if (animate) {
-        [UIView animateWithDuration:0.3 animations:^{
+        [UIView animateWithDuration:0.4 animations:^{
             self.seriesImageView.alpha = 1.0;
             self.seriesTitleLabel.alpha = 1.0;
             self.seasonLabel.alpha = 1.0;
             self.tintView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:kTintViewColorAlpha];
             [self.superview layoutIfNeeded];
         }];
+    } else {
+        self.seriesImageView.alpha = 1.0;
+        self.seriesTitleLabel.alpha = 1.0;
+        self.seasonLabel.alpha = 1.0;
+        self.tintView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:kTintViewColorAlpha];
+        [self.superview layoutIfNeeded];
     }
     
     if (!self.seriesInitialHeight || floorf(self.seriesInitialHeight) == 0.0) {
@@ -94,7 +100,7 @@ CGFloat const kTintViewColorAlpha = 0.7;
 
 -(BOOL)didPan:(UIPanGestureRecognizer *)urgi {
     if (urgi.state == UIGestureRecognizerStateEnded) {
-        if (self.parallaxViewHeightConstraint.constant > (self.seriesInitialHeight + kTopBottomSpace)) {
+        if (self.parallaxViewHeightConstraint.constant > self.seriesInitialHeight) {
             [self animateToDefaultState:YES];
             return YES;
         }
@@ -103,7 +109,7 @@ CGFloat const kTintViewColorAlpha = 0.7;
         CGPoint velocity = [urgi velocityInView:self];
         CGFloat magnitude = sqrtf((velocity.x * velocity.x) + (velocity.y * velocity.y));
         CGFloat slideMult = magnitude / ((self.parallaxViewHeightConstraint.constant >= 150) ? (self.parallaxViewHeightConstraint.constant - 100) : 100);
-        CGFloat slideFactor = 1.0 * slideMult;
+        CGFloat slideFactor = 1.5 * slideMult;
         
         BOOL panned = NO;
         
@@ -117,11 +123,11 @@ CGFloat const kTintViewColorAlpha = 0.7;
             panned = YES;
         }
         
-        if (self.parallaxViewHeightConstraint.constant - kTopBottomSpace <= self.seriesInitialHeight) {
+        if (self.parallaxViewHeightConstraint.constant <= self.seriesInitialHeight) {
             self.seriesImageViewHeightConstraint.constant = self.parallaxViewHeightConstraint.constant - kTopBottomSpace;
         }
         
-        self.seriesImageView.alpha = 1.0 - ((self.parallaxViewHeightConstraint.constant - kTopBottomSpace - self.seriesInitialHeight) / 100);
+        self.seriesImageView.alpha = 1.0 - ((self.parallaxViewHeightConstraint.constant - self.seriesInitialHeight) / 100);
         self.seriesTitleLabel.alpha = self.seriesImageView.alpha;
         self.seasonLabel.alpha = self.seriesImageView.alpha;
         self.tintView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:MIN(self.seriesImageView.alpha, kTintViewColorAlpha)];

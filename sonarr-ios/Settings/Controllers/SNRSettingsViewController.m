@@ -178,6 +178,8 @@ typedef enum : NSUInteger {
     
     [self.tableView beginUpdates];
     [self.tableView endUpdates];
+    
+    [self.view endEditing:YES];
 }
 
 - (void)addServerWithConfig:(SNRServerConfig *)config andCompletion:(void(^)(SNRStatus *status, NSError *error))completion{

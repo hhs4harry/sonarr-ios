@@ -50,13 +50,8 @@
     [self setDataTaskDidReceiveResponseBlock:^NSURLSessionResponseDisposition(NSURLSession * _Nonnull session, NSURLSessionDataTask * _Nonnull dataTask, NSURLResponse * _Nonnull response) {
         return NSURLSessionResponseAllow;
     }];
-    
-    struct sockaddr_in address;
-    address.sin_len = sizeof(address);
-    address.sin_family = AF_INET;
-    address.sin_port = htons(self.baseURL.port.integerValue);
-    address.sin_addr.s_addr = inet_addr([[self lookupHostIPAddressForURL:self.baseURL] UTF8String]);
-    self.reachabilityManager = [AFNetworkReachabilityManager managerForAddress:&address];
+
+    self.reachabilityManager = [AFNetworkReachabilityManager managerForDomain:self.baseURL.absoluteString];
     [self.reachabilityManager startMonitoring];
     
     __weak typeof(self) wself = self;
@@ -68,22 +63,6 @@
         }
         sself.networkStatus = status;
     }];
-}
-
-- (NSString *)lookupHostIPAddressForURL:(NSURL*)url{
-    if(![[url.host componentsSeparatedByCharactersInSet:[[NSCharacterSet letterCharacterSet] invertedSet]] componentsJoinedByString:@""].length){
-        return url.host;
-    }
-    
-    // Ask the unix subsytem to query the DNS
-    struct hostent *remoteHostEnt = gethostbyname([[url host] UTF8String]);
-    // Get address info from host entry
-    struct in_addr *remoteInAddr = (struct in_addr *) remoteHostEnt->h_addr_list[0];
-    // Convert numeric addr to ASCII string
-    char *sRemoteInAddr = inet_ntoa(*remoteInAddr);
-    // hostIP
-    NSString* hostIP = [NSString stringWithUTF8String:sRemoteInAddr];
-    return hostIP;
 }
 
 -(void)performPOSTCallToEndpoint:(NSString *)endpoint
